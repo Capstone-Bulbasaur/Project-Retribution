@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4939666587915724972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2313116979496226403}
+  - component: {fileID: 263674629502556732}
+  - component: {fileID: 717499829}
+  m_Layer: 0
+  m_Name: MemoryGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2313116979496226403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939666587915724972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263674629502556732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939666587915724972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600fdfbabc53e4b4db483621f2094065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzleZone: {fileID: 0}
+  btn: {fileID: 7421747645609098661, guid: 560b982a01841ef4e8de742cfc2e90ea, type: 3}
+--- !u!114 &717499829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939666587915724972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdea92804bbc414bb2cd37166b81132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: -6250158310957160664, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  matched:
+  - {fileID: 2261758291068676618, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  - {fileID: -8077053887062953379, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  - {fileID: 6418855237769921834, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  btns: []
+  pots:
+  - {fileID: 3530545343074336906, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  - {fileID: -7144135946280821724, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  - {fileID: -924255254367354130, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+  gamePots: []

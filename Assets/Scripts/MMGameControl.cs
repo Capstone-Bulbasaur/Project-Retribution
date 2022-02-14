@@ -7,12 +7,12 @@ using UnityEngine.Analytics;
 
 public class MMGameControl : MonoBehaviour
 {
-    GameObject emptyPot;
+    [SerializeField]private GameObject emptyPot;
     private List<int> faceIndexes = new List<int> { 0, 1, 2, 0, 1, 2 };
+    private int[] visibleFaces = { -1, -2 };
+
     public static System.Random rnd = new System.Random();
     public int shuffleNum = 0;
-
-    private int[] visibleFaces = { -1, -2 };
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class MMGameControl : MonoBehaviour
             //instantiating new Pots on the screen
             var temp = Instantiate(emptyPot, new Vector3(
                                     xPosition, yPosition, 0), Quaternion.identity);
-            
+            temp.name = "Pot " + i;
             temp.GetComponent<MainPot>().faceIndex = faceIndexes[shuffleNum];
             faceIndexes.Remove(faceIndexes[shuffleNum]);
 
@@ -80,6 +80,8 @@ public class MMGameControl : MonoBehaviour
         {
             visibleFaces[1] = -2;
         }
+
+        
     }
 
     public bool CheckMatch() // check if both visibleFaces indexes are equal
@@ -95,12 +97,4 @@ public class MMGameControl : MonoBehaviour
 
         return success;
     }
-
-
-    void Awake()
-    {
-        emptyPot = GameObject.Find("EmptyPot");
-
-    }
-
 }

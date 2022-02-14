@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: -924255254367354130, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
   back: {fileID: -6250158310957160664, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
   faceIndex: 0
+  matched: 0
 --- !u!58 &9042006085818250799
 CircleCollider2D:
   m_ObjectHideFlags: 0

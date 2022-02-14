@@ -28,7 +28,6 @@ public class MainPot : MonoBehaviour
                     gameControl.GetComponent<MMGameControl>().AddVisibleFace(faceIndex);
                     matched = gameControl.GetComponent<MMGameControl>().CheckMatch(); // if this match is true, the player will not longer flip the pot over again
                 }
-                
             }
             else
             {
@@ -36,7 +35,6 @@ public class MainPot : MonoBehaviour
                 gameControl.GetComponent<MMGameControl>().RemoveVisibleFace(faceIndex);
             }
         }
-
     }
 
     private void Awake()
@@ -44,8 +42,6 @@ public class MainPot : MonoBehaviour
         gameControl = GameObject.Find("MMGameManager");
         
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-
     }
 
 }
