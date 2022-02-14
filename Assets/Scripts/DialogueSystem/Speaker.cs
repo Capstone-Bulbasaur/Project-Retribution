@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Speaker", menuName = "Dialogue/NewSpeaker")]
+[CreateAssetMenu(fileName = "New Speaker", menuName = "Dialogue/New Speaker")] // Creates a New Speaker menu item in Unity's Create menu under the Dialogue tab
 public class Speaker : ScriptableObject
 {
     [SerializeField]private string speakerName;

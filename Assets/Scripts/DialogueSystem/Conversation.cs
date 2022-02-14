@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Conversation", menuName = "Dialogue/NewConversation")]
+[CreateAssetMenu(fileName = "New Conversation", menuName = "Dialogue/New Conversation")] // Creates a New Conversation menu item in Unity's Create menu under the Dialogue tab
 public class Conversation : ScriptableObject
 {
     [SerializeField] private DialogueLine[] allLines;
