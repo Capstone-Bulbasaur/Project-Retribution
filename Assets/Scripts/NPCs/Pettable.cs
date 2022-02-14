@@ -4,10 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class Pettable : Interactable
 {
-    private SpriteRenderer spriteRenderer;
     public Animator animator;
     private bool isIdle;
 
@@ -18,7 +16,6 @@ public class Pettable : Interactable
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator.SetBool("isPet", false);
     }
 

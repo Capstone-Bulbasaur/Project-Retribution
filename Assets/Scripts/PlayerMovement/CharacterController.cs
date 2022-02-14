@@ -7,13 +7,21 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    public GameObject interactIcon;
+
     public float speed = 5f;
     public Rigidbody2D rigidbody;
     public Animator animator;
 
     Vector2 movement;
-    private Vector2 boxSize = new Vector2(1f, 1f); // Need this box size for raycasting to find interactable objects around the player
+    private Vector2 boxSize = new Vector2(2f, 1f); // Need this box size for raycasting to find interactable objects around the player
 
+
+    private void Start()
+    {
+        interactIcon.SetActive(false);
+        animator = GetComponent<Animator>();
+    }
     // Handles user input
     void Update()
     {
@@ -44,12 +52,12 @@ public class CharacterController : MonoBehaviour
 
     public void OpenInteractBubble()
     {
-
+        interactIcon.SetActive(true);
     }
 
     public void CloseInteractBubble()
     {
-
+        interactIcon.SetActive(false);
     }
 
     private void CheckInteraction()
