@@ -10,6 +10,6 @@ public class Tester : MonoBehaviour
 
     public void StartConvo()
     {
-        DialogueManager.StartConversation(convo);
+        DialogueManager.instance.StartConversation(convo);
     }
 }

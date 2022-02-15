@@ -14,10 +14,10 @@ public class DialogueManager : MonoBehaviour
     public Sprite nextDialogueSprite;
     public Sprite closeDialogueSprite;
     public KeyCode actionKey;
+    public static DialogueManager instance;
 
     private int currentIndex;
     private Conversation currentConvo;
-    private static DialogueManager instance;
     private Animator animator;
     private Coroutine typing;
 
@@ -36,15 +36,13 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        //If user presses action key, click the button
-        if(Input.GetKeyDown(actionKey))
+        if (currentConvo != null)
         {
-            //ChangePressedColor(button.colors.pressedColor);
-            button.onClick.Invoke();
-        }
-        else if(Input.GetKeyUp(actionKey))
-        {
-            //ChangePressedColor(button.colors.normalColor);
+            //If user presses action key, click the button
+            if(Input.GetKeyDown(actionKey))
+            {
+                button.onClick.Invoke();
+            }
         }
     }
 
@@ -54,15 +52,15 @@ public class DialogueManager : MonoBehaviour
         graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
     }
 
-    public static void StartConversation(Conversation convo)
+    public void StartConversation(Conversation convo)
     {
-        instance.animator.SetBool("isOpen", true);
-        instance.currentIndex = 0;
-        instance.currentConvo = convo;
-        instance.speakerName.text = "";
-        instance.dialogue.text = "";
+        animator.SetBool("isOpen", true);
+        currentIndex = 0;
+        currentConvo = convo;
+        speakerName.text = "";
+        dialogue.text = "";
 
-        instance.ReadNext();
+        ReadNext();
     }
 
     public void ReadNext()
@@ -70,7 +68,7 @@ public class DialogueManager : MonoBehaviour
         // Closes the dialogue box if it reaches the end of the conversation
         if(currentIndex > currentConvo.GetLength())
         {
-            instance.animator.SetBool("isOpen", false);
+            animator.SetBool("isOpen", false);
             button.GetComponent<Image>().sprite = nextDialogueSprite;
             return;
         }
