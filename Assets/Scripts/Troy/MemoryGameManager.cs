@@ -83,13 +83,16 @@ public class MemoryGameManager : MonoBehaviour
             /*
              *INSERT SOUNDS HERE FOR SELECTING A POT
              */
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.potPickedSound);
+            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.potPickedSound);
             firstGuess = true;
             firstGuessIndex = int.Parse(name);
             firstGuessPot = gamePots[firstGuessIndex].name;
 
             //Turn the sprite of the button to the corresponding pot image
             btns[firstGuessIndex].image.sprite = gamePots[firstGuessIndex];
+
+            //Make buttons no longer interactable
+            btns[firstGuessIndex].interactable = false;
 
         }else if (!secondGuess)
         {
@@ -99,6 +102,9 @@ public class MemoryGameManager : MonoBehaviour
 
             //Turn the sprite of the button to the corresponding pot image
             btns[secondGuessIndex].image.sprite = gamePots[secondGuessIndex];
+
+            //Make button no longer interactable
+            btns[secondGuessIndex].interactable = false;
 
             //Increment number of guesses 
             countGuesses++;
@@ -129,19 +135,19 @@ public class MemoryGameManager : MonoBehaviour
 
         if (firstGuessPot == secondGuessPot)
         {
-            //Play sound for getting a match right
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
-
             yield return new WaitForSeconds(.5f);
 
             //Make buttons no longer interactable
-            btns[firstGuessIndex].interactable = false;
-            btns[secondGuessIndex].interactable = false;
+            //btns[firstGuessIndex].interactable = false;
+           // btns[secondGuessIndex].interactable = false;
             
             var result = btns[firstGuessIndex].image.sprite.name.Remove(0, 16);
             
             int index = int.Parse(result);
             index -= 1;
+
+            //Play sound for getting a match right
+            SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
 
             //Turn images to outlined version
             btns[firstGuessIndex].image.sprite = matched[index];
@@ -160,6 +166,11 @@ public class MemoryGameManager : MonoBehaviour
             //Turn images to blank version 
             btns[firstGuessIndex].image.sprite = back;
             btns[secondGuessIndex].image.sprite = back;
+
+            //Make First and second pot interactable again
+            btns[firstGuessIndex].interactable = true;
+            btns[secondGuessIndex].interactable = true;
+
             Debug.Log("Its NOT a MATCH!");
         }
 
