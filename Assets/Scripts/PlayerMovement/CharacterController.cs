@@ -14,7 +14,7 @@ public class CharacterController : MonoBehaviour
     public Animator animator;
 
     Vector2 movement;
-    private Vector2 boxSize = new Vector2(2f, 1f); // Need this box size for raycasting to find interactable objects around the player
+    private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
 
 
     private void Start()
@@ -25,11 +25,13 @@ public class CharacterController : MonoBehaviour
     // Handles user input
     void Update()
     {
+        // Action button
         if (Input.GetKeyDown(KeyCode.E))
         {
             CheckInteraction();
         }
 
+        // Character movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -37,6 +39,7 @@ public class CharacterController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
+        // Set idle position to last known direction
         if (movement.x != 0 || movement.y != 0)
         {
             animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
@@ -52,12 +55,12 @@ public class CharacterController : MonoBehaviour
 
     public void OpenInteractBubble()
     {
-        interactIcon.SetActive(true);
+        interactIcon.SetActive(true); // Show exclamation bubble
     }
 
     public void CloseInteractBubble()
     {
-        interactIcon.SetActive(false);
+        interactIcon.SetActive(false); // Hide exclamation bubble
     }
 
     private void CheckInteraction()

@@ -1,4 +1,5 @@
 // Dialogue System based on the following tutorial: https://youtu.be/mhEiJ_-jyTs
+// Change UI button click on keypress https://www.youtube.com/watch?v=VFAXyUvwtYQ&t=156s
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public Button button;
     public Sprite nextDialogueSprite;
     public Sprite closeDialogueSprite;
+    public KeyCode actionKey;
 
     private int currentIndex;
     private Conversation currentConvo;
@@ -30,6 +32,26 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Update()
+    {
+        //If user presses action key, click the button
+        if(Input.GetKeyDown(actionKey))
+        {
+            //ChangePressedColor(button.colors.pressedColor);
+            button.onClick.Invoke();
+        }
+        else if(Input.GetKeyUp(actionKey))
+        {
+            //ChangePressedColor(button.colors.normalColor);
+        }
+    }
+
+    void ChangePressedColor(Color color)
+    {
+        Graphic graphic = GetComponent<Graphic>();
+        graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
     }
 
     public static void StartConversation(Conversation convo)

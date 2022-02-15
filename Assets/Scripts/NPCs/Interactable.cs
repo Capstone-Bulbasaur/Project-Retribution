@@ -1,4 +1,4 @@
-// Following this tutorial to interact with an object https://www.youtube.com/watch?v=GaVADPZlO0o
+// Following this tutorial to add interaction bubbles when there's an interactable NPC https://www.youtube.com/watch?v=GaVADPZlO0o
 
 using UnityEngine;
 

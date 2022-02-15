@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Orry
   m_EditorClassIdentifier: 
   speakerName: Orry
-  speakerSprite: {fileID: 21300000, guid: 45830634eaf386648a9557f58c11d10c, type: 3}
+  speakerSprite: {fileID: 21300000, guid: 5e5f8a86b5f8b304c8f9c8e01cdd3891, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c911c71ecddc6047a65b52bc923e96d, type: 3}
-  m_Name: James
+  m_Name: Graey
   m_EditorClassIdentifier: 
-  speakerName: James
-  speakerSprite: {fileID: 21300000, guid: bccc0e12f4751944894a7866c8a80159, type: 3}
+  speakerName: Graey
+  speakerSprite: {fileID: 21300000, guid: 7170ebc631331fa42882e769949f7556, type: 3}
