@@ -15,11 +15,13 @@ public class DialogueManager : MonoBehaviour
     public Sprite closeDialogueSprite;
     public KeyCode actionKey;
     public static DialogueManager instance;
+    public delegate void ConvoFinishedCallback();
 
     private int currentIndex;
     private Conversation currentConvo;
     private Animator animator;
     private Coroutine typing;
+    private ConvoFinishedCallback callback;
 
     private void Awake()
     {
@@ -52,15 +54,14 @@ public class DialogueManager : MonoBehaviour
         graphic.CrossFadeColor(color, button.colors.fadeDuration, true, true);
     }
 
-    public void StartConversation(Conversation convo)
+    public void StartConversation(Conversation convo, ConvoFinishedCallback callb)
     {
         animator.SetBool("isOpen", true);
         currentIndex = 0;
         currentConvo = convo;
         speakerName.text = "";
         dialogue.text = "";
-
-        ReadNext();
+        callback = callb;
     }
 
     public void ReadNext()
@@ -70,6 +71,8 @@ public class DialogueManager : MonoBehaviour
         {
             animator.SetBool("isOpen", false);
             button.GetComponent<Image>().sprite = nextDialogueSprite;
+            callback();
+
             return;
         }
 

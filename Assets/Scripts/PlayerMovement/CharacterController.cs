@@ -16,7 +16,6 @@ public class CharacterController : MonoBehaviour
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
 
-
     private void Start()
     {
         interactIcon.SetActive(false);

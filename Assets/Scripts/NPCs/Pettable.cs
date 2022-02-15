@@ -4,22 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pettable : Interactable
+public class Pettable : NPCInteract
 {
     public Animator animator;
-    public Conversation currentConvo;
-    public bool dialoguePlayed = false;
     private bool isIdle;
 
     public override void Interact()
     {
         animator.SetBool("isPet", true);
-
-        if (!dialoguePlayed)
-        {
-            DialogueManager.instance.StartConversation(currentConvo);
-            dialoguePlayed = true;
-        }
+        base.Interact();
     }
 
     private void Start()
