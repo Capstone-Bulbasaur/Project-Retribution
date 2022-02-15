@@ -11,7 +11,7 @@ public class NPCInteract : Interactable
     {
         if (!dialoguePlayed)
         {
-            DialogueManager.StartConversation(currentNPCConvo);
+            DialogueManager.instance.StartConversation(currentNPCConvo);
             dialoguePlayed = true;
         }
     }

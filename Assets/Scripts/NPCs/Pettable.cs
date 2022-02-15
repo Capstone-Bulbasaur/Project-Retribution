@@ -17,7 +17,7 @@ public class Pettable : Interactable
 
         if (!dialoguePlayed)
         {
-            DialogueManager.StartConversation(currentConvo);
+            DialogueManager.instance.StartConversation(currentConvo);
             dialoguePlayed = true;
         }
     }
