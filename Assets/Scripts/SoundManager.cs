@@ -7,11 +7,13 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance = null;
     private AudioSource soundEffectAudio;
 
+    // Memory match audio clips
     public AudioClip rightMatchSound;
     public AudioClip wrongMatchSound;
     public AudioClip potPickedSound;
     public AudioClip winGameSound;
 
+    // Hub world audio clips
 
     void Start ()
     {

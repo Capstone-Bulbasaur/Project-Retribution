@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be39a0b6dd2e1141acc16388795adfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 95498497}
-  currentConvo: {fileID: 11400000, guid: 0670f5e87f000d647bc2eee0769cbb8b, type: 2}
+  currentNPCConvo: {fileID: 11400000, guid: 0670f5e87f000d647bc2eee0769cbb8b, type: 2}
   dialoguePlayed: 0
+  animator: {fileID: 95498497}
 --- !u!95 &95498497
 Animator:
   serializedVersion: 3
@@ -181,7 +181,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.061856985, y: -0.032273173}
+  m_Offset: {x: 0.061856985, y: -0.0267235}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -192,7 +192,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9941497, y: 1.4405968}
+  m_Size: {x: 1.00054, y: 1.44415}
   m_EdgeRadius: 0
 --- !u!1 &3948060126887051443
 GameObject:
