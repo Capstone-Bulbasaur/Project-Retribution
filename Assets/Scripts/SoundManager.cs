@@ -29,6 +29,8 @@ public class SoundManager : MonoBehaviour
                 soundEffectAudio = source;
             }
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void PlayOneShot(AudioClip clip)
