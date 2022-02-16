@@ -14,6 +14,7 @@ public class MainGameManager : MonoBehaviour
     public bool recruitedOrry;
     public bool recruitedGaehl;
     public bool recruitedEmbre;
+    public GameObject Graey;
 
     private void Awake()
     {
@@ -29,7 +30,12 @@ public class MainGameManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteAll();
 
+        if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
+        {
+            Graey.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"));
+        }
     }
 
 
