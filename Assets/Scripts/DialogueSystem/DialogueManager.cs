@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -73,6 +74,11 @@ public class DialogueManager : MonoBehaviour
             button.GetComponent<Image>().sprite = nextDialogueSprite;
             callback();
 
+            if (speakerName.text == "Orry")
+            {
+                SceneManager.LoadScene(sceneName: "MemoryMatch 1");
+            }
+            
             return;
         }
 

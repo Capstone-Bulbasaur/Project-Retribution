@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using GameObject = UnityEngine.GameObject;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 /*
  * FOLLOWED THIS TUTORIAL: https://www.youtube.com/watch?v=qaCjBh7bWz0&list=PLZhNP5qJ2IA2DA4bzDyxFMs8yogVQSrjW&ab_channel=AwesomeTuts and adapted to our game
  */
+
 
 public class MemoryGameManager : MonoBehaviour
 {
@@ -125,7 +127,8 @@ public class MemoryGameManager : MonoBehaviour
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish the game");
 
-            RestartGame();
+            SceneManager.LoadScene(sceneName: "HubWorld");
+            //RestartGame();
         }
     }
 

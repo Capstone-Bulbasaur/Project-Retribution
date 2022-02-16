@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ground
+    uniqueID: 412820097
+    locked: 0
+  - name: houses
+    uniqueID: 2599610865
+    locked: 0
+  - name: fencesAndWindows
+    uniqueID: 290370665
+    locked: 0
+  - name: PlayerAndNPC
+    uniqueID: 1095564873
+    locked: 0
