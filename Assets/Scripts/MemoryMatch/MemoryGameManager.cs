@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using GameObject = UnityEngine.GameObject;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 /*
  * FOLLOWED THIS TUTORIAL: https://www.youtube.com/watch?v=qaCjBh7bWz0&list=PLZhNP5qJ2IA2DA4bzDyxFMs8yogVQSrjW&ab_channel=AwesomeTuts and adapted to our game
  */
@@ -26,6 +26,8 @@ public class MemoryGameManager : MonoBehaviour
     public List<Button> btns = new List<Button>();
     public Sprite[] pots;
     public List<Sprite> gamePots = new List<Sprite>();
+    public TextMeshProUGUI PlayerScore;
+    public TextMeshProUGUI PlayerMissed;
 
     void Start()
     {
@@ -110,7 +112,7 @@ public class MemoryGameManager : MonoBehaviour
 
             //Increment number of guesses 
             countGuesses++;
-
+            PlayerMissed.text = countGuesses.ToString();
             StartCoroutine(CheckIfThePotsMatch());
         }
     }
@@ -118,7 +120,7 @@ public class MemoryGameManager : MonoBehaviour
     void CheckIfTheGameIsFinished()
     {
         countCorrectGuesses++;
-
+        PlayerScore.text = countCorrectGuesses.ToString();
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
