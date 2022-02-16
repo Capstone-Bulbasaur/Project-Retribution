@@ -14,8 +14,11 @@ public class DialogueManager : MonoBehaviour
     public Button button;
     public Sprite nextDialogueSprite;
     public Sprite closeDialogueSprite;
+    public GameObject Graey;
     public KeyCode actionKey;
+    public Animator letsGoAnimator;
     public static DialogueManager instance;
+    public float delay = 0.01f;
     public delegate void ConvoFinishedCallback();
 
     private int currentIndex;
@@ -76,7 +79,11 @@ public class DialogueManager : MonoBehaviour
 
             if (speakerName.text == "Orry")
             {
-                SceneManager.LoadScene(sceneName: "MemoryMatch 1");
+                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
+
+                Invoke("OpenMemoryMatch", delay);
+                letsGoAnimator.SetBool("OpenMM", true);
             }
             
             return;
@@ -104,6 +111,11 @@ public class DialogueManager : MonoBehaviour
         {
             button.GetComponent<Image>().sprite = closeDialogueSprite;
         }
+    }
+
+    void OpenMemoryMatch()
+    {
+        SceneManager.LoadScene(sceneName: "MemoryMatch 1");
     }
 
     // Types out the dialogue lines
