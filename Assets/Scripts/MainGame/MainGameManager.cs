@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 
 public class MainGameManager : MonoBehaviour
@@ -14,8 +15,20 @@ public class MainGameManager : MonoBehaviour
     public bool recruitedOrry;
     public bool recruitedGaehl;
     public bool recruitedEmbre;
+    public Vector2 GraeyPosition;
+    
     public GameObject Graey;
 
+    public Vector2 GetGraeyPosition() // not using it
+    {
+        return GraeyPosition;
+    }
+
+    public void SetGraeyPosition() // not using it
+    {
+        GraeyPosition = Graey.transform.position;
+    }
+    
     private void Awake()
     {
         if (instance == null)
@@ -26,11 +39,13 @@ public class MainGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        
     }
 
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
+
 
         if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
         {
@@ -42,21 +57,17 @@ public class MainGameManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Hub_Music");
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void StartScene()
     {
+        PlayerPrefs.DeleteAll();
 
+        SceneManager.LoadScene("HubWorld");
     }
 
-    //private Save CreateSaveGameObject() [MF] still in progress
-    //{
-    //    Save save = new Save();
-    //    PlayerPrefs Graey = GameObject.GetComponent<Player>();
-    //    save.npcHelpCounter.Add();
-    //    save.isEmbreRecruited = isEmbreRecruited;
+    public void ContinueScene()
+    {
+       SceneManager.LoadScene("HubWorld");
+    }
 
-    //    return save;
-    //}
-
+    
 }

@@ -375,6 +375,75 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+
+    - target: {fileID: 65463610, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65463611, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65463611, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1202.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 65463611, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65463611, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187259761, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27.000021
+      objectReference: {fileID: 0}
+    - target: {fileID: 187259761, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 134.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 187259762, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_text
+      value: Oh nooo! Isarr mixed all my pots!!! Could you please help me out?
+      objectReference: {fileID: 0}
+    - target: {fileID: 187259762, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_margin.z
+      value: -178.68726
+      objectReference: {fileID: 0}
+    - target: {fileID: 187364774, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27.000021
+      objectReference: {fileID: 0}
+    - target: {fileID: 187364774, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65
+      objectReference: {fileID: 0}
+    - target: {fileID: 187364775, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_text
+      value: 'Match the pots in pairs
+
+
+        You only get 5 chances. And please
+        finish quickly!
+
+
+        Good luck!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 187364775, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_margin.z
+      value: 119.44319
+      objectReference: {fileID: 0}
+    - target: {fileID: 690456246, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 690456246, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+
     - target: {fileID: 690456247, guid: 91b43967870ddd542be4ec05882b1bb2, type: 3}
       propertyPath: m_Camera
       value: 
