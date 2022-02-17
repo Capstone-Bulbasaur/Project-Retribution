@@ -20,6 +20,7 @@ public class MemoryGameManager : MonoBehaviour
     private int countGuesses;
     private int countCorrectGuesses;
     private int gameGuesses;
+    private int countFails;
     private int firstGuessIndex, secondGuessIndex;
     private string firstGuessPot, secondGuessPot;
 
@@ -36,6 +37,8 @@ public class MemoryGameManager : MonoBehaviour
         AddGamePots();
         Shuffle(gamePots);
         CountGameGuesses();
+
+        FindObjectOfType<AudioManager>().Play("Memory_Music");
     }
 
     void GetButtons()
@@ -87,7 +90,8 @@ public class MemoryGameManager : MonoBehaviour
             /*
              *INSERT SOUNDS HERE FOR SELECTING A POT
              */
-            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.potPickedSound);
+            FindObjectOfType<AudioManager>().Play("Memory_SelectPot");
+
             firstGuess = true;
             firstGuessIndex = int.Parse(name);
             firstGuessPot = gamePots[firstGuessIndex].name;
@@ -112,7 +116,7 @@ public class MemoryGameManager : MonoBehaviour
 
             //Increment number of guesses 
             countGuesses++;
-            PlayerMissed.text = countGuesses.ToString();
+
             StartCoroutine(CheckIfThePotsMatch());
         }
     }
@@ -124,23 +128,27 @@ public class MemoryGameManager : MonoBehaviour
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.winGameSound);
+            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.winGameSound);
+            FindObjectOfType<AudioManager>().Play("Memory_Win");
             
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish the game");
 
+            FindObjectOfType<AudioManager>().StopPlaying("Memory_Music");
+
             SceneManager.LoadScene(sceneName: "HubWorld");
+            
             //RestartGame();
         }
     }
 
     IEnumerator CheckIfThePotsMatch()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if (firstGuessPot == secondGuessPot)
         {
-            yield return new WaitForSeconds(.5f);
+            //yield return new WaitForSeconds(.5f);
 
             //Make buttons no longer interactable
             //btns[firstGuessIndex].interactable = false;
@@ -152,7 +160,8 @@ public class MemoryGameManager : MonoBehaviour
             index -= 1;
 
             //Play sound for getting a match right
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
+            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
+            FindObjectOfType<AudioManager>().Play("Memory_Correct");
 
             //Turn images to outlined version
             btns[firstGuessIndex].image.sprite = matched[index];
@@ -163,10 +172,12 @@ public class MemoryGameManager : MonoBehaviour
         }
         else
         {
-            //Play sound for getting a match wrong
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.wrongMatchSound);
+            countFails++;
 
-            yield return new WaitForSeconds(.5f);
+            PlayerMissed.text = countFails.ToString();
+
+            //Play sound for getting a match wrong
+            FindObjectOfType<AudioManager>().Play("Memory_Wrong");
 
             //Turn images to blank version 
             btns[firstGuessIndex].image.sprite = back;
@@ -175,6 +186,12 @@ public class MemoryGameManager : MonoBehaviour
             //Make First and second pot interactable again
             btns[firstGuessIndex].interactable = true;
             btns[secondGuessIndex].interactable = true;
+
+            //When its restarting its not restarting the correct pots
+            if (countFails >= 5)
+            {
+                RestartGame();
+            }
 
             Debug.Log("Its NOT a MATCH!");
         }
@@ -215,6 +232,9 @@ public class MemoryGameManager : MonoBehaviour
         CountGameGuesses();
 
         //Reset Guesses
-        countCorrectGuesses = countGuesses = 0;
+        countCorrectGuesses = countGuesses = countFails = 0;
+
+        PlayerMissed.text = countFails.ToString();
+        PlayerScore.text = countCorrectGuesses.ToString();
     }
 }

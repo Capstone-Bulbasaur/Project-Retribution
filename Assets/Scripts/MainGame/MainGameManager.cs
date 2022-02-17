@@ -30,12 +30,16 @@ public class MainGameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
         {
             Graey.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"));
         }
+
+
+
+        FindObjectOfType<AudioManager>().Play("Hub_Music");
     }
 
 

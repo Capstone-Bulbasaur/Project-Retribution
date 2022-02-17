@@ -18,7 +18,6 @@ public class DialogueManager : MonoBehaviour
     public KeyCode actionKey;
     public Animator letsGoAnimator;
     public static DialogueManager instance;
-    public float delay = 0.01f;
     public delegate void ConvoFinishedCallback();
 
     private int currentIndex;
@@ -66,6 +65,8 @@ public class DialogueManager : MonoBehaviour
         speakerName.text = "";
         dialogue.text = "";
         callback = callb;
+
+        FindObjectOfType<AudioManager>().Play("Hub_DialoguePop");
     }
 
     public void ReadNext()
@@ -82,7 +83,7 @@ public class DialogueManager : MonoBehaviour
                 PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
                 PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
 
-                Invoke("OpenMemoryMatch", delay);
+                Invoke("OpenMemoryMatch", 2.5f);
                 letsGoAnimator.SetBool("OpenMM", true);
             }
             
@@ -115,6 +116,7 @@ public class DialogueManager : MonoBehaviour
 
     void OpenMemoryMatch()
     {
+        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "MemoryMatch 1");
     }
 
