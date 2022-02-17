@@ -29,6 +29,9 @@ public class MemoryGameManager : MonoBehaviour
     public TextMeshProUGUI PlayerScore;
     public TextMeshProUGUI PlayerMissed;
 
+    public float PlayerXpos;
+    public float PlayerYpos;
+
     void Start()
     {
         GetButtons();
@@ -121,6 +124,7 @@ public class MemoryGameManager : MonoBehaviour
     {
         countCorrectGuesses++;
         PlayerScore.text = countCorrectGuesses.ToString();
+        
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
@@ -128,11 +132,12 @@ public class MemoryGameManager : MonoBehaviour
             
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish the game");
-
+            
             SceneManager.LoadScene(sceneName: "HubWorld");
             //RestartGame();
         }
     }
+    
 
     IEnumerator CheckIfThePotsMatch()
     {
