@@ -18,6 +18,6 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
     dialogue: Great, you?
   - speaker: {fileID: 11400000, guid: 1b02fa8a6914f4044a3fb68299fcc81b, type: 2}
-    dialogue: Just checking to see if everything is working.
+    dialogue: Just checking to see if everything is working. The Q is open.
   - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
     dialogue: Ohh, nice. Carry on.
