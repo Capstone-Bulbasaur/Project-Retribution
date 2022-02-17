@@ -48,4 +48,5 @@ MonoBehaviour:
   recruitedOrry: 0
   recruitedGaehl: 0
   recruitedEmbre: 0
+  GraeyPosition: {x: 0, y: 0}
   Graey: {fileID: 0}

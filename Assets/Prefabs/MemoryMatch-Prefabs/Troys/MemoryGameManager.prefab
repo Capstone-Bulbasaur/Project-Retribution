@@ -71,3 +71,5 @@ MonoBehaviour:
   gamePots: []
   PlayerScore: {fileID: 0}
   PlayerMissed: {fileID: 0}
+  PlayerXpos: 0
+  PlayerYpos: 0
