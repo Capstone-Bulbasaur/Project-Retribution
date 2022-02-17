@@ -69,3 +69,5 @@ MonoBehaviour:
   - {fileID: -7144135946280821724, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
   - {fileID: -924255254367354130, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
   gamePots: []
+  PlayerScore: {fileID: 0}
+  PlayerMissed: {fileID: 0}
