@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8588522120959754594, guid: 63b7ba3448154fc418e520fcc9b1dcbe, type: 3}
+      propertyPath: sounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588522120959754594, guid: 63b7ba3448154fc418e520fcc9b1dcbe, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 533cc49ffc3547f4ea342744b342d0eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63b7ba3448154fc418e520fcc9b1dcbe, type: 3}
 --- !u!1001 &840924998
@@ -427,6 +435,10 @@ PrefabInstance:
     - target: {fileID: 8710147838883377263, guid: 64e78f87a8700aa468bb9af1a3f6610c, type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710147838883377263, guid: 64e78f87a8700aa468bb9af1a3f6610c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e78f87a8700aa468bb9af1a3f6610c, type: 3}
