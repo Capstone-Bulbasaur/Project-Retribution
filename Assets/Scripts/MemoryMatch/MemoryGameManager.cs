@@ -20,6 +20,7 @@ public class MemoryGameManager : MonoBehaviour
     private int countGuesses;
     private int countCorrectGuesses;
     private int gameGuesses;
+    private int countFails;
     private int firstGuessIndex, secondGuessIndex;
     private string firstGuessPot, secondGuessPot;
 
@@ -115,7 +116,7 @@ public class MemoryGameManager : MonoBehaviour
 
             //Increment number of guesses 
             countGuesses++;
-            PlayerMissed.text = countGuesses.ToString();
+
             StartCoroutine(CheckIfThePotsMatch());
         }
     }
@@ -171,6 +172,10 @@ public class MemoryGameManager : MonoBehaviour
         }
         else
         {
+            countFails++;
+
+            PlayerMissed.text = countFails.ToString();
+
             //Play sound for getting a match wrong
             FindObjectOfType<AudioManager>().Play("Memory_Wrong");
 
@@ -181,6 +186,12 @@ public class MemoryGameManager : MonoBehaviour
             //Make First and second pot interactable again
             btns[firstGuessIndex].interactable = true;
             btns[secondGuessIndex].interactable = true;
+
+            //When its restarting its not restarting the correct pots
+            if (countFails >= 5)
+            {
+                RestartGame();
+            }
 
             Debug.Log("Its NOT a MATCH!");
         }
@@ -221,6 +232,9 @@ public class MemoryGameManager : MonoBehaviour
         CountGameGuesses();
 
         //Reset Guesses
-        countCorrectGuesses = countGuesses = 0;
+        countCorrectGuesses = countGuesses = countFails = 0;
+
+        PlayerMissed.text = countFails.ToString();
+        PlayerScore.text = countCorrectGuesses.ToString();
     }
 }

@@ -52,7 +52,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Memory_Correct
     clip: {fileID: 8300000, guid: 9aeb4287be798a642ae11f084ab5553b, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -74,9 +74,15 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Hub_Footsteps
-    clip: {fileID: 8300000, guid: f74470a365571a442a50c63c2ab89a9b, type: 3}
+  - name: Hub_DialoguePop
+    clip: {fileID: 8300000, guid: e7130511bae00254ba94937c1187583e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Hub_Music
+    clip: {fileID: 8300000, guid: 45d845d5c8e51764d8a02b5418ce8859, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}

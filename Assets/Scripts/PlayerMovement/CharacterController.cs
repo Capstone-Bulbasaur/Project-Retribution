@@ -13,6 +13,9 @@ public class CharacterController : MonoBehaviour
     public Rigidbody2D rigidbody;
     public Animator animator;
 
+    [HideInInspector]
+    public AudioSource footsteps;
+
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
 
@@ -20,6 +23,8 @@ public class CharacterController : MonoBehaviour
     {
         interactIcon.SetActive(false);
         animator = GetComponent<Animator>();
+
+        footsteps = GetComponentInChildren<AudioSource>();
     }
     // Handles user input
     void Update()
@@ -38,12 +43,20 @@ public class CharacterController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
+        if (movement.x == 0 || movement.y == 0)
+        {
+            footsteps.mute = true;
+        }
+
         // Set idle position to last known direction
         if (movement.x != 0 || movement.y != 0)
         {
             animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
             animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
+
+            footsteps.mute = false;
         }
+
     }
 
     // Handles movement
