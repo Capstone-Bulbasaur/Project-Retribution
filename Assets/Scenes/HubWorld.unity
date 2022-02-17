@@ -262,6 +262,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1392933098, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392933101, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6564245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392933101, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.14048815
+      objectReference: {fileID: 0}
     - target: {fileID: 4829510115592625427, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -494,6 +506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1165399646, guid: 02ef1aad056a51b4fa7f2cc8945ce495, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4324876871081089639, guid: 02ef1aad056a51b4fa7f2cc8945ce495, type: 3}
       propertyPath: m_Name
       value: James
