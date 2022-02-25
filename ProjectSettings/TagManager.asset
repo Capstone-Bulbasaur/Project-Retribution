@@ -51,6 +51,12 @@ TagManager:
   - name: fencesAndWindows
     uniqueID: 290370665
     locked: 0
+  - name: PickUps
+    uniqueID: 1772763645
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1583212361
+    locked: 0
   - name: PlayerAndNPC
     uniqueID: 1095564873
     locked: 0
