@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Water : MonoBehaviour
+public class Water : Gun
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform waterProj;
+    override protected void Update()
     {
-        
-    }
+        base.Update();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            FireProjectile(Constants.PickUpWater, waterProj);
+        }
     }
 }

@@ -25,7 +25,7 @@ public class Pickup : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             //TODO ADD SOUND HERE
-            collider.gameObject.GetComponent<Graey>().PickupItem(type);
+            collider.gameObject.GetComponent<PowerSwitcher>().PickupItem(type);
             GetComponentInParent<PickupSpawn>().PickupWasPickedUp();
             Destroy(gameObject);
         }

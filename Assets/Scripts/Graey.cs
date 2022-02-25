@@ -8,26 +8,26 @@ public class Graey : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody rigidbody;
 
-    private int activePower = 0;
+    private PowerSwitcher powerSwitcher;
 
     public void Attack()
-    { 
-        
+    {
+        powerSwitcher = GetComponent<PowerSwitcher>();
     }
 
     private void PickupWaterPower()
     {
-        activePower = 1;
+       //powerSwitcher.loadWeapon(GameObject.Find("Water"));
     }
 
     private void PickupFirePower()
     {
-        activePower = 2;
+        //powerSwitcher.loadWeapon(GameObject.Find(Constants.Fire));
     }
 
     private void PickupElectricPower()
     {
-        activePower = 3;
+        //powerSwitcher.loadWeapon(GameObject.Find("Electric"));
     }
 
     public void PickupItem(int pickupType)

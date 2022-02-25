@@ -22,6 +22,8 @@ public class PlayerAim : MonoBehaviour
         shootPosition = mousePosition;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
+
+        Debug.Log("Mouse Position: " + angle);
     }
 
     public static Vector3 GetMouseWorldPosition()

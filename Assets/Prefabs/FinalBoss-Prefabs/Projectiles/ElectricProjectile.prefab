@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4707236430682584867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.348692, y: -5.5608892, z: -52.565666}
+  m_LocalPosition: {x: -5.348692, y: -5.5608892, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8848044180057828900}
@@ -42,8 +42,7 @@ GameObject:
   - component: {fileID: 8848044180057828900}
   - component: {fileID: 188478762281785114}
   - component: {fileID: 2876814580094229321}
-  - component: {fileID: 1897063389}
-  - component: {fileID: 1897063390}
+  - component: {fileID: 1454547090415684713}
   m_Layer: 0
   m_Name: ElectricPower-Sheet_0
   m_TagString: Untagged
@@ -135,7 +134,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1897063389
+--- !u!114 &1454547090415684713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,18 +144,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c04dfa4120e6b4f8f757f676668fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0
---- !u!114 &1897063390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7903077468446857209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8728d21c35885474d90f48244bda7bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
