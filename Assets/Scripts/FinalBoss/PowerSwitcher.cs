@@ -28,11 +28,6 @@ public class PowerSwitcher : MonoBehaviour
         activePower = weapon;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void PickupWaterPower()
     {
         loadWeapon(water);

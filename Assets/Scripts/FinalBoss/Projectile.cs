@@ -23,11 +23,6 @@ public class Projectile : MonoBehaviour
         transform.position += shootDir * (moveSpeed * Time.deltaTime);
     }
 
-    protected void Fire()
-    {
-        //Ray2D ray = 
-    }
-
     //Calculate the angle the object needs to face
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -48,6 +43,7 @@ public class Projectile : MonoBehaviour
     //Destroy Projectile when it collides with another object
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Projectile Collided with " + collision.gameObject);
         Destroy(transform.parent.gameObject);
     }
 }
