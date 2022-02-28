@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7108c4da5ccad58428e46972f1dc0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PowerUpTimeLimit: 15
   dagger: {fileID: 5664693023621503986}
   water: {fileID: 5060440645635035274}
   fire: {fileID: 248880053347590643}
