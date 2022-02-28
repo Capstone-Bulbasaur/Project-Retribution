@@ -11,8 +11,14 @@ public class Enemy_Isarr : MonoBehaviour
 {
     public float speed;
     public float lineOfSight;
-    private Transform player;
+    public float fireRate = 1f;
+    public float shootingRange;
+    public GameObject IsarrProjectile;
+    public GameObject IsarrProjectileParent;
 
+    private float nextFireTime;
+    private Transform player;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -24,9 +30,14 @@ public class Enemy_Isarr : MonoBehaviour
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
         // if the DistanceFromPlayer is < than LineOfSight, the Enemy will follow the player
-        if (distanceFromPlayer < lineOfSight) 
+        if (distanceFromPlayer < lineOfSight && distanceFromPlayer > shootingRange) 
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+        }
+        else if (distanceFromPlayer < shootingRange && nextFireTime < Time.time)
+        {
+            Instantiate(IsarrProjectile, IsarrProjectileParent.transform.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
         }
     }
 
@@ -35,5 +46,6 @@ public class Enemy_Isarr : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 }
