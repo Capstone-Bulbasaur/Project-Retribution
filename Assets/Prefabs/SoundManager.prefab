@@ -88,7 +88,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boss_Fireball
     clip: {fileID: 8300000, guid: b098707760419524e92e585fa2352032, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -19,7 +19,33 @@ public class PowerSwitcher : MonoBehaviour
         activePower = dagger;
     }
 
-    public void loadWeapon(GameObject weapon)
+    //public void loadWeapon(GameObject weapon)
+    //{
+    //    dagger.SetActive(false);
+    //    water.SetActive(false);
+    //    fire.SetActive(false);
+    //    electric.SetActive(false);
+
+    //    weapon.SetActive(true);
+    //    activePower = weapon;
+    //}
+
+    public void loadDagger()
+    {
+        water.SetActive(false);
+        fire.SetActive(false);
+        electric.SetActive(false);
+
+        dagger.SetActive(true);
+        activePower = dagger;
+    }
+
+    private void PickupWaterPower()
+    {
+        StartCoroutine(LoadWeapons(water));
+    }
+
+    IEnumerator LoadWeapons(GameObject weapon)
     {
         dagger.SetActive(false);
         water.SetActive(false);
@@ -28,26 +54,19 @@ public class PowerSwitcher : MonoBehaviour
 
         weapon.SetActive(true);
         activePower = weapon;
-    }
-
-    private void PickupWaterPower()
-    {
-        loadWeapon(water);
-    }
-
-    IEnumerator loadWeapons(GameObject weapon)
-    {
         yield return new WaitForSeconds(20);
+
+        loadDagger();
     }
 
     private void PickupFirePower()
     {
-        loadWeapon(fire);
+        StartCoroutine(LoadWeapons(fire));
     }
 
     private void PickupElectricPower()
     {
-        loadWeapon(electric);
+        StartCoroutine(LoadWeapons(electric));
     }
 
     public void PickupItem(int pickupType)
