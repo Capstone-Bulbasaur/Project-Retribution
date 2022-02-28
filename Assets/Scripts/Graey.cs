@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Graey : MonoBehaviour
 {
-    public float health;
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
+    
     SpriteRenderer spriteRenderer;
     Rigidbody rigidbody;
-
 }
