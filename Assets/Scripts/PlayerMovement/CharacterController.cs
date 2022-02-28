@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
     private DetectControlMethod controlMethod;
+    [SerializeField] private GameObject leftStick;
 
     private void Start()
     {
@@ -42,12 +43,13 @@ public class CharacterController : MonoBehaviour
 
         if (!controlMethod.usePhone)
         {
+            leftStick.SetActive(false);
             // Character movement
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
             // Set idle position to last known direction
-            if (movement.x != 0 || movement.y != 0)
+            if (movement.x > 0 || movement.y > 0 || movement.x < 0 || movement.y < 0)
             {
                 animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
                 animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
@@ -58,6 +60,7 @@ public class CharacterController : MonoBehaviour
 
         if (controlMethod.usePhone)
         {
+            leftStick.SetActive(true);
             if (joystick.Horizontal >= .2f || joystick.Horizontal <= -.2f)
                 movement.x = joystick.Horizontal;
             else
@@ -71,26 +74,23 @@ public class CharacterController : MonoBehaviour
             // Set idle position to last known direction
             if (movement.x != 0 || movement.y != 0)
             {
+                
                 animator.SetFloat("LastHorizontal", joystick.Horizontal);
                 animator.SetFloat("LastVertical", joystick.Vertical);
 
                 footsteps.mute = false;
             }
         }
-        
-           
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (movement.x == 0 || movement.y == 0)
+        if (movement.x == 0 && movement.y == 0)
         {
             footsteps.mute = true;
         }
-
         
-
     }
 
     // Handles movement

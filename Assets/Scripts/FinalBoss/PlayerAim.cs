@@ -17,8 +17,6 @@ public class PlayerAim : MonoBehaviour
 
     public DetectControlMethod controlMethod;
     [SerializeField] private GameObject rightStick;
-    [SerializeField] private GameObject leftStick;
-
 
     private void Start()
     {
@@ -33,19 +31,16 @@ public class PlayerAim : MonoBehaviour
         if (!controlMethod.useController && !controlMethod.usePhone)
         {
             rightStick.SetActive(false);
-            leftStick.SetActive(false);
             HandleMouseAim();
         }
         else if (controlMethod.useController && !controlMethod.usePhone)
         {
             rightStick.SetActive(false);
-            leftStick.SetActive(false);
             HandleControllerAim();
         }
         else if (controlMethod.usePhone && !controlMethod.useController)
         {
             rightStick.SetActive(true);
-            leftStick.SetActive(true);
             HandlePhoneAim();
         }
     }
