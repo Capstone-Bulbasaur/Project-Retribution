@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DaggerPower : MonoBehaviour
+public class DaggerPower : Gun
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform daggerProj;
+    override protected void Update()
     {
-        
-    }
+        base.Update();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+        {
+            lastFireTime = Time.time;
+            FireProjectile(Constants.PickUpWater, daggerProj);
+        }
+
+        if (aim.rightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        {
+            lastFireTime = Time.time;
+            FireProjectile(Constants.PickUpWater, daggerProj);
+        }
     }
 }

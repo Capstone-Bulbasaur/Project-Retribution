@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
-    public float fireRate; //added this
+    public float fireRate;
+    public int range;
+    public int damage;
     [HideInInspector] public PlayerAim aim;
 
     [SerializeField] private Transform shootPosition;
 
     private Vector3 projectileSpawnLocation;
 
-    protected float lastFireTime; //added this
+    protected float lastFireTime; 
 
     void Awake()
     {
@@ -21,7 +23,8 @@ public class Gun : MonoBehaviour
         if (scene.name != "FinalBoss")
         {
             GetComponent<Gun>().enabled = false;
-            GetComponent<PlayerAim>().enabled = false;
+            GetComponentInParent<PlayerAim>().enabled = false;
+            GetComponentInParent<DetectControlMethod>().enabled = false;
         }
 
         aim = GetComponentInParent<PlayerAim>();
@@ -43,11 +46,15 @@ public class Gun : MonoBehaviour
         //Check which power the Player has
         switch (type)
         {
+            case Constants.PickUpDagger:
+                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                break;
             case Constants.PickUpWater:
                 projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
                 break;
             case Constants.PickUpFire:
                 projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
                 break;
             case Constants.PickUpElect:
                 projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);

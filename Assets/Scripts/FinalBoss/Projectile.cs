@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour
     }
 
     //Destroy Projectile when it collides with another object
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Projectile Collided with " + collision.gameObject);
         Destroy(transform.parent.gameObject);

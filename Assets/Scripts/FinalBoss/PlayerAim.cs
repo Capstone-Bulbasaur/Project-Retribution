@@ -43,12 +43,13 @@ public class PlayerAim : MonoBehaviour
         }
     }
 
+    /* Handle Mouse Aim functions were taken from */
+
     void HandleMouseAim()
     {
         Vector3 mousePosition = GetMouseWorldPosition();
 
         shootDirection = (mousePosition - transform.position).normalized;
-        shootPosition = mousePosition;
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
     }

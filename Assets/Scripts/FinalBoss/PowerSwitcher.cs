@@ -6,6 +6,7 @@ public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
 
+    public GameObject dagger;
     public GameObject water;
     public GameObject fire;
     public GameObject electric;
@@ -14,12 +15,13 @@ public class PowerSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeWeaponType = Constants.Water;
-        activePower = water;
+        activeWeaponType = Constants.Dagger;
+        activePower = dagger;
     }
 
     public void loadWeapon(GameObject weapon)
     {
+        dagger.SetActive(false);
         water.SetActive(false);
         fire.SetActive(false);
         electric.SetActive(false);
@@ -31,6 +33,11 @@ public class PowerSwitcher : MonoBehaviour
     private void PickupWaterPower()
     {
         loadWeapon(water);
+    }
+
+    IEnumerator loadWeapons(GameObject weapon)
+    {
+        yield return new WaitForSeconds(20);
     }
 
     private void PickupFirePower()

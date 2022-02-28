@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script was inspired by https://www.youtube.com/watch?v=ebBxpwh3NvQ&ab_channel=gamesplusjames
+
 public class DetectControlMethod : MonoBehaviour
 {
     private PlayerAim player;
