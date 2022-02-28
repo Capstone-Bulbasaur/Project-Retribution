@@ -11,4 +11,26 @@ public class Graey : MonoBehaviour
     
     SpriteRenderer spriteRenderer;
     Rigidbody rigidbody;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    void Update()
+    {
+        // Health bar tester
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(5);
+        }
+    }
+
+    // Health bar tester
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    } 
 }
