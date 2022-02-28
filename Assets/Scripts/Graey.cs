@@ -8,11 +8,8 @@ public class Graey : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody rigidbody;
 
-    private PowerSwitcher powerSwitcher;
-
     public void Attack()
     {
-        powerSwitcher = GetComponent<PowerSwitcher>();
     }
 
     private void PickupWaterPower()

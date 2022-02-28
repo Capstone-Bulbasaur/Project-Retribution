@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1034045881, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034045881, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313399854, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: shootPosition
+      value: 
+      objectReference: {fileID: 1193384006}
     - target: {fileID: 4829510115592625427, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -273,6 +285,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1193384006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 308840553, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+  m_PrefabInstance: {fileID: 985746186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1889269732
 PrefabInstance:
   m_ObjectHideFlags: 0

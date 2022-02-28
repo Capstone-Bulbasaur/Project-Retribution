@@ -7,10 +7,10 @@ public class Projectile : MonoBehaviour
 {
     private Vector3 shootDir;
 
-    public void Setup(Vector3 shootDir)
+    public void Setup(Vector3 shootDirect)
     {
         //Assign the Projectiles position the same as the shooting position
-        this.shootDir = shootDir;
+        this.shootDir = shootDirect;
         //change the rotation of the object so that it faces the shooting direction
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
     }

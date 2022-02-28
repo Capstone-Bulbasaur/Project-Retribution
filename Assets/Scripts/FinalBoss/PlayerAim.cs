@@ -1,29 +1,57 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
+
 
 public class PlayerAim : MonoBehaviour
 {
     public Vector3 shootPosition;
+    public Vector3 shootDirection;
     public Transform aimTransform;
+    public bool useController;
+
+    private Vector2 rightStickInput;
 
     void Update()
     {
-        HandleMouseAim();
+        if (!useController)
+        {
+            HandleMouseAim();
+        }
+        else if (useController)
+        {
+            HandleControllerAim();
+        }
+    }
+
+    void HandleControllerAim()
+    {
+        rightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
+
+        if (rightStickInput.magnitude > 0)
+        {
+            shootDirection = Vector3.left * rightStickInput.x + Vector3.up * rightStickInput.y;
+            //Quaternion playerRotation = Quaternion.LookRotation(curRotation, Vector3.forward);
+            float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
 
     void HandleMouseAim()
     {
         Vector3 mousePosition = GetMouseWorldPosition();
 
-        Vector3 aimDirection = (mousePosition - transform.position).normalized;
+        shootDirection = (mousePosition - transform.position).normalized;
         shootPosition = mousePosition;
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
-
-        Debug.Log("Mouse Position: " + angle);
     }
 
     public static Vector3 GetMouseWorldPosition()

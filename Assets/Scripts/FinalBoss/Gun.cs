@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
         if (projectileTransform != null)
         {
             //Calculate the shoot direction with the mouse position and the projectile spawn position
-            var shootDir = (aim.shootPosition - projectileSpawnLocation).normalized;
+            var shootDir = aim.shootDirection.normalized;
             //Send the shoot direction to the Projectiles script
             projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir);
         }
