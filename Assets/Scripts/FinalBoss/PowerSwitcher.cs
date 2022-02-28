@@ -6,6 +6,7 @@ public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
 
+    public int PowerUpTimeLimit = 15;
     public GameObject dagger;
     public GameObject water;
     public GameObject fire;
@@ -54,7 +55,7 @@ public class PowerSwitcher : MonoBehaviour
 
         weapon.SetActive(true);
         activePower = weapon;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(PowerUpTimeLimit);
 
         loadDagger();
     }
