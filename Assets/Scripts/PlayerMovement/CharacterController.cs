@@ -12,12 +12,14 @@ public class CharacterController : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rigidbody;
     public Animator animator;
+    public Joystick joystick;
 
     [HideInInspector]
     public AudioSource footsteps;
 
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
+    private DetectControlMethod controlMethod;
 
     private void Start()
     {
@@ -25,7 +27,10 @@ public class CharacterController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         footsteps = GetComponentInChildren<AudioSource>();
+
+        controlMethod = GetComponent<DetectControlMethod>();
     }
+
     // Handles user input
     void Update()
     {
@@ -35,9 +40,45 @@ public class CharacterController : MonoBehaviour
             CheckInteraction();
         }
 
-        // Character movement
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!controlMethod.usePhone)
+        {
+            // Character movement
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+
+            // Set idle position to last known direction
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
+                animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
+
+                footsteps.mute = false;
+            }
+        }
+
+        if (controlMethod.usePhone)
+        {
+            if (joystick.Horizontal >= .2f || joystick.Horizontal <= -.2f)
+                movement.x = joystick.Horizontal;
+            else
+                movement.x = 0;
+
+            if (joystick.Vertical >= .2f || joystick.Vertical <= -.2f)
+                movement.y = joystick.Vertical;
+            else
+                movement.y = 0;
+
+            // Set idle position to last known direction
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetFloat("LastHorizontal", joystick.Horizontal);
+                animator.SetFloat("LastVertical", joystick.Vertical);
+
+                footsteps.mute = false;
+            }
+        }
+        
+           
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
@@ -48,14 +89,7 @@ public class CharacterController : MonoBehaviour
             footsteps.mute = true;
         }
 
-        // Set idle position to last known direction
-        if (movement.x != 0 || movement.y != 0)
-        {
-            animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
-            animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
-
-            footsteps.mute = false;
-        }
+        
 
     }
 

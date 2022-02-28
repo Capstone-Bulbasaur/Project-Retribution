@@ -9,16 +9,49 @@ public class Fire : Gun
     {
         base.Update();
 
-        if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+        //if (!aim.usePhone && !aim.useController)
+        //{
+        //    if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpFire, fireProj);
+        //    }
+        //}
+
+        //if (aim.useController && !aim.usePhone)
+        //{
+        //    if (aim.contRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpFire, fireProj);
+        //    }
+        //}
+
+        //if (aim.usePhone && !aim.useController)
+        //{
+        //    if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpFire, fireProj);
+        //    }
+        //}
+
+        if (mouseFire)
         {
-            lastFireTime = Time.time;
             FireProjectile(Constants.PickUpFire, fireProj);
+            mouseFire = false;
         }
 
-        if (aim.rightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        if (controllerFire)
         {
-            lastFireTime = Time.time;
             FireProjectile(Constants.PickUpFire, fireProj);
+            controllerFire = false;
+        }
+
+        if (phoneFire)
+        {
+            FireProjectile(Constants.PickUpFire, fireProj);
+            phoneFire = false;
         }
     }
 }

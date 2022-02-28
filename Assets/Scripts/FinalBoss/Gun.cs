@@ -15,6 +15,9 @@ public class Gun : MonoBehaviour
 
     private Vector3 projectileSpawnLocation;
 
+    protected bool mouseFire;
+    protected bool controllerFire;
+    protected bool phoneFire;
     protected float lastFireTime; 
 
     void Awake()
@@ -36,6 +39,33 @@ public class Gun : MonoBehaviour
     protected virtual void Update()
     {
         projectileSpawnLocation = transform.position;
+
+        if (!aim.controlMethod.usePhone && !aim.controlMethod.useController)
+        {
+            if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+            {
+                lastFireTime = Time.time;
+                mouseFire = true;
+            }
+        }
+
+        if (aim.controlMethod.useController && !aim.controlMethod.usePhone)
+        {
+            if (aim.contRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+            {
+                lastFireTime = Time.time;
+                controllerFire = true;
+            }
+        }
+
+        if (aim.controlMethod.usePhone && !aim.controlMethod.useController)
+        {
+            if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+            {
+                lastFireTime = Time.time;
+                phoneFire = true;
+            }
+        }
     }
 
     protected virtual void FireProjectile(int type, Transform power)

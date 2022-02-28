@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -15,28 +11,61 @@ public class PlayerAim : MonoBehaviour
     public Vector3 shootPosition;
     public Vector3 shootDirection;
     public Transform aimTransform;
-    public bool useController;
-    public Vector2 rightStickInput;
+    public Vector2 contRightStickInput;
+    public Vector2 phoneRightStickInput;
+    public Joystick phoneRightStick;
+
+    public DetectControlMethod controlMethod;
+    [SerializeField] private GameObject rightStick;
+    [SerializeField] private GameObject leftStick;
+
+
+    private void Start()
+    {
+        controlMethod = GetComponentInParent<DetectControlMethod>();
+    }
 
     void Update()
     {
-        rightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
+        contRightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
+        phoneRightStickInput = new Vector2(phoneRightStick.Horizontal, phoneRightStick.Vertical);
 
-        if (!useController)
+        if (!controlMethod.useController && !controlMethod.usePhone)
         {
+            rightStick.SetActive(false);
+            leftStick.SetActive(false);
             HandleMouseAim();
         }
-        else if (useController)
+        else if (controlMethod.useController && !controlMethod.usePhone)
         {
+            rightStick.SetActive(false);
+            leftStick.SetActive(false);
             HandleControllerAim();
+        }
+        else if (controlMethod.usePhone && !controlMethod.useController)
+        {
+            rightStick.SetActive(true);
+            leftStick.SetActive(true);
+            HandlePhoneAim();
+        }
+    }
+
+    void HandlePhoneAim()
+    {
+        if (phoneRightStickInput.magnitude > 0)
+        {
+            shootDirection = Vector3.left * (phoneRightStickInput.x * -1) + Vector3.up * phoneRightStickInput.y;
+            //Quaternion playerRotation = Quaternion.LookRotation(curRotation, Vector3.forward);
+            float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
         }
     }
 
     void HandleControllerAim()
     {
-        if (rightStickInput.magnitude > 0)
+        if (contRightStickInput.magnitude > 0)
         {
-            shootDirection = Vector3.left * rightStickInput.x + Vector3.up * rightStickInput.y;
+            shootDirection = Vector3.left * contRightStickInput.x + Vector3.up * contRightStickInput.y;
             //Quaternion playerRotation = Quaternion.LookRotation(curRotation, Vector3.forward);
             float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
             aimTransform.eulerAngles = new Vector3(0, 0, angle);

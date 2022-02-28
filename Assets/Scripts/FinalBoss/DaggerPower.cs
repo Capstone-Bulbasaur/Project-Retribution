@@ -9,16 +9,22 @@ public class DaggerPower : Gun
     {
         base.Update();
 
-        if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+        if (mouseFire)
         {
-            lastFireTime = Time.time;
-            FireProjectile(Constants.PickUpWater, daggerProj);
+            FireProjectile(Constants.PickUpDagger, daggerProj);
+            mouseFire = false;
         }
 
-        if (aim.rightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        if (controllerFire)
         {
-            lastFireTime = Time.time;
-            FireProjectile(Constants.PickUpWater, daggerProj);
+            FireProjectile(Constants.PickUpDagger, daggerProj);
+            controllerFire = false;
+        }
+
+        if (phoneFire)
+        {
+            FireProjectile(Constants.PickUpDagger, daggerProj);
+            phoneFire = false;
         }
     }
 }

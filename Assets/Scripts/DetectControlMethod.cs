@@ -6,25 +6,46 @@ using UnityEngine;
 
 public class DetectControlMethod : MonoBehaviour
 {
+    public bool useController;
+    public bool usePhone;
+
     private PlayerAim player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<PlayerAim>();
+        player = GetComponentInChildren<PlayerAim>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Detect Mouse Input
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-            player.useController = false;
 
-        if (Input.GetAxisRaw("Mouse X") != 0.0f || Input.GetAxisRaw("Mouse Y") != 0)
-            player.useController = false;
-
-        if (player.rightStickInput.magnitude > 0.15)
-            player.useController = true;
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            useController = false;
+            usePhone = true;
+        }
+        else
+        {
+            //Detect Mouse Input
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            {
+                useController = false;
+                usePhone = false;
+            }
+            //Detect Mouse Input
+            if (Input.GetAxisRaw("Mouse X") != 0.0f || Input.GetAxisRaw("Mouse Y") != 0)
+            {
+                useController = false;
+                usePhone = false;
+            }
+            //Detect Controller Input
+            if (player.contRightStickInput.magnitude > 0.15)
+            {
+                useController = true;
+                usePhone = false;
+            }
+        }
     }
 }
