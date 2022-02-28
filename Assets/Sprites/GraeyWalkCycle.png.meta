@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 196bcb7e83c91b1418068c97fdea8f63
+guid: c51129884d4bc3c498fabfff0d61201d
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -195,18 +195,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -298,8 +286,8 @@ TextureImporter:
       name: WalkDown5
       rect:
         serializedVersion: 2
-        x: 514
-        y: 382
+        x: 512
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -717,7 +705,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 86047e2052a50084fa44576427871f7d
+    spriteID: a08fe94bd4706b649b94f9f75b96c4ac
     internalID: 0
     vertices: []
     indices: 
