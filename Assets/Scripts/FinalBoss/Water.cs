@@ -13,5 +13,10 @@ public class Water : Gun
         {
             FireProjectile(Constants.PickUpWater, waterProj);
         }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
+        {
+            FireProjectile(Constants.PickUpWater, waterProj);
+        }
     }
 }

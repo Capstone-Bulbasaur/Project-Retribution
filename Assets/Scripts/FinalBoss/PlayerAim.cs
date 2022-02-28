@@ -16,11 +16,12 @@ public class PlayerAim : MonoBehaviour
     public Vector3 shootDirection;
     public Transform aimTransform;
     public bool useController;
-
-    private Vector2 rightStickInput;
+    public Vector2 rightStickInput;
 
     void Update()
     {
+        rightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
+
         if (!useController)
         {
             HandleMouseAim();
@@ -33,8 +34,6 @@ public class PlayerAim : MonoBehaviour
 
     void HandleControllerAim()
     {
-        rightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
-
         if (rightStickInput.magnitude > 0)
         {
             shootDirection = Vector3.left * rightStickInput.x + Vector3.up * rightStickInput.y;
