@@ -9,8 +9,15 @@ public class Electric : Gun
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
         {
+            lastFireTime = Time.time;
+            FireProjectile(Constants.PickUpElect, electricProj);
+        }
+
+        if (aim.rightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        {
+            lastFireTime = Time.time;
             FireProjectile(Constants.PickUpElect, electricProj);
         }
     }

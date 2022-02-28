@@ -7,10 +7,10 @@ public class Projectile : MonoBehaviour
 {
     private Vector3 shootDir;
 
-    public void Setup(Vector3 shootDir)
+    public void Setup(Vector3 shootDirect)
     {
         //Assign the Projectiles position the same as the shooting position
-        this.shootDir = shootDir;
+        this.shootDir = shootDirect;
         //change the rotation of the object so that it faces the shooting direction
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
     }
@@ -21,11 +21,6 @@ public class Projectile : MonoBehaviour
         float moveSpeed = 10f;
         //Move the projectile towards the shooting direction
         transform.position += shootDir * (moveSpeed * Time.deltaTime);
-    }
-
-    protected void Fire()
-    {
-        //Ray2D ray = 
     }
 
     //Calculate the angle the object needs to face
@@ -46,8 +41,9 @@ public class Projectile : MonoBehaviour
     }
 
     //Destroy Projectile when it collides with another object
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Projectile Collided with " + collision.gameObject);
         Destroy(transform.parent.gameObject);
     }
 }

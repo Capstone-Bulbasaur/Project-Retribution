@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 89625ffa96b14ce4f9fd9d0e6403ed93
+guid: 19cfa3f795a8a514eb896a6b1c02c512
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -607446156470506462
-    second: ElectricPower-Sheet_0
+      213: 3882824427578020406
+    second: GraeyBaseAttack-Sheet_0
   - first:
-      213: 3327073961011790711
-    second: ElectricPower-Sheet_1
+      213: -4415174126831842491
+    second: GraeyBaseAttack-Sheet_1
   - first:
-      213: -210083647637766721
-    second: ElectricPower-Sheet_2
+      213: 4816378150366002221
+    second: GraeyBaseAttack-Sheet_2
   - first:
-      213: 4237011456028099689
-    second: ElectricPower-Sheet_3
+      213: -3947236946364298367
+    second: GraeyBaseAttack-Sheet_3
   - first:
-      213: -3529566405075840805
-    second: ElectricPower-Sheet_4
+      213: 8912696879926526983
+    second: GraeyBaseAttack-Sheet_4
   - first:
-      213: 7010900534687581820
-    second: ElectricPower-Sheet_5
+      213: 3511097647759578625
+    second: GraeyBaseAttack-Sheet_5
+  - first:
+      213: 7877557042148070576
+    second: GraeyBaseAttack-Sheet_6
+  - first:
+      213: 536710027209380630
+    second: GraeyBaseAttack-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,7 +139,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ElectricPower-Sheet_0
+      name: GraeyBaseAttack-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6325ffaae3092e530800000000000000
+      internalID: 3882824427578020406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraeyBaseAttack-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b41b436862ab2c0800000000000000
+      internalID: -4415174126831842491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraeyBaseAttack-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2cb484d86637d240800000000000000
+      internalID: 4816378150366002221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraeyBaseAttack-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -147,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22c266760fae197f0800000000000000
-      internalID: -607446156470506462
+      spriteID: 18b88af19e89839c0800000000000000
+      internalID: -3947236946364298367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElectricPower-Sheet_1
+      name: GraeyBaseAttack-Sheet_4
       rect:
         serializedVersion: 2
         x: 64
@@ -168,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7734f83d3242c2e20800000000000000
-      internalID: 3327073961011790711
+      spriteID: 704c0ce379240bb70800000000000000
+      internalID: 8912696879926526983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElectricPower-Sheet_2
+      name: GraeyBaseAttack-Sheet_5
       rect:
         serializedVersion: 2
         x: 128
@@ -189,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbdbe691902a51df0800000000000000
-      internalID: -210083647637766721
+      spriteID: 1065b6245bce9b030800000000000000
+      internalID: 3511097647759578625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElectricPower-Sheet_3
+      name: GraeyBaseAttack-Sheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -210,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 964c0d97873ecca30800000000000000
-      internalID: 4237011456028099689
+      spriteID: 0b4dc1b8464b25d60800000000000000
+      internalID: 7877557042148070576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElectricPower-Sheet_4
+      name: GraeyBaseAttack-Sheet_7
       rect:
         serializedVersion: 2
         x: 64
@@ -231,29 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd05d461e06740fc0800000000000000
-      internalID: -3529566405075840805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElectricPower-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7646a514e8bb4160800000000000000
-      internalID: 7010900534687581820
+      spriteID: 61394371de6c27700800000000000000
+      internalID: 536710027209380630
       vertices: []
       indices: 
       edges: []
@@ -261,7 +309,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 98df34d7c83ab4647b992fa5589c9b96
+    spriteID: cda4ea40ede1edb4595b40f14406c395
     internalID: 0
     vertices: []
     indices: 
