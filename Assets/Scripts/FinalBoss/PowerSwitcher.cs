@@ -6,7 +6,7 @@ public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
 
-    public int PowerUpTimeLimit = 15;
+    public int powerUpTimeLimit = 15;
     public GameObject dagger;
     public GameObject water;
     public GameObject fire;
@@ -20,17 +20,6 @@ public class PowerSwitcher : MonoBehaviour
         activePower = dagger;
     }
 
-    //public void loadWeapon(GameObject weapon)
-    //{
-    //    dagger.SetActive(false);
-    //    water.SetActive(false);
-    //    fire.SetActive(false);
-    //    electric.SetActive(false);
-
-    //    weapon.SetActive(true);
-    //    activePower = weapon;
-    //}
-
     public void loadDagger()
     {
         water.SetActive(false);
@@ -43,6 +32,7 @@ public class PowerSwitcher : MonoBehaviour
 
     private void PickupWaterPower()
     {
+        StopAllCoroutines();
         StartCoroutine(LoadWeapons(water));
     }
 
@@ -55,18 +45,20 @@ public class PowerSwitcher : MonoBehaviour
 
         weapon.SetActive(true);
         activePower = weapon;
-        yield return new WaitForSeconds(PowerUpTimeLimit);
+        yield return new WaitForSeconds(powerUpTimeLimit);
 
         loadDagger();
     }
 
     private void PickupFirePower()
     {
+        StopAllCoroutines();
         StartCoroutine(LoadWeapons(fire));
     }
 
     private void PickupElectricPower()
     {
+        StopAllCoroutines();
         StartCoroutine(LoadWeapons(electric));
     }
 
