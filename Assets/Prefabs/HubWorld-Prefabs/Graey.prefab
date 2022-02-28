@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingLayerID: 1095564873
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5385786662706036908, guid: 196bcb7e83c91b1418068c97fdea8f63, type: 3}
+  m_Sprite: {fileID: 5385786662706036908, guid: c51129884d4bc3c498fabfff0d61201d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -505,7 +505,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1392933097
@@ -583,7 +583,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7108c4da5ccad58428e46972f1dc0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUpTimeLimit: 15
+  powerUpTimeLimit: 15
   dagger: {fileID: 5664693023621503986}
   water: {fileID: 5060440645635035274}
   fire: {fileID: 248880053347590643}

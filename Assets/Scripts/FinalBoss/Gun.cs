@@ -25,6 +25,7 @@ public class Gun : MonoBehaviour
             GetComponent<Gun>().enabled = false;
             GetComponentInParent<PlayerAim>().enabled = false;
             GetComponentInParent<DetectControlMethod>().enabled = false;
+            GetComponentInParent<Graey>().enabled = false;
         }
 
         aim = GetComponentInParent<PlayerAim>();
