@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
+    public float fireRate; //added this
+    [HideInInspector] public PlayerAim aim;
+
     [SerializeField] private Transform shootPosition;
 
-    private PlayerAim aim;
     private Vector3 projectileSpawnLocation;
+
+    protected float lastFireTime; //added this
 
     void Awake()
     {
@@ -21,6 +25,7 @@ public class Gun : MonoBehaviour
         }
 
         aim = GetComponentInParent<PlayerAim>();
+        lastFireTime = Time.time - 10;
     }
 
     // Update is called once per frame

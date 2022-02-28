@@ -10,6 +10,7 @@ public class Graey : MonoBehaviour
 
     public void Attack()
     {
+        
     }
 
     private void PickupWaterPower()
