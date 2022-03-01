@@ -227,11 +227,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1161016785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1049820567, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
-  m_PrefabInstance: {fileID: 4347978571013999487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1889269732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,10 +470,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2134520640346520276, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
-      propertyPath: leftStick
+    - target: {fileID: 1695668903498169720, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1161016785}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134520640346520276, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: interactButton
+      value: 
+      objectReference: {fileID: 4347978571013999488}
     - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
       propertyPath: healthBar
       value: 
@@ -533,6 +532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+--- !u!1 &4347978571013999488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7747653269164767348, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+  m_PrefabInstance: {fileID: 4347978571013999487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6000577485089217783
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public GameObject interactIcon;
+    public GameObject interactButton;
 
     public float speed = 5f;
     public Rigidbody2D rigidbody;
@@ -25,6 +26,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         interactIcon.SetActive(false);
+        interactButton.SetActive(false);
         animator = GetComponent<Animator>();
 
         footsteps = GetComponentInChildren<AudioSource>();
@@ -96,20 +98,26 @@ public class CharacterController : MonoBehaviour
     // Handles movement
     void FixedUpdate()
     {
-        rigidbody.MovePosition(rigidbody.position + movement.normalized * speed * Time.fixedDeltaTime); // * Time.fixedDeltaTime to get constant movement speed
+        rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime)); // * Time.fixedDeltaTime to get constant movement speed
     }
 
     public void OpenInteractBubble()
     {
         interactIcon.SetActive(true); // Show exclamation bubble
+
+        if(controlMethod.usePhone)
+            interactButton.SetActive(true);
     }
 
     public void CloseInteractBubble()
     {
         interactIcon.SetActive(false); // Hide exclamation bubble
+
+        if(controlMethod.usePhone)
+            interactButton.SetActive(false);
     }
 
-    private void CheckInteraction()
+    public void CheckInteraction()
     {
         RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, boxSize, 0, Vector2.zero); // Origin, size, angle and direction of the box
 
