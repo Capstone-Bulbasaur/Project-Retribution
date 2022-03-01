@@ -43,46 +43,44 @@ public class CharacterController : MonoBehaviour
             CheckInteraction();
         }
 
-        if (!controlMethod.usePhone)
+#if UNITY_ANDROID
+        
+        leftStick.SetActive(true);
+        if (joystick.Horizontal >= .2f || joystick.Horizontal <= -.2f)
+            movement.x = joystick.Horizontal;
+        else
+            movement.x = 0;
+
+        if (joystick.Vertical >= .2f || joystick.Vertical <= -.2f)
+            movement.y = joystick.Vertical;
+        else
+            movement.y = 0;
+
+        // Set idle position to last known direction
+        if (movement.x != 0 || movement.y != 0)
         {
-            leftStick.SetActive(false);
-            // Character movement
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            
+            animator.SetFloat("LastHorizontal", joystick.Horizontal);
+            animator.SetFloat("LastVertical", joystick.Vertical);
 
-            // Set idle position to last known direction
-            if (movement.x > 0 || movement.y > 0 || movement.x < 0 || movement.y < 0)
-            {
-                animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
-                animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
-
-                footsteps.mute = false;
-            }
+            footsteps.mute = false;
         }
+#else
 
-        if (controlMethod.usePhone)
-        {
-            leftStick.SetActive(true);
-            if (joystick.Horizontal >= .2f || joystick.Horizontal <= -.2f)
-                movement.x = joystick.Horizontal;
-            else
-                movement.x = 0;
+       leftStick.SetActive(false);
+       // Character movement
+       movement.x = Input.GetAxisRaw("Horizontal");
+       movement.y = Input.GetAxisRaw("Vertical");
 
-            if (joystick.Vertical >= .2f || joystick.Vertical <= -.2f)
-                movement.y = joystick.Vertical;
-            else
-                movement.y = 0;
+       // Set idle position to last known direction
+       if (movement.x > 0 || movement.y > 0 || movement.x < 0 || movement.y < 0)
+       {
+           animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
+           animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
 
-            // Set idle position to last known direction
-            if (movement.x != 0 || movement.y != 0)
-            {
-                
-                animator.SetFloat("LastHorizontal", joystick.Horizontal);
-                animator.SetFloat("LastVertical", joystick.Vertical);
-
-                footsteps.mute = false;
-            }
-        }
+           footsteps.mute = false;
+       }
+#endif
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
@@ -105,16 +103,19 @@ public class CharacterController : MonoBehaviour
     {
         interactIcon.SetActive(true); // Show exclamation bubble
 
-        if(controlMethod.usePhone)
-            interactButton.SetActive(true);
+#if UNITY_ANDROID
+        interactButton.SetActive(true);
+#endif
+
     }
 
     public void CloseInteractBubble()
     {
         interactIcon.SetActive(false); // Hide exclamation bubble
 
-        if(controlMethod.usePhone)
-            interactButton.SetActive(false);
+#if UNITY_ANDROID
+        interactButton.SetActive(false);
+#endif
     }
 
     public void CheckInteraction()
