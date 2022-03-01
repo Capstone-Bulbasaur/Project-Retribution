@@ -4,48 +4,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-/* script created following this tutorial: https://www.youtube.com/watch?v=lHLZxd0O6XY
+/* script created following this tutorial: https://www.youtube.com/watch?v=_Z1t7MNk0c4
   
  */
 public class Enemy_Isarr : MonoBehaviour
 {
-    public float speed;
-    public float lineOfSight;
-    public float fireRate = 1f;
-    public float shootingRange;
-    public GameObject IsarrProjectile;
-    public GameObject IsarrProjectileParent;
-
-    private float nextFireTime;
-    private Transform player;
     
+    public float speed;
+    public float stoppingDistance;
+    public float retreatDistance;
+    //public float nearDistance;
+    public float startTimeBtwShots;
+    
+    private float timeBtwShots;
+    private float health;
+
+    public GameObject projectile;
+    public Transform player;
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        timeBtwShots = startTimeBtwShots;
     }
 
     void Update()
     {
-        // set the player distance
-        float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+        // Isarr movements
+        if(Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        }
+        else if(Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
+        {
+            transform.position = this.transform.position;
+        }
+        else if(Vector2.Distance(transform.position, player.position) < retreatDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+        }
 
-        // if the DistanceFromPlayer is < than LineOfSight, the Enemy will follow the player
-        if (distanceFromPlayer < lineOfSight && distanceFromPlayer > shootingRange) 
+        // Isarr shoot
+        if(timeBtwShots <= 0)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+            Instantiate(projectile, transform.position, Quaternion.identity);
+            timeBtwShots = startTimeBtwShots;
         }
-        else if (distanceFromPlayer < shootingRange && nextFireTime < Time.time)
+        else
         {
-            Instantiate(IsarrProjectile, IsarrProjectileParent.transform.position, Quaternion.identity);
-            nextFireTime = Time.time + fireRate;
+            timeBtwShots -= Time.deltaTime;
         }
+        
     }
 
-    // Sphere draw for the Line of sight
-    private void OnDrawGizmosSelected() 
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, lineOfSight);
-        Gizmos.DrawWireSphere(transform.position, shootingRange);
-    }
+
 }
