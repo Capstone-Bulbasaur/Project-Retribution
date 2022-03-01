@@ -7,18 +7,18 @@ using UnityEngine.SceneManagement;
 public class Gun : MonoBehaviour
 {
     public float fireRate;
-    public int range;
+    public float range;
     public int damage;
     [HideInInspector] public PlayerAim aim;
 
     [SerializeField] private Transform shootPosition;
 
     private Vector3 projectileSpawnLocation;
+    private float lastFireTime;
 
     protected bool mouseFire;
     protected bool controllerFire;
     protected bool phoneFire;
-    protected float lastFireTime; 
 
     void Awake()
     {
@@ -78,17 +78,17 @@ public class Gun : MonoBehaviour
         switch (type)
         {
             case Constants.PickUpDagger:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
                 break;
             case Constants.PickUpWater:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
                 break;
             case Constants.PickUpFire:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
                 //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
                 break;
             case Constants.PickUpElect:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity);
+                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
                 break;
             default:
                 Debug.LogError("Bad pickup type passed" + type);
@@ -100,7 +100,7 @@ public class Gun : MonoBehaviour
             //Calculate the shoot direction with the mouse position and the projectile spawn position
             var shootDir = aim.shootDirection.normalized;
             //Send the shoot direction to the Projectiles script
-            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir);
+            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir, range);
         }
     }
 }

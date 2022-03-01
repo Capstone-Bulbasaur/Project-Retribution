@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     public Animator letsGoAnimator;
     public static DialogueManager instance;
     public delegate void ConvoFinishedCallback();
+    public GameObject letsGo = null;
 
     private int currentIndex;
     private Conversation currentConvo;
@@ -37,6 +38,9 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (letsGo != null)
+            letsGo.SetActive(false);
     }
 
     void Update()
@@ -82,6 +86,9 @@ public class DialogueManager : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
                 PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
+
+                if (letsGo != null)
+                    letsGo.SetActive(true);
 
                 Invoke("OpenMemoryMatch", 2.5f);
                 letsGoAnimator.SetBool("OpenMM", true);
