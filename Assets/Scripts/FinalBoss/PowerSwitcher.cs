@@ -6,6 +6,8 @@ public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
 
+    public int powerUpTimeLimit = 15;
+    public GameObject dagger;
     public GameObject water;
     public GameObject fire;
     public GameObject electric;
@@ -14,38 +16,50 @@ public class PowerSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeWeaponType = Constants.Water;
-        activePower = water;
+        activeWeaponType = Constants.Dagger;
+        activePower = dagger;
     }
 
-    public void loadWeapon(GameObject weapon)
+    public void loadDagger()
     {
+        water.SetActive(false);
+        fire.SetActive(false);
+        electric.SetActive(false);
+
+        dagger.SetActive(true);
+        activePower = dagger;
+    }
+
+    private void PickupWaterPower()
+    {
+        StopAllCoroutines();
+        StartCoroutine(LoadWeapons(water));
+    }
+
+    IEnumerator LoadWeapons(GameObject weapon)
+    {
+        dagger.SetActive(false);
         water.SetActive(false);
         fire.SetActive(false);
         electric.SetActive(false);
 
         weapon.SetActive(true);
         activePower = weapon;
-    }
+        yield return new WaitForSeconds(powerUpTimeLimit);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void PickupWaterPower()
-    {
-        loadWeapon(water);
+        loadDagger();
     }
 
     private void PickupFirePower()
     {
-        loadWeapon(fire);
+        StopAllCoroutines();
+        StartCoroutine(LoadWeapons(fire));
     }
 
     private void PickupElectricPower()
     {
-        loadWeapon(electric);
+        StopAllCoroutines();
+        StartCoroutine(LoadWeapons(electric));
     }
 
     public void PickupItem(int pickupType)

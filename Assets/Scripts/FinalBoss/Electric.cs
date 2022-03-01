@@ -9,9 +9,49 @@ public class Electric : Gun
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(0))
+        //if (!aim.usePhone && !aim.useController)
+        //{
+        //    if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpElect, electricProj);
+        //    }
+        //}
+
+        //if (aim.useController && !aim.usePhone)
+        //{
+        //    if (aim.contRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpElect, electricProj);
+        //    }
+        //}
+
+        //if (aim.usePhone && !aim.useController)
+        //{
+        //    if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        //    {
+        //        lastFireTime = Time.time;
+        //        FireProjectile(Constants.PickUpElect, electricProj);
+        //    }
+        //}
+
+        if (mouseFire)
         {
             FireProjectile(Constants.PickUpElect, electricProj);
+            mouseFire = false;
+        }
+
+        if (controllerFire)
+        {
+            FireProjectile(Constants.PickUpElect, electricProj);
+            controllerFire = false;
+        }
+
+        if (phoneFire)
+        {
+            FireProjectile(Constants.PickUpElect, electricProj);
+            phoneFire = false;
         }
     }
 }

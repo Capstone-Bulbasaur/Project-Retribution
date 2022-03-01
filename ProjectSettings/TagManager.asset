@@ -5,15 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - PuzzleButton
-  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - PlayerandNPC
+  - Powers
   - 
   - 
   - 
