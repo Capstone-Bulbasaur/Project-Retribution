@@ -28,22 +28,24 @@ public class PlayerAim : MonoBehaviour
         contRightStickInput = new Vector2(Input.GetAxis("R_Horizontal"), Input.GetAxis("R_Vertical"));
         phoneRightStickInput = new Vector2(phoneRightStick.Horizontal, phoneRightStick.Vertical);
 
-        if (!controlMethod.useController && !controlMethod.usePhone)
+#if UNITY_ANDROID
+        
+        rightStick.SetActive(true);
+        HandlePhoneAim();
+#else
+        if (!controlMethod.useController)
         {
             rightStick.SetActive(false);
             HandleMouseAim();
         }
-        else if (controlMethod.useController && !controlMethod.usePhone)
+        else if (controlMethod.useController)
         {
             rightStick.SetActive(false);
             HandleControllerAim();
         }
-        else if (controlMethod.usePhone && !controlMethod.useController)
-        {
-            rightStick.SetActive(true);
-            HandlePhoneAim();
-        }
+#endif    
     }
+
 
     void HandlePhoneAim()
     {

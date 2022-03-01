@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class DetectControlMethod : MonoBehaviour
 {
     public bool useController;
-    public bool usePhone;
+    //public bool usePhone;
 
     private PlayerAim player;
     private Vector2 controllerStickInput;
@@ -34,26 +34,23 @@ public class DetectControlMethod : MonoBehaviour
         //    usePhone = true;
         //}
 
-        if (!usePhone)
+        //Detect Mouse Input
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
-            //Detect Mouse Input
-            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-            {
-                useController = false;
-                usePhone = false;
-            }
-            //Detect Mouse Input
-            if (Input.GetAxisRaw("Mouse X") != 0.0f || Input.GetAxisRaw("Mouse Y") != 0)
-            {
-                useController = false;
-                usePhone = false;
-            }
-            //Detect Controller Input
-            if (controllerStickInput.magnitude > 0.15)
-            {
-                useController = true;
-                usePhone = false;
-            }
+            useController = false;
+            //usePhone = false;
+        }
+        //Detect Mouse Input
+        if (Input.GetAxisRaw("Mouse X") != 0.0f || Input.GetAxisRaw("Mouse Y") != 0)
+        {
+            useController = false;
+            //usePhone = false;
+        }
+        //Detect Controller Input
+        if (controllerStickInput.magnitude > 0.15)
+        {
+            useController = true;
+            //usePhone = false;
         }
     }
 }

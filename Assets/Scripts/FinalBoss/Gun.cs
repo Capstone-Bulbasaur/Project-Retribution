@@ -39,8 +39,14 @@ public class Gun : MonoBehaviour
     protected virtual void Update()
     {
         projectileSpawnLocation = transform.position;
-
-        if (!aim.controlMethod.usePhone && !aim.controlMethod.useController)
+#if UNITY_ANDROID
+        if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
+        {
+            lastFireTime = Time.time;
+            phoneFire = true;
+        }
+#else
+        if (!aim.controlMethod.useController)
         {
             if (Input.GetMouseButton(0) && Time.time - lastFireTime > fireRate)
             {
@@ -48,8 +54,7 @@ public class Gun : MonoBehaviour
                 mouseFire = true;
             }
         }
-
-        if (aim.controlMethod.useController && !aim.controlMethod.usePhone)
+        else
         {
             if (aim.contRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
             {
@@ -57,15 +62,8 @@ public class Gun : MonoBehaviour
                 controllerFire = true;
             }
         }
-
-        if (aim.controlMethod.usePhone && !aim.controlMethod.useController)
-        {
-            if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
-            {
-                lastFireTime = Time.time;
-                phoneFire = true;
-            }
-        }
+#endif
+        
     }
 
     protected virtual void FireProjectile(int type, Transform power)
