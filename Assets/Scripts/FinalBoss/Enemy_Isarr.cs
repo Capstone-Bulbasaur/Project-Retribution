@@ -65,7 +65,7 @@ public class Enemy_Isarr : MonoBehaviour
         
     }
 
-    // Health bar
+    // Health bar 
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
