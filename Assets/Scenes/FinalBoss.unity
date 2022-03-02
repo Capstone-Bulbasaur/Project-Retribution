@@ -717,22 +717,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBars
       objectReference: {fileID: 0}
-    - target: {fileID: 2952963683652871423, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2952963683652871423, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 2952963683652871423, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 2952963684368244986, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2952963684863551062, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
