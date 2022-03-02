@@ -14,8 +14,10 @@ public class Enemy_Isarr : MonoBehaviour
     public float stoppingDistance;
     public float retreatDistance;
     public float startTimeBtwShots;
-    public GameObject projectile;
+    public Transform projectile;
     public Transform player;
+    public float projRange;
+    
     private float timeBtwShots;
     private float health;
 
@@ -55,7 +57,10 @@ public class Enemy_Isarr : MonoBehaviour
         // Isarr shoot
         if(timeBtwShots <= 0)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            Transform projectileTransform = null;
+            var shootDir = player.transform.position - gameObject.transform.position;
+            projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
+            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange);
             timeBtwShots = startTimeBtwShots;
         }
         else

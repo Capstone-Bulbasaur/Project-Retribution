@@ -150,8 +150,9 @@ MonoBehaviour:
   stoppingDistance: 5
   retreatDistance: 4
   startTimeBtwShots: 1
-  projectile: {fileID: 8220006212120081471, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
+  projectile: {fileID: 8961840562195552317, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
   player: {fileID: 0}
+  projRange: 5
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}

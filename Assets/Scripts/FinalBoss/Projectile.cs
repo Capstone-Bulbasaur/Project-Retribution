@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     private float range;
     private Vector3 shootDir;
 
+    public float moveSpeed = 5f;
+
     IEnumerator deathTimer()
     {
         //Destroy the object after its reached its max range
@@ -31,7 +33,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveSpeed = 10f;
+        
         //Move the projectile towards the shooting direction
         transform.position += shootDir * (moveSpeed * Time.deltaTime);
     }
