@@ -481,7 +481,7 @@ namespace Pathfinding {
 		/// </summary>
 		[System.Obsolete("Use CreateGraph(System.Type) instead")]
 		public NavGraph CreateGraph (string type) {
-			Debug.Log("Creating Graph of type '"+type+"'");
+			//Debug.Log("Creating Graph of type '"+type+"'");
 
 			for (int i = 0; i < graphTypes.Length; i++) {
 				if (graphTypes[i].Name == type) {
