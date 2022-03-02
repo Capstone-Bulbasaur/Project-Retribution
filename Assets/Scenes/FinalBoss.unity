@@ -770,6 +770,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 503157007, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157007, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157010, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157011, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
       propertyPath: player
       value: 
@@ -821,6 +837,10 @@ PrefabInstance:
     - target: {fileID: 6717609807322852987, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
       propertyPath: m_Name
       value: Isarr
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717609807322852987, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818a024ba9894b847a898ae69664ff72, type: 3}

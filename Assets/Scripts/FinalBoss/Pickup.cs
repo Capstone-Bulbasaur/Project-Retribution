@@ -19,7 +19,19 @@ public class Pickup : MonoBehaviour
     //    }
     //}
 
-    private void OnCollisionEnter2D(Collision2D collider)
+    //private void OnCollisionEnter2D(Collision2D collider)
+    //{
+    //    Debug.Log("Picked Up!");
+    //    if (collider.gameObject.tag == "Player")
+    //    {
+    //        //TODO ADD SOUND HERE
+    //        collider.gameObject.GetComponent<PowerSwitcher>().PickupItem(type);
+    //        GetComponentInParent<PickupSpawn>().PickupWasPickedUp();
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Picked Up!");
         if (collider.gameObject.tag == "Player")
