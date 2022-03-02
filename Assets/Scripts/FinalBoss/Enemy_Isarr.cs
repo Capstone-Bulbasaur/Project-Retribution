@@ -13,19 +13,27 @@ public class Enemy_Isarr : MonoBehaviour
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
-    //public float nearDistance;
     public float startTimeBtwShots;
-    
+    public GameObject projectile;
+    public Transform player;
     private float timeBtwShots;
     private float health;
 
-    public GameObject projectile;
-    public Transform player;
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
+
+    SpriteRenderer spriteRenderer;
+    Rigidbody rigidbody;
+
 
     void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform; not using for now. Changed player to public above, and assigned manually the player on the inspector
         timeBtwShots = startTimeBtwShots;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -55,6 +63,13 @@ public class Enemy_Isarr : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
         }
         
+    }
+
+    // Health bar
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
 
