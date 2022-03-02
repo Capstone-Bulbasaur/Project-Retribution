@@ -69,6 +69,7 @@ public class CharacterController : MonoBehaviour
 
        leftStick.SetActive(false);
        // Character movement
+       //if(Input.GetAxisRaw("Horizontal" ))
        movement.x = Input.GetAxisRaw("Horizontal");
        movement.y = Input.GetAxisRaw("Vertical");
 
