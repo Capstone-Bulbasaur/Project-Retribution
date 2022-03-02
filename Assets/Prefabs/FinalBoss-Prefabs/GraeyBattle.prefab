@@ -286,7 +286,7 @@ MonoBehaviour:
   contRightStickInput: {x: 0, y: 0}
   phoneRightStickInput: {x: 0, y: 0}
   phoneRightStick: {fileID: 1509220547596450623}
-  controlMethod: {fileID: 0}
+  controlMethod: {fileID: 1736511717}
   rightStick: {fileID: 1673234868}
 --- !u!1 &4492373981751948084
 GameObject:
@@ -791,12 +791,12 @@ GameObject:
   - component: {fileID: 3695225659958622341}
   - component: {fileID: 6504023221865797247}
   - component: {fileID: 7325502565081533477}
-  - component: {fileID: 2134520640346520276}
   - component: {fileID: 4277943431933999432}
   - component: {fileID: 2478633653950676975}
   - component: {fileID: 4714856847967032910}
   - component: {fileID: 2922113056781831470}
   - component: {fileID: 1736511717}
+  - component: {fileID: 627689866}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -895,26 +895,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2134520640346520276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8768290809847582352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b818dab679d38d4a88722f0c495bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactIcon: {fileID: 5646619228550445864}
-  interactButton: {fileID: 7747653269164767348}
-  speed: 5
-  rigidbody: {fileID: 7325502565081533477}
-  animator: {fileID: 4277943431933999432}
-  joystick: {fileID: 5563397923102155759}
-  footsteps: {fileID: 0}
-  leftStick: {fileID: 1049820567}
 --- !u!95 &4277943431933999432
 Animator:
   serializedVersion: 3
@@ -925,7 +905,7 @@ Animator:
   m_GameObject: {fileID: 8768290809847582352}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1743f0118dac85849ad54c9e6c58e5a8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5edd8a79a8eefc142bc623ec696a8293, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1005,6 +985,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useController: 0
+--- !u!114 &627689866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768290809847582352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be15f1f8602443e419ada85db904f7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactIcon: {fileID: 5646619228550445864}
+  interactButton: {fileID: 7747653269164767348}
+  speed: 5
+  rigidbody: {fileID: 7325502565081533477}
+  animator: {fileID: 4277943431933999432}
+  joystick: {fileID: 5563397923102155759}
+  aim: {fileID: 2078096938562170340}
+  footsteps: {fileID: 0}
+  leftStick: {fileID: 1049820567}
 --- !u!1 &8908368933587945637
 GameObject:
   m_ObjectHideFlags: 0
