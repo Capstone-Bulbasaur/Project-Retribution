@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 503157010}
   - component: {fileID: 503157012}
   - component: {fileID: 503157013}
+  - component: {fileID: 1314290390}
   m_Layer: 0
   m_Name: Isarr1
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1095564873
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cd054a5c596dfa54f8ce1e130cc902f9, type: 3}
+  m_Sprite: {fileID: -8419771106048413509, guid: 3112a67cfb3b9b949b1d8c9905ea817f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,8 +150,11 @@ MonoBehaviour:
   stoppingDistance: 5
   retreatDistance: 4
   startTimeBtwShots: 1
-  projectile: {fileID: 8588511391901445317, guid: b4ce0dfe5f1410a46893c4862113625b, type: 3}
+  projectile: {fileID: 8220006212120081471, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
   player: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!58 &503157013
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,6 +171,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.00000023841858}
   serializedVersion: 2
   m_Radius: 1.0000001
+--- !u!95 &1314290390
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503157007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b11cd4a59befdc47875bbe958d06029, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6717609807322852987
 GameObject:
   m_ObjectHideFlags: 0
