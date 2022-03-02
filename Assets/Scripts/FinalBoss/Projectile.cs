@@ -22,7 +22,6 @@ public class Projectile : MonoBehaviour
     {
         //Assign the Projectiles position the same as the shooting position
         this.shootDir = shootDirect;
-        Debug.Log(shootDirect);
         //change the rotation of the object so that it faces the shooting direction
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
 
@@ -49,16 +48,17 @@ public class Projectile : MonoBehaviour
         return n-90;
     }
 
-    ////Destroy projectile once it is out of frame
-    //private void OnBecameInvisible()
-    //{
-    //    Destroy(transform.parent.gameObject);
-    //}
-
-    //Destroy Projectile when it collides with another object
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Projectile Collided with " + collision.gameObject);
-        Destroy(transform.parent.gameObject);
+        if (collider.gameObject.tag == "Player")
+        {
+            Debug.Log("Isarr does damage to graey!");
+            Destroy(transform.parent.gameObject);
+        }
+        else if (collider.gameObject.tag == "NPC")
+        {
+            Debug.Log("Projectile Triggered collide with " + collider.gameObject);
+            Destroy(transform.parent.gameObject);
+        }
     }
 }
