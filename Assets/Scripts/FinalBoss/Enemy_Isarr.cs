@@ -78,9 +78,13 @@ public class Enemy_Isarr : MonoBehaviour
     // Health bar 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        currentHealth -= damage; 
         healthBar.SetHealth(currentHealth);
-       // Debug.Log(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            FindObjectOfType<AudioManager>().Play("Boss_IsarrDeath");
+        }
     }
 
 
