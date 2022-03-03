@@ -61,3 +61,6 @@ TagManager:
   - name: PlayerAndNPC
     uniqueID: 1095564873
     locked: 0
+  - name: Mast
+    uniqueID: 1738065649
+    locked: 0
