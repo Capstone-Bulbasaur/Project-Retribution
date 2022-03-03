@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1535707847120263133}
   m_Layer: 6
   m_Name: ElectricProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  damage: 1
 --- !u!61 &5370766927864091905
 BoxCollider2D:
   m_ObjectHideFlags: 0

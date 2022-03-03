@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     private Vector3 shootDir;
 
     public float moveSpeed = 5f;
+    public int damage = 1;
 
     IEnumerator deathTimer()
     {
@@ -50,15 +51,31 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("Isarr does damage to graey!");
+            collider.gameObject.GetComponent<Graey>().TakeDamage(damage);
             Destroy(transform.parent.gameObject);
         }
-        else if (collider.gameObject.tag == "NPC")
+        else if (collider.gameObject.CompareTag("Isarr") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         {
             Debug.Log("Projectile Triggered collide with " + collider.gameObject);
+            collider.gameObject.GetComponent<Enemy_Isarr>().TakeDamage(damage);
             Destroy(transform.parent.gameObject);
         }
+        else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
+        {
+           Destroy(collider.transform.parent.gameObject);
+           Destroy(transform.parent.gameObject);
+        }
     }
+
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Isarr does damage to graey!");
+    //        Destroy(transform.parent.gameObject);
+    //    }
+    //}
 }

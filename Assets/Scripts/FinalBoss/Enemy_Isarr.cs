@@ -71,10 +71,11 @@ public class Enemy_Isarr : MonoBehaviour
     }
 
     // Health bar 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        //healthBar.SetHealth(currentHealth);
+        Debug.Log(currentHealth);
     }
 
 
