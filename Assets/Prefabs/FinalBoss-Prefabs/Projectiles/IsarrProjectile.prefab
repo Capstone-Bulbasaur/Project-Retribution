@@ -147,7 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c04dfa4120e6b4f8f757f676668fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isarr: {fileID: 0}
+  player: {fileID: 0}
   moveSpeed: 5
+  damage: 2
 --- !u!61 &2737746778509757669
 BoxCollider2D:
   m_ObjectHideFlags: 0

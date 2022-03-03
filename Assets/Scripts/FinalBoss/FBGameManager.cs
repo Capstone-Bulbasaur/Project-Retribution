@@ -23,7 +23,7 @@ public class FBGameManager : MonoBehaviour
     private void RemoveEnemy()
     {
         minionsOnScreen -= 1;
-        totalMinions -= 1;
+        //totalMinions -= 1;
 
     }
 

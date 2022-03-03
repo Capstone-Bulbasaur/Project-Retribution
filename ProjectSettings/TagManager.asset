@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PuzzleButton
   - NPC
+  - Pickup
+  - Projectile
+  - Isarr
   layers:
   - Default
   - TransparentFX

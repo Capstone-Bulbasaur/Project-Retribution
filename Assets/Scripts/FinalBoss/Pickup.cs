@@ -34,7 +34,7 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Picked Up!");
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.CompareTag("Player"))
         {
             //TODO ADD SOUND HERE
             collider.gameObject.GetComponent<PowerSwitcher>().PickupItem(type);
