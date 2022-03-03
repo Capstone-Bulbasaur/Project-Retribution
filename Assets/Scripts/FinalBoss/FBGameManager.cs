@@ -40,7 +40,7 @@ public class FBGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        FindObjectOfType<AudioManager>().Play("Boss_Music");
     }
 
     // Update is called once per frame
