@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1095093914}
   - component: {fileID: 1095093915}
   - component: {fileID: 1299860074006327699}
+  - component: {fileID: 1958970374}
   m_Layer: 7
   m_Name: minionsprite
   m_TagString: NPC
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136df37e2bd35f142840f805249d7da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!50 &1095093915
 Rigidbody2D:
   serializedVersion: 4
@@ -191,6 +193,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &1958970374
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685816772512043263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008644044, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.47141612
 --- !u!1 &5685816773068605298
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +287,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 3
+  maxSpeed: 4
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
