@@ -10,9 +10,10 @@ public class Minion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Destroy(transform.parent.gameObject);
             //Debug.Log("Minion Collided with " + collision.gameObject);
             collision.gameObject.GetComponent<Graey>().TakeDamage(damage);
-            Destroy(transform.parent.gameObject);
+            
         }
     }
     //private void OnCollisionEnter2D(Collision2D collision)
