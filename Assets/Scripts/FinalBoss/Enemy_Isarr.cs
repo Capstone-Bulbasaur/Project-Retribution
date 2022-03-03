@@ -79,8 +79,8 @@ public class Enemy_Isarr : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        //healthBar.SetHealth(currentHealth);
-        Debug.Log(currentHealth);
+        healthBar.SetHealth(currentHealth);
+       // Debug.Log(currentHealth);
     }
 
 
