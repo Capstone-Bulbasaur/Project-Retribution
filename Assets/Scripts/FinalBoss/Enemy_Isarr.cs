@@ -35,7 +35,7 @@ public class Enemy_Isarr : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player").transform; not using for now. Changed player to public above, and assigned manually the player on the inspector
         timeBtwShots = startTimeBtwShots;
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
