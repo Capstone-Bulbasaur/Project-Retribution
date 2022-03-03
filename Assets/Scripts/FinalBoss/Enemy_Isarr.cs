@@ -67,7 +67,12 @@ public class Enemy_Isarr : MonoBehaviour
         {
             timeBtwShots -= Time.deltaTime;
         }
-        
+
+        // Health bar tester
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(5);
+        }
     }
 
     // Health bar 
