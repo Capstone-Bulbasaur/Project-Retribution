@@ -83,9 +83,9 @@ public class Enemy_Isarr : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            FindObjectOfType<AudioManager>().StopPlaying("Boss_Music");
             FindObjectOfType<AudioManager>().Play("Boss_IsarrDeath");
         }
     }
-
 
 }
