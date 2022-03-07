@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding.Util;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class Gun : MonoBehaviour
 {
     public float fireRate;
+    public float projectileSpeed;
     public float range;
     public int damage;
     [HideInInspector] public PlayerAim aim;
@@ -15,6 +18,7 @@ public class Gun : MonoBehaviour
 
     private Vector3 projectileSpawnLocation;
     private float lastFireTime;
+    private ProjectilePooler projectilePoller;
 
     protected bool mouseFire;
     protected bool controllerFire;
@@ -33,12 +37,15 @@ public class Gun : MonoBehaviour
 
         aim = GetComponentInParent<PlayerAim>();
         lastFireTime = Time.time - 10;
+
+        projectilePoller = ProjectilePooler.Instance;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         projectileSpawnLocation = transform.position;
+
 #if UNITY_ANDROID
         if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
         {
@@ -66,39 +73,42 @@ public class Gun : MonoBehaviour
         
     }
 
-    protected virtual void FireProjectile(int type, Transform power)
+    protected virtual void FireProjectile(string type, Transform power)
     {
         //TODO ADD SOUND HERE
 
         Transform projectileTransform = null;
-
+        
         //Check which power the Player has
-        switch (type)
-        {
-            case Constants.PickUpDagger:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-                break;
-            case Constants.PickUpWater:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-                break;
-            case Constants.PickUpFire:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-                //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
-                break;
-            case Constants.PickUpElect:
-                projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-                break;
-            default:
-                Debug.LogError("Bad pickup type passed" + type);
-                break;
-        }
+        //switch (type)
+        //{
+        //    case Constants.PickUpDagger:
+        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
+        //        break;
+        //    case Constants.PickUpWater:
+        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
+        //        break;
+        //    case Constants.PickUpFire:
+        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
+        //        //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
+        //        break;
+        //    case Constants.PickUpElect:
+        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
+        //        break;
+        //    default:
+        //        Debug.LogError("Bad pickup type passed" + type);
+        //        break;
+        //}
+        
+        projectileTransform = projectilePoller.SpawnFromPool(type, shootPosition.position, Quaternion.identity);
 
         if (projectileTransform != null)
         {
             //Calculate the shoot direction with the mouse position and the projectile spawn position
             var shootDir = aim.shootDirection.normalized;
+            //var shootDir = aim.shootDirection.normalized;
             //Send the shoot direction to the Projectiles script
-            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir, range);
+            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir, range, damage, projectileSpeed);
         }
     }
 }

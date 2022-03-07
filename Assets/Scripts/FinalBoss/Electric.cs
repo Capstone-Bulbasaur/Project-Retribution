@@ -38,19 +38,19 @@ public class Electric : Gun
 
         if (mouseFire)
         {
-            FireProjectile(Constants.PickUpElect, electricProj);
+            FireProjectile(Constants.Electricity, electricProj);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.PickUpElect, electricProj);
+            FireProjectile(Constants.Electricity, electricProj);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.PickUpElect, electricProj);
+            FireProjectile(Constants.Electricity, electricProj);
             phoneFire = false;
         }
     }
