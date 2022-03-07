@@ -10,6 +10,11 @@ public class TempGameManager : MonoBehaviour
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
     public int[] order;
+    public GameObject ingredientBubble;
+    public GameObject rightAnswer;
+    public GameObject wrongAnswer;
+
+    bool incorrectKey = false;
     int count = 0;
     Dictionary<int, UnityEngine.KeyCode> Keys = new Dictionary<int, UnityEngine.KeyCode>();
 
@@ -19,18 +24,42 @@ public class TempGameManager : MonoBehaviour
         Keys.Add(1, KeyCode.A);
         Keys.Add(2, KeyCode.S);
         Keys.Add(3, KeyCode.D);
+        ingredientBubble.SetActive(false);
+        rightAnswer.SetActive(false);
+        wrongAnswer.SetActive(false);
     }
     void Start()
     {
-        IngredientOrder();
+        Invoke("ShowBubble", 2.0f);
+        Invoke("HideBubble", 3.0f);
     }
 
     void Update()
     {
         if(count == 4)
         {
-            Invoke("IngredientOrder", 1.0f);
+            // Correct answer visuals
+            rightAnswer.SetActive(true);
+            Invoke("HideRightAnswer", 1.0f);
+
+            Invoke("ShowBubble", 2.0f);
             count = 0;
+            Invoke("HideBubble", 3.0f);
+            //TODO ADD SOUND HERE
+        }
+
+        if (incorrectKey == true)
+        {
+            incorrectKey = false;
+            wrongAnswer.SetActive(true);
+            Invoke("HideWrongAnswer", 1.0f);
+
+            Invoke("ShowBubble", 2.0f);
+            count = 0;
+            Invoke("HideBubble", 3.0f);
+
+            // Inorrect answer visuals
+            //TODO ADD SOUND HERE
         }
 
         if (count <= 3)
@@ -65,10 +94,29 @@ public class TempGameManager : MonoBehaviour
             else if(Input.GetKeyDown(item.Value))
             {
                 Debug.Log("Incorrect key " + item.Value);
-
-                // Set count to 4 to reshuffle
-                count = 4;
+                incorrectKey = true;
             }
         }
+    }
+
+    void ShowBubble()
+    {
+        IngredientOrder();
+        ingredientBubble.SetActive(true);
+    }
+
+    void HideBubble()
+    {
+        ingredientBubble.SetActive(false);
+    }
+
+    void HideRightAnswer()
+    {
+        rightAnswer.SetActive(false);
+    }
+
+    void HideWrongAnswer()
+    {
+        wrongAnswer.SetActive(false);
     }
 }
