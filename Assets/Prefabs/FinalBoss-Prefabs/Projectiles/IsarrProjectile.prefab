@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8961840562195552317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IsarrProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5162489307794611474}
   - component: {fileID: 2737746778509757669}
   - component: {fileID: 5013954225604617761}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IsarrBaseAttack-Sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
