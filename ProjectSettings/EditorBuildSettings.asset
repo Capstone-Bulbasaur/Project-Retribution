@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MemoryMatch 1.unity
     guid: 79ab7e47a3c0ebe419b50b8262ded20c
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: 18d7b451fcc24f0439b7574cc7125b93
   m_configObjects: {}

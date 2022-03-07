@@ -70,12 +70,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        Debug.Log("Isarr does damage to graey!");
-    //        Destroy(transform.parent.gameObject);
-    //    }
-    //}
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            Debug.Log("Projectile hit terrain!");
+            Destroy(transform.parent.gameObject);
+        }
+    }
 }
