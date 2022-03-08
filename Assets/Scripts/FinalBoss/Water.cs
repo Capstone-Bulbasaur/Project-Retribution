@@ -38,19 +38,19 @@ public class Water : Gun
 
         if (mouseFire)
         {
-            FireProjectile(Constants.Water, waterProj);
+            FireProjectile(Constants.Water, Constants.PickUpWater);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.Water, waterProj);
+            FireProjectile(Constants.Water, Constants.PickUpWater);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.Water, waterProj);
+            FireProjectile(Constants.Water, Constants.PickUpWater);
             phoneFire = false;
         }
     }

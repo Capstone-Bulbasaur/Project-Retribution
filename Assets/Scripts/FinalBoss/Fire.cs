@@ -38,19 +38,19 @@ public class Fire : Gun
 
         if (mouseFire)
         {
-            FireProjectile(Constants.Fire, fireProj);
+            FireProjectile(Constants.Fire, Constants.PickUpFire);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.Fire, fireProj);
+            FireProjectile(Constants.Fire, Constants.PickUpFire);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.Fire, fireProj);
+            FireProjectile(Constants.Fire, Constants.PickUpFire);
             phoneFire = false;
         }
     }

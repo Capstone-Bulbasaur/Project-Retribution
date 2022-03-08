@@ -483,7 +483,7 @@ MonoBehaviour:
   pools:
   - tag: Dagger
     prefab: {fileID: 579705405351406218, guid: 9174fd816c682a44badb9a564b9928fa, type: 3}
-    size: 10
+    size: 50
     willGrow: 0
   - tag: Fire
     prefab: {fileID: 1279493781771962836, guid: 6add6c00a43989a4c8df42de7c6f6e66, type: 3}
@@ -491,15 +491,15 @@ MonoBehaviour:
     willGrow: 0
   - tag: Water
     prefab: {fileID: 1133517048311611727, guid: d2aa69a42f5ec47419af1c835a59388d, type: 3}
-    size: 10
+    size: 50
     willGrow: 0
   - tag: Electric
     prefab: {fileID: 4707236430682584867, guid: 68641390220eaca4aa253b714f00a841, type: 3}
-    size: 10
+    size: 50
     willGrow: 0
   - tag: Isarr
     prefab: {fileID: 8220006212120081471, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
-    size: 10
+    size: 50
     willGrow: 0
 --- !u!4 &1407381829
 Transform:
@@ -1327,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 627734976}
     - target: {fileID: 7796279209552104655, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
       propertyPath: projectileSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d70623c556f3940a6c9840874df11f, type: 3}

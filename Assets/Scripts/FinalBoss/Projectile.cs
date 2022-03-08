@@ -9,16 +9,14 @@ public class Projectile : MonoBehaviour
 {
     private float range;
     private Vector3 shootDir;
-
-    public float shootSpeed;
-    public int damage = 1;
+    private float shootSpeed;
+    private int damage = 1;
 
     IEnumerator deathTimer()
     {
         //Destroy the object after its reached its max range
         yield return new WaitForSeconds(range);
         Disable();
-        //Destroy(transform.parent.gameObject);
     }
 
     public void Setup(Vector3 shootDirect, float projRange, int projDamage, float projSpeed)
@@ -32,8 +30,7 @@ public class Projectile : MonoBehaviour
         damage = projDamage;
         shootSpeed = projSpeed;
 
-        StartCoroutine(deathTimer()); 
-        //Invoke(nameof(Disable), range);
+        StartCoroutine(deathTimer());
     }
 
     // Update is called once per frame
@@ -64,30 +61,27 @@ public class Projectile : MonoBehaviour
             Debug.Log("Isarr does damage to graey!");
             collider.gameObject.GetComponent<Graey>().TakeDamage(damage);
             Disable();
-            //Destroy(transform.parent.gameObject);
         }
         else if (collider.gameObject.CompareTag("Isarr") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         {
             Debug.Log("Projectile Triggered collide with " + collider.gameObject);
             collider.gameObject.GetComponent<Enemy_Isarr>().TakeDamage(damage);
             Disable();
-            //Destroy(transform.parent.gameObject);
         }
         else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         {
            Destroy(collider.transform.parent.gameObject);
            Disable();
-           //Destroy(transform.parent.gameObject);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        //On projectile collision with obstacles, disable projectile 
         if (other.gameObject.layer == 8)
         {
             Debug.Log("Projectile hit terrain!");
             Disable();
-            //Destroy(transform.parent.gameObject);
         }
     }
 
@@ -99,6 +93,8 @@ public class Projectile : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+
+        //Reset teh position of the prefab
         transform.parent.position = Vector3.zero;
         gameObject.transform.position = Vector3.zero;
        

@@ -11,19 +11,19 @@ public class DaggerPower : Gun
 
         if (mouseFire)
         {
-            FireProjectile(Constants.Dagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.Dagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.Dagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             phoneFire = false;
         }
     }

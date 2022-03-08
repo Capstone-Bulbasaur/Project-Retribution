@@ -73,40 +73,39 @@ public class Gun : MonoBehaviour
         
     }
 
-    protected virtual void FireProjectile(string type, Transform power)
+    protected virtual void FireProjectile(string type, int power)
     {
         //TODO ADD SOUND HERE
 
         Transform projectileTransform = null;
-        
+
         //Check which power the Player has
-        //switch (type)
-        //{
-        //    case Constants.PickUpDagger:
-        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-        //        break;
-        //    case Constants.PickUpWater:
-        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-        //        break;
-        //    case Constants.PickUpFire:
-        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-        //        //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
-        //        break;
-        //    case Constants.PickUpElect:
-        //        projectileTransform = Instantiate(power, projectileSpawnLocation, Quaternion.identity, GameObject.Find("Projectiles_Blank").transform);
-        //        break;
-        //    default:
-        //        Debug.LogError("Bad pickup type passed" + type);
-        //        break;
-        //}
-        
+        switch (power)
+        {
+            case Constants.PickUpDagger:
+                    
+                break;
+            case Constants.PickUpWater:
+                    
+                break;
+            case Constants.PickUpFire:
+               
+                //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
+                break;
+            case Constants.PickUpElect:
+               
+                break;
+            default:
+                Debug.LogError("Bad pickup type passed" + type);
+                break;
+        }
+
         projectileTransform = projectilePoller.SpawnFromPool(type, shootPosition.position, Quaternion.identity);
 
         if (projectileTransform != null)
         {
             //Calculate the shoot direction with the mouse position and the projectile spawn position
             var shootDir = aim.shootDirection.normalized;
-            //var shootDir = aim.shootDirection.normalized;
             //Send the shoot direction to the Projectiles script
             projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir, range, damage, projectileSpeed);
         }
