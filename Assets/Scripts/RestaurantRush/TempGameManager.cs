@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TempGameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TempGameManager : MonoBehaviour
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
+    public List<Button> btns = new List<Button>();
     public int[] order;
     public GameObject ingredientBubble;
     public GameObject rightAnswer;
@@ -16,14 +18,15 @@ public class TempGameManager : MonoBehaviour
 
     bool incorrectKey = false;
     int count = 0;
-    Dictionary<int, UnityEngine.KeyCode> Keys = new Dictionary<int, UnityEngine.KeyCode>();
+    Dictionary<int, string> Buttons = new Dictionary<int, string>();
 
     void Awake()
     {
-        Keys.Add(0, KeyCode.W);
-        Keys.Add(1, KeyCode.A);
-        Keys.Add(2, KeyCode.S);
-        Keys.Add(3, KeyCode.D);
+        Buttons.Add(0, "Y");
+        Buttons.Add(1, "X");
+        Buttons.Add(2, "A");
+        Buttons.Add(3, "B");
+
         ingredientBubble.SetActive(false);
         rightAnswer.SetActive(false);
         wrongAnswer.SetActive(false);
@@ -42,29 +45,24 @@ public class TempGameManager : MonoBehaviour
             rightAnswer.SetActive(true);
             Invoke("HideRightAnswer", 1.0f);
 
-            Invoke("ShowBubble", 2.0f);
-            count = 0;
-            Invoke("HideBubble", 3.0f);
-            //TODO ADD SOUND HERE
+            NewOrder();
+
+            //TODO ADD CORRECT ANSWER SOUND HERE
         }
 
         if (incorrectKey == true)
         {
-            incorrectKey = false;
             wrongAnswer.SetActive(true);
             Invoke("HideWrongAnswer", 1.0f);
 
-            Invoke("ShowBubble", 2.0f);
-            count = 0;
-            Invoke("HideBubble", 3.0f);
+            NewOrder();
 
-            // Inorrect answer visuals
-            //TODO ADD SOUND HERE
+            //TODO ADD INCORRECT ANSWER SOUND HERE
         }
 
         if (count <= 3)
         {
-            CheckInput();
+            //CheckInput();
         }
     }
 
@@ -82,21 +80,28 @@ public class TempGameManager : MonoBehaviour
         }
     }
 
-    void CheckInput()
+    public void buttonClicked(string button)
     {
-        foreach (var item in Keys)
+
+        if (Buttons[order[count]] == button)
         {
-            if (Input.GetKeyDown(item.Value) && item.Key == order[count])
-            {
-                Debug.Log("Correct key " + item.Value);
-                count++;
-            }
-            else if(Input.GetKeyDown(item.Value))
-            {
-                Debug.Log("Incorrect key " + item.Value);
-                incorrectKey = true;
-            }
+            Debug.Log("Correct button " + button);
+            count++;
         }
+        else
+        {
+            Debug.Log("Incorrect button " + button);
+            incorrectKey = true;
+        }
+        
+    }
+
+    void NewOrder()
+    {
+        Invoke("ShowBubble", 2.0f);
+        count = 0;
+        Invoke("HideBubble", 3.0f);
+        incorrectKey = false;
     }
 
     void ShowBubble()
