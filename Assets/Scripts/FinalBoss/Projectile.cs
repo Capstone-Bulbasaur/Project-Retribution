@@ -58,13 +58,11 @@ public class Projectile : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Isarr does damage to graey!");
             collider.gameObject.GetComponent<Graey>().TakeDamage(damage);
             Disable();
         }
         else if (collider.gameObject.CompareTag("Isarr") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         {
-            Debug.Log("Projectile Triggered collide with " + collider.gameObject);
             collider.gameObject.GetComponent<Enemy_Isarr>().TakeDamage(damage);
             Disable();
         }
@@ -80,7 +78,6 @@ public class Projectile : MonoBehaviour
         //On projectile collision with obstacles, disable projectile 
         if (other.gameObject.layer == 8)
         {
-            Debug.Log("Projectile hit terrain!");
             Disable();
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DaggerPower : Gun
 {
-    [SerializeField] private Transform daggerProj;
     override protected void Update()
     {
         base.Update();

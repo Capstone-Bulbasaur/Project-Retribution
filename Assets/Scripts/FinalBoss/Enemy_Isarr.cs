@@ -62,10 +62,10 @@ public class Enemy_Isarr : MonoBehaviour
         // Isarr shoot
         if(timeBtwShots <= 0)
         {
-            Transform projectileTransform = null;
+            GameObject projectileTransform = null;
             var shootDir = player.transform.position - gameObject.transform.position;
             //projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
-            projectileTransform = projectilePoller.SpawnFromPool("Isarr", transform.position, Quaternion.identity);
+            projectileTransform = projectilePoller.SpawnFromPool("Isarr", transform.position);
             projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange, damage, projectileSpeed);
             timeBtwShots = startTimeBtwShots;
         }

@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Electric : Gun
+public class NewDaggerPower : Gun
 {
-    [SerializeField] private Transform electricProj;
+    [SerializeField] private GameObject daggerPrefab;
     override protected void Update()
     {
         base.Update();
 
         if (mouseFire)
         {
-            FireProjectile(Constants.Electricity, Constants.PickUpElect);
+            FireProjectile("Dagger", Constants.PickUpDagger, daggerPrefab);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.Electricity, Constants.PickUpElect);
+            FireProjectile(Constants.Water, Constants.PickUpWater);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.Electricity, Constants.PickUpElect);
+            FireProjectile(Constants.Water, Constants.PickUpWater);
             phoneFire = false;
         }
     }

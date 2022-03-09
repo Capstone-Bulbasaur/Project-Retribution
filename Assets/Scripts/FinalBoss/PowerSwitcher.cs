@@ -6,8 +6,6 @@ public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
 
-
-    public int powerUpTimeLimit = 15;
     public GameObject dagger;
 
     [Header("Water Power")] 
@@ -54,6 +52,12 @@ public class PowerSwitcher : MonoBehaviour
 
         dagger.SetActive(true);
         activePower = dagger;
+
+        //if(FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Flame"))
+        //    FindObjectOfType<AudioManager>().StopPlaying("Boss_Flame");
+
+        //if(FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Water"))
+        //    FindObjectOfType<AudioManager>().StopPlaying("Boss_Water");
     }
 
     private void PickupWaterPower()
@@ -71,7 +75,7 @@ public class PowerSwitcher : MonoBehaviour
     private void PickupElectricPower()
     {
         StopAllCoroutines();
-        StartCoroutine(LoadWeapons(electric, waterPowerTimeLimit));
+        StartCoroutine(LoadWeapons(electric, electricPowerTimeLimit));
     }
 
     public void PickupItem(int pickupType)

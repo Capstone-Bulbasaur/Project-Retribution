@@ -17,12 +17,14 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform shootPosition;
 
     private Vector3 projectileSpawnLocation;
-    private float lastFireTime;
+    protected float lastFireTime;
     private ProjectilePooler projectilePoller;
+    private AudioManager audioManager;
 
     protected bool mouseFire;
     protected bool controllerFire;
     protected bool phoneFire;
+    protected bool isFiring = false;
 
     void Awake()
     {
@@ -38,6 +40,11 @@ public class Gun : MonoBehaviour
         aim = GetComponentInParent<PlayerAim>();
         lastFireTime = Time.time - 10;
 
+        audioManager = AudioManager.instance;
+    }
+
+    private void Start()
+    {
         projectilePoller = ProjectilePooler.Instance;
     }
 
@@ -59,6 +66,7 @@ public class Gun : MonoBehaviour
             {
                 lastFireTime = Time.time;
                 mouseFire = true;
+                isFiring = true;
             }
         }
         else
@@ -69,38 +77,58 @@ public class Gun : MonoBehaviour
                 controllerFire = true;
             }
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            isFiring = false;
+            mouseFire = false;
+        }
 #endif
-        
+        if (!isFiring)
+        {
+            if (FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Flame"))
+                FindObjectOfType<AudioManager>().StopPlaying("Boss_Flame");
+
+            if (FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Water"))
+                FindObjectOfType<AudioManager>().StopPlaying("Boss_Water");
+        }
     }
 
-    protected virtual void FireProjectile(string type, int power)
+    protected virtual void FireProjectile(string type, int power, GameObject dagger=null)
     {
         //TODO ADD SOUND HERE
 
-        Transform projectileTransform = null;
+        GameObject projectileTransform = null;
 
         //Check which power the Player has
         switch (power)
         {
             case Constants.PickUpDagger:
-                    
+                //TODO SOUND
+                if (isFiring && !FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Dagger"))
+                    FindObjectOfType<AudioManager>().Play("Boss_Dagger");
                 break;
             case Constants.PickUpWater:
-                    
+                //TODO ADD SOUND HERE
+                if (isFiring && !audioManager.CheckIfPlaying("Boss_Water"))
+                    audioManager.Play("Boss_Water");
                 break;
             case Constants.PickUpFire:
-               
-                //FindObjectOfType<AudioManager>().Play("Boss_Fireball");
+                //TODO ADD SOUND HERE
+                if (isFiring && !audioManager.CheckIfPlaying("Boss_Flame"))
+                    audioManager.Play("Boss_Flame");
                 break;
             case Constants.PickUpElect:
-               
+                //TODO ADD SOUND HERE
+                if (isFiring && !audioManager.CheckIfPlaying("Boss_Electric"))
+                    audioManager.Play("Boss_Electric");
                 break;
             default:
                 Debug.LogError("Bad pickup type passed" + type);
                 break;
         }
 
-        projectileTransform = projectilePoller.SpawnFromPool(type, shootPosition.position, Quaternion.identity);
+        projectileTransform = projectilePoller.SpawnFromPool(type, shootPosition.position);
 
         if (projectileTransform != null)
         {

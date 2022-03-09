@@ -15,22 +15,12 @@ public class ProjectilePooler : MonoBehaviour
         public bool willGrow;
     }
 
-    #region Singleton
     public static ProjectilePooler Instance;
 
     private void Awake()
     {
         Instance = this;
-    }
-    #endregion
 
-    public List<Pool> pools;
-    private Dictionary<string, Queue<GameObject>> poolDictionary;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
@@ -49,22 +39,38 @@ public class ProjectilePooler : MonoBehaviour
         }
     }
 
-    public Transform SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public List<Pool> pools;
+    private Dictionary<string, Queue<GameObject>> poolDictionary;
+
+
+
+    // Start is called before the first frame update
+    void Start()
     {
-        if (!poolDictionary.ContainsKey(tag))
+       
+    }
+
+    public GameObject SpawnFromPool(string type, Vector3 position)
+    {
+        if (poolDictionary.ContainsKey(type))
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            Debug.Log("Type: " + type);
+        }
+
+        if (!poolDictionary.ContainsKey(type))
+        {
+            Debug.Log("Pool with tag " + type + " doesn't exist.");
             return null;
         }
-        
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        Debug.Log(type);
+        GameObject objectToSpawn = poolDictionary[type].Dequeue();
 
         objectToSpawn.transform.position = position;
         
         objectToSpawn.SetActive(true);
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
-        return objectToSpawn.transform;
+        poolDictionary[type].Enqueue(objectToSpawn);
+        
+        return objectToSpawn;
     }
 }
