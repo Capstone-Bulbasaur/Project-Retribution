@@ -16,27 +16,11 @@ public class ProjectilePooler : MonoBehaviour
     }
 
     public static ProjectilePooler Instance;
+    public bool isLoaded;
 
     private void Awake()
     {
         Instance = this;
-
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
-        foreach (Pool pool in pools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject obj = Instantiate(pool.prefab, GameObject.Find("Projectiles_Blank").transform);
-
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
-            }
-
-            poolDictionary.Add(pool.tag, objectPool);
-        }
     }
 
     public List<Pool> pools;
@@ -47,7 +31,33 @@ public class ProjectilePooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (Pool pool in pools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj;
+
+                if (pool.prefab.CompareTag("NPC"))
+                {
+                    obj = Instantiate(pool.prefab, GameObject.Find("Minion_Blank").transform);
+                }
+                else
+                {
+                    obj = Instantiate(pool.prefab, GameObject.Find("Projectiles_Blank").transform);
+                }
+                
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+
+            poolDictionary.Add(pool.tag, objectPool);
+        }
+
+        isLoaded = true;
     }
 
     public GameObject SpawnFromPool(string type, Vector3 position)
