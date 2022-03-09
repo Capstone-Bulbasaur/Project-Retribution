@@ -8,17 +8,19 @@ using TMPro;
 public class RestaurantRush_GameMananger : MonoBehaviour
 {
     // Primary game time set up
-    public float CurrentTime;
+     float CurrentTime;
     public float StartingTime = 100;
     // order time set up
     public float OrderStartTime = 10;
-    public float OrderCurrentTime;
+     float OrderCurrentTime;
 
 
     public int maxNumCustomers;
-    public int CurrentNumCustomers;
+     int CurrentNumCustomers;
 
-    
+
+   // public TextMeshProUGUI MainGameTimer;
+
     void Start()
     {
         CurrentTime = StartingTime;
@@ -27,6 +29,15 @@ public class RestaurantRush_GameMananger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CurrentTime -= 1 * Time.deltaTime;
+
+        if (CurrentTime != 0)
+        {
+            print(CurrentTime);
+        }
+        if (CurrentTime <= 0)
+        {
+            CurrentTime = 0;
+        }
     }
 }
