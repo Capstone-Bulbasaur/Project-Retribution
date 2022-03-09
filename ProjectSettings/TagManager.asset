@@ -9,6 +9,7 @@ TagManager:
   - Pickup
   - Projectile
   - Isarr
+  - RRButton
   layers:
   - Default
   - TransparentFX

@@ -79,7 +79,7 @@ public class FBGameManager : MonoBehaviour
                         while (spawnPoint == -1)
                         {
                             // 3
-                            int randomNumber = Random.Range(0, spawnPoints.Length - 1);
+                            int randomNumber = Random.Range(0, spawnPoints.Length);
                             // 4
                             if (!previousSpawnLocations.Contains(randomNumber))
                             {
