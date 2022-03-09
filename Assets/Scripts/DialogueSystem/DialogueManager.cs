@@ -93,6 +93,18 @@ public class DialogueManager : MonoBehaviour
                 Invoke("OpenMemoryMatch", 2.5f);
                 letsGoAnimator.SetBool("OpenMM", true);
             }
+
+            if (speakerName.text == "Minion")
+            {
+                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
+
+                if (letsGo != null)
+                    letsGo.SetActive(true);
+
+                Invoke("OpenFinalBossBattle", 2.5f);
+                letsGoAnimator.SetBool("OpenMM", true);
+            }
             
             return;
         }
@@ -125,6 +137,12 @@ public class DialogueManager : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "MemoryMatch 1");
+    }
+
+    void OpenFinalBossBattle()
+    {
+        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
+        SceneManager.LoadScene(sceneName: "FinalBoss");
     }
 
     // Types out the dialogue lines

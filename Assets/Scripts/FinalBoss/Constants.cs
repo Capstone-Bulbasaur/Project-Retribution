@@ -4,7 +4,7 @@ public class Constants
     public const string Dagger = "Dagger";
     public const string Water = "Water";
     public const string Fire = "Fire";
-    public const string Electricity = "Electricity";
+    public const string Electricity = "Electric";
 
     //Pickup Types
     public const int PickUpDagger = 0;

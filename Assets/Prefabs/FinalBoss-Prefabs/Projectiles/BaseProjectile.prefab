@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 579705406635329218}
   - component: {fileID: 1755806793161832990}
   - component: {fileID: 5852177988424461459}
+  - component: {fileID: 6968339305555841018}
   m_Layer: 6
   m_Name: GraeyBaseAttack-Sheet_0
   m_TagString: Untagged
@@ -147,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c04dfa4120e6b4f8f757f676668fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isarr: {fileID: 0}
-  player: {fileID: 0}
   moveSpeed: 10
   damage: 1
 --- !u!61 &5852177988424461459
@@ -177,3 +176,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5096854, y: 0.50429726}
   m_EdgeRadius: 0
+--- !u!50 &6968339305555841018
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579705406635329220}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

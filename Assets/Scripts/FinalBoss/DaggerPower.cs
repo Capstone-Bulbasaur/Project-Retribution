@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class DaggerPower : Gun
 {
-    [SerializeField] private Transform daggerProj;
     override protected void Update()
     {
         base.Update();
 
         if (mouseFire)
         {
-            FireProjectile(Constants.PickUpDagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             mouseFire = false;
         }
 
         if (controllerFire)
         {
-            FireProjectile(Constants.PickUpDagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             controllerFire = false;
         }
 
         if (phoneFire)
         {
-            FireProjectile(Constants.PickUpDagger, daggerProj);
+            FireProjectile(Constants.Dagger, Constants.PickUpDagger);
             phoneFire = false;
         }
     }
