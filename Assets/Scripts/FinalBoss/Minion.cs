@@ -11,6 +11,7 @@ public class Minion : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(transform.parent.gameObject);
+            
             //Debug.Log("Minion Collided with " + collision.gameObject);
             collision.gameObject.GetComponent<Graey>().TakeDamage(damage);
             

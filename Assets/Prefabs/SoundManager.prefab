@@ -94,25 +94,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boss_Flame
     clip: {fileID: 8300000, guid: 3d9712919112aa04393bf7d86130a310, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Boss_Water
     clip: {fileID: 8300000, guid: 4703e9741ce027b42acff1fbdc3fa0a5, type: 3}
-    volume: 0.15
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Boss_Dagger
     clip: {fileID: 8300000, guid: a68419ad103b98740a87f9e308ab6e68, type: 3}
-    volume: 0.2
+    volume: 0.15
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Boss_Electric
     clip: {fileID: 8300000, guid: e44b23af1f2501f418c6df1b054b3c5f, type: 3}
-    volume: 0.1
+    volume: 0.05
     pitch: 1
     loop: 0
     source: {fileID: 0}

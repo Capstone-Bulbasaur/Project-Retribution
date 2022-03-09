@@ -14,7 +14,7 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
 
-    private int minionsOnScreen = 0;
+    public int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
 

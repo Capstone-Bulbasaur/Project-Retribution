@@ -52,17 +52,12 @@ public class ProjectilePooler : MonoBehaviour
 
     public GameObject SpawnFromPool(string type, Vector3 position)
     {
-        if (poolDictionary.ContainsKey(type))
-        {
-            Debug.Log("Type: " + type);
-        }
-
         if (!poolDictionary.ContainsKey(type))
         {
             Debug.Log("Pool with tag " + type + " doesn't exist.");
             return null;
         }
-        Debug.Log(type);
+       
         GameObject objectToSpawn = poolDictionary[type].Dequeue();
 
         objectToSpawn.transform.position = position;
