@@ -10,7 +10,6 @@ public class TempGameManager : MonoBehaviour
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
-    public List<Button> btns = new List<Button>();
     public int[] order;
     public GameObject ingredientBubble;
     public GameObject rightAnswer;
@@ -33,18 +32,21 @@ public class TempGameManager : MonoBehaviour
     }
     void Start()
     {
+        // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 2.0f);
         Invoke("HideBubble", 3.0f);
     }
 
     void Update()
     {
+        // All ingredients correct (count == 4)
         if(count == 4)
         {
             // Correct answer visuals
             rightAnswer.SetActive(true);
             Invoke("HideRightAnswer", 1.0f);
 
+            // Shuffles a new order
             NewOrder();
 
             //TODO ADD CORRECT ANSWER SOUND HERE
@@ -52,28 +54,28 @@ public class TempGameManager : MonoBehaviour
 
         if (incorrectKey == true)
         {
+            // Incorrect answer visuals
             wrongAnswer.SetActive(true);
             Invoke("HideWrongAnswer", 1.0f);
 
+            // Shuffles a new order
             NewOrder();
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
-        }
-
-        if (count <= 3)
-        {
-            //CheckInput();
         }
     }
 
     void IngredientOrder()
     {
         order = new int[ingredients.Count];
+
+        // Shuffle ingredients in list
         for (int i = 0; i < ingredients.Count; i++)
         {
             order[i] = Random.Range(0, ingredientSprites.Count);
         }
 
+        // Assign correct sprite to shuffled ingredient
         for (int i = 0; i < ingredients.Count; i++)
         {
             ingredients[i].GetComponent<SpriteRenderer>().sprite = ingredientSprites[order[i]];
@@ -82,7 +84,7 @@ public class TempGameManager : MonoBehaviour
 
     public void buttonClicked(string button)
     {
-
+        // If the button required matches the button pressed, button is correct and we add 1 to the (correct button) count
         if (Buttons[order[count]] == button)
         {
             Debug.Log("Correct button " + button);
@@ -90,36 +92,42 @@ public class TempGameManager : MonoBehaviour
         }
         else
         {
+            // It the button pressed doesn't match, the button is incorrect and we get a new order (Update())
             Debug.Log("Incorrect button " + button);
             incorrectKey = true;
         }
-        
     }
 
+    // Shows order with new bubble, resets the count 
     void NewOrder()
     {
         Invoke("ShowBubble", 2.0f);
         count = 0;
+
         Invoke("HideBubble", 3.0f);
         incorrectKey = false;
     }
 
+    // Shuffles the order and shows the ingredient bubble
     void ShowBubble()
     {
         IngredientOrder();
         ingredientBubble.SetActive(true);
     }
 
+    // Hides the ingredient bubble
     void HideBubble()
     {
         ingredientBubble.SetActive(false);
     }
 
+    // Hides the "right answer" visual
     void HideRightAnswer()
     {
         rightAnswer.SetActive(false);
     }
 
+    // Hides the "wrong answer" visual
     void HideWrongAnswer()
     {
         wrongAnswer.SetActive(false);
