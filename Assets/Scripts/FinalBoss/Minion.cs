@@ -34,6 +34,5 @@ public class Minion : MonoBehaviour
             //Remove enemy from onScreen variable
             gameManager.RemoveEnemy();
         }
-      
     }
 }

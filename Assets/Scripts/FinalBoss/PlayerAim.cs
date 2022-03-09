@@ -8,12 +8,12 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerAim : MonoBehaviour
 {
-    public Vector3 shootPosition;
-    public Vector3 shootDirection;
     public Transform aimTransform;
-    public Vector2 contRightStickInput;
-    public Vector2 phoneRightStickInput;
     public Joystick phoneRightStick;
+    
+    [HideInInspector] public Vector2 contRightStickInput;
+    [HideInInspector] public Vector2 phoneRightStickInput;
+    [HideInInspector] public Vector3 shootDirection;
 
     public DetectControlMethod controlMethod;
     [SerializeField] private GameObject rightStick;

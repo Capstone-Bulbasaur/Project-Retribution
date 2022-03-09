@@ -67,13 +67,10 @@ public class Projectile : MonoBehaviour
             Disable();
         }
         else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
-        {
-           //Destroy(collider.transform.parent.gameObject);
-           collider.transform.parent.gameObject.SetActive(false);
+        { 
+            collider.transform.parent.gameObject.SetActive(false);
 
-           //Remove enemy from onScreen variable
-           //FBGameManager.instance.RemoveEnemy();
-           Disable();
+            Disable();
         }
     }
 
