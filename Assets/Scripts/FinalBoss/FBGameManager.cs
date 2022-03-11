@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FBGameManager : MonoBehaviour
 {
+    public static FBGameManager instance;
+
     public GameObject player;
     public GameObject isarr;
     public GameObject minion;
@@ -14,17 +18,20 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
 
-    private int minionsOnScreen = 0;
+    public int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
+    private ProjectilePooler projectilePoller;
 
-
-
-    private void RemoveEnemy()
+    private void Awake()
     {
-        minionsOnScreen -= 1;
-        //totalMinions -= 1;
-
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     private void PauseMenu()
@@ -41,6 +48,7 @@ public class FBGameManager : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("Boss_Music");
+        projectilePoller = ProjectilePooler.Instance;
     }
 
     // Update is called once per frame
@@ -72,7 +80,6 @@ public class FBGameManager : MonoBehaviour
                 {
                     if (minionsOnScreen < maxMinionsOnScreen)
                     {
-                        minionsOnScreen += 1;
                         // 1
                         int spawnPoint = -1;
                         // 2
@@ -88,22 +95,18 @@ public class FBGameManager : MonoBehaviour
                             }
                         }
                         GameObject spawnLocation = spawnPoints[spawnPoint];
-                        GameObject newMinion = Instantiate(minion) as GameObject;
-                        newMinion.transform.position = spawnLocation.transform.position;
-
-                        //need minionScript equivalent of below functions: target, OnDestroy
-                        //Alien alienScript = newAlien.GetComponent<Alien>();
-                        //alienScript.target = player.transform;
-                        //Minion minionScript = newMinion.GetComponent<Minion>(); //need a Minion class
-                        //minionScript.target = player.transform; //with a .target function
-
-                        
-                        //minionScript.OnDestroy.AddListener(RemoveEnemy); //need an OnDestroy function from the Minion class
-                        //alienScript.OnDestroy.AddListener(AlienDestroyed);
-                        //alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
+                        //GameObject newMinion = Instantiate(minion);
+                        //newMinion.transform.position = spawnLocation.transform.position;
+                        projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
+                        minionsOnScreen += 1;
                     }
                 }
             }
         }
+    }
+
+    public void RemoveEnemy()
+    {
+        minionsOnScreen -= 1;
     }
 }

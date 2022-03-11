@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1535707847120263133}
   m_Layer: 6
   m_Name: ElectricProjectile
-  m_TagString: Projectile
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6288659951501956977}
   m_Layer: 6
   m_Name: ElectricPower-Sheet_0
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c04dfa4120e6b4f8f757f676668fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  damage: 1
 --- !u!61 &5370766927864091905
 BoxCollider2D:
   m_ObjectHideFlags: 0

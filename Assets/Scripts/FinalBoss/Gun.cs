@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private Transform shootPosition;
 
-    private Vector3 projectileSpawnLocation;
+    //private Vector3 projectileSpawnLocation;
     protected float lastFireTime;
     private ProjectilePooler projectilePoller;
     private AudioManager audioManager;
@@ -39,25 +39,32 @@ public class Gun : MonoBehaviour
 
         aim = GetComponentInParent<PlayerAim>();
         lastFireTime = Time.time - 10;
-
-        audioManager = AudioManager.instance;
+        
+        
     }
 
     private void Start()
     {
         projectilePoller = ProjectilePooler.Instance;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        projectileSpawnLocation = transform.position;
+        //projectileSpawnLocation = transform.position;
 
 #if UNITY_ANDROID
         if (aim.phoneRightStickInput.magnitude > 0.5 && Time.time - lastFireTime > fireRate)
         {
             lastFireTime = Time.time;
             phoneFire = true;
+        }
+
+        if (aim.phoneRightStickInput.magnitude < 0.5)
+        {
+            isFiring = false;
+            Debug.Log("You are not firing!");
         }
 #else
         if (!aim.controlMethod.useController)
@@ -75,26 +82,36 @@ public class Gun : MonoBehaviour
             {
                 lastFireTime = Time.time;
                 controllerFire = true;
+                isFiring = true;
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             isFiring = false;
-            mouseFire = false;
         }
 #endif
         if (!isFiring)
         {
-            if (FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Flame"))
-                FindObjectOfType<AudioManager>().StopPlaying("Boss_Flame");
+            
+            if (audioManager.CheckIfPlaying("Boss_Flame"))
+            {
+                //Debug.Log("Is flame playing: " + audioManager.CheckIfPlaying("Boss_Flame"));
+                audioManager.StopPlaying("Boss_Flame");
+            }
 
-            if (FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Water"))
-                FindObjectOfType<AudioManager>().StopPlaying("Boss_Water");
+
+            if (audioManager.CheckIfPlaying("Boss_Water"))
+            {
+                //Debug.Log("Is Water playing: " + audioManager.CheckIfPlaying("Boss_Water"));
+
+                audioManager.StopPlaying("Boss_Water");
+            }
         }
+        //Debug.Log("Magnitude is: " + aim.phoneRightStickInput.magnitude);
     }
 
-    protected virtual void FireProjectile(string type, int power, GameObject dagger=null)
+    protected void FireProjectile(string type, int power)
     {
         //TODO ADD SOUND HERE
 
@@ -105,22 +122,28 @@ public class Gun : MonoBehaviour
         {
             case Constants.PickUpDagger:
                 //TODO SOUND
-                if (isFiring && !FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Dagger"))
-                    FindObjectOfType<AudioManager>().Play("Boss_Dagger");
+                if (!audioManager.CheckIfPlaying("Boss_Dagger"))
+                    audioManager.Play("Boss_Dagger");
                 break;
             case Constants.PickUpWater:
                 //TODO ADD SOUND HERE
-                if (isFiring && !audioManager.CheckIfPlaying("Boss_Water"))
+                if (!audioManager.CheckIfPlaying("Boss_Water"))
+                {
                     audioManager.Play("Boss_Water");
+                    //Debug.Log("Playing Water Sounds");
+                }
                 break;
             case Constants.PickUpFire:
                 //TODO ADD SOUND HERE
-                if (isFiring && !audioManager.CheckIfPlaying("Boss_Flame"))
+                if (!audioManager.CheckIfPlaying("Boss_Flame"))
+                {
+                    //Debug.Log("Playing Fire Sounds");
                     audioManager.Play("Boss_Flame");
+                }
                 break;
             case Constants.PickUpElect:
                 //TODO ADD SOUND HERE
-                if (isFiring && !audioManager.CheckIfPlaying("Boss_Electric"))
+                if (!audioManager.CheckIfPlaying("Boss_Electric"))
                     audioManager.Play("Boss_Electric");
                 break;
             default:

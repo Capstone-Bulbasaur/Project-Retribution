@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - Isarr
   - RRButton
+  - Electric
   layers:
   - Default
   - TransparentFX
@@ -64,6 +65,9 @@ TagManager:
     locked: 0
   - name: PlayerAndNPC
     uniqueID: 1095564873
+    locked: 0
+  - name: FenceBehindMast
+    uniqueID: 915203635
     locked: 0
   - name: Mast
     uniqueID: 1738065649

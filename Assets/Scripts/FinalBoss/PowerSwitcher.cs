@@ -23,11 +23,14 @@ public class PowerSwitcher : MonoBehaviour
     public GameObject electric;
 
     private GameObject activePower;
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         activeWeaponType = Constants.Dagger;
         activePower = dagger;
+
+        audioManager = AudioManager.instance;
     }
 
     IEnumerator LoadWeapons(GameObject weapon, float timeLimit)
@@ -53,11 +56,11 @@ public class PowerSwitcher : MonoBehaviour
         dagger.SetActive(true);
         activePower = dagger;
 
-        //if(FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Flame"))
-        //    FindObjectOfType<AudioManager>().StopPlaying("Boss_Flame");
+        if (audioManager.CheckIfPlaying("Boss_Flame"))
+            audioManager.StopPlaying("Boss_Flame");
 
-        //if(FindObjectOfType<AudioManager>().CheckIfPlaying("Boss_Water"))
-        //    FindObjectOfType<AudioManager>().StopPlaying("Boss_Water");
+        if (audioManager.CheckIfPlaying("Boss_Water"))
+            audioManager.StopPlaying("Boss_Water");
     }
 
     private void PickupWaterPower()
