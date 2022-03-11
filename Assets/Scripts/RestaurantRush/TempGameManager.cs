@@ -35,6 +35,8 @@ public class TempGameManager : MonoBehaviour
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 2.0f);
         Invoke("HideBubble", 3.0f);
+
+        FindObjectOfType<AudioManager>().Play("Rush_Music");
     }
 
     void Update()

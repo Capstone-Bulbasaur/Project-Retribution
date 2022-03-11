@@ -122,3 +122,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Rush_Music
+    clip: {fileID: 8300000, guid: 4da22853435d6524ab7e3621a81d07d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

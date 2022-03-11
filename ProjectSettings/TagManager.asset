@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - Isarr
   - RRButton
+  - Electric
   layers:
   - Default
   - TransparentFX

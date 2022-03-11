@@ -33,6 +33,8 @@ public class Minion : MonoBehaviour
         {
             //Remove enemy from onScreen variable
             gameManager.RemoveEnemy();
+            transform.parent.position = Vector3.zero;
+            gameObject.transform.position = Vector3.zero;
         }
     }
 }

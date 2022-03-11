@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine;
 
@@ -59,18 +58,23 @@ public class Projectile : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<Graey>().TakeDamage(damage);
-            Disable();
+
+            if (!gameObject.CompareTag("Electric"))
+                Disable();
         }
         else if (collider.gameObject.CompareTag("Isarr") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         {
             collider.gameObject.GetComponent<Enemy_Isarr>().TakeDamage(damage);
-            Disable();
+
+            if (!gameObject.CompareTag("Electric"))
+                Disable();
         }
         else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         { 
             collider.transform.parent.gameObject.SetActive(false);
 
-            Disable();
+            if (!gameObject.CompareTag("Electric"))
+                Disable();
         }
     }
 

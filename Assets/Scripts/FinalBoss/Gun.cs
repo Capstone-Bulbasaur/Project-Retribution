@@ -61,9 +61,10 @@ public class Gun : MonoBehaviour
             phoneFire = true;
         }
 
-        if (aim.phoneRightStickInput.magnitude > 0.5)
+        if (aim.phoneRightStickInput.magnitude < 0.5)
         {
             isFiring = false;
+            Debug.Log("You are not firing!");
         }
 #else
         if (!aim.controlMethod.useController)
@@ -92,18 +93,25 @@ public class Gun : MonoBehaviour
 #endif
         if (!isFiring)
         {
+            
             if (audioManager.CheckIfPlaying("Boss_Flame"))
+            {
+                //Debug.Log("Is flame playing: " + audioManager.CheckIfPlaying("Boss_Flame"));
                 audioManager.StopPlaying("Boss_Flame");
+            }
+
 
             if (audioManager.CheckIfPlaying("Boss_Water"))
-                audioManager.StopPlaying("Boss_Water");
+            {
+                //Debug.Log("Is Water playing: " + audioManager.CheckIfPlaying("Boss_Water"));
 
-            //if (audioManager.CheckIfPlaying("Boss_Water"))
-            //    audioManager.StopPlaying("Boss_Water");
+                audioManager.StopPlaying("Boss_Water");
+            }
         }
+        //Debug.Log("Magnitude is: " + aim.phoneRightStickInput.magnitude);
     }
 
-    protected virtual void FireProjectile(string type, int power)
+    protected void FireProjectile(string type, int power)
     {
         //TODO ADD SOUND HERE
 
@@ -120,12 +128,18 @@ public class Gun : MonoBehaviour
             case Constants.PickUpWater:
                 //TODO ADD SOUND HERE
                 if (!audioManager.CheckIfPlaying("Boss_Water"))
+                {
                     audioManager.Play("Boss_Water");
+                    //Debug.Log("Playing Water Sounds");
+                }
                 break;
             case Constants.PickUpFire:
                 //TODO ADD SOUND HERE
                 if (!audioManager.CheckIfPlaying("Boss_Flame"))
+                {
+                    //Debug.Log("Playing Fire Sounds");
                     audioManager.Play("Boss_Flame");
+                }
                 break;
             case Constants.PickUpElect:
                 //TODO ADD SOUND HERE
