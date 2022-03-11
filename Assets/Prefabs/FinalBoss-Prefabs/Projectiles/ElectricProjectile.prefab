@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2876814580094229321}
   - component: {fileID: 1454547090415684713}
   - component: {fileID: 5370766927864091905}
+  - component: {fileID: 6288659951501956977}
   m_Layer: 6
   m_Name: ElectricPower-Sheet_0
   m_TagString: Untagged
@@ -175,3 +176,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50621116, y: 0.25872993}
   m_EdgeRadius: 0
+--- !u!50 &6288659951501956977
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903077468446857209}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

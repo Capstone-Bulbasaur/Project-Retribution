@@ -14,12 +14,15 @@ public class Enemy_Isarr : MonoBehaviour
     public float stoppingDistance;
     public float retreatDistance;
     public float startTimeBtwShots;
+    public float projectileSpeed;
+    public int damage = 1;
     public Transform projectile;
     public Transform player;
     public float projRange;
     
     private float timeBtwShots;
     private float health;
+    private ProjectilePooler projectilePoller;
 
     public int maxHealth = 100;
     public int currentHealth;
@@ -36,6 +39,8 @@ public class Enemy_Isarr : MonoBehaviour
         timeBtwShots = startTimeBtwShots;
         currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
+
+        projectilePoller = ProjectilePooler.Instance;
     }
 
     void Update()
@@ -57,10 +62,11 @@ public class Enemy_Isarr : MonoBehaviour
         // Isarr shoot
         if(timeBtwShots <= 0)
         {
-            Transform projectileTransform = null;
+            GameObject projectileTransform = null;
             var shootDir = player.transform.position - gameObject.transform.position;
-            projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
-            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange);
+            //projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
+            projectileTransform = projectilePoller.SpawnFromPool("Isarr", transform.position);
+            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange, damage, projectileSpeed);
             timeBtwShots = startTimeBtwShots;
         }
         else
