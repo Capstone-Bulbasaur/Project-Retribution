@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class TempGameManager : MonoBehaviour
+public class RRGameMananger : MonoBehaviour
 {
     private int rand;
 
@@ -14,6 +15,18 @@ public class TempGameManager : MonoBehaviour
     public GameObject ingredientBubble;
     public GameObject rightAnswer;
     public GameObject wrongAnswer;
+
+    // Primary game time set up
+    float CurrentTime;
+    public float StartingTime = 100;
+    // order time set up
+    public float OrderStartTime = 10;
+    float OrderCurrentTime;
+
+    public int maxNumCustomers;
+    int CurrentNumCustomers;
+
+    public TextMeshProUGUI Timer;
 
     bool incorrectKey = false;
     int count = 0;
@@ -36,13 +49,28 @@ public class TempGameManager : MonoBehaviour
         Invoke("ShowBubble", 2.0f);
         Invoke("HideBubble", 3.0f);
 
-        FindObjectOfType<AudioManager>().Play("Rush_Music");
+       // FindObjectOfType<AudioManager>().Play("Rush_Music");
+
+        CurrentTime = StartingTime;
     }
 
     void Update()
     {
+        CurrentTime -= 1 * Time.deltaTime;
+
+        if (CurrentTime != 0)
+        {
+            print(CurrentTime);
+        }
+        if (CurrentTime <= 0)
+        {
+            CurrentTime = 0;
+        }
+
+        Timer.text = CurrentTime.ToString("0");
+
         // All ingredients correct (count == 4)
-        if(count == 4)
+        if (count == 4)
         {
             // Correct answer visuals
             rightAnswer.SetActive(true);
