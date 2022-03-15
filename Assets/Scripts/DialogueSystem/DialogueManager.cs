@@ -105,7 +105,19 @@ public class DialogueManager : MonoBehaviour
                 Invoke("OpenFinalBossBattle", 2.5f);
                 letsGoAnimator.SetBool("OpenMM", true);
             }
-            
+
+            if (speakerName.text == "Embre")
+            {
+                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
+
+                if (letsGo != null)
+                    letsGo.SetActive(true);
+
+                Invoke("OpenRestaurantRush", 2.5f);
+                letsGoAnimator.SetBool("OpenMM", true);
+            }
+
             return;
         }
 
@@ -143,6 +155,12 @@ public class DialogueManager : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "FinalBoss");
+    }
+
+    void OpenRestaurantRush()
+    {
+        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
+        SceneManager.LoadScene(sceneName: "RestaurantRush");
     }
 
     // Types out the dialogue lines
