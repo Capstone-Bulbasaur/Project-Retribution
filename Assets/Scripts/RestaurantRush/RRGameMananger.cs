@@ -20,6 +20,7 @@ public class RRGameMananger : MonoBehaviour
     public GameObject ingredientBubble;
     public GameObject rightAnswer;
     public GameObject wrongAnswer;
+    public List<Button> btns = new List<Button>();
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
@@ -54,6 +55,12 @@ public class RRGameMananger : MonoBehaviour
     }
     void Start()
     {
+        //Disable buttons
+        for (int i = 0; i < 4; i++)
+        {
+            btns[i].interactable = false;
+        }
+
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 7.0f);
         FindObjectOfType<AudioManager>().Play("Rush_Music");
@@ -85,12 +92,19 @@ public class RRGameMananger : MonoBehaviour
             countCorrectGuesses++;
             RightGuesses.text = countCorrectGuesses.ToString();
 
+            //Disable buttons
+            for (int i = 0; i < 4; i++)
+            {
+                btns[i].interactable = false;
+            }
+
             Invoke("HideRightAnswer", 1.0f);
 
             // Shuffles a new order
             NewOrder();
 
             //TODO ADD CORRECT ANSWER SOUND HERE
+            FindObjectOfType<AudioManager>().Play("Rush_Correct");
         }
 
         if (incorrectKey == true)
@@ -101,12 +115,19 @@ public class RRGameMananger : MonoBehaviour
             countFails++;
             WrongGuesses.text = countFails.ToString();
 
+            //Disable buttons
+            for (int i = 0; i < 4; i++)
+            {
+                btns[i].interactable = false;
+            }
+
             Invoke("HideWrongAnswer", 1.0f);
 
             // Shuffles a new order
             NewOrder();
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
+            FindObjectOfType<AudioManager>().Play("Rush_Incorrect");
         }
     }
 
@@ -157,7 +178,15 @@ public class RRGameMananger : MonoBehaviour
     void ShowBubble()
     {
         IngredientOrder();
+
         ingredientBubble.SetActive(true);
+
+        //Enable buttons
+        for (int i = 0; i < 4; i++)
+        {
+            btns[i].interactable = true;
+        }
+
         Invoke("HideBubble", 2.0f);
     }
 
