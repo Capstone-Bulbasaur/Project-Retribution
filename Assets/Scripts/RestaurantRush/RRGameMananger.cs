@@ -8,6 +8,11 @@ using TMPro;
 public class RRGameMananger : MonoBehaviour
 {
     private int rand;
+    // MS - to keep track of the gameGuesses
+    private int gameGuesses;
+    private int countGuesses;
+    private int countCorrectGuesses;
+    private int countFails;
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
@@ -15,6 +20,10 @@ public class RRGameMananger : MonoBehaviour
     public GameObject ingredientBubble;
     public GameObject rightAnswer;
     public GameObject wrongAnswer;
+
+    // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
+    public TextMeshProUGUI RightGuesses;
+    public TextMeshProUGUI WrongGuesses;
 
     // Primary game time set up
     float CurrentTime;
@@ -47,7 +56,7 @@ public class RRGameMananger : MonoBehaviour
     {
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 7.0f);
-       // FindObjectOfType<AudioManager>().Play("Rush_Music");
+        FindObjectOfType<AudioManager>().Play("Rush_Music");
 
         CurrentTime = StartingTime;
     }
@@ -72,6 +81,10 @@ public class RRGameMananger : MonoBehaviour
         {
             // Correct answer visuals
             rightAnswer.SetActive(true);
+            // MS - increasing the correct guesses
+            countCorrectGuesses++;
+            RightGuesses.text = countCorrectGuesses.ToString();
+
             Invoke("HideRightAnswer", 1.0f);
 
             // Shuffles a new order
@@ -84,6 +97,10 @@ public class RRGameMananger : MonoBehaviour
         {
             // Incorrect answer visuals
             wrongAnswer.SetActive(true);
+            // MS
+            countFails++;
+            WrongGuesses.text = countFails.ToString();
+
             Invoke("HideWrongAnswer", 1.0f);
 
             // Shuffles a new order
