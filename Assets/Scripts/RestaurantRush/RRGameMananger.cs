@@ -46,9 +46,7 @@ public class RRGameMananger : MonoBehaviour
     void Start()
     {
         // Shows the first order after 2 seconds and hides it after 3 seconds
-        Invoke("ShowBubble", 2.0f);
-        Invoke("HideBubble", 3.0f);
-
+        Invoke("ShowBubble", 7.0f);
        // FindObjectOfType<AudioManager>().Play("Rush_Music");
 
         CurrentTime = StartingTime;
@@ -143,6 +141,7 @@ public class RRGameMananger : MonoBehaviour
     {
         IngredientOrder();
         ingredientBubble.SetActive(true);
+        Invoke("HideBubble", 2.0f);
     }
 
     // Hides the ingredient bubble

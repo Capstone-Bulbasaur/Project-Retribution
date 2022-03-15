@@ -746,6 +746,7 @@ MonoBehaviour:
   Graey: {fileID: 0}
   actionKey: 101
   letsGoAnimator: {fileID: 0}
+  letsGo: {fileID: 0}
 --- !u!95 &1193834103
 Animator:
   serializedVersion: 3
