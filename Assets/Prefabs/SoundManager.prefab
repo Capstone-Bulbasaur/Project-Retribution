@@ -124,7 +124,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Rush_Music
     clip: {fileID: 8300000, guid: 4da22853435d6524ab7e3621a81d07d6, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Rush_Correct
+    clip: {fileID: 8300000, guid: 3c60ad7ad401d2d4190fb82346bb4b7b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rush_Incorrect
+    clip: {fileID: 8300000, guid: 377e194be9233b04dbf3b8b40d24a9cd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class RRGameMananger : MonoBehaviour
@@ -32,6 +33,8 @@ public class RRGameMananger : MonoBehaviour
     // order time set up
     public float OrderStartTime = 10;
     float OrderCurrentTime;
+
+    public float WhiteTimer = 3;
 
     public int maxNumCustomers;
     int CurrentNumCustomers;
@@ -66,12 +69,14 @@ public class RRGameMananger : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Rush_Music");
 
         CurrentTime = StartingTime;
+        OrderCurrentTime = OrderStartTime;
     }
 
     void Update()
     {
         CurrentTime -= 1 * Time.deltaTime;
-
+        WhiteTimer -= 1 * Time.deltaTime;
+        OrderCurrentTime -= 1 * Time.deltaTime;
         if (CurrentTime != 0)
         {
             print(CurrentTime);
@@ -80,8 +85,28 @@ public class RRGameMananger : MonoBehaviour
         {
             CurrentTime = 0;
         }
+        if (WhiteTimer <= 0)
+        {
+            Timer.color = Color.white;
+
+
+        }
+
+        if (CurrentTime == 0)
+        {
+            SceneManager.LoadScene(sceneName: "HubWorld");
+        }
 
         Timer.text = CurrentTime.ToString("0");
+
+        if (OrderCurrentTime <= 0)
+        {
+            incorrectKey = true;
+            OrderCurrentTime = OrderStartTime;
+        }
+
+
+
 
         // All ingredients correct (count == 4)
         if (count == 4)
@@ -128,6 +153,16 @@ public class RRGameMananger : MonoBehaviour
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
             FindObjectOfType<AudioManager>().Play("Rush_Incorrect");
+            Timer.color = Color.red;
+            WhiteTimer = 3;
+            //colorwhite();
+
+            
+               
+                
+           
+            
+
         }
     }
 
@@ -147,8 +182,24 @@ public class RRGameMananger : MonoBehaviour
             ingredients[i].GetComponent<SpriteRenderer>().sprite = ingredientSprites[order[i]];
         }
     }
+    // timer made to change color back to white
+    void colorwhite()
+    {
+        while (WhiteTimer != 0)
+        {
+            WhiteTimer -= 1 * Time.deltaTime;
+            if (WhiteTimer == 0)
+            {
+                Timer.color = Color.white;
+            }
+        }
+        WhiteTimer = 3;
 
-    public void buttonClicked(string button)
+    }
+
+
+
+        public void buttonClicked(string button)
     {
         // If the button required matches the button pressed, button is correct and we add 1 to the (correct button) count
         if (Buttons[order[count]] == button)
@@ -161,6 +212,7 @@ public class RRGameMananger : MonoBehaviour
             // It the button pressed doesn't match, the button is incorrect and we get a new order (Update())
             Debug.Log("Incorrect button " + button);
             incorrectKey = true;
+            CurrentTime = CurrentTime - 5;
         }
     }
 
