@@ -104,7 +104,7 @@ public class RRGameMananger : MonoBehaviour
             NewOrder();
 
             //TODO ADD CORRECT ANSWER SOUND HERE
-            FindObjectOfType<AudioManager>().Play("Rush_Correct");
+            AudioManager.instance.Play("Rush_Correct");
         }
 
         if (incorrectKey == true)
@@ -127,7 +127,7 @@ public class RRGameMananger : MonoBehaviour
             NewOrder();
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
-            FindObjectOfType<AudioManager>().Play("Rush_Incorrect");
+            AudioManager.instance.Play("Rush_Incorrect");
         }
     }
 

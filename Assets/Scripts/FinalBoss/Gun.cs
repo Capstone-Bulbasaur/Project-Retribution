@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     //private Vector3 projectileSpawnLocation;
     protected float lastFireTime;
     private ProjectilePooler projectilePoller;
-    private AudioManager audioManager;
+    //private AudioManager audioManager;
 
     protected bool mouseFire;
     protected bool controllerFire;
@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         projectilePoller = ProjectilePooler.Instance;
-        audioManager = AudioManager.instance;
+        //audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -94,18 +94,18 @@ public class Gun : MonoBehaviour
         if (!isFiring)
         {
             
-            if (audioManager.CheckIfPlaying("Boss_Flame"))
+            if (AudioManager.instance.CheckIfPlaying("Boss_Flame"))
             {
                 //Debug.Log("Is flame playing: " + audioManager.CheckIfPlaying("Boss_Flame"));
-                audioManager.StopPlaying("Boss_Flame");
+                AudioManager.instance.StopPlaying("Boss_Flame");
             }
 
 
-            if (audioManager.CheckIfPlaying("Boss_Water"))
+            if (AudioManager.instance.CheckIfPlaying("Boss_Water"))
             {
                 //Debug.Log("Is Water playing: " + audioManager.CheckIfPlaying("Boss_Water"));
 
-                audioManager.StopPlaying("Boss_Water");
+                AudioManager.instance.StopPlaying("Boss_Water");
             }
         }
         //Debug.Log("Magnitude is: " + aim.phoneRightStickInput.magnitude);
@@ -122,29 +122,29 @@ public class Gun : MonoBehaviour
         {
             case Constants.PickUpDagger:
                 //TODO SOUND
-                if (!audioManager.CheckIfPlaying("Boss_Dagger"))
-                    audioManager.Play("Boss_Dagger");
+                if (!AudioManager.instance.CheckIfPlaying("Boss_Dagger"))
+                    AudioManager.instance.Play("Boss_Dagger");
                 break;
             case Constants.PickUpWater:
                 //TODO ADD SOUND HERE
-                if (!audioManager.CheckIfPlaying("Boss_Water"))
+                if (!AudioManager.instance.CheckIfPlaying("Boss_Water"))
                 {
-                    audioManager.Play("Boss_Water");
+                    AudioManager.instance.Play("Boss_Water");
                     //Debug.Log("Playing Water Sounds");
                 }
                 break;
             case Constants.PickUpFire:
                 //TODO ADD SOUND HERE
-                if (!audioManager.CheckIfPlaying("Boss_Flame"))
+                if (!AudioManager.instance.CheckIfPlaying("Boss_Flame"))
                 {
                     //Debug.Log("Playing Fire Sounds");
-                    audioManager.Play("Boss_Flame");
+                    AudioManager.instance.Play("Boss_Flame");
                 }
                 break;
             case Constants.PickUpElect:
                 //TODO ADD SOUND HERE
-                if (!audioManager.CheckIfPlaying("Boss_Electric"))
-                    audioManager.Play("Boss_Electric");
+                if (!AudioManager.instance.CheckIfPlaying("Boss_Electric"))
+                    AudioManager.instance.Play("Boss_Electric");
                 break;
             default:
                 Debug.LogError("Bad pickup type passed" + type);
