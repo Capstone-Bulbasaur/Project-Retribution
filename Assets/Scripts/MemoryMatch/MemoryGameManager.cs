@@ -124,7 +124,7 @@ public class MemoryGameManager : MonoBehaviour
         }
     }
 
-    void CheckIfTheGameIsFinished()
+    IEnumerator CheckIfTheGameIsFinished()
     {
         countCorrectGuesses++;
         PlayerScore.text = countCorrectGuesses.ToString();
@@ -132,17 +132,20 @@ public class MemoryGameManager : MonoBehaviour
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
-            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.winGameSound);
             FindObjectOfType<AudioManager>().Play("Memory_Win");
-            
+
+            yield return new WaitForSeconds(1.5f);
+
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish the game");
 
             FindObjectOfType<AudioManager>().StopPlaying("Memory_Music");
 
+            //Recruited orry
+            MainGameManager.instance.RecruitAlly(Constants.Orry);
+
+            //Load Hub World
             SceneManager.LoadScene(sceneName: "HubWorld");
-            
-            //RestartGame();
         }
     }
     
@@ -165,14 +168,13 @@ public class MemoryGameManager : MonoBehaviour
             index -= 1;
 
             //Play sound for getting a match right
-            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
             FindObjectOfType<AudioManager>().Play("Memory_Correct");
 
             //Turn images to outlined version
             btns[firstGuessIndex].image.sprite = matched[index];
             btns[secondGuessIndex].image.sprite = matched[index];
             
-            CheckIfTheGameIsFinished();
+            StartCoroutine(CheckIfTheGameIsFinished());
             Debug.Log("Its a MATCH!");
         }
         else

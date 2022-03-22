@@ -13,6 +13,11 @@ public class Constants
     public const int PickUpElect = 3;
     public const int PickUpHealth = 4;
 
+    //Allies
+    public const int Orry = 0;
+    public const int Gaehl = 1;
+    public const int Embre = 3;
+
     public static readonly int[] AllPickupsTypes = new int[4]
     {
         PickUpWater,
