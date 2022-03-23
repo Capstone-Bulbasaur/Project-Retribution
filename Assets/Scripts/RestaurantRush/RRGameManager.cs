@@ -266,15 +266,5 @@ public class RRGameManager : MonoBehaviour
         wrongAnswer.SetActive(false);
     }
 
-    // MS not using both, for now...
-    //void HideBurger()
-    //{
-    //    Burger.SetActive(false);
-    //}
-
-    void HidePlate()
-    {
-        EmptyPlate.SetActive(false);
-    }
 
 }
