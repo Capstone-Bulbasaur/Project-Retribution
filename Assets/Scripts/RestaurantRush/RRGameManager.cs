@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class RRGameMananger : MonoBehaviour
+public class RRGameManager : MonoBehaviour
 {
     private int rand;
     // MS - to keep track of the gameGuesses
@@ -13,6 +13,7 @@ public class RRGameMananger : MonoBehaviour
     private int countGuesses;
     private int countCorrectGuesses;
     private int countFails;
+    private int RightMatch;
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
@@ -24,7 +25,12 @@ public class RRGameMananger : MonoBehaviour
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
-    public TextMeshProUGUI WrongGuesses;
+    //public TextMeshProUGUI WrongGuesses;
+    public TextMeshProUGUI YouWon;
+
+    public List<GameObject> burgers = new List<GameObject>();
+    
+    public GameObject EmptyPlate;
 
     // Primary game time set up
     float CurrentTime;
@@ -52,6 +58,7 @@ public class RRGameMananger : MonoBehaviour
         ingredientBubble.SetActive(false);
         rightAnswer.SetActive(false);
         wrongAnswer.SetActive(false);
+        
     }
     void Start()
     {
@@ -66,20 +73,51 @@ public class RRGameMananger : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Rush_Music");
 
         CurrentTime = StartingTime;
+
+        //AddBurgerstoList();
+
+        foreach (GameObject Burger in burgers) // using directly in update
+        {
+            Burger.SetActive(false);
+        }
+    }
+
+    //Add burgers to the list
+    void AddBurgerstoList()
+    {
+        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
+        
+        // MS - still not sure if this loop is right
+        //for (int i = 0; i < brgr.Length; i++)
+        //{
+        //    burgers.Add(brgr[i].GetComponentInParent<GameObject>());
+        //}
+    }
+
+    // making the burgers on the list appear for every right match
+    void OnTriggerEnter()
+    {
+        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
+        foreach(GameObject Burger in burgers) // using directly in update
+        {
+            Burger.SetActive(true);
+        }
+                
     }
 
     void Update()
     {
         CurrentTime -= 1 * Time.deltaTime;
 
-        if (CurrentTime != 0)
-        {
-            print(CurrentTime);
-        }
-        if (CurrentTime <= 0)
-        {
-            CurrentTime = 0;
-        }
+        // MS - commented out to see other events on the console .
+        //if (CurrentTime != 0)
+        //{
+        //    print(CurrentTime);
+        //}
+        //if (CurrentTime <= 0)
+        //{
+        //    CurrentTime = 0;
+        //}
 
         Timer.text = CurrentTime.ToString("0");
 
@@ -88,9 +126,22 @@ public class RRGameMananger : MonoBehaviour
         {
             // Correct answer visuals
             rightAnswer.SetActive(true);
+            
+            if (countCorrectGuesses < burgers.Count)
+            { 
+                burgers[countCorrectGuesses].SetActive(true);
+            }
+            else
+            {
+                Debug.Log("YOU WON =D"); //YouWon.ToString();
+            }
+            
             // MS - increasing the correct guesses
             countCorrectGuesses++;
             RightGuesses.text = countCorrectGuesses.ToString();
+                  
+            
+            Debug.Log("right answer, new order done!");
 
             //Disable buttons
             for (int i = 0; i < 4; i++)
@@ -99,6 +150,7 @@ public class RRGameMananger : MonoBehaviour
             }
 
             Invoke("HideRightAnswer", 1.0f);
+                    
 
             // Shuffles a new order
             NewOrder();
@@ -106,6 +158,7 @@ public class RRGameMananger : MonoBehaviour
             //TODO ADD CORRECT ANSWER SOUND HERE
             FindObjectOfType<AudioManager>().Play("Rush_Correct");
         }
+         
 
         if (incorrectKey == true)
         {
@@ -113,7 +166,10 @@ public class RRGameMananger : MonoBehaviour
             wrongAnswer.SetActive(true);
             // MS
             countFails++;
-            WrongGuesses.text = countFails.ToString();
+            //WrongGuesses.text = countFails.ToString();
+
+            //EmptyPlate.SetActive(true);
+            Debug.Log("wrong answer, new empty place!");
 
             //Disable buttons
             for (int i = 0; i < 4; i++)
@@ -122,6 +178,8 @@ public class RRGameMananger : MonoBehaviour
             }
 
             Invoke("HideWrongAnswer", 1.0f);
+
+            //Invoke("HidePlate", 1.0f);
 
             // Shuffles a new order
             NewOrder();
@@ -207,4 +265,6 @@ public class RRGameMananger : MonoBehaviour
     {
         wrongAnswer.SetActive(false);
     }
+
+
 }

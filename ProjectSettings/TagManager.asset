@@ -11,6 +11,7 @@ TagManager:
   - Isarr
   - RRButton
   - Electric
+  - Burger
   layers:
   - Default
   - TransparentFX
