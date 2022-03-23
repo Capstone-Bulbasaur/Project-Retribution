@@ -97,12 +97,17 @@ public class RRGameMananger : MonoBehaviour
             SceneManager.LoadScene(sceneName: "HubWorld");
         }
 
+        if (countCorrectGuesses ==6)
+        {
+            SceneManager.LoadScene(sceneName: "HubWorld");
+        }
+
         Timer.text = CurrentTime.ToString("0");
 
         if (OrderCurrentTime <= 0)
         {
             incorrectKey = true;
-            OrderCurrentTime = OrderStartTime;
+           
         }
 
 
@@ -181,6 +186,7 @@ public class RRGameMananger : MonoBehaviour
         {
             ingredients[i].GetComponent<SpriteRenderer>().sprite = ingredientSprites[order[i]];
         }
+        
     }
     // timer made to change color back to white
     void colorwhite()
@@ -240,6 +246,8 @@ public class RRGameMananger : MonoBehaviour
         }
 
         Invoke("HideBubble", 2.0f);
+
+        OrderCurrentTime = OrderStartTime;
     }
 
     // Hides the ingredient bubble
