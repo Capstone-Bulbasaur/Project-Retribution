@@ -23,6 +23,7 @@ public class MemoryGameManager : MonoBehaviour
     private int countFails;
     private int firstGuessIndex, secondGuessIndex;
     private string firstGuessPot, secondGuessPot;
+    private TextMeshProUGUI YouLose;
 
     public List<Button> btns = new List<Button>();
     public Sprite[] pots;
@@ -140,7 +141,7 @@ public class MemoryGameManager : MonoBehaviour
 
             FindObjectOfType<AudioManager>().StopPlaying("Memory_Music");
 
-            SceneManager.LoadScene(sceneName: "HubWorld");
+            SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
             
             //RestartGame();
         }
@@ -195,6 +196,8 @@ public class MemoryGameManager : MonoBehaviour
             //When its restarting its not restarting the correct pots
             if (countFails >= 5)
             {
+                //TextMeshProUGUI YouLose.TosTring() = true;
+
                 RestartGame();
             }
 
