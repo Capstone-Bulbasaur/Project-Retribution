@@ -42,7 +42,7 @@ public class MemoryGameManager : MonoBehaviour
         Shuffle(gamePots);
         CountGameGuesses();
 
-        FindObjectOfType<AudioManager>().Play("Memory_Music");
+        AudioManager.instance.Play("Memory_Music");
     }
 
     void GetButtons()
@@ -94,7 +94,7 @@ public class MemoryGameManager : MonoBehaviour
             /*
              *INSERT SOUNDS HERE FOR SELECTING A POT
              */
-            FindObjectOfType<AudioManager>().Play("Memory_SelectPot");
+            AudioManager.instance.Play("Memory_SelectPot");
 
             firstGuess = true;
             firstGuessIndex = int.Parse(name);
@@ -125,7 +125,7 @@ public class MemoryGameManager : MonoBehaviour
         }
     }
 
-    void CheckIfTheGameIsFinished()
+    IEnumerator CheckIfTheGameIsFinished()
     {
         countCorrectGuesses++;
         PlayerScore.text = countCorrectGuesses.ToString();
@@ -133,14 +133,19 @@ public class MemoryGameManager : MonoBehaviour
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
-            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.winGameSound);
             FindObjectOfType<AudioManager>().Play("Memory_Win");
-            
+
+            yield return new WaitForSeconds(1.5f);
+
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " guess(es) to finish the game");
 
-            FindObjectOfType<AudioManager>().StopPlaying("Memory_Music");
+            AudioManager.instance.StopPlaying("Memory_Music");
 
+
+            //Recruited orry
+            MainGameManager.instance.RecruitAlly(Constants.Orry);
+            
             SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
             
             //RestartGame();
@@ -166,14 +171,13 @@ public class MemoryGameManager : MonoBehaviour
             index -= 1;
 
             //Play sound for getting a match right
-            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.rightMatchSound);
-            FindObjectOfType<AudioManager>().Play("Memory_Correct");
+            AudioManager.instance.Play("Memory_Correct");
 
             //Turn images to outlined version
             btns[firstGuessIndex].image.sprite = matched[index];
             btns[secondGuessIndex].image.sprite = matched[index];
             
-            CheckIfTheGameIsFinished();
+            StartCoroutine(CheckIfTheGameIsFinished());
             Debug.Log("Its a MATCH!");
         }
         else
@@ -183,7 +187,7 @@ public class MemoryGameManager : MonoBehaviour
             PlayerMissed.text = countFails.ToString();
 
             //Play sound for getting a match wrong
-            FindObjectOfType<AudioManager>().Play("Memory_Wrong");
+            AudioManager.instance.Play("Memory_Wrong");
 
             //Turn images to blank version 
             btns[firstGuessIndex].image.sprite = back;

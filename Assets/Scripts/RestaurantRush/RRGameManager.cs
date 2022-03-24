@@ -186,7 +186,7 @@ public class RRGameManager : MonoBehaviour
             NewOrder();
 
             //TODO ADD CORRECT ANSWER SOUND HERE
-            FindObjectOfType<AudioManager>().Play("Rush_Correct");
+            AudioManager.instance.Play("Rush_Correct");
         }
          
 
@@ -217,8 +217,8 @@ public class RRGameManager : MonoBehaviour
             NewOrder();
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
-            FindObjectOfType<AudioManager>().Play("Rush_Incorrect");
-
+            AudioManager.instance.Play("Rush_Incorrect");
+            
             Timer.color = Color.red;
             WhiteTimer = 3;
         }

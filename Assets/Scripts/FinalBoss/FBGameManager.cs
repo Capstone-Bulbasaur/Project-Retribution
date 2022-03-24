@@ -47,7 +47,7 @@ public class FBGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("Boss_Music");
+        AudioManager.instance.Play("Boss_Music");
         projectilePoller = ProjectilePooler.Instance;
     }
 
@@ -58,6 +58,8 @@ public class FBGameManager : MonoBehaviour
         {
             return;
         }
+
+        //SPAWN MINIONS CODE
         currentSpawnTime += Time.deltaTime;
 
         if (currentSpawnTime > generatedSpawnTime)
@@ -103,6 +105,8 @@ public class FBGameManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     public void RemoveEnemy()
