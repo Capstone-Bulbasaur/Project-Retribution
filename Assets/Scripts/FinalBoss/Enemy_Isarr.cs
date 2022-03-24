@@ -82,9 +82,9 @@ public class Enemy_Isarr : MonoBehaviour
     }
 
     // Health bar 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damages)
     {
-        currentHealth -= damage; 
+        currentHealth -= damages; 
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
