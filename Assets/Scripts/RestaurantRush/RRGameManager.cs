@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class RRGameManager : MonoBehaviour
@@ -39,6 +40,8 @@ public class RRGameManager : MonoBehaviour
     public float OrderStartTime = 10;
     float OrderCurrentTime;
 
+    public float WhiteTimer = 3;
+
     public int maxNumCustomers;
     int CurrentNumCustomers;
 
@@ -58,7 +61,9 @@ public class RRGameManager : MonoBehaviour
         ingredientBubble.SetActive(false);
         rightAnswer.SetActive(false);
         wrongAnswer.SetActive(false);
-        
+        CurrentTime = StartingTime;
+        OrderCurrentTime = OrderStartTime;
+
     }
     void Start()
     {
@@ -108,6 +113,9 @@ public class RRGameManager : MonoBehaviour
     void Update()
     {
         CurrentTime -= 1 * Time.deltaTime;
+        WhiteTimer -= 1 * Time.deltaTime;
+        OrderCurrentTime -= 1 * Time.deltaTime;
+
 
         // MS - commented out to see other events on the console .
         //if (CurrentTime != 0)
@@ -118,12 +126,34 @@ public class RRGameManager : MonoBehaviour
         //{
         //    CurrentTime = 0;
         //}
+        if (WhiteTimer <= 0)
+        {
+            Timer.color = Color.white;
+
+
+        }
+        if (CurrentTime >= 0)
+        {
+            SceneManager.LoadScene(sceneName: "HubWorld");
+        }
+
+        if (countCorrectGuesses == 6)
+        {
+            SceneManager.LoadScene(sceneName: "HubWorld");
+        }
 
         Timer.text = CurrentTime.ToString("0");
+
+        if (OrderCurrentTime <= 0)
+        {
+            incorrectKey = true;
+
+        }
 
         // All ingredients correct (count == 4)
         if (count == 4)
         {
+            OrderCurrentTime = OrderStartTime;
             // Correct answer visuals
             rightAnswer.SetActive(true);
             
@@ -162,6 +192,8 @@ public class RRGameManager : MonoBehaviour
 
         if (incorrectKey == true)
         {
+            CurrentTime = CurrentTime - 5;
+            OrderCurrentTime = OrderStartTime;
             // Incorrect answer visuals
             wrongAnswer.SetActive(true);
             // MS
@@ -186,6 +218,9 @@ public class RRGameManager : MonoBehaviour
 
             //TODO ADD INCORRECT ANSWER SOUND HERE
             FindObjectOfType<AudioManager>().Play("Rush_Incorrect");
+
+            Timer.color = Color.red;
+            WhiteTimer = 3;
         }
     }
 
@@ -219,6 +254,7 @@ public class RRGameManager : MonoBehaviour
             // It the button pressed doesn't match, the button is incorrect and we get a new order (Update())
             Debug.Log("Incorrect button " + button);
             incorrectKey = true;
+            
         }
     }
 
