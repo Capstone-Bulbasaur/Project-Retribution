@@ -67,6 +67,7 @@ public class RRGameManager : MonoBehaviour
     }
     void Start()
     {
+        CurrentTime = StartingTime;
         //Disable buttons
         for (int i = 0; i < 4; i++)
         {
@@ -132,10 +133,10 @@ public class RRGameManager : MonoBehaviour
 
 
         }
-        if (CurrentTime >= 0)
-        {
-            SceneManager.LoadScene(sceneName: "HubWorld");
-        }
+        //if (CurrentTime >= 0)
+        //{
+        //    SceneManager.LoadScene(sceneName: "HubWorld");
+        //}
 
         if (countCorrectGuesses == 6)
         {
