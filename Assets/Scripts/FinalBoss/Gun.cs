@@ -59,6 +59,7 @@ public class Gun : MonoBehaviour
         {
             lastFireTime = Time.time;
             phoneFire = true;
+            isFiring = true;
         }
 
         if (aim.phoneRightStickInput.magnitude < 0.5)

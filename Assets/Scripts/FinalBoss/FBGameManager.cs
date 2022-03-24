@@ -58,6 +58,8 @@ public class FBGameManager : MonoBehaviour
         {
             return;
         }
+
+        //SPAWN MINIONS CODE
         currentSpawnTime += Time.deltaTime;
 
         if (currentSpawnTime > generatedSpawnTime)
@@ -103,6 +105,8 @@ public class FBGameManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     public void RemoveEnemy()
