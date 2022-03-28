@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 503157012}
   - component: {fileID: 503157013}
   - component: {fileID: 1314290390}
-  m_Layer: 0
+  - component: {fileID: 879577703}
+  m_Layer: 9
   m_Name: Isarr1
-  m_TagString: Untagged
+  m_TagString: Isarr
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +98,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0029307604, y: 0}
@@ -121,7 +122,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503157007}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -146,10 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1a73d9f34505d40a12b6ac43e60e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  stoppingDistance: 5
+  speed: 4
+  stoppingDistance: 6
   retreatDistance: 4
-  startTimeBtwShots: 1
+  startTimeBtwShots: 0.5
+  projectileSpeed: 10
+  damage: 1
   projectile: {fileID: 8961840562195552317, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
   player: {fileID: 0}
   projRange: 5
@@ -169,9 +172,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00000023841858}
+  m_Offset: {x: 0.009312474, y: -0.0829797}
   serializedVersion: 2
-  m_Radius: 1.0000001
+  m_Radius: 0.4382592
 --- !u!95 &1314290390
 Animator:
   serializedVersion: 3
@@ -191,6 +194,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &879577703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503157007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a62e727e5930643a3bcfe1e7e35592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentNPCConvo: {fileID: 11400000, guid: bbe0fd5457fe0d64bb97ffcb41061c51, type: 2}
+  dialoguePlayed: 0
 --- !u!1 &6717609807322852987
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6717609807322852986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Isarr
   m_TagString: Untagged
   m_Icon: {fileID: 0}

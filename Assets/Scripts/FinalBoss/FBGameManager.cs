@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,6 @@ public class FBGameManager : MonoBehaviour
     public static FBGameManager instance;
 
     public GameObject player;
-    public Enemy_Isarr isarr;
     public GameObject minion;
     public GameObject[] spawnPoints;
     public int maxMinionsOnScreen;
@@ -18,11 +18,15 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
 
+    public GameObject pasifistGraey;
+
     public int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
     private bool isGameOver;
+    private Enemy_Isarr isarr;
+
 
     private void Awake()
     {
@@ -68,6 +72,13 @@ public class FBGameManager : MonoBehaviour
             if (isarr.GetHealth() <= 0)
             {
                 isGameOver = true;
+
+                //var j = FindObjectOfType<NPCInteract>();
+                //j.Interact();
+
+                pasifistGraey.transform.position = player.transform.position;
+                pasifistGraey.SetActive(true);
+                player.SetActive(false);
             }
 
             //SPAWN MINIONS CODE

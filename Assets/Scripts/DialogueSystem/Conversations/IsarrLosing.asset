@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: IsarrLosing
   m_EditorClassIdentifier: 
   allLines:
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 7430057ca83c79b47951acdff1eae5c9, type: 2}
     dialogue: NOOOOOO!
-  - speaker: {fileID: 0}
-    dialogue: Yes
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: 'Yes. You cannot beat the amazing Graey. '
+  - speaker: {fileID: 11400000, guid: 7430057ca83c79b47951acdff1eae5c9, type: 2}
+    dialogue: I can't believe I messed up so bad. I can do better! Please let me
+      LIVE!!
