@@ -76,7 +76,7 @@ public class RRGameManager : MonoBehaviour
 
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 7.0f);
-        FindObjectOfType<AudioManager>().Play("Rush_Music");
+        AudioManager.instance.Play("Rush_Music");
 
         CurrentTime = StartingTime;
 
@@ -148,7 +148,6 @@ public class RRGameManager : MonoBehaviour
         if (OrderCurrentTime <= 0)
         {
             incorrectKey = true;
-
         }
 
         // All ingredients correct (count == 4)

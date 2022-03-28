@@ -149,8 +149,9 @@ public class MemoryGameManager : MonoBehaviour
 
 
             //Recruited orry
-            MainGameManager.instance.RecruitAlly(Constants.Orry);
-            
+            //MainGameManager.instance.RecruitAlly(Constants.Orry);
+            PlayerPrefs.SetInt("RecruitedOrry", 1);
+
             SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
             
             //RestartGame();

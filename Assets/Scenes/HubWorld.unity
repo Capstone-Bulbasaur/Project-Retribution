@@ -352,6 +352,10 @@ PrefabInstance:
       propertyPath: Graey
       value: 
       objectReference: {fileID: 113655948}
+    - target: {fileID: 435909050, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
+      propertyPath: soundManagerPrefab
+      value: 
+      objectReference: {fileID: 4306212990938428966, guid: 63b7ba3448154fc418e520fcc9b1dcbe, type: 3}
     - target: {fileID: 6582104429561539980, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
       propertyPath: m_RootOrder
       value: 1
