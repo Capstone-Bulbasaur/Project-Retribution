@@ -209,6 +209,14 @@ PrefabInstance:
       propertyPath: letsGoAnimator
       value: 
       objectReference: {fileID: 1013382804}
+    - target: {fileID: 1539035552, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
+    - target: {fileID: 1539035552, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8404971581771497421, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
     - target: {fileID: 6525226458090161267, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: m_Name
       value: DialogueManager
@@ -733,17 +741,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5440508632765117024, guid: 2c34964b3a71de542bcf4c935632a3e1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6841119448800280046, guid: 2c34964b3a71de542bcf4c935632a3e1, type: 3}
       propertyPath: m_Name
       value: HubWorldMap
-      objectReference: {fileID: 0}
-    - target: {fileID: 6873097785063312487, guid: 2c34964b3a71de542bcf4c935632a3e1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c34964b3a71de542bcf4c935632a3e1, type: 3}
