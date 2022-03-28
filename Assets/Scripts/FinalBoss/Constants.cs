@@ -16,7 +16,7 @@ public class Constants
     //Allies
     public const int Orry = 0;
     public const int Gaehl = 1;
-    public const int Embre = 3;
+    public const int Embre = 2;
 
     public static readonly int[] AllPickupsTypes = new int[4]
     {

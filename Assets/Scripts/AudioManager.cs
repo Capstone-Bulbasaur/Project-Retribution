@@ -3,6 +3,8 @@ using UnityEngine.Audio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using Object = UnityEngine.Object;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,8 +21,10 @@ public class AudioManager : MonoBehaviour
                 _Instance = GameObject.FindObjectOfType<AudioManager>();
                 if (_Instance == null)
                 {
-                    GameObject container = new GameObject("AudioManager");
-                    _Instance = container.AddComponent<AudioManager>();
+                    //GameObject container = new GameObject("AudioManager");
+                    //Instantiate(MainGameManager.instance.soundManagerPrefab);
+                    GameObject container = Instantiate(Resources.Load("SoundManager", typeof(GameObject))) as GameObject;
+                    _Instance = GameObject.FindObjectOfType<AudioManager>();
                 }
             }
             return _Instance;
@@ -64,8 +68,6 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volume / 2f, s.volume / 2f));
-        //s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitch / 2f, s.pitch / 2f));
-        //s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitch / 2f, s.pitch / 2f));
 
         s.source.Stop ();
     }
