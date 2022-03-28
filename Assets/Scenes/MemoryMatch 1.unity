@@ -698,10 +698,30 @@ PrefabInstance:
       propertyPath: youLosePanel
       value: 
       objectReference: {fileID: 1310674156}
+    - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
+      propertyPath: pots.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
+      propertyPath: matched.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
+      propertyPath: pots.Array.data[3]
+      value: 
+      objectReference: {fileID: -924255254367354130, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
+    - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
+      propertyPath: matched.Array.data[3]
+      value: 
+      objectReference: {fileID: 6418855237769921834, guid: b89489017fce54d44bbcb8e0b9fb56d1, type: 3}
     - target: {fileID: 263674629502556732, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
       propertyPath: puzzleZone
       value: 
       objectReference: {fileID: 1525598493}
+    - target: {fileID: 263674629502556732, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
+      propertyPath: numberOfPots
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2313116979496226403, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -138,7 +138,7 @@ public class MemoryGameManager : MonoBehaviour
         if (countCorrectGuesses == gameGuesses)
         {
             //Play sound for completing the game
-            FindObjectOfType<AudioManager>().Play("Memory_Win");
+            AudioManager.instance.Play("Memory_Win");
 
             yield return new WaitForSeconds(1.5f);
 

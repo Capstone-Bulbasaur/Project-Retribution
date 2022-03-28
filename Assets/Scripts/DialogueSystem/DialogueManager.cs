@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = "";
         callback = callb;
 
-        FindObjectOfType<AudioManager>().Play("Hub_DialoguePop");
+        AudioManager.instance.Play("Hub_DialoguePop");
     }
 
     public void ReadNext()
@@ -147,19 +147,19 @@ public class DialogueManager : MonoBehaviour
 
     void OpenMemoryMatch()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
+        AudioManager.instance.StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "MemoryMatch 1");
     }
 
     void OpenFinalBossBattle()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
+        AudioManager.instance.StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "FinalBoss");
     }
 
     void OpenRestaurantRush()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
+        AudioManager.instance.StopPlaying("Hub_Music");
         SceneManager.LoadScene(sceneName: "RestaurantRush");
     }
 

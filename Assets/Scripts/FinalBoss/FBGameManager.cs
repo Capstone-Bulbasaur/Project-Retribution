@@ -9,7 +9,7 @@ public class FBGameManager : MonoBehaviour
     public static FBGameManager instance;
 
     public GameObject player;
-    public GameObject isarr;
+    public Enemy_Isarr isarr;
     public GameObject minion;
     public GameObject[] spawnPoints;
     public int maxMinionsOnScreen;
@@ -22,6 +22,7 @@ public class FBGameManager : MonoBehaviour
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
+    private bool isGameOver;
 
     private void Awake()
     {
@@ -49,6 +50,8 @@ public class FBGameManager : MonoBehaviour
     {
         AudioManager.instance.Play("Boss_Music");
         projectilePoller = ProjectilePooler.Instance;
+
+        isarr = FindObjectOfType<Enemy_Isarr>();
     }
 
     // Update is called once per frame
@@ -59,54 +62,61 @@ public class FBGameManager : MonoBehaviour
             return;
         }
 
-        //SPAWN MINIONS CODE
-        currentSpawnTime += Time.deltaTime;
-
-        if (currentSpawnTime > generatedSpawnTime)
+        if (!isGameOver)
         {
-            currentSpawnTime = 0;
-            generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-
-            if (minionsPerSpawn > 0 && minionsOnScreen < totalMinions)
+            //Set game over if Isarr's health goes to 0 or below
+            if (isarr.GetHealth() <= 0)
             {
-                List<int> previousSpawnLocations = new List<int>();
+                isGameOver = true;
+            }
 
-                if (minionsPerSpawn > spawnPoints.Length)
+            //SPAWN MINIONS CODE
+            currentSpawnTime += Time.deltaTime;
+
+            if (currentSpawnTime > generatedSpawnTime)
+            {
+                currentSpawnTime = 0;
+                generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+
+                if (minionsPerSpawn > 0 && minionsOnScreen < totalMinions)
                 {
-                    minionsPerSpawn = spawnPoints.Length - 1;
-                }
+                    List<int> previousSpawnLocations = new List<int>();
 
-                minionsPerSpawn = (minionsPerSpawn > totalMinions) ? minionsPerSpawn - totalMinions : minionsPerSpawn;
-
-                for (int i = 0; i < minionsPerSpawn; i++)
-                {
-                    if (minionsOnScreen < maxMinionsOnScreen)
+                    if (minionsPerSpawn > spawnPoints.Length)
                     {
-                        // 1
-                        int spawnPoint = -1;
-                        // 2
-                        while (spawnPoint == -1)
+                        minionsPerSpawn = spawnPoints.Length - 1;
+                    }
+
+                    minionsPerSpawn = (minionsPerSpawn > totalMinions) ? minionsPerSpawn - totalMinions : minionsPerSpawn;
+
+                    for (int i = 0; i < minionsPerSpawn; i++)
+                    {
+                        if (minionsOnScreen < maxMinionsOnScreen)
                         {
-                            // 3
-                            int randomNumber = Random.Range(0, spawnPoints.Length);
-                            // 4
-                            if (!previousSpawnLocations.Contains(randomNumber))
+                            // 1
+                            int spawnPoint = -1;
+                            // 2
+                            while (spawnPoint == -1)
                             {
-                                previousSpawnLocations.Add(randomNumber);
-                                spawnPoint = randomNumber;
+                                // 3
+                                int randomNumber = Random.Range(0, spawnPoints.Length);
+                                // 4
+                                if (!previousSpawnLocations.Contains(randomNumber))
+                                {
+                                    previousSpawnLocations.Add(randomNumber);
+                                    spawnPoint = randomNumber;
+                                }
                             }
+                            GameObject spawnLocation = spawnPoints[spawnPoint];
+                            //GameObject newMinion = Instantiate(minion);
+                            //newMinion.transform.position = spawnLocation.transform.position;
+                            projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
+                            minionsOnScreen += 1;
                         }
-                        GameObject spawnLocation = spawnPoints[spawnPoint];
-                        //GameObject newMinion = Instantiate(minion);
-                        //newMinion.transform.position = spawnLocation.transform.position;
-                        projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
-                        minionsOnScreen += 1;
                     }
                 }
             }
         }
-
-
     }
 
     public void RemoveEnemy()
