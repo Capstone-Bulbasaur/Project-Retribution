@@ -620,11 +620,11 @@ PrefabInstance:
       objectReference: {fileID: 1072101477}
     - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
       propertyPath: pots.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
       propertyPath: matched.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 717499829, guid: b13be5b54cc07fb4ab6b619640af09b9, type: 3}
       propertyPath: pots.Array.data[3]
