@@ -7,6 +7,7 @@ using GameObject = UnityEngine.GameObject;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using TMPro;
+
 /*
  * FOLLOWED THIS TUTORIAL: https://www.youtube.com/watch?v=qaCjBh7bWz0&list=PLZhNP5qJ2IA2DA4bzDyxFMs8yogVQSrjW&ab_channel=AwesomeTuts and adapted to our game
  */
@@ -34,6 +35,8 @@ public class MemoryGameManager : MonoBehaviour
     public float PlayerXpos;
     public float PlayerYpos;
 
+    public GameObject youLosePanel;
+
     void Start()
     {
         GetButtons();
@@ -42,6 +45,8 @@ public class MemoryGameManager : MonoBehaviour
         Shuffle(gamePots);
         CountGameGuesses();
 
+        youLosePanel.SetActive(false);
+        
         AudioManager.instance.Play("Memory_Music");
     }
 
@@ -162,9 +167,9 @@ public class MemoryGameManager : MonoBehaviour
         {
             //yield return new WaitForSeconds(.5f);
 
-            //Make buttons no longer interactable
-            //btns[firstGuessIndex].interactable = false;
-           // btns[secondGuessIndex].interactable = false;
+            // Make buttons no longer interactable
+            // btns[firstGuessIndex].interactable = false;
+            // btns[secondGuessIndex].interactable = false;
             
             var result = btns[firstGuessIndex].image.sprite.name.Remove(0, 16);
             
@@ -201,7 +206,10 @@ public class MemoryGameManager : MonoBehaviour
             //When its restarting its not restarting the correct pots
             if (countFails >= 5)
             {
-                //TextMeshProUGUI YouLose.TosTring() = true;
+                // got part of the Lose panel solution on this tutorial: https://www.youtube.com/watch?v=e0feEWLRSYI
+                youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
+                yield return new WaitForSeconds(2.0f); // wait for 2s
+                youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
 
                 RestartGame();
             }

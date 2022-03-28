@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
     public void Play(string name)
     {
