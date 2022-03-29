@@ -99,7 +99,6 @@ public class Enemy_Isarr : MonoBehaviour
         if (currentHealth <= 0)
         {
             AudioManager.instance.StopPlaying("Boss_Music");
-            AudioManager.instance.Play("Boss_IsarrDeath");
         }
     }
 

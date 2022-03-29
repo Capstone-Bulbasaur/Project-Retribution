@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,12 +18,14 @@ public class LevelChanger : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        //gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //}
+    private void Start()
+    {
+        this.gameObject.SetActive(true);
+    }
 
     public void FadeToLevel(int levelIndex)
     {
