@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using Object = UnityEngine.Object;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,10 +18,17 @@ public class AudioManager : MonoBehaviour
                 _Instance = GameObject.FindObjectOfType<AudioManager>();
                 if (_Instance == null)
                 {
-                    //GameObject container = new GameObject("AudioManager");
-                    //Instantiate(MainGameManager.instance.soundManagerPrefab);
                     GameObject container = Instantiate(Resources.Load("SoundManager", typeof(GameObject))) as GameObject;
-                    _Instance = GameObject.FindObjectOfType<AudioManager>();
+
+                    if (container != null)
+                    {
+                        AudioManager aud = container.GetComponent<AudioManager>();
+
+                        if (aud != null)
+                        {
+                            _Instance = aud;
+                        }
+                    }
                 }
             }
             return _Instance;
@@ -42,8 +46,6 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-
-        //DontDestroyOnLoad(this.gameObject);
     }
     public void Play(string name)
     {

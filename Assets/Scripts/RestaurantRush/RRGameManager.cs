@@ -143,7 +143,7 @@ public class RRGameManager : MonoBehaviour
 
         if (countCorrectGuesses == 6)
         {
-            SceneManager.LoadScene(sceneName: "HubWorld");
+            LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
         }
 
         Timer.text = CurrentTime.ToString("0");

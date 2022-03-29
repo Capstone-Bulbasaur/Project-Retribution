@@ -15,12 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MemoryMatch 1.unity
     guid: 79ab7e47a3c0ebe419b50b8262ded20c
   - enabled: 1
-    path: Assets/Scenes/RestaurantRush.unity
-    guid: 75a7ef7f145991845b3c954289cede5b
-  - enabled: 1
     path: Assets/Scenes/MM-Midscene-YouWin.unity
     guid: 1780e3199eb2f5740ab01e898a08a81b
   - enabled: 1
+    path: Assets/Scenes/RestaurantRush.unity
+    guid: 75a7ef7f145991845b3c954289cede5b
+  - enabled: 1
     path: Assets/Scenes/FinalBoss.unity
     guid: 18d7b451fcc24f0439b7574cc7125b93
+  - enabled: 1
+    path: Assets/Scenes/FinalBossWinDialogue.unity
+    guid: 2d2e16bef61fcd449abe97978e07152b
   m_configObjects: {}

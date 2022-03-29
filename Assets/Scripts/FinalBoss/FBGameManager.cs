@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,6 @@ public class FBGameManager : MonoBehaviour
     public static FBGameManager instance;
 
     public GameObject player;
-    public GameObject isarr;
     public GameObject minion;
     public GameObject[] spawnPoints;
     public int maxMinionsOnScreen;
@@ -18,10 +18,13 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
 
-    public int minionsOnScreen = 0;
+    private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
+    private bool isGameOver;
+    private Enemy_Isarr isarr;
+
 
     private void Awake()
     {
@@ -39,9 +42,9 @@ public class FBGameManager : MonoBehaviour
         //functionality to enter pause menu will go here
     }
 
-    private void GameOver()
+    public bool CheckGameOver()
     {
-        //restart scene, flash a canvas of "You Died" or sumthin
+        return isGameOver;
     }
 
     // Start is called before the first frame update
@@ -49,6 +52,8 @@ public class FBGameManager : MonoBehaviour
     {
         AudioManager.instance.Play("Boss_Music");
         projectilePoller = ProjectilePooler.Instance;
+
+        isarr = FindObjectOfType<Enemy_Isarr>();
     }
 
     // Update is called once per frame
@@ -59,54 +64,73 @@ public class FBGameManager : MonoBehaviour
             return;
         }
 
-        //SPAWN MINIONS CODE
-        currentSpawnTime += Time.deltaTime;
-
-        if (currentSpawnTime > generatedSpawnTime)
+        if (!isGameOver)
         {
-            currentSpawnTime = 0;
-            generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-
-            if (minionsPerSpawn > 0 && minionsOnScreen < totalMinions)
+            //Set game over if Isarr's health goes to 0 or below
+            if (isarr.GetHealth() <= 0)
             {
-                List<int> previousSpawnLocations = new List<int>();
+                isGameOver = true;
 
-                if (minionsPerSpawn > spawnPoints.Length)
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSWIN);
+            }
+            else if (isarr.GetHealth() <= 50)
+            {
+                maxSpawnTime = 1.5f;
+                minSpawnTime = 0.5f;
+            }
+            else if (isarr.GetHealth() <= 25)
+            {
+                maxSpawnTime = 0.5f;
+                minSpawnTime = 0f;
+            }
+
+            //SPAWN MINIONS CODE
+            currentSpawnTime += Time.deltaTime;
+
+            if (currentSpawnTime > generatedSpawnTime)
+            {
+                currentSpawnTime = 0;
+                generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+
+                if (minionsPerSpawn > 0 && minionsOnScreen < totalMinions)
                 {
-                    minionsPerSpawn = spawnPoints.Length - 1;
-                }
+                    List<int> previousSpawnLocations = new List<int>();
 
-                minionsPerSpawn = (minionsPerSpawn > totalMinions) ? minionsPerSpawn - totalMinions : minionsPerSpawn;
-
-                for (int i = 0; i < minionsPerSpawn; i++)
-                {
-                    if (minionsOnScreen < maxMinionsOnScreen)
+                    if (minionsPerSpawn > spawnPoints.Length)
                     {
-                        // 1
-                        int spawnPoint = -1;
-                        // 2
-                        while (spawnPoint == -1)
+                        minionsPerSpawn = spawnPoints.Length - 1;
+                    }
+
+                    minionsPerSpawn = (minionsPerSpawn > totalMinions) ? minionsPerSpawn - totalMinions : minionsPerSpawn;
+
+                    for (int i = 0; i < minionsPerSpawn; i++)
+                    {
+                        if (minionsOnScreen < maxMinionsOnScreen)
                         {
-                            // 3
-                            int randomNumber = Random.Range(0, spawnPoints.Length);
-                            // 4
-                            if (!previousSpawnLocations.Contains(randomNumber))
+                            // 1
+                            int spawnPoint = -1;
+                            // 2
+                            while (spawnPoint == -1)
                             {
-                                previousSpawnLocations.Add(randomNumber);
-                                spawnPoint = randomNumber;
+                                // 3
+                                int randomNumber = Random.Range(0, spawnPoints.Length);
+                                // 4
+                                if (!previousSpawnLocations.Contains(randomNumber))
+                                {
+                                    previousSpawnLocations.Add(randomNumber);
+                                    spawnPoint = randomNumber;
+                                }
                             }
+                            GameObject spawnLocation = spawnPoints[spawnPoint];
+                            //GameObject newMinion = Instantiate(minion);
+                            //newMinion.transform.position = spawnLocation.transform.position;
+                            projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
+                            minionsOnScreen += 1;
                         }
-                        GameObject spawnLocation = spawnPoints[spawnPoint];
-                        //GameObject newMinion = Instantiate(minion);
-                        //newMinion.transform.position = spawnLocation.transform.position;
-                        projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
-                        minionsOnScreen += 1;
                     }
                 }
             }
         }
-
-
     }
 
     public void RemoveEnemy()

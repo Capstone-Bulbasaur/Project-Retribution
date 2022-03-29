@@ -45,34 +45,43 @@ public class Enemy_Isarr : MonoBehaviour
 
     void Update()
     {
-        // Isarr movements
-        if(Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        if (currentHealth > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        }
-        else if(Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
-        {
-            transform.position = this.transform.position;
-        }
-        else if(Vector2.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        }
+            // Isarr movements
+            if(Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            }
+            else if(Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
+            {
+                transform.position = this.transform.position;
+            }
+            else if(Vector2.Distance(transform.position, player.position) < retreatDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            }
 
-        // Isarr shoot
-        if(timeBtwShots <= 0)
-        {
-            GameObject projectileTransform = null;
-            var shootDir = player.transform.position - gameObject.transform.position;
-            //projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
-            projectileTransform = projectilePoller.SpawnFromPool("Isarr", transform.position);
-            projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange, damage, projectileSpeed);
-            timeBtwShots = startTimeBtwShots;
+            // Isarr shoot
+            if(timeBtwShots <= 0)
+            {
+                GameObject projectileTransform = null;
+                var shootDir = player.transform.position - gameObject.transform.position;
+                //projectileTransform = Instantiate(projectile, transform.position, Quaternion.identity);
+                projectileTransform = projectilePoller.SpawnFromPool("Isarr", transform.position);
+                projectileTransform.GetComponentInChildren<Projectile>().Setup(shootDir.normalized, projRange, damage, projectileSpeed);
+                timeBtwShots = startTimeBtwShots;
+            }
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+            }
         }
         else
         {
-            timeBtwShots -= Time.deltaTime;
+            //Move Isarr to the middle of the field
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(1, -5), speed * Time.deltaTime);
         }
+       
 
         // Health bar tester
         if (Input.GetKeyDown(KeyCode.Space))
@@ -89,9 +98,13 @@ public class Enemy_Isarr : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            FindObjectOfType<AudioManager>().StopPlaying("Boss_Music");
-            FindObjectOfType<AudioManager>().Play("Boss_IsarrDeath");
+            AudioManager.instance.StopPlaying("Boss_Music");
         }
+    }
+
+    public int GetHealth()
+    {
+        return currentHealth;
     }
 
 }

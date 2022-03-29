@@ -18,16 +18,6 @@ public class MainGameManager : MonoBehaviour
     public Vector2 GraeyPosition;
     public GameObject Graey;
 
-    public Vector2 GetGraeyPosition() // not using it
-    {
-        return GraeyPosition;
-    }
-
-    public void SetGraeyPosition() // not using it
-    {
-        GraeyPosition = Graey.transform.position;
-    }
-    
     private void Awake()
     {
         if (instance == null)
@@ -42,23 +32,27 @@ public class MainGameManager : MonoBehaviour
 
     void Start()
     {
+        //Check if the scene is the hub world
         if (SceneManager.GetActiveScene().name == "HubWorld")
         {
             AudioManager.instance.StopPlaying("Menu_Music");
             AudioManager.instance.Play("Hub_Music");
         }
 
+        //Check if the scene is the main menu
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             AudioManager.instance.Play("Menu_Music");
         }
         else
         {
+            //Set players position to the saved player preference location
             if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
             {
                 Graey.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"));
             }
 
+            //Set the ally recruitment
             if (PlayerPrefs.HasKey("RecruitedOrry") || PlayerPrefs.HasKey("RecruitedGaehl") ||
                 PlayerPrefs.HasKey("RecruitedEmbre"))
             {
@@ -66,23 +60,19 @@ public class MainGameManager : MonoBehaviour
                 recruitedGaehl = (PlayerPrefs.GetInt("RecruitedGaehl") != 0);
                 recruitedEmbre = (PlayerPrefs.GetInt("RecruitedEmbre") != 0);
             }
-
-            Debug.Log("Is orry recruited: " + recruitedOrry);
         }
-        
     }
 
     public void StartScene()
     {
         PlayerPrefs.DeleteAll();
-        AudioManager.instance.StopPlaying("Menu_Music");
-        SceneManager.LoadScene("HubWorld");
+        ContinueScene();
     }
 
     public void ContinueScene()
     { 
        AudioManager.instance.StopPlaying("Menu_Music");
-       SceneManager.LoadScene("HubWorld");
+       LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
     }
 
     public void RecruitAlly(int character)
@@ -105,6 +95,5 @@ public class MainGameManager : MonoBehaviour
                 Debug.LogError("Invalid ally type passed");
                 break;
         }
-        
     }
 }

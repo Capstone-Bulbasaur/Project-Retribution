@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = "";
         callback = callb;
 
-        FindObjectOfType<AudioManager>().Play("Hub_DialoguePop");
+        AudioManager.instance.Play("Hub_DialoguePop");
     }
 
     public void ReadNext()
@@ -84,38 +84,19 @@ public class DialogueManager : MonoBehaviour
 
             if (speakerName.text == "Orry")
             {
-                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
-                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
-
-                if (letsGo != null)
-                    letsGo.SetActive(true);
-
-                Invoke("OpenMemoryMatch", 2.5f);
-                letsGoAnimator.SetBool("OpenMM", true);
+                LetsGoAnimationSceneLoad("OpenMemoryMatch");
             }
-
-            if (speakerName.text == "Minion")
+            else if (speakerName.text == "Minion")
             {
-                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
-                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
-
-                if (letsGo != null)
-                    letsGo.SetActive(true);
-
-                Invoke("OpenFinalBossBattle", 2.5f);
-                letsGoAnimator.SetBool("OpenMM", true);
+                LetsGoAnimationSceneLoad("OpenFinalBossBattle");
+            } 
+            else if (speakerName.text == "Embre")
+            {
+                LetsGoAnimationSceneLoad("OpenRestaurantRush");
             }
-
-            if (speakerName.text == "Embre")
+            else if (speakerName.text == "Isarr")
             {
-                PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
-                PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
-
-                if (letsGo != null)
-                    letsGo.SetActive(true);
-
-                Invoke("OpenRestaurantRush", 2.5f);
-                letsGoAnimator.SetBool("OpenMM", true);
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
             }
 
             return;
@@ -144,23 +125,34 @@ public class DialogueManager : MonoBehaviour
             button.GetComponent<Image>().sprite = closeDialogueSprite;
         }
     }
+    void LetsGoAnimationSceneLoad(string functionName)
+    {
+        PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
+        PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
+
+        if (letsGo != null)
+            letsGo.SetActive(true);
+
+        Invoke(functionName, 2.5f);
+        letsGoAnimator.SetBool("OpenMM", true);
+    }
 
     void OpenMemoryMatch()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
-        SceneManager.LoadScene(sceneName: "MemoryMatch 1");
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MEMMATCHGAME);
     }
 
     void OpenFinalBossBattle()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
-        SceneManager.LoadScene(sceneName: "FinalBoss");
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSGAME);
     }
 
     void OpenRestaurantRush()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Hub_Music");
-        SceneManager.LoadScene(sceneName: "RestaurantRush");
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRGAME);
     }
 
     // Types out the dialogue lines

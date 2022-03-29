@@ -27,6 +27,14 @@ public class Minion : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (gameManager.CheckGameOver())
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     private void OnDisable()
     {
         if (ProjectilePooler.Instance.isLoaded)

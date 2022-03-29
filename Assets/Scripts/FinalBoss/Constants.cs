@@ -18,6 +18,17 @@ public class Constants
     public const int Gaehl = 1;
     public const int Embre = 2;
 
+    public enum gameScenes
+    {
+        MAINMENU = 0,
+        HUBWORLD,
+        MEMMATCHGAME,
+        MEMMATCHWIN,
+        RRGAME,
+        FINALBOSSGAME,
+        FINALBOSSWIN
+    }
+
     public static readonly int[] AllPickupsTypes = new int[4]
     {
         PickUpWater,
