@@ -16,7 +16,6 @@ public class MainGameManager : MonoBehaviour
     public bool recruitedGaehl;
     public bool recruitedEmbre;
     public Vector2 GraeyPosition;
-    
     public GameObject Graey;
 
     public Vector2 GetGraeyPosition() // not using it
@@ -76,12 +75,13 @@ public class MainGameManager : MonoBehaviour
     public void StartScene()
     {
         PlayerPrefs.DeleteAll();
-
+        AudioManager.instance.StopPlaying("Menu_Music");
         SceneManager.LoadScene("HubWorld");
     }
 
     public void ContinueScene()
-    {
+    { 
+       AudioManager.instance.StopPlaying("Menu_Music");
        SceneManager.LoadScene("HubWorld");
     }
 
@@ -90,13 +90,19 @@ public class MainGameManager : MonoBehaviour
         switch (character)
         {
             case Constants.Orry:
+                recruitedOrry = true;
                 PlayerPrefs.SetInt("RecruitedOrry", 1);
                 break;
             case Constants.Gaehl:
+                recruitedGaehl = true;
                 PlayerPrefs.SetInt("RecruitedGaehl", 1);
                 break;
             case Constants.Embre:
+                recruitedEmbre = true;
                 PlayerPrefs.SetInt("RecruitedEmbre", 1);
+                break;
+            default:
+                Debug.LogError("Invalid ally type passed");
                 break;
         }
         
