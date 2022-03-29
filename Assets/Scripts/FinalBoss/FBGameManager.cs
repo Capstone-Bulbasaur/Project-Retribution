@@ -18,9 +18,7 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
 
-    public GameObject pasifistGraey;
-
-    public int minionsOnScreen = 0;
+    private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
@@ -73,16 +71,17 @@ public class FBGameManager : MonoBehaviour
             {
                 isGameOver = true;
 
-                //var j = FindObjectOfType<NPCInteract>();
-                //j.Interact();
-
-                //var f = FindObjectOfType<DialogueManager>();
-                //f.ReadNext();
-
-                //pasifistGraey.transform.position = player.transform.position;
-                //pasifistGraey.SetActive(true);
-                //player.SetActive(false);
                 LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSWIN);
+            }
+            else if (isarr.GetHealth() <= 50)
+            {
+                maxSpawnTime = 1.5f;
+                minSpawnTime = 0.5f;
+            }
+            else if (isarr.GetHealth() <= 25)
+            {
+                maxSpawnTime = 0.5f;
+                minSpawnTime = 0f;
             }
 
             //SPAWN MINIONS CODE

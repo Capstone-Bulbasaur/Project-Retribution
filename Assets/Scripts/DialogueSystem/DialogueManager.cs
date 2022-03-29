@@ -94,6 +94,10 @@ public class DialogueManager : MonoBehaviour
             {
                 LetsGoAnimationSceneLoad("OpenRestaurantRush");
             }
+            else if (speakerName.text == "Isarr")
+            {
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+            }
 
             return;
         }
