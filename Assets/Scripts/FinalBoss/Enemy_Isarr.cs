@@ -78,8 +78,8 @@ public class Enemy_Isarr : MonoBehaviour
         }
         else
         {
-            Vector2 talk = new Vector2(1, -5);
-            transform.position = Vector2.MoveTowards(transform.position, talk, speed * Time.deltaTime);
+            //Move Isarr to the middle of the field
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(1, -5), speed * Time.deltaTime);
         }
        
 

@@ -152,9 +152,8 @@ public class MemoryGameManager : MonoBehaviour
             //MainGameManager.instance.RecruitAlly(Constants.Orry);
             PlayerPrefs.SetInt("RecruitedOrry", 1);
 
-            SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
-            
-            //RestartGame();
+            //SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
+            LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MEMMATCHWIN);
         }
     }
     
@@ -165,12 +164,7 @@ public class MemoryGameManager : MonoBehaviour
 
         if (firstGuessPot == secondGuessPot)
         {
-            //yield return new WaitForSeconds(.5f);
-
-            // Make buttons no longer interactable
-            // btns[firstGuessIndex].interactable = false;
-            // btns[secondGuessIndex].interactable = false;
-            
+            //Remove the first part of the sprite name leaving only the number at the end.
             var result = btns[firstGuessIndex].image.sprite.name.Remove(0, 16);
             
             int index = int.Parse(result);
@@ -184,7 +178,6 @@ public class MemoryGameManager : MonoBehaviour
             btns[secondGuessIndex].image.sprite = matched[index];
             
             StartCoroutine(CheckIfTheGameIsFinished());
-            Debug.Log("Its a MATCH!");
         }
         else
         {
@@ -213,8 +206,6 @@ public class MemoryGameManager : MonoBehaviour
 
                 RestartGame();
             }
-
-            Debug.Log("Its NOT a MATCH!");
         }
 
         yield return new WaitForSeconds(.5f);

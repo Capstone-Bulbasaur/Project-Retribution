@@ -16,7 +16,6 @@ public class FBCharacterController : MonoBehaviour
     public Joystick joystick;
     public PlayerAim aim;
 
-    [HideInInspector]
     public AudioSource footsteps;
 
     Vector2 movement;
@@ -30,7 +29,7 @@ public class FBCharacterController : MonoBehaviour
         interactButton.SetActive(false);
         animator = GetComponent<Animator>();
 
-        footsteps = GetComponentInChildren<AudioSource>();
+        //footsteps = GetComponentInChildren<AudioSource>();
 
         controlMethod = GetComponent<DetectControlMethod>();
 

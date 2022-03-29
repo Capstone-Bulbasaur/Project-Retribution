@@ -44,9 +44,9 @@ public class FBGameManager : MonoBehaviour
         //functionality to enter pause menu will go here
     }
 
-    private void GameOver()
+    public bool CheckGameOver()
     {
-        //restart scene, flash a canvas of "You Died" or sumthin
+        return isGameOver;
     }
 
     // Start is called before the first frame update
@@ -73,8 +73,11 @@ public class FBGameManager : MonoBehaviour
             {
                 isGameOver = true;
 
-                //var j = FindObjectOfType<NPCInteract>();
-                //j.Interact();
+                var j = FindObjectOfType<NPCInteract>();
+                j.Interact();
+
+                var f = FindObjectOfType<DialogueManager>();
+                f.ReadNext();
 
                 pasifistGraey.transform.position = player.transform.position;
                 pasifistGraey.SetActive(true);
