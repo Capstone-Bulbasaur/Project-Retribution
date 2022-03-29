@@ -77,6 +77,7 @@ public class RRGameManager : MonoBehaviour
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 7.0f);
         AudioManager.instance.Play("Rush_Music");
+            
 
         CurrentTime = StartingTime;
 
@@ -113,6 +114,8 @@ public class RRGameManager : MonoBehaviour
 
     void Update()
     {
+        StartDelay();
+
         CurrentTime -= 1 * Time.deltaTime;
         WhiteTimer -= 1 * Time.deltaTime;
         OrderCurrentTime -= 1 * Time.deltaTime;
@@ -169,10 +172,8 @@ public class RRGameManager : MonoBehaviour
             // MS - increasing the correct guesses
             countCorrectGuesses++;
             RightGuesses.text = countCorrectGuesses.ToString();
-                  
+             
             
-            Debug.Log("right answer, new order done!");
-
             //Disable buttons
             for (int i = 0; i < 4; i++)
             {
@@ -302,5 +303,8 @@ public class RRGameManager : MonoBehaviour
         wrongAnswer.SetActive(false);
     }
 
-
+    IEnumerator StartDelay()
+    {
+        yield return new WaitForSeconds(7.0f);
+    }
 }
