@@ -152,6 +152,7 @@ public class MemoryGameManager : MonoBehaviour
             //MainGameManager.instance.RecruitAlly(Constants.Orry);
             PlayerPrefs.SetInt("RecruitedOrry", 1);
 
+            // Loads the midscene showing the You Win message.
             SceneManager.LoadScene(sceneName: "MM-Midscene-YouWin");
             
             //RestartGame();
