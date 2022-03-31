@@ -632,6 +632,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3695225659958622341, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
   m_PrefabInstance: {fileID: 4347978571013999487}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1743672465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4492373981751948084, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+  m_PrefabInstance: {fileID: 4347978571013999487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1743672469
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743672465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01ee451746e0fed41a6a60c58a96637d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1889269732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -957,9 +981,29 @@ PrefabInstance:
       value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: camAnim
+      value: 
+      objectReference: {fileID: 1743672469}
+    - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 109544685}
+    - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: hitColor.b
+      value: 0.5707547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: hitColor.g
+      value: 0.5707547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: hitColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5026701160510284970, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1007,6 +1051,30 @@ PrefabInstance:
     - target: {fileID: 5690565269962747274, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
       propertyPath: m_Name
       value: GraeyBattle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504023221865797247, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504023221865797247, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504023221865797247, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504023221865797247, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493805380689867693, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493805380689867693, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
@@ -1082,6 +1150,22 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1650687191}
+    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: hitColor.b
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: hitColor.g
+      value: 0.33174616
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: hitColor.r
+      value: 0.6366632
+      objectReference: {fileID: 0}
     - target: {fileID: 6717609807322852986, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -5,7 +5,6 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-
 public class PlayerAim : MonoBehaviour
 {
     public Transform aimTransform;
@@ -69,7 +68,7 @@ public class PlayerAim : MonoBehaviour
         }
     }
 
-    /* Handle Mouse Aim functions were taken from */
+    /* Handle Mouse Aim functions were taken from https://www.youtube.com/watch?v=Nke5JKPiQTw&ab_channel=CodeMonkey */
 
     void HandleMouseAim()
     {
