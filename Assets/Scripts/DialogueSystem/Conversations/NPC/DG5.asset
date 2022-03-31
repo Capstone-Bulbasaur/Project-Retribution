@@ -15,5 +15,7 @@ MonoBehaviour:
   allLines:
   - speaker: {fileID: 11400000, guid: 602b46cd2a44e044eb04914545b90712, type: 2}
     dialogue: We have enough pots in the house, dear
+  - speaker: {fileID: 11400000, guid: fe0cbea781a0e3d45901d100e5747225, type: 2}
+    dialogue: But Orry's pots are so beautiful! I just want them all
   - speaker: {fileID: 11400000, guid: 602b46cd2a44e044eb04914545b90712, type: 2}
     dialogue: Stranger! Please help me
