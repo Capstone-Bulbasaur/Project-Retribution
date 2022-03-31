@@ -71,7 +71,8 @@ public class Projectile : MonoBehaviour
         }
         else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
         { 
-            collider.transform.parent.gameObject.SetActive(false);
+            //collider.transform.parent.gameObject.SetActive(false);
+            collider.GetComponent<Minion>().DisableMinion();
 
             if (!gameObject.CompareTag("Electric"))
                 Disable();

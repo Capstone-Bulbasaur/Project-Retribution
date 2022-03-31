@@ -8,14 +8,17 @@ public class Graey : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+    public Animator camAnim;
     
-    SpriteRenderer spriteRenderer;
-    Rigidbody rigidbody;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody rigidbody;
+    [SerializeField] private Color hitColor;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -32,5 +35,22 @@ public class Graey : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-    } 
+        AudioManager.instance.Play("Boss_GraeyHurt");
+
+        spriteRenderer.color = hitColor;
+        StartCoroutine(ChangeSpriteColor());
+
+        CamShake();
+    }
+
+    IEnumerator ChangeSpriteColor()
+    {
+        yield return new WaitForSeconds(.5f);
+        spriteRenderer.color = Color.white;
+    }
+
+    public void CamShake()
+    {
+        camAnim.SetTrigger("shake");
+    }
 }

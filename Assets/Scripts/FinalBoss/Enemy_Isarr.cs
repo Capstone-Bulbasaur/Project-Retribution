@@ -29,8 +29,9 @@ public class Enemy_Isarr : MonoBehaviour
 
     public HealthBar healthBar;
 
-    SpriteRenderer spriteRenderer;
-    Rigidbody rigidbody;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody rigidbody;
+    [SerializeField] private Color hitColor;
 
 
     void Start()
@@ -41,6 +42,8 @@ public class Enemy_Isarr : MonoBehaviour
         //healthBar.SetMaxHealth(maxHealth);
 
         projectilePoller = ProjectilePooler.Instance;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -96,10 +99,19 @@ public class Enemy_Isarr : MonoBehaviour
         currentHealth -= damages; 
         healthBar.SetHealth(currentHealth);
 
+        spriteRenderer.color = hitColor;
+        StartCoroutine(ChangeSpriteColor());
+
         if (currentHealth <= 0)
         {
             AudioManager.instance.StopPlaying("Boss_Music");
         }
+    }
+
+    IEnumerator ChangeSpriteColor()
+    {
+        yield return new WaitForSeconds(.5f);
+        spriteRenderer.color = Color.white;
     }
 
     public int GetHealth()
