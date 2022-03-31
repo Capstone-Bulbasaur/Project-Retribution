@@ -764,6 +764,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6357210734540634005, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_text
+      value: "Match the buttons and the ingredients in the correct order!\n\nPay
+        attention because it is quite fast!! \n\nLet's get to work and get rid of
+        these minions....I mean, the orders!!"
+      objectReference: {fileID: 0}
     - target: {fileID: 8959430750365605846, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_Name
       value: UIManagerRR
