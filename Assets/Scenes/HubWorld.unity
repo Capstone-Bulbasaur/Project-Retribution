@@ -142,7 +142,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 854626730603654760, guid: 6764f7754e926834882739f2eaa38554, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 854626730603654760, guid: 6764f7754e926834882739f2eaa38554, type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,14 +201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 285170473, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 278bd2cd6fbd7c840b687589eeee97c1, type: 2}
-    - target: {fileID: 285170473, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 4768999679873196224, guid: 278bd2cd6fbd7c840b687589eeee97c1, type: 2}
     - target: {fileID: 1193834102, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: Graey
       value: 
@@ -221,14 +213,6 @@ PrefabInstance:
       propertyPath: letsGoAnimator
       value: 
       objectReference: {fileID: 1013382804}
-    - target: {fileID: 1539035552, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
-    - target: {fileID: 1539035552, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -8404971581771497421, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
     - target: {fileID: 6525226458090161267, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: m_Name
       value: DialogueManager
@@ -605,11 +589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602702740360388818, guid: 8a9fd6d80cce4bc498fad67fee538a83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.365
+      value: -8.53
       objectReference: {fileID: 0}
     - target: {fileID: 2602702740360388818, guid: 8a9fd6d80cce4bc498fad67fee538a83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -59.658
+      value: -60.31
       objectReference: {fileID: 0}
     - target: {fileID: 2602702740360388818, guid: 8a9fd6d80cce4bc498fad67fee538a83, type: 3}
       propertyPath: m_LocalPosition.z
