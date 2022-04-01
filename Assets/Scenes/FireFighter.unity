@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -521,23 +521,6 @@ RectTransform:
   m_AnchoredPosition: {x: 217.1, y: 97.8}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &918763301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8579425758849321921, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
-  m_PrefabInstance: {fileID: 8944463366890159312}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &918763303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918763301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c7261d0682b4f4c8abbf0bad054339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &987968527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1164,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1380,6 +1363,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2114838473, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 149
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114838473, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 967297310818222237, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1427,6 +1418,14 @@ PrefabInstance:
     - target: {fileID: 8579425758849321921, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_Name
       value: FFUIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150945719496348673, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150945719496348673, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
