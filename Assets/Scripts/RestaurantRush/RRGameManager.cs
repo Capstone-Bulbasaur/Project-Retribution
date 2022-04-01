@@ -49,7 +49,9 @@ public class RRGameManager : MonoBehaviour
 
     bool incorrectKey = false;
     int count = 0;
-public static bool GameIsPaused = false;
+    public static bool GameIsPaused = false;
+
+    public GameObject PauseMenuUI;
 
 Dictionary<int, string> Buttons = new Dictionary<int, string>();
 
@@ -316,16 +318,28 @@ Dictionary<int, string> Buttons = new Dictionary<int, string>();
     }
 
 
-    void Resume()
+   public void Resume()
     {
+        PauseMenuUI.SetActive(false);
      Time.timeScale = 1f;
      GameIsPaused = false;
+
+
     }
 
-    void Pause()
+   public void Pause()
     {
+        PauseMenuUI.SetActive(true);
        Time.timeScale = 0f;
-      GameIsPaused = true;
+       GameIsPaused = true;
+       
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 
 

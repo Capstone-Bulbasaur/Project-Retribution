@@ -37,6 +37,7 @@ public class MemoryGameManager : MonoBehaviour
 
     public GameObject youLosePanel;
     public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     void Start()
     {
@@ -284,15 +285,27 @@ public class MemoryGameManager : MonoBehaviour
 
 
 
-    void Resume()
+    public void Resume()
     {
+        PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+
     }
 
-    void Pause()
+    public void Pause()
     {
+        PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }

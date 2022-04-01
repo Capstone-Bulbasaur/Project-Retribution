@@ -18,6 +18,7 @@ public class MainGameManager : MonoBehaviour
     public Vector2 GraeyPosition;
     public GameObject Graey;
     public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
 
     public Vector2 GetGraeyPosition() // not using it
@@ -130,15 +131,27 @@ public class MainGameManager : MonoBehaviour
 
 
 
-    void Resume()
+    public void Resume()
     {
+        PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+
     }
 
-    void Pause()
+    public void Pause()
     {
+        PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }

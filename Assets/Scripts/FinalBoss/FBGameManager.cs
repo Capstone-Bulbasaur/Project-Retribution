@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class FBGameManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class FBGameManager : MonoBehaviour
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     private void Awake()
     {
@@ -57,6 +60,18 @@ public class FBGameManager : MonoBehaviour
         if (player == null)
         {
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
 
         //SPAWN MINIONS CODE
@@ -112,5 +127,30 @@ public class FBGameManager : MonoBehaviour
     public void RemoveEnemy()
     {
         minionsOnScreen -= 1;
+    }
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }
