@@ -49,7 +49,9 @@ public class RRGameManager : MonoBehaviour
 
     bool incorrectKey = false;
     int count = 0;
-    Dictionary<int, string> Buttons = new Dictionary<int, string>();
+public static bool GameIsPaused = false;
+
+Dictionary<int, string> Buttons = new Dictionary<int, string>();
 
     void Awake()
     {
@@ -117,17 +119,28 @@ public class RRGameManager : MonoBehaviour
         WhiteTimer -= 1 * Time.deltaTime;
         OrderCurrentTime -= 1 * Time.deltaTime;
 
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
 
-        // MS - commented out to see other events on the console .
-        //if (CurrentTime != 0)
-        //{
-        //    print(CurrentTime);
-        //}
-        //if (CurrentTime <= 0)
-        //{
-        //    CurrentTime = 0;
-        //}
-        if (WhiteTimer <= 0)
+    // MS - commented out to see other events on the console .
+    //if (CurrentTime != 0)
+    //{
+    //    print(CurrentTime);
+    //}
+    //if (CurrentTime <= 0)
+    //{
+    //    CurrentTime = 0;
+    //}
+    if (WhiteTimer <= 0)
         {
             Timer.color = Color.white;
 
@@ -300,6 +313,19 @@ public class RRGameManager : MonoBehaviour
     void HideWrongAnswer()
     {
         wrongAnswer.SetActive(false);
+    }
+
+
+    void Resume()
+    {
+     Time.timeScale = 1f;
+     GameIsPaused = false;
+    }
+
+    void Pause()
+    {
+       Time.timeScale = 0f;
+      GameIsPaused = true;
     }
 
 

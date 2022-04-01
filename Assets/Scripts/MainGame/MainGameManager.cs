@@ -17,6 +17,8 @@ public class MainGameManager : MonoBehaviour
     public bool recruitedEmbre;
     public Vector2 GraeyPosition;
     public GameObject Graey;
+    public static bool GameIsPaused = false;
+
 
     public Vector2 GetGraeyPosition() // not using it
     {
@@ -39,6 +41,9 @@ public class MainGameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+    
 
     void Start()
     {
@@ -70,6 +75,21 @@ public class MainGameManager : MonoBehaviour
             Debug.Log("Is orry recruited: " + recruitedOrry);
         }
         
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void StartScene()
@@ -106,5 +126,19 @@ public class MainGameManager : MonoBehaviour
                 break;
         }
         
+    }
+
+
+
+    void Resume()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 }

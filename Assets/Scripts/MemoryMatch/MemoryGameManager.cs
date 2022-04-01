@@ -36,6 +36,7 @@ public class MemoryGameManager : MonoBehaviour
     public float PlayerYpos;
 
     public GameObject youLosePanel;
+    public static bool GameIsPaused = false;
 
     void Start()
     {
@@ -48,6 +49,23 @@ public class MemoryGameManager : MonoBehaviour
         youLosePanel.SetActive(false);
         
         AudioManager.instance.Play("Memory_Music");
+    }
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+
     }
 
     void GetButtons()
@@ -257,5 +275,24 @@ public class MemoryGameManager : MonoBehaviour
 
         PlayerMissed.text = countFails.ToString();
         PlayerScore.text = countCorrectGuesses.ToString();
+    }
+
+
+
+
+
+
+
+
+    void Resume()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 }
