@@ -15,6 +15,7 @@ public class RRGameManager : MonoBehaviour
     private int countCorrectGuesses;
     private int countFails;
     private int RightMatch;
+    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
@@ -23,6 +24,7 @@ public class RRGameManager : MonoBehaviour
     public GameObject rightAnswer;
     public GameObject wrongAnswer;
     public List<Button> btns = new List<Button>();
+    public GameObject youLosePanel;
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
@@ -30,7 +32,7 @@ public class RRGameManager : MonoBehaviour
     public TextMeshProUGUI YouWon;
 
     public List<GameObject> burgers = new List<GameObject>();
-    
+
     public GameObject EmptyPlate;
 
     // Primary game time set up
@@ -47,6 +49,7 @@ public class RRGameManager : MonoBehaviour
 
     public TextMeshProUGUI Timer;
 
+    bool isGameOver = false;
     bool incorrectKey = false;
     int count = 0;
     Dictionary<int, string> Buttons = new Dictionary<int, string>();
@@ -67,7 +70,7 @@ public class RRGameManager : MonoBehaviour
     }
     void Start()
     {
-        CurrentTime = StartingTime;
+        //CurrentTime = StartingTime;
         //Disable buttons
         for (int i = 0; i < 4; i++)
         {
@@ -77,9 +80,9 @@ public class RRGameManager : MonoBehaviour
         // Shows the first order after 2 seconds and hides it after 3 seconds
         Invoke("ShowBubble", 7.0f);
         AudioManager.instance.Play("Rush_Music");
-            
 
-        CurrentTime = StartingTime;
+
+        //CurrentTime = StartingTime;
 
         //AddBurgerstoList();
 
@@ -87,13 +90,15 @@ public class RRGameManager : MonoBehaviour
         {
             Burger.SetActive(false);
         }
+
+        youLosePanel.SetActive(false);
     }
 
     //Add burgers to the list
     void AddBurgerstoList()
     {
         GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-        
+
         // MS - still not sure if this loop is right
         //for (int i = 0; i < brgr.Length; i++)
         //{
@@ -105,124 +110,124 @@ public class RRGameManager : MonoBehaviour
     void OnTriggerEnter()
     {
         GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-        foreach(GameObject Burger in burgers) // using directly in update
+        foreach (GameObject Burger in burgers) // using directly in update
         {
             Burger.SetActive(true);
         }
-                
+
     }
 
     void Update()
     {
-        StartDelay();
-
-        CurrentTime -= 1 * Time.deltaTime;
-        WhiteTimer -= 1 * Time.deltaTime;
-        OrderCurrentTime -= 1 * Time.deltaTime;
-
-
-        // MS - commented out to see other events on the console .
-        //if (CurrentTime != 0)
-        //{
-        //    print(CurrentTime);
-        //}
-        //if (CurrentTime <= 0)
-        //{
-        //    CurrentTime = 0;
-        //}
-        if (WhiteTimer <= 0)
+        if(!isGameOver)
         {
-            Timer.color = Color.white;
-
-
-        }
-        //if (CurrentTime >= 0)
-        //{
-        //    SceneManager.LoadScene(sceneName: "HubWorld");
-        //}
-
-        if (countCorrectGuesses == 6)
-        {
-            LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
-        }
-
-        Timer.text = CurrentTime.ToString("0");
-
-        if (OrderCurrentTime <= 0)
-        {
-            incorrectKey = true;
-        }
-
-        // All ingredients correct (count == 4)
-        if (count == 4)
-        {
-            OrderCurrentTime = OrderStartTime;
-            // Correct answer visuals
-            rightAnswer.SetActive(true);
-            
-            if (countCorrectGuesses < burgers.Count)
-            { 
-                burgers[countCorrectGuesses].SetActive(true);
-            }
-            else
+            // Solution for the issue we had before when the 1st button was always wrong
+            WaitforInstructions -= Time.deltaTime;
+            if (WaitforInstructions < 0)
             {
-                Debug.Log("YOU WON =D"); //YouWon.ToString();
+                if (CurrentTime <= 0)
+                {
+                    StartCoroutine(TryAgain());
+                    isGameOver = true;
+                    return;
+                    //LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                }
+                else
+                {
+                    CurrentTime -= 1 * Time.deltaTime;
+                    WhiteTimer -= 1 * Time.deltaTime;
+                    OrderCurrentTime -= 1 * Time.deltaTime;
+                }
             }
-            
-            // MS - increasing the correct guesses
-            countCorrectGuesses++;
-            RightGuesses.text = countCorrectGuesses.ToString();
-             
-            
-            //Disable buttons
-            for (int i = 0; i < 4; i++)
+
+            if (WhiteTimer <= 0)
             {
-                btns[i].interactable = false;
+                Timer.color = Color.white;
             }
 
-            Invoke("HideRightAnswer", 1.0f);
-                    
-
-            // Shuffles a new order
-            NewOrder();
-
-            //TODO ADD CORRECT ANSWER SOUND HERE
-            AudioManager.instance.Play("Rush_Correct");
-        }
-         
-
-        if (incorrectKey == true)
-        {
-            CurrentTime = CurrentTime - 5;
-            OrderCurrentTime = OrderStartTime;
-            // Incorrect answer visuals
-            wrongAnswer.SetActive(true);
-            // MS
-            countFails++;
-            //WrongGuesses.text = countFails.ToString();
-
-            //EmptyPlate.SetActive(true);
-            Debug.Log("wrong answer, new empty place!");
-
-            //Disable buttons
-            for (int i = 0; i < 4; i++)
+            if (countCorrectGuesses == 6)
             {
-                btns[i].interactable = false;
+                //Recruited Embre            
+                PlayerPrefs.SetInt("RecruitedEmbre", 1);
+
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
             }
 
-            Invoke("HideWrongAnswer", 1.0f);
+            Timer.text = CurrentTime.ToString("0");
 
-            //Invoke("HidePlate", 1.0f);
+            if (OrderCurrentTime <= 0)
+            {
+                incorrectKey = true;
+            }
 
-            // Shuffles a new order
-            NewOrder();
+            // All ingredients correct (count == 4)
+            if (count == 4)
+            {
+                OrderCurrentTime = OrderStartTime;
+                // Correct answer visuals
+                rightAnswer.SetActive(true);
 
-            //TODO ADD INCORRECT ANSWER SOUND HERE
-            AudioManager.instance.Play("Rush_Incorrect");
-            
-            Timer.color = Color.red;
-            WhiteTimer = 3;
+                if (countCorrectGuesses < burgers.Count)
+                {
+                    burgers[countCorrectGuesses].SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("YOU WON =D"); //YouWon.ToString();
+                }
+
+                // MS - increasing the correct guesses
+                countCorrectGuesses++;
+                RightGuesses.text = countCorrectGuesses.ToString();
+
+
+                //Disable buttons
+                for (int i = 0; i < 4; i++)
+                {
+                    btns[i].interactable = false;
+                }
+
+                Invoke("HideRightAnswer", 1.0f);
+
+                // Shuffles a new order
+                NewOrder();
+
+                // CORRECT ANSWER SOUND 
+                AudioManager.instance.Play("Rush_Correct");
+            }
+
+
+            if (incorrectKey == true)
+            {
+                CurrentTime = CurrentTime - 5;
+                OrderCurrentTime = OrderStartTime;
+                // Incorrect answer visuals
+                wrongAnswer.SetActive(true);
+                // MS
+                countFails++;
+                //WrongGuesses.text = countFails.ToString();
+
+                Debug.Log("wrong answer, new empty place!");
+
+                //Disable buttons
+                for (int i = 0; i < 4; i++)
+                {
+                    btns[i].interactable = false;
+                }
+
+                Invoke("HideWrongAnswer", 1.0f);
+
+                // Shuffles a new order
+                NewOrder();
+
+                //TODO ADD INCORRECT ANSWER SOUND HERE
+                AudioManager.instance.Play("Rush_Incorrect");
+
+                Timer.color = Color.red;
+                WhiteTimer = 3;
+            }
         }
+        
     }
 
     void IngredientOrder()
@@ -255,7 +260,7 @@ public class RRGameManager : MonoBehaviour
             // It the button pressed doesn't match, the button is incorrect and we get a new order (Update())
             Debug.Log("Incorrect button " + button);
             incorrectKey = true;
-            
+
         }
     }
 
@@ -303,8 +308,33 @@ public class RRGameManager : MonoBehaviour
         wrongAnswer.SetActive(false);
     }
 
-    IEnumerator StartDelay()
+    void Restart()
     {
-        yield return new WaitForSeconds(7.0f);
+        Timer.color = Color.white;
+        Debug.Log("Restarting game...");
+        // hiding the burgers again
+        foreach (GameObject Burger in burgers)
+        {
+            Burger.SetActive(false);
+        }
+        // setting all variables to their original values
+        countCorrectGuesses = countFails = 0;
+        CurrentTime = StartingTime;
+        OrderCurrentTime = OrderStartTime;
+        WhiteTimer = 3;
+
+        isGameOver = false;
+        NewOrder();
+        //// Calling the new Order/Ingredients again
+        //Invoke("ShowBubble", 2.0f);
+    }
+
+    IEnumerator TryAgain()
+    { 
+        // got part of the Lose panel solution on this tutorial: https://www.youtube.com/watch?v=e0feEWLRSYI
+        youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
+        yield return new WaitForSeconds(2.0f); // wait for 2s
+        youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
+        Restart();
     }
 }
