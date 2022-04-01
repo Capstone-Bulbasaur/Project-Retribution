@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0b4e9a1fb535f4bad3a07264efe04c, type: 3}
+  m_Name: BL1
+  m_EditorClassIdentifier: 
+  allLines:
+  - speaker: {fileID: 11400000, guid: a1d818a6e4db88242b5a9db1cd1a11dd, type: 2}
+    dialogue: We're not rich, just great builders
+  - speaker: {fileID: 11400000, guid: 0cf208c3818617a41852b2b32825b4df, type: 2}
+    dialogue: We did dig up a nice gold statue though
+  - speaker: {fileID: 11400000, guid: 0cf208c3818617a41852b2b32825b4df, type: 2}
+    dialogue: It looks great in the second living room
