@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FFFire : MonoBehaviour
 {
-    [SerializeField] private GameObject fireBtn;
-    [SerializeField] private Transform[] spawnPoints;
+
+    public float spawnTime = 2;
+    
     private int fireLevel = 0; 
     
 
     void Start()
     {
-        Button btn = fireBtn.GetComponent<Button>();
-        btn.onClick.AddListener(ExtinguishFire); //I apparently don't know what else is involved in making buttons work in Unity
+
     }
     // Update is called once per frame
     void Update()
@@ -21,20 +20,16 @@ public class FFFire : MonoBehaviour
 
     }
 
-    public void Spawn() //this is definitely a method, that spawns fires at random set points, would need logic for checking spawn points aren't occupied, max allowed on screen, adjusted spawn rate or called in update in a rated way
-    {
-        GameObject fires = Instantiate(fireBtn);
-        //Sound Effect?
-        //Fwoosh?
-        fires.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
-    }
-
     public void ExtinguishFire() //man, does this ever work but like, it can't be the best way.
     {
         //Sound Effect?
         //Sploosh?
         
+        Debug.Log("Clicked Fire" + gameObject);
+
         Destroy(gameObject); //to be this lazy would involve checks for what level the fire is, confirm level 0 on click
+
+        FFGameManager.instance.RemoveFlame();
     }
 
     public void LevelUpFire() //Level 0 fire -> Level 1 fire after say 2 seconds without click then Level 1 fire -> Level 2 after 3 seconds maybe?

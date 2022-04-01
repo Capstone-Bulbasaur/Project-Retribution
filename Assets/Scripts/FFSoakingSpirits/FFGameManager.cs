@@ -16,68 +16,123 @@ public class FFGameManager : MonoBehaviour
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
     
+
+    public static FFGameManager instance;
+    
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
+    [SerializeField] private Transform gameZone;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        SpawnFire(); //BoilerPlate, might not be the final logic we use but can be used as a template maybe?
-    }
-
-    public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)
-    {
-        //SPAWN FLAMES CODE
         currentSpawnTime += Time.deltaTime;
 
         if (currentSpawnTime > generatedSpawnTime)
         {
             currentSpawnTime = 0;
             generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+            StartCoroutine(SpawnFires(Random.Range(minSpawnTime, maxSpawnTime)));//BoilerPlate, might not be the final logic we use but can be used as a template maybe?
+        }
+         
+    }
 
-            if (flamesPerSpawn > 0 && flamesOnScreen < totalFlames)
+    public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)
+    {
+        ////SPAWN FLAMES CODE
+        //currentSpawnTime += Time.deltaTime;
+
+        //if (currentSpawnTime > generatedSpawnTime)
+        //{
+        //    currentSpawnTime = 0;
+        //    generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+
+        //    if (flamesPerSpawn > 0 && flamesOnScreen < totalFlames)
+        //    {
+        //        List<int> previousSpawnLocations = new List<int>();
+
+        //        if (flamesPerSpawn > spawnPoints.Length)
+        //        {
+        //            flamesPerSpawn = spawnPoints.Length - 1;
+        //        }
+
+        //        flamesPerSpawn = (flamesPerSpawn > totalFlames) ? flamesPerSpawn - totalFlames : flamesPerSpawn;
+
+        //        for (int i = 0; i < flamesPerSpawn; i++)
+        //        {
+        //            if (flamesOnScreen < maxFlamesOnScreen)
+        //            {
+        //                int spawnPoint = -1;
+
+        //                while (spawnPoint == -1)
+        //                {
+        //                    int randomNumber = Random.Range(0, spawnPoints.Length);
+
+        //                    if (!previousSpawnLocations.Contains(randomNumber))
+        //                    {
+        //                        previousSpawnLocations.Add(randomNumber);
+        //                        spawnPoint = randomNumber;
+        //                    }
+
+        //                    GameObject spawnLocation = spawnPoints[spawnPoint];
+        //                    GameObject newFlame = Instantiate(flame);
+        //                    newFlame.transform.SetParent(spawnLocation.gameObject.transform, false);
+        //                    newFlame.transform.position = spawnLocation.transform.position;
+        //                    flamesOnScreen += 1;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        GameObject spawnLocation = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        bool spawned = false;
+
+        //Check if there's already 18 fires on screen
+        if (flamesOnScreen < spawnPoints.Length)
+        {
+            while (!spawned)
             {
-                List<int> previousSpawnLocations = new List<int>();
-
-                if (flamesPerSpawn > spawnPoints.Length)
+                if (spawnLocation.transform.childCount == 0)
                 {
-                    flamesPerSpawn = spawnPoints.Length - 1;
+                    GameObject fires = Instantiate(flame, spawnLocation.gameObject.transform, false);
+                    //Sound Effect?
+                    //Fwoosh?
+                    fires.transform.position = spawnLocation.transform.position;
+                    fires.transform.localScale = new Vector3(fires.transform.localScale.x + 0.5f,
+                        fires.transform.localScale.y + 0.5f, 1);
+                    flamesOnScreen += 1;
+                    spawned = true;
                 }
-
-                flamesPerSpawn = (flamesPerSpawn > totalFlames) ? flamesPerSpawn - totalFlames : flamesPerSpawn;
-
-                for (int i = 0; i < flamesPerSpawn; i++)
+                else
                 {
-                    if (flamesOnScreen < maxFlamesOnScreen)
-                    {
-                        int spawnPoint = -1;
-
-                        while (spawnPoint == -1)
-                        {
-                            int randomNumber = Random.Range(0, spawnPoints.Length);
-
-                            if (!previousSpawnLocations.Contains(randomNumber))
-                            {
-                                previousSpawnLocations.Add(randomNumber);
-                                spawnPoint = randomNumber;
-                            }
-
-                            GameObject spawnLocation = spawnPoints[spawnPoint];
-                            GameObject newFlame = Instantiate(flame);
-                            newFlame.transform.position = spawnLocation.transform.position;
-                            flamesOnScreen += 1;
-                        }
-                    }
+                    spawnLocation = spawnPoints[Random.Range(0, spawnPoints.Length)];
                 }
             }
         }
-
     }
 
+    public void RemoveFlame()
+    {
+        flamesOnScreen -= 1;
+    }
+
+    IEnumerator SpawnFires(float spawn)
+    {
+        yield return new WaitForSeconds(spawn);
+
+        SpawnFire();
+    }
 }
