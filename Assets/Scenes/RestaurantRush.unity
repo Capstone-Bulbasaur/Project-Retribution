@@ -798,6 +798,7 @@ MonoBehaviour:
   - {fileID: 3785285387843284276}
   - {fileID: 3785285387843284275}
   youLosePanel: {fileID: 1908084445}
+  MaxFails: 6
   RightGuesses: {fileID: 1352251486}
   YouWon: {fileID: 0}
   burgers:

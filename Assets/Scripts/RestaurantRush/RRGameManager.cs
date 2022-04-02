@@ -25,6 +25,7 @@ public class RRGameManager : MonoBehaviour
     public GameObject wrongAnswer;
     public List<Button> btns = new List<Button>();
     public GameObject youLosePanel;
+    public int MaxFails;
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
@@ -229,7 +230,7 @@ public class RRGameManager : MonoBehaviour
                 WhiteTimer = 3;
 
                 // Another lose condition, when the player has X wrong matches, the game will restart.
-                if (countFails >= 4)
+                if (countFails >= MaxFails)
                 {
                     StartCoroutine(TryAgain());
                     isGameOver = true;

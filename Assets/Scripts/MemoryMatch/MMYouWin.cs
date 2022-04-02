@@ -6,10 +6,11 @@ using UnityEngine;
 public class MMYouWin : MonoBehaviour
 {
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         // StartCoroutine was needed to encapsulate the WaitForSeconds and the Load scene.
         // For some reason all of that separated did not work.
+        // Moved the Coroutine to Start as recommended by James
         StartCoroutine(LoadLevel());
     }
 
