@@ -524,6 +524,7 @@ MonoBehaviour:
   animator: {fileID: 1392933100}
   joystick: {fileID: 7589819996938764061}
   footsteps: {fileID: 0}
+  canMove: 0
   leftStick: {fileID: 1441201390}
 --- !u!95 &1392933100
 Animator:
