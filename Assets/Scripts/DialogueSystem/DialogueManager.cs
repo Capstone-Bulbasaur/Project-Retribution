@@ -133,7 +133,10 @@ public class DialogueManager : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
 
         if (letsGo != null)
+        {
             letsGo.SetActive(true);
+            Graey.GetComponent<CharacterController>().canInteract = false;
+        }
 
         Invoke(functionName, 2.5f);
         letsGoAnimator.SetBool("OpenMM", true);
