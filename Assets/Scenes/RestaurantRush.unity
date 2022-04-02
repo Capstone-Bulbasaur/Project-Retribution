@@ -798,6 +798,7 @@ MonoBehaviour:
   - {fileID: 3785285387843284276}
   - {fileID: 3785285387843284275}
   youLosePanel: {fileID: 1908084445}
+  MaxFails: 6
   RightGuesses: {fileID: 1352251486}
   YouWon: {fileID: 0}
   burgers:
@@ -808,7 +809,7 @@ MonoBehaviour:
   - {fileID: 1010778815}
   - {fileID: 1728202717}
   EmptyPlate: {fileID: 1297657941}
-  StartingTime: 20
+  StartingTime: 80
   OrderStartTime: 10
   WhiteTimer: 3
   maxNumCustomers: 0
