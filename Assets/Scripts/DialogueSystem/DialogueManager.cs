@@ -94,6 +94,10 @@ public class DialogueManager : MonoBehaviour
             {
                 LetsGoAnimationSceneLoad("OpenRestaurantRush");
             }
+            else if (speakerName.text == "Gaehl")
+            {
+                LetsGoAnimationSceneLoad("OpenSoakinSpirit");
+            }
             else if (speakerName.text == "Isarr")
             {
                 LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CELEBRATION);
@@ -155,6 +159,11 @@ public class DialogueManager : MonoBehaviour
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRGAME);
     }
 
+    void OpenSoakinSpirit()
+    {
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
+    }
     // Types out the dialogue lines
     private IEnumerator TypeText(string text)
     {

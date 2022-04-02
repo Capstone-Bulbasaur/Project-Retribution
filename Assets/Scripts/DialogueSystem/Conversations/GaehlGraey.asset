@@ -22,6 +22,6 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
     dialogue: I can help!
   - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
-    dialogue: Really? I can lend you some water power
-  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
-    dialogue: Cool! Let's put these fires out!
+    dialogue: Really? I can lend you some water power.
+  - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
+    dialogue: Let's put out the fires!
