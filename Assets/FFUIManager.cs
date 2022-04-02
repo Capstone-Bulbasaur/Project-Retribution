@@ -12,16 +12,18 @@ public class FFUIManager : MonoBehaviour
     //I won't lie team, beyond adding a timer, I don't know what this Manager is for.
     //ha, called it. To credit accordingly: Based on timer logic used in RestarauntRush
     // Primary game time set up
-    public float CurrentTime;
-    public float StartingTime = 100;
+    public float currentTime;
+    public float startingTime = 100;
     public TextMeshProUGUI Timer;
+
+    public static FFUIManager instance;
 
     private bool isGameOver = false;
     private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
 
     void Awake()
     {
-        CurrentTime = StartingTime;
+        currentTime = startingTime;
     }
 
     void Start()
@@ -36,17 +38,17 @@ public class FFUIManager : MonoBehaviour
             WaitforInstructions -= Time.deltaTime;
             if (WaitforInstructions < 0)
             {
-                if (CurrentTime <= 0)
+                if (currentTime <= 0)
                 {
                     isGameOver = true;
                     return;
                 }
                 else
                 {
-                    CurrentTime -= 1 * Time.deltaTime;
+                    currentTime -= 1 * Time.deltaTime;
                 }
             }
-            Timer.text = CurrentTime.ToString("0");
+            Timer.text = currentTime.ToString("0");
         }
     }
 }
