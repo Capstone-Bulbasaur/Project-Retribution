@@ -41,6 +41,11 @@ public class Graey : MonoBehaviour
         StartCoroutine(ChangeSpriteColor());
 
         CamShake();
+
+        if (currentHealth <= 0)
+        {
+            PlayerDeath.instance.FadeToRestart();
+        }
     }
 
     IEnumerator ChangeSpriteColor()
