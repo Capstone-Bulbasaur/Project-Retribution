@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 /*
  * FOLLOWED THIS TUTORIAL: https://www.youtube.com/watch?v=qaCjBh7bWz0&list=PLZhNP5qJ2IA2DA4bzDyxFMs8yogVQSrjW&ab_channel=AwesomeTuts and adapted to our game
  */
@@ -36,6 +37,8 @@ public class MemoryGameManager : MonoBehaviour
     public float PlayerYpos;
 
     public GameObject youLosePanel;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     void Start()
     {
@@ -48,6 +51,21 @@ public class MemoryGameManager : MonoBehaviour
         youLosePanel.SetActive(false);
         
         AudioManager.instance.Play("Memory_Music");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     void GetButtons()
@@ -248,5 +266,30 @@ public class MemoryGameManager : MonoBehaviour
 
         PlayerMissed.text = countFails.ToString();
         PlayerScore.text = countCorrectGuesses.ToString();
+    }
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }
