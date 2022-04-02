@@ -41,7 +41,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 2b6dce21477be204ab2cc4e6ece0e90d, type: 3}
     - {fileID: 2800000, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
     - {fileID: 2800000, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
-    totalSpriteSurfaceArea: 3031040
+    - {fileID: 2800000, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+    totalSpriteSurfaceArea: 3244032
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -187,6 +188,19 @@ SpriteAtlas:
   - {fileID: -5620045169808376765, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
   - {fileID: -448591882776123345, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
   - {fileID: -3470183043441288607, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
+  - {fileID: 989506521533369637, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 8637380165145569205, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 4499129303850883778, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 2121696803289640505, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 6244588227337042958, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 1749937826312113009, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 6008272803102601534, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 4450788958328522942, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: -650711742549475140, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 5202131084276784764, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: -5859062981038800176, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 6387597899476477766, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: 6661297474386515685, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
   - {fileID: 21300000, guid: 167bc74a7d506ac4e939b9554e22ce52, type: 3}
   - {fileID: -90106310760498918, guid: 3a8f550e63c37b548a640e3e61a03c27, type: 3}
   - {fileID: -2199445476584147104, guid: 3a8f550e63c37b548a640e3e61a03c27, type: 3}
@@ -373,6 +387,19 @@ SpriteAtlas:
   - PrototypeTiles_0
   - PrototypeTiles_9
   - PrototypeTiles_8
+  - GraeyHouse_4
+  - GraeyHouse_5
+  - GraeyHouse_6
+  - GraeyHouse_7
+  - GraeyHouse_0
+  - GraeyHouse_1
+  - GraeyHouse_2
+  - GraeyHouse_3
+  - GraeyHouse_8
+  - GraeyHouse_9
+  - GraeyHouse_12
+  - GraeyHouse_11
+  - GraeyHouse_10
   - AirshipTileLeftCorr
   - AirshipTilesLeft2_0
   - AirshipTilesLeft2_1

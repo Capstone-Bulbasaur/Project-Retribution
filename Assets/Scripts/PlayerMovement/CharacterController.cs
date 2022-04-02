@@ -18,6 +18,11 @@ public class CharacterController : MonoBehaviour
     [HideInInspector]
     public AudioSource footsteps;
 
+    [HideInInspector]
+    public bool canMove;
+    [HideInInspector]
+    public bool canInteract;
+
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
     private DetectControlMethod controlMethod;
@@ -32,13 +37,16 @@ public class CharacterController : MonoBehaviour
         footsteps = GetComponentInChildren<AudioSource>();
 
         controlMethod = GetComponent<DetectControlMethod>();
+
+        canMove = true;
+        canInteract = true;
     }
 
     // Handles user input
     void Update()
     {
         // Action button
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) & canInteract)
         {
             CheckInteraction();
         }
@@ -68,18 +76,20 @@ public class CharacterController : MonoBehaviour
 #else
 
        leftStick.SetActive(false);
-       // Character movement
-       //if(Input.GetAxisRaw("Horizontal" ))
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
+        // Character movement
+        //if(Input.GetAxisRaw("Horizontal" ))
+       //movement.x = Input.GetAxisRaw("Horizontal");
+       //movement.y = Input.GetAxisRaw("Vertical");
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
        // Set idle position to last known direction
-       if (movement.x > 0 || movement.y > 0 || movement.x < 0 || movement.y < 0)
+       if (canMove && movement != Vector2.zero)
        {
-           animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
-           animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
+           animator.SetFloat("LastHorizontal", movement.x);
+           animator.SetFloat("LastVertical", movement.y);
 
            footsteps.mute = false;
+           rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime));
        }
 #endif
 
@@ -91,13 +101,6 @@ public class CharacterController : MonoBehaviour
         {
             footsteps.mute = true;
         }
-        
-    }
-
-    // Handles movement
-    void FixedUpdate()
-    {
-        rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime)); // * Time.fixedDeltaTime to get constant movement speed
     }
 
     public void OpenInteractBubble()
