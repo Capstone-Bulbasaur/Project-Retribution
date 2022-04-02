@@ -34,7 +34,7 @@ public class FFFire : MonoBehaviour
             {
                 //Debug.Log("Window's crashed");
                 transform.parent.gameObject.SetActive(false);
-                ExtinguishFire();
+                ExtinguishFire(1);
                 isActive = false;
                 upTimer = 0;
                 
@@ -43,7 +43,7 @@ public class FFFire : MonoBehaviour
         }
     }
 
-    public void ExtinguishFire() //man, does this ever work but like, it can't be the best way.
+    public void ExtinguishFire(int sumthin = 0) //man, does this ever work but like, it can't be the best way.
     {
         //Sound Effect?
         //Sploosh?
@@ -51,8 +51,11 @@ public class FFFire : MonoBehaviour
         //Debug.Log("Clicked Fire" + gameObject);
 
         Destroy(gameObject); //to be this lazy would involve checks for what level the fire is, confirm level 0 on click
-
-        FFGameManager.instance.RemoveFlame();
+        
+        if (sumthin == 0)
+        {
+            FFGameManager.instance.RemoveFlame();
+        }
     }
 
     public void LevelUpFire() //Level 0 fire -> Level 1 fire after say 2 seconds without click then Level 1 fire -> Level 2 after 3 seconds maybe?
