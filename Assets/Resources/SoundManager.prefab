@@ -154,7 +154,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Menu_Music
     clip: {fileID: 8300000, guid: fcadfbe1c64c96546895c18e46e8f4b4, type: 3}
-    volume: 1
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Celebration_Music
+    clip: {fileID: 8300000, guid: c3df8b912af9eca449402aeaac33e38b, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 1
     source: {fileID: 0}

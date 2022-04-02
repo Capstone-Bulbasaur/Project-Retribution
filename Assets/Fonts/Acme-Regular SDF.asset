@@ -1660,6 +1660,22 @@ MonoBehaviour:
     m_Y: 165
     m_Width: 2
     m_Height: 858
+  - m_X: 659
+    m_Y: 82
+    m_Width: 14
+    m_Height: 4
+  - m_X: 730
+    m_Y: 86
+    m_Width: 1
+    m_Height: 937
+  - m_X: 659
+    m_Y: 169
+    m_Width: 139
+    m_Height: 854
+  - m_X: 730
+    m_Y: 165
+    m_Width: 68
+    m_Height: 858
   m_fontInfo:
     Name: 
     PointSize: 0
