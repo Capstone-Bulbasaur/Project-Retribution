@@ -28,7 +28,8 @@ public class Constants
         FINALBOSSGAME,
         FINALBOSSWIN,
         CREDITS,
-        RRYOUWIN
+        RRYOUWIN,
+        CELEBRATION
     }
 
     public static readonly int[] AllPickupsTypes = new int[4]
