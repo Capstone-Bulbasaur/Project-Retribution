@@ -95,9 +95,13 @@ public class DialogueManager : MonoBehaviour
             {
                 LetsGoAnimationSceneLoad("OpenRestaurantRush");
             }
+            else if (speakerName.text == "Gaehl")
+            {
+                LetsGoAnimationSceneLoad("OpenSoakinSpirit");
+            }
             else if (speakerName.text == "Isarr")
             {
-                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CELEBRATION);
             }
 
             EnableMovement();
@@ -133,7 +137,10 @@ public class DialogueManager : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
 
         if (letsGo != null)
+        {
             letsGo.SetActive(true);
+            Graey.GetComponent<CharacterController>().canInteract = false;
+        }
 
         Invoke(functionName, 2.5f);
         letsGoAnimator.SetBool("OpenMM", true);
@@ -171,6 +178,11 @@ public class DialogueManager : MonoBehaviour
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRGAME);
     }
 
+    void OpenSoakinSpirit()
+    {
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
+    }
     // Types out the dialogue lines
     private IEnumerator TypeText(string text)
     {

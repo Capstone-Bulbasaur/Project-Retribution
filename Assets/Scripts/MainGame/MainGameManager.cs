@@ -18,6 +18,11 @@ public class MainGameManager : MonoBehaviour
     public Vector2 GraeyPosition;
     public GameObject Graey;
 
+    public GameObject RoadblockFire;
+    public GameObject CityFires;
+    public GameObject RoadblockPots;
+    public GameObject RoadBlockMinion;
+
     private void Awake()
     {
         if (instance == null)
@@ -59,6 +64,22 @@ public class MainGameManager : MonoBehaviour
                 recruitedOrry = (PlayerPrefs.GetInt("RecruitedOrry") != 0);
                 recruitedGaehl = (PlayerPrefs.GetInt("RecruitedGaehl") != 0);
                 recruitedEmbre = (PlayerPrefs.GetInt("RecruitedEmbre") != 0);
+            }
+
+            if(recruitedGaehl == true)
+            {
+                RoadblockFire.SetActive(false);
+                CityFires.SetActive(false);
+            }
+
+            if(recruitedOrry == true)
+            {
+                RoadblockPots.SetActive(false);
+            }
+
+            if(recruitedEmbre == true)
+            {
+                RoadBlockMinion.SetActive(false);
             }
         }
     }

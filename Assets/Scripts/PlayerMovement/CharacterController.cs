@@ -17,8 +17,11 @@ public class CharacterController : MonoBehaviour
 
     [HideInInspector]
     public AudioSource footsteps;
+
     [HideInInspector]
     public bool canMove;
+    [HideInInspector]
+    public bool canInteract;
 
     Vector2 movement;
     private Vector2 boxSize = new Vector2(2.5f, 2.5f); // Need this box size for raycasting to find interactable objects around the player
@@ -36,13 +39,14 @@ public class CharacterController : MonoBehaviour
         controlMethod = GetComponent<DetectControlMethod>();
 
         canMove = true;
+        canInteract = true;
     }
 
     // Handles user input
     void Update()
     {
         // Action button
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) & canInteract)
         {
             CheckInteraction();
         }
