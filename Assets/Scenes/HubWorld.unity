@@ -1094,6 +1094,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3471706851970729480, guid: 9639a7af010d7a743a4ea5aeda822b26, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706851970729480, guid: 9639a7af010d7a743a4ea5aeda822b26, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706852094908715, guid: 9639a7af010d7a743a4ea5aeda822b26, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706852094908715, guid: 9639a7af010d7a743a4ea5aeda822b26, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9639a7af010d7a743a4ea5aeda822b26, type: 3}
 --- !u!4 &1692988852 stripped
