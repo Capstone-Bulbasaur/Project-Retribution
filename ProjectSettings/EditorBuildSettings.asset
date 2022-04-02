@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 3467f190323a38d4b92c125799a97bf2
+  - enabled: 1
+    path: Assets/Scenes/RR-Midscene-YouWin.unity
+    guid: 188f79778f0302e48bbe2b6c8e4facf1
   m_configObjects: {}

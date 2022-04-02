@@ -130,7 +130,7 @@ public class RRGameManager : MonoBehaviour
                     StartCoroutine(TryAgain());
                     isGameOver = true;
                     return;
-                    //LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                    
                 }
                 else
                 {
@@ -150,7 +150,8 @@ public class RRGameManager : MonoBehaviour
                 //Recruited Embre            
                 PlayerPrefs.SetInt("RecruitedEmbre", 1);
 
-                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                // Loads the RR You Win scene with the message, and then, loads the Hub World
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRYOUWIN);
             }
 
             Timer.text = CurrentTime.ToString("0");
@@ -174,12 +175,13 @@ public class RRGameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("YOU WON =D"); //YouWon.ToString();
+                                        
                 }
 
                 // MS - increasing the correct guesses
                 countCorrectGuesses++;
                 RightGuesses.text = countCorrectGuesses.ToString();
-
+                              
 
                 //Disable buttons
                 for (int i = 0; i < 4; i++)
@@ -225,6 +227,14 @@ public class RRGameManager : MonoBehaviour
 
                 Timer.color = Color.red;
                 WhiteTimer = 3;
+
+                // Another lose condition, when the player has X wrong matches, the game will restart.
+                if (countFails >= 4)
+                {
+                    StartCoroutine(TryAgain());
+                    isGameOver = true;
+                    return;
+                }
             }
         }
         
