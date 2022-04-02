@@ -32,6 +32,8 @@ public class RRGameManager : MonoBehaviour
     //public TextMeshProUGUI WrongGuesses;
     public TextMeshProUGUI YouWon;
 
+    public TextMeshProUGUI RedTimer; // MS
+
     public List<GameObject> burgers = new List<GameObject>();
 
     public GameObject EmptyPlate;
@@ -182,7 +184,7 @@ public class RRGameManager : MonoBehaviour
                 // MS - increasing the correct guesses
                 countCorrectGuesses++;
                 RightGuesses.text = countCorrectGuesses.ToString();
-                              
+                       
 
                 //Disable buttons
                 for (int i = 0; i < 4; i++)
@@ -225,9 +227,16 @@ public class RRGameManager : MonoBehaviour
 
                 //TODO ADD INCORRECT ANSWER SOUND HERE
                 AudioManager.instance.Play("Rush_Incorrect");
-
-                Timer.color = Color.red;
-                WhiteTimer = 3;
+                // Color lighterRed{ 0.9,0.2,0.2,1};
+                Timer.color = new Color(0.9f,0.2f,0.2f,1);
+                WhiteTimer = 1;
+                RedTimer.outlineWidth = 0.15f;
+                RedTimer.outlineColor = new Color32(255, 255, 255, 255);
+                /*
+                 * TextMeshPro textmeshPro = GetComponent<TextMeshPro>();
+                textmeshPro.outlineWidth = 0.2f;
+                textmeshPro.outlineColor = new Color32(255, 128, 0, 255);
+                 */
 
                 // Another lose condition, when the player has X wrong matches, the game will restart.
                 if (countFails >= MaxFails)
