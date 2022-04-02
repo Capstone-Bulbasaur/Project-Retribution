@@ -50,3 +50,7 @@ MonoBehaviour:
   recruitedEmbre: 0
   GraeyPosition: {x: 0, y: 0}
   Graey: {fileID: 0}
+  RoadblockFire: {fileID: 0}
+  CityFires: {fileID: 0}
+  RoadblockPots: {fileID: 0}
+  RoadBlockMinion: {fileID: 0}
