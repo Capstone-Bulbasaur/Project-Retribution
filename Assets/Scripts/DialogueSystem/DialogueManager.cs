@@ -97,7 +97,7 @@ public class DialogueManager : MonoBehaviour
             }
             else if (speakerName.text == "Isarr")
             {
-                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CELEBRATION);
             }
 
             EnableMovement();

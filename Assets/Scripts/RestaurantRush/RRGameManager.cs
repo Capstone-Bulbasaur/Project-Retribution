@@ -25,11 +25,14 @@ public class RRGameManager : MonoBehaviour
     public GameObject wrongAnswer;
     public List<Button> btns = new List<Button>();
     public GameObject youLosePanel;
+    public int MaxFails;
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
     //public TextMeshProUGUI WrongGuesses;
     public TextMeshProUGUI YouWon;
+
+    public TextMeshProUGUI RedTimer; // MS
 
     public List<GameObject> burgers = new List<GameObject>();
 
@@ -130,7 +133,7 @@ public class RRGameManager : MonoBehaviour
                     StartCoroutine(TryAgain());
                     isGameOver = true;
                     return;
-                    //LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                    
                 }
                 else
                 {
@@ -150,7 +153,8 @@ public class RRGameManager : MonoBehaviour
                 //Recruited Embre            
                 PlayerPrefs.SetInt("RecruitedEmbre", 1);
 
-                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+                // Loads the RR You Win scene with the message, and then, loads the Hub World
+                LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRYOUWIN);
             }
 
             Timer.text = CurrentTime.ToString("0");
@@ -174,12 +178,13 @@ public class RRGameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("YOU WON =D"); //YouWon.ToString();
+                                        
                 }
 
                 // MS - increasing the correct guesses
                 countCorrectGuesses++;
                 RightGuesses.text = countCorrectGuesses.ToString();
-
+                       
 
                 //Disable buttons
                 for (int i = 0; i < 4; i++)
@@ -222,9 +227,24 @@ public class RRGameManager : MonoBehaviour
 
                 //TODO ADD INCORRECT ANSWER SOUND HERE
                 AudioManager.instance.Play("Rush_Incorrect");
+                // Color lighterRed{ 0.9,0.2,0.2,1};
+                Timer.color = new Color(0.9f,0.2f,0.2f,1);
+                WhiteTimer = 1;
+                RedTimer.outlineWidth = 0.15f;
+                RedTimer.outlineColor = new Color32(255, 255, 255, 255);
+                /*
+                 * TextMeshPro textmeshPro = GetComponent<TextMeshPro>();
+                textmeshPro.outlineWidth = 0.2f;
+                textmeshPro.outlineColor = new Color32(255, 128, 0, 255);
+                 */
 
-                Timer.color = Color.red;
-                WhiteTimer = 3;
+                // Another lose condition, when the player has X wrong matches, the game will restart.
+                if (countFails >= MaxFails)
+                {
+                    StartCoroutine(TryAgain());
+                    isGameOver = true;
+                    return;
+                }
             }
         }
         

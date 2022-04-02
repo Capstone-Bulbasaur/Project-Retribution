@@ -37,9 +37,11 @@ public class Minion : MonoBehaviour
 
     public void DisableMinion()
     {
-        //Play particle effect 
-        Instantiate(particleObject, gameObject.transform.position, Quaternion.identity);
-        AudioManager.instance.Play("Boss_MinionDeath");
+        if (gameObject.transform.position != Vector3.zero)
+        {
+            //Play particle effect 
+            Instantiate(particleObject, gameObject.transform.position, Quaternion.identity);
+        }
 
         //Disable minion
         transform.parent.gameObject.SetActive(false);
