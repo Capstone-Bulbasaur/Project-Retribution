@@ -110,7 +110,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8715823308634142436}
           m_TargetAssemblyTypeName: FFFire, Assembly-CSharp
-          m_MethodName: ExtinguishFire
+          m_MethodName: WaterDownFire
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -132,8 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87eb9c725f19041478dfc143b35ca9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBtn: {fileID: 0}
-  spawnPoints: []
+  spawnTime: 2
 --- !u!61 &8715823308634142438
 BoxCollider2D:
   m_ObjectHideFlags: 0
