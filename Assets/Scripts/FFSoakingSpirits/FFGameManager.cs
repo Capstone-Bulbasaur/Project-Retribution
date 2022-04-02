@@ -111,8 +111,6 @@ public class FFGameManager : MonoBehaviour
                     //Sound Effect?
                     //Fwoosh?
                     fires.transform.position = spawnLocation.transform.position;
-                    fires.transform.localScale = new Vector3(fires.transform.localScale.x + 0.5f,
-                        fires.transform.localScale.y + 0.5f, 1);
                     flamesOnScreen += 1;
                     spawned = true;
                 }
