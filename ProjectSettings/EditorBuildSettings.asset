@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalBossWinDialogue.unity
     guid: 2d2e16bef61fcd449abe97978e07152b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 3467f190323a38d4b92c125799a97bf2
   m_configObjects: {}

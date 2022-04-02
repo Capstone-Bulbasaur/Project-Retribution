@@ -75,6 +75,12 @@ public class MainGameManager : MonoBehaviour
        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
     }
 
+    public void LoadCredits()
+    {
+        AudioManager.instance.StopPlaying("Menu_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CREDITS);
+    }
+
     public void RecruitAlly(int character)
     {
         switch (character)
