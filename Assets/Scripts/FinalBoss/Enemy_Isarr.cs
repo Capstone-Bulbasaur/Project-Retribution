@@ -48,6 +48,11 @@ public class Enemy_Isarr : MonoBehaviour
 
     void Update()
     {
+        if (FBGameManager.instance.CheckGameOver())
+        {
+            return;
+        }
+
         if (currentHealth > 0)
         {
             // Isarr movements

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 public class FFGameManager : MonoBehaviour
@@ -15,7 +16,6 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
-    
 
     public static FFGameManager instance;
     
@@ -46,7 +46,7 @@ public class FFGameManager : MonoBehaviour
             generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
             StartCoroutine(SpawnFires(Random.Range(minSpawnTime, maxSpawnTime)));//BoilerPlate, might not be the final logic we use but can be used as a template maybe?
         }
-         
+
     }
 
     public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)

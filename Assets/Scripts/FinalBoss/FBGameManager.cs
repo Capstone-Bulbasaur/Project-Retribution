@@ -22,7 +22,8 @@ public class FBGameManager : MonoBehaviour
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
-    private bool isGameOver;
+    private bool isGameOver = true;
+    
     private Enemy_Isarr isarr;
 
 
@@ -54,6 +55,9 @@ public class FBGameManager : MonoBehaviour
         projectilePoller = ProjectilePooler.Instance;
 
         isarr = FindObjectOfType<Enemy_Isarr>();
+
+        Invoke("StartGame", 2.0f);
+
     }
 
     // Update is called once per frame
@@ -131,6 +135,11 @@ public class FBGameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    void StartGame()
+    {
+        isGameOver = false;
     }
 
     public void RemoveEnemy()
