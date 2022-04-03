@@ -604,6 +604,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 918763303, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: Timer
+      value: 
+      objectReference: {fileID: 1416452995}
     - target: {fileID: 967297310818222237, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -648,21 +652,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2466901930230429803, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_text
+      value: 00
+      objectReference: {fileID: 0}
     - target: {fileID: 8579425758849321921, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_Name
       value: FFUIManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
---- !u!114 &1612822474 stripped
+
+--- !u!114 &1416452995 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
-  m_PrefabInstance: {fileID: 834555621}
+  m_CorrespondingSourceObject: {fileID: 2534300796031696020, guid: 639696a22e78eb144b7d56d92930bbc3, type: 3}
+  m_PrefabInstance: {fileID: 1700102089}
+
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d887e343487f74d965831a27ed784d, type: 3}
+
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1700102089

@@ -16,15 +16,21 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
+
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
 
+    public int brokenWindows = 0;
+
 
     public static FFGameManager instance;
-    
+
+    private bool gameOver = false;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
+    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
     [SerializeField] private Transform gameZone;
+    private bool isHalfTime = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +47,42 @@ public class FFGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpawnTime += Time.deltaTime;
-
-        if (currentSpawnTime > generatedSpawnTime)
+        if (!gameOver)
         {
-            currentSpawnTime = 0;
-            generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-            StartCoroutine(SpawnFires(Random.Range(minSpawnTime, maxSpawnTime)));//BoilerPlate, might not be the final logic we use but can be used as a template maybe?
+            //currently not working, throws constant NULL reference errors.
+            if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
+            {
+                maxSpawnTime -= 0.5f;
+                isHalfTime = true;
+            }
+
+            WaitforInstructions -= Time.deltaTime;
+            if (WaitforInstructions < 0)
+            {
+                currentSpawnTime += Time.deltaTime;
+                if (currentSpawnTime > generatedSpawnTime)
+                {
+                    currentSpawnTime = 0;
+                    generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    StartCoroutine(SpawnFires(Random.Range(minSpawnTime,
+                        maxSpawnTime)));
+                }
+                if (brokenWindows == 5)
+                {
+                    gameOver = true;
+                    //restart game
+                    //try again screen
+                }
+                //also throwing NULL references, learn how to instance.
+                else if (FFUIManager.instance.currentTime == 0)
+                {
+                    //you win? I guess
+                    //recruit ghaeli
+                    //load back to hubworld
+                }
+            }
         }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -60,56 +94,11 @@ public class FFGameManager : MonoBehaviour
                 Pause();
             }
         }
+
     }
 
-    public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)
+    public void SpawnFire()
     {
-        ////SPAWN FLAMES CODE
-        //currentSpawnTime += Time.deltaTime;
-
-        //if (currentSpawnTime > generatedSpawnTime)
-        //{
-        //    currentSpawnTime = 0;
-        //    generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-
-        //    if (flamesPerSpawn > 0 && flamesOnScreen < totalFlames)
-        //    {
-        //        List<int> previousSpawnLocations = new List<int>();
-
-        //        if (flamesPerSpawn > spawnPoints.Length)
-        //        {
-        //            flamesPerSpawn = spawnPoints.Length - 1;
-        //        }
-
-        //        flamesPerSpawn = (flamesPerSpawn > totalFlames) ? flamesPerSpawn - totalFlames : flamesPerSpawn;
-
-        //        for (int i = 0; i < flamesPerSpawn; i++)
-        //        {
-        //            if (flamesOnScreen < maxFlamesOnScreen)
-        //            {
-        //                int spawnPoint = -1;
-
-        //                while (spawnPoint == -1)
-        //                {
-        //                    int randomNumber = Random.Range(0, spawnPoints.Length);
-
-        //                    if (!previousSpawnLocations.Contains(randomNumber))
-        //                    {
-        //                        previousSpawnLocations.Add(randomNumber);
-        //                        spawnPoint = randomNumber;
-        //                    }
-
-        //                    GameObject spawnLocation = spawnPoints[spawnPoint];
-        //                    GameObject newFlame = Instantiate(flame);
-        //                    newFlame.transform.SetParent(spawnLocation.gameObject.transform, false);
-        //                    newFlame.transform.position = spawnLocation.transform.position;
-        //                    flamesOnScreen += 1;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         GameObject spawnLocation = spawnPoints[Random.Range(0, spawnPoints.Length)];
         bool spawned = false;
 
