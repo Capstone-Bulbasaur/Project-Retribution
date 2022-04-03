@@ -16,8 +16,11 @@ public class FFGameManager : MonoBehaviour
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
     public int brokenWindows = 0;
+    public GameObject youLosePanel;
 
     public static FFGameManager instance;
+
+    public static RRGameManager RRinstance;
 
     private bool gameOver = false;
     private float generatedSpawnTime = 0;
@@ -58,6 +61,9 @@ public class FFGameManager : MonoBehaviour
                     gameOver = true;
                     //restart game
                     //try again screen
+                    StartCoroutine(TryAgain());
+                    gameOver = true;
+                    return;
                 }
                 else if (FFUIManager.instance.currentTime == 0)
                 {
@@ -107,5 +113,21 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawn);
 
         SpawnFire();
+    }
+
+    void Restart()
+    {
+        // need to throw the logic here
+        RemoveFlame();
+        gameOver = false;
+    }
+
+    IEnumerator TryAgain()
+    {
+        // got part of the Lose panel solution on this tutorial: https://www.youtube.com/watch?v=e0feEWLRSYI
+        youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
+        yield return new WaitForSeconds(2.0f); // wait for 2s
+        youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
+        Restart();
     }
 }

@@ -177,7 +177,7 @@ public class RRGameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("YOU WON =D"); //YouWon.ToString();
+                    Debug.Log("YOU WON =D"); 
                                         
                 }
 
@@ -185,7 +185,6 @@ public class RRGameManager : MonoBehaviour
                 countCorrectGuesses++;
                 RightGuesses.text = countCorrectGuesses.ToString();
                        
-
                 //Disable buttons
                 for (int i = 0; i < 4; i++)
                 {
@@ -227,17 +226,13 @@ public class RRGameManager : MonoBehaviour
 
                 //TODO ADD INCORRECT ANSWER SOUND HERE
                 AudioManager.instance.Play("Rush_Incorrect");
-                // Color lighterRed{ 0.9,0.2,0.2,1};
+                
+                // added an outline on timer. Reduced WhitTimer to 1, because 3s was too much.
                 Timer.color = new Color(0.9f,0.2f,0.2f,1);
                 WhiteTimer = 1;
                 RedTimer.outlineWidth = 0.15f;
-                RedTimer.outlineColor = new Color32(255, 255, 255, 255);
-                /*
-                 * TextMeshPro textmeshPro = GetComponent<TextMeshPro>();
-                textmeshPro.outlineWidth = 0.2f;
-                textmeshPro.outlineColor = new Color32(255, 128, 0, 255);
-                 */
-
+                RedTimer.outlineColor = new Color32(255, 255, 255, 255); // white outline
+                
                 // Another lose condition, when the player has X wrong matches, the game will restart.
                 if (countFails >= MaxFails)
                 {
