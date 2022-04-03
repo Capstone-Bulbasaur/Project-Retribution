@@ -259,6 +259,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1700102090}
     - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
+      propertyPath: maxSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: youLosePanel
       value: 
       objectReference: {fileID: 603948665}
@@ -512,6 +516,10 @@ PrefabInstance:
       propertyPath: Timer
       value: 
       objectReference: {fileID: 1416452995}
+    - target: {fileID: 918763303, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: startingTime
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 967297310818222237, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_RootOrder
       value: 0

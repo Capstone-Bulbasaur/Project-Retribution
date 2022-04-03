@@ -65,17 +65,18 @@ public class FFGameManager : MonoBehaviour
                 }
                 if (brokenWindows == 5)
                 {
-                    //restart game
-                    //try again screen
+                    //restart game                    
                     StartCoroutine(TryAgain());
                     return;
                 }
                 //also throwing NULL references, learn how to instance.
-                else if (FFUIManager.instance.currentTime == 0)
+                else if (FFUIManager.instance.currentTime <= 0.5f)
                 {
-                    //you win? I guess
-                    //recruit ghaeli
-                    //load back to hubworld
+                    //Recruited Gaehl            
+                    PlayerPrefs.SetInt("RecruitedGaehl", 1);
+
+                    // Loads the FF You Win scene with the message, and then, loads the Hub World
+                    LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRITYOUWIN);
                 }
             }
         }
@@ -120,7 +121,6 @@ public class FFGameManager : MonoBehaviour
 
         SpawnFire();
     }
-
 
     IEnumerator TryAgain()
     {
