@@ -19,6 +19,10 @@ public class FFFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if(FFGameManager.instance.gameOver)
+        //{
+        //    ExtinguishFire();
+        //}
 
         upTimer += Time.deltaTime;
 
@@ -87,7 +91,6 @@ public class FFFire : MonoBehaviour
         }
         //Sound Effect?
         //SizzleDizzle?
-
-        
+                
     }
 }

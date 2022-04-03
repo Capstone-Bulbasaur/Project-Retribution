@@ -17,12 +17,9 @@ public class FFGameManager : MonoBehaviour
     public int flamesOnScreen = 0;
     public int brokenWindows = 0;
     public GameObject youLosePanel;
-
+    public bool gameOver = false;
     public static FFGameManager instance;
-
-    public static RRGameManager RRinstance;
-
-    private bool gameOver = false;
+    
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
@@ -39,6 +36,8 @@ public class FFGameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        youLosePanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -66,11 +65,9 @@ public class FFGameManager : MonoBehaviour
                 }
                 if (brokenWindows == 5)
                 {
-                    gameOver = true;
                     //restart game
                     //try again screen
                     StartCoroutine(TryAgain());
-                    gameOver = true;
                     return;
                 }
                 //also throwing NULL references, learn how to instance.
@@ -124,12 +121,6 @@ public class FFGameManager : MonoBehaviour
         SpawnFire();
     }
 
-    void Restart()
-    {
-        // need to throw the logic here
-        RemoveFlame();
-        gameOver = false;
-    }
 
     IEnumerator TryAgain()
     {
@@ -137,6 +128,6 @@ public class FFGameManager : MonoBehaviour
         youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
         yield return new WaitForSeconds(2.0f); // wait for 2s
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
-        Restart();
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
     }
 }
