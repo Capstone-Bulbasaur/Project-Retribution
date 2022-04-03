@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
 { 
@@ -15,7 +16,12 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
+
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
+
     public int brokenWindows = 0;
+
 
     public static FFGameManager instance;
 
@@ -77,6 +83,18 @@ public class FFGameManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+
     }
 
     public void SpawnFire()
@@ -116,5 +134,31 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawn);
 
         SpawnFire();
+    }
+
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }
