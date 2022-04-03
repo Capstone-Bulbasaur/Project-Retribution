@@ -395,7 +395,7 @@ Animator:
   m_GameObject: {fileID: 570720424}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f931c816bfff2b4381ea4d5109c127e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a3b6b0d26aa8abf4ba403cb077539082, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -684,6 +684,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1700102090}
     - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
+      propertyPath: maxSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 18
       objectReference: {fileID: 0}
@@ -776,6 +780,10 @@ PrefabInstance:
       propertyPath: Timer
       value: 
       objectReference: {fileID: 1416452995}
+    - target: {fileID: 918763303, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: startingTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 967297310818222237, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_RootOrder
       value: 0
