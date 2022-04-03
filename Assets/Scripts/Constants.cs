@@ -30,7 +30,8 @@ public class Constants
         CREDITS,
         RRYOUWIN,
         CELEBRATION,
-        FFSOAKINSPIRIT
+        FFSOAKINSPIRIT,
+        FFSOAKINSPIRITYOUWIN,
     }
 
     public static readonly int[] AllPickupsTypes = new int[4]
