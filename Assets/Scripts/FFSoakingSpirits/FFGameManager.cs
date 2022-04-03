@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
 { 
@@ -15,7 +16,9 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
-    
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
+
 
     public static FFGameManager instance;
     
@@ -46,7 +49,17 @@ public class FFGameManager : MonoBehaviour
             generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
             StartCoroutine(SpawnFires(Random.Range(minSpawnTime, maxSpawnTime)));//BoilerPlate, might not be the final logic we use but can be used as a template maybe?
         }
-         
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)
@@ -132,5 +145,31 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawn);
 
         SpawnFire();
+    }
+
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }
