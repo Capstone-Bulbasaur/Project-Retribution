@@ -44,7 +44,7 @@ public class FFGameManager : MonoBehaviour
             return;
         }
 
-        youLosePanel.gameObject.SetActive(false);
+        //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
     // Update is called once per frame
@@ -150,7 +150,7 @@ public class FFGameManager : MonoBehaviour
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
 
-
+    }
 
     public void Resume()
     {
