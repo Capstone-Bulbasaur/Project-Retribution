@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class FFFire : MonoBehaviour
 {
-
+    public GameObject camera;
     public float spawnTime = 2;
+    
 
     private int fireLevel = 0;
     private float upTimer;
     private bool isActive = true;
-    
+
+
     void Start()
     {
-        
+
     }
     // Update is called once per frame
     void Update()
@@ -88,6 +90,5 @@ public class FFFire : MonoBehaviour
         //Sound Effect?
         //SizzleDizzle?
 
-        
     }
 }

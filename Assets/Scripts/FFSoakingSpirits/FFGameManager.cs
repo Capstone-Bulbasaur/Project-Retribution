@@ -55,7 +55,6 @@ public class FFGameManager : MonoBehaviour
                 maxSpawnTime -= 0.5f;
                 isHalfTime = true;
             }
-
             WaitforInstructions -= Time.deltaTime;
             if (WaitforInstructions < 0)
             {
