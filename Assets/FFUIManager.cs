@@ -28,7 +28,13 @@ public class FFUIManager : MonoBehaviour
 
     void Start()
     {
-        
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     void Update()
