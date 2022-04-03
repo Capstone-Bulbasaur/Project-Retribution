@@ -27,6 +27,7 @@ public class FFGameManager : MonoBehaviour
     private float currentSpawnTime = 0;
     private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
     [SerializeField] private Transform gameZone;
+    private bool isHalfTime = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,13 @@ public class FFGameManager : MonoBehaviour
     {
         if (!gameOver)
         {
+            //currently not working, throws constant NULL reference errors.
+            if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
+            {
+                maxSpawnTime -= 0.5f;
+                isHalfTime = true;
+            }
+
             WaitforInstructions -= Time.deltaTime;
             if (WaitforInstructions < 0)
             {
@@ -65,6 +73,7 @@ public class FFGameManager : MonoBehaviour
                     gameOver = true;
                     return;
                 }
+                //also throwing NULL references, learn how to instance.
                 else if (FFUIManager.instance.currentTime == 0)
                 {
                     //you win? I guess
