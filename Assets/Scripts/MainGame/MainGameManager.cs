@@ -22,6 +22,8 @@ public class MainGameManager : MonoBehaviour
     public GameObject CityFires;
     public GameObject RoadblockPots;
     public GameObject RoadBlockMinion;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     private void Awake()
     {
@@ -84,6 +86,22 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
     public void StartScene()
     {
         PlayerPrefs.DeleteAll();
@@ -122,5 +140,31 @@ public class MainGameManager : MonoBehaviour
                 Debug.LogError("Invalid ally type passed");
                 break;
         }
+    }
+
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }
