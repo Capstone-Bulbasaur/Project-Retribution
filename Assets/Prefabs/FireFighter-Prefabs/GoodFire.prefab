@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87eb9c725f19041478dfc143b35ca9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWindow: {fileID: 801935964860081576, guid: 08f2543fe371b3a4faf3525622d07ccd, type: 3}
   spawnTime: 2
 --- !u!61 &8715823308634142438
 BoxCollider2D:

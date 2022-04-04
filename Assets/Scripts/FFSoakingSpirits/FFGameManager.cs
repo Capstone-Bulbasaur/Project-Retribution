@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
-{ 
+{
     //I imagine I could make a fire instance in the manager and summon all the functions here to replace this boilerplate spawning method.
     //Definitely ready for that team collaboration now.
     public GameObject flame;
@@ -26,7 +26,7 @@ public class FFGameManager : MonoBehaviour
     public bool gameOver = false;
 
     public static FFGameManager instance;
-    
+
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
@@ -52,13 +52,12 @@ public class FFGameManager : MonoBehaviour
     {
         if (!gameOver)
         {
-            //currently not working, throws constant NULL reference errors.
+
             if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
             {
-                maxSpawnTime -= 0.5f;
+                maxSpawnTime -= maxSpawnTime / 2.0f;
                 isHalfTime = true;
             }
-
             WaitforInstructions -= Time.deltaTime;
             if (WaitforInstructions < 0)
             {
@@ -72,14 +71,14 @@ public class FFGameManager : MonoBehaviour
                 }
                 if (brokenWindows == 5)
                 {
-                    //restart game                    
+                    //restart game
                     StartCoroutine(TryAgain());
                     return;
                 }
-                //also throwing NULL references, learn how to instance.
+                
                 else if (FFUIManager.instance.currentTime <= 0.5f)
                 {
-                    //Recruited Gaehl            
+                    //Recruited Gaehl
                     PlayerPrefs.SetInt("RecruitedGaehl", 1);
 
                     // Loads the FF You Win scene with the message, and then, loads the Hub World
