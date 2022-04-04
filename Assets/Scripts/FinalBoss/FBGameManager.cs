@@ -171,8 +171,6 @@ public class FBGameManager : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     public void Pause()
@@ -180,8 +178,6 @@ public class FBGameManager : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-
     }
 
     public void RetrunMainMenu()

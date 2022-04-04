@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -666,6 +666,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1387438983, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387438983, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541999619, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541999619, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2952963683441356324, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -713,6 +729,14 @@ PrefabInstance:
     - target: {fileID: 2952963683441356327, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
       propertyPath: m_Name
       value: HealthBars
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952963684863551062, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952963684863551062, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
