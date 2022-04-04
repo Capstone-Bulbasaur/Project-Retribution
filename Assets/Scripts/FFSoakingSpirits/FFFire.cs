@@ -31,8 +31,7 @@ public class FFFire : MonoBehaviour
         }
         else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
         {
-            GameObject broken = Instantiate(brokenWindow, gameObject.transform, false);
-            //broken.transform.position = parent.gameObject.transform.position; //ask someone how to instatiate right.
+            
 
             transform.parent.gameObject.SetActive(false);
             //window break animation
@@ -57,6 +56,13 @@ public class FFFire : MonoBehaviour
         {
             FFGameManager.instance.RemoveFlame();
         }
+        else
+        {
+            GameObject broken = Instantiate(brokenWindow);
+            broken.transform.position = new Vector3(gameObject.transform.position.x + 0.05f, gameObject.transform.position.y - 2.2f, gameObject.transform.position.z);
+        }
+        
+        
     }
 
     public void LevelUpFire() //TODO after LevelUp: more user feedback for fire levels, maybe color change?
