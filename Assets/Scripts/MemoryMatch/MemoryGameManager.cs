@@ -37,6 +37,9 @@ public class MemoryGameManager : MonoBehaviour
 
     public GameObject youLosePanel;
 
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
+
     void Start()
     {
         GetButtons();
@@ -86,6 +89,21 @@ public class MemoryGameManager : MonoBehaviour
 
             gamePots.Add(pots[index]);
             index++;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
@@ -248,5 +266,28 @@ public class MemoryGameManager : MonoBehaviour
 
         PlayerMissed.text = countFails.ToString();
         PlayerScore.text = countCorrectGuesses.ToString();
+    }
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }

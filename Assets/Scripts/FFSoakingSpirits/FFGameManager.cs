@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
 { 
@@ -16,12 +17,21 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
+
+    public int brokenWindows = 0;
+
+    public GameObject youLosePanel;
+    public bool gameOver = false;
 
     public static FFGameManager instance;
     
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
+    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
     [SerializeField] private Transform gameZone;
+    private bool isHalfTime = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,70 +43,67 @@ public class FFGameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSpawnTime += Time.deltaTime;
-
-        if (currentSpawnTime > generatedSpawnTime)
+        if (!gameOver)
         {
-            currentSpawnTime = 0;
-            generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-            StartCoroutine(SpawnFires(Random.Range(minSpawnTime, maxSpawnTime)));//BoilerPlate, might not be the final logic we use but can be used as a template maybe?
+            //currently not working, throws constant NULL reference errors.
+            if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
+            {
+                maxSpawnTime -= 0.5f;
+                isHalfTime = true;
+            }
+
+            WaitforInstructions -= Time.deltaTime;
+            if (WaitforInstructions < 0)
+            {
+                currentSpawnTime += Time.deltaTime;
+                if (currentSpawnTime > generatedSpawnTime)
+                {
+                    currentSpawnTime = 0;
+                    generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    StartCoroutine(SpawnFires(Random.Range(minSpawnTime,
+                        maxSpawnTime)));
+                }
+                if (brokenWindows == 5)
+                {
+                    //restart game                    
+                    StartCoroutine(TryAgain());
+                    return;
+                }
+                //also throwing NULL references, learn how to instance.
+                else if (FFUIManager.instance.currentTime <= 0.5f)
+                {
+                    //Recruited Gaehl            
+                    PlayerPrefs.SetInt("RecruitedGaehl", 1);
+
+                    // Loads the FF You Win scene with the message, and then, loads the Hub World
+                    LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRITYOUWIN);
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
 
     }
 
-    public void SpawnFire() //Boilerplate spawning logic we've been using, nothing particularly wrong with it (minor known bug of maxperspawn not working)
+    public void SpawnFire()
     {
-        ////SPAWN FLAMES CODE
-        //currentSpawnTime += Time.deltaTime;
-
-        //if (currentSpawnTime > generatedSpawnTime)
-        //{
-        //    currentSpawnTime = 0;
-        //    generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-
-        //    if (flamesPerSpawn > 0 && flamesOnScreen < totalFlames)
-        //    {
-        //        List<int> previousSpawnLocations = new List<int>();
-
-        //        if (flamesPerSpawn > spawnPoints.Length)
-        //        {
-        //            flamesPerSpawn = spawnPoints.Length - 1;
-        //        }
-
-        //        flamesPerSpawn = (flamesPerSpawn > totalFlames) ? flamesPerSpawn - totalFlames : flamesPerSpawn;
-
-        //        for (int i = 0; i < flamesPerSpawn; i++)
-        //        {
-        //            if (flamesOnScreen < maxFlamesOnScreen)
-        //            {
-        //                int spawnPoint = -1;
-
-        //                while (spawnPoint == -1)
-        //                {
-        //                    int randomNumber = Random.Range(0, spawnPoints.Length);
-
-        //                    if (!previousSpawnLocations.Contains(randomNumber))
-        //                    {
-        //                        previousSpawnLocations.Add(randomNumber);
-        //                        spawnPoint = randomNumber;
-        //                    }
-
-        //                    GameObject spawnLocation = spawnPoints[spawnPoint];
-        //                    GameObject newFlame = Instantiate(flame);
-        //                    newFlame.transform.SetParent(spawnLocation.gameObject.transform, false);
-        //                    newFlame.transform.position = spawnLocation.transform.position;
-        //                    flamesOnScreen += 1;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         GameObject spawnLocation = spawnPoints[Random.Range(0, spawnPoints.Length)];
         bool spawned = false;
 
@@ -132,5 +139,41 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawn);
 
         SpawnFire();
+    }
+
+
+    IEnumerator TryAgain()
+    {
+        // got part of the Lose panel solution on this tutorial: https://www.youtube.com/watch?v=e0feEWLRSYI
+        youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
+        yield return new WaitForSeconds(2.0f); // wait for 2s
+        youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
+
+    }
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
+
     }
 }

@@ -18,6 +18,13 @@ public class MainGameManager : MonoBehaviour
     public Vector2 GraeyPosition;
     public GameObject Graey;
 
+    public GameObject RoadblockFire;
+    public GameObject CityFires;
+    public GameObject RoadblockPots;
+    public GameObject RoadBlockMinion;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
+
     private void Awake()
     {
         if (instance == null)
@@ -60,6 +67,38 @@ public class MainGameManager : MonoBehaviour
                 recruitedGaehl = (PlayerPrefs.GetInt("RecruitedGaehl") != 0);
                 recruitedEmbre = (PlayerPrefs.GetInt("RecruitedEmbre") != 0);
             }
+
+            if(recruitedGaehl == true)
+            {
+                RoadblockFire.SetActive(false);
+                CityFires.SetActive(false);
+            }
+
+            if(recruitedOrry == true)
+            {
+                RoadblockPots.SetActive(false);
+            }
+
+            if(recruitedEmbre == true)
+            {
+                RoadBlockMinion.SetActive(false);
+            }
+        }
+    }
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
@@ -101,5 +140,31 @@ public class MainGameManager : MonoBehaviour
                 Debug.LogError("Invalid ally type passed");
                 break;
         }
+    }
+
+
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }

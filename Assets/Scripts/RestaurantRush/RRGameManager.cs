@@ -32,6 +32,8 @@ public class RRGameManager : MonoBehaviour
     //public TextMeshProUGUI WrongGuesses;
     public TextMeshProUGUI YouWon;
 
+    public TextMeshProUGUI RedTimer; // MS
+
     public List<GameObject> burgers = new List<GameObject>();
 
     public GameObject EmptyPlate;
@@ -54,6 +56,8 @@ public class RRGameManager : MonoBehaviour
     bool incorrectKey = false;
     int count = 0;
     Dictionary<int, string> Buttons = new Dictionary<int, string>();
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     void Awake()
     {
@@ -120,7 +124,19 @@ public class RRGameManager : MonoBehaviour
 
     void Update()
     {
-        if(!isGameOver)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+
+        if (!isGameOver)
         {
             // Solution for the issue we had before when the 1st button was always wrong
             WaitforInstructions -= Time.deltaTime;
@@ -175,15 +191,14 @@ public class RRGameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("YOU WON =D"); //YouWon.ToString();
+                    Debug.Log("YOU WON =D"); 
                                         
                 }
 
                 // MS - increasing the correct guesses
                 countCorrectGuesses++;
                 RightGuesses.text = countCorrectGuesses.ToString();
-                              
-
+                       
                 //Disable buttons
                 for (int i = 0; i < 4; i++)
                 {
@@ -225,10 +240,13 @@ public class RRGameManager : MonoBehaviour
 
                 //TODO ADD INCORRECT ANSWER SOUND HERE
                 AudioManager.instance.Play("Rush_Incorrect");
-
-                Timer.color = Color.red;
-                WhiteTimer = 3;
-
+                
+                // added an outline on timer. Reduced WhitTimer to 1, because 3s was too much.
+                Timer.color = new Color(0.9f,0.2f,0.2f,1);
+                WhiteTimer = 1;
+                RedTimer.outlineWidth = 0.15f;
+                RedTimer.outlineColor = new Color32(255, 255, 255, 255); // white outline
+                
                 // Another lose condition, when the player has X wrong matches, the game will restart.
                 if (countFails >= MaxFails)
                 {
@@ -347,5 +365,29 @@ public class RRGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f); // wait for 2s
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
         Restart();
+    }
+
+    public void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    public void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+    public void RetrunMainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenu");
+        Time.timeScale = 1f;
     }
 }

@@ -63,6 +63,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartConversation(Conversation convo, ConvoFinishedCallback callb)
     {
+        DisableMovement();
         animator.SetBool("isOpen", true);
         currentIndex = 0;
         currentConvo = convo;
@@ -94,11 +95,16 @@ public class DialogueManager : MonoBehaviour
             {
                 LetsGoAnimationSceneLoad("OpenRestaurantRush");
             }
+            else if (speakerName.text == "Gaehl")
+            {
+                LetsGoAnimationSceneLoad("OpenSoakinSpirit");
+            }
             else if (speakerName.text == "Isarr")
             {
                 LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CELEBRATION);
             }
 
+            EnableMovement();
             return;
         }
 
@@ -131,10 +137,27 @@ public class DialogueManager : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerY", Graey.transform.position.y);
 
         if (letsGo != null)
+        {
             letsGo.SetActive(true);
+            Graey.GetComponent<CharacterController>().canInteract = false;
+        }
 
         Invoke(functionName, 2.5f);
         letsGoAnimator.SetBool("OpenMM", true);
+    }
+
+    void DisableMovement()
+    {
+        Graey.GetComponent<CharacterController>().canMove = false;
+        Graey.GetComponent<Animator>().enabled = false;
+        Graey.GetComponentInChildren<AudioSource>().mute = true;
+    }
+
+    void EnableMovement()
+    {
+        Graey.GetComponent<CharacterController>().canMove = true;
+        Graey.GetComponent<Animator>().enabled = true;
+        Graey.GetComponentInChildren<AudioSource>().mute = false;
     }
 
     void OpenMemoryMatch()
@@ -155,6 +178,11 @@ public class DialogueManager : MonoBehaviour
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.RRGAME);
     }
 
+    void OpenSoakinSpirit()
+    {
+        AudioManager.instance.StopPlaying("Hub_Music");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
+    }
     // Types out the dialogue lines
     private IEnumerator TypeText(string text)
     {
