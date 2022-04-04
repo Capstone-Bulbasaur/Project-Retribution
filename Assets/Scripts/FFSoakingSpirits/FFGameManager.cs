@@ -49,7 +49,7 @@ public class FFGameManager : MonoBehaviour
     {
         if (!gameOver)
         {
-            //currently not working, throws constant NULL reference errors.
+           
             if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
             {
                 maxSpawnTime -= 0.5f;
@@ -72,7 +72,7 @@ public class FFGameManager : MonoBehaviour
                     //restart game
                     //try again screen
                 }
-                //also throwing NULL references, learn how to instance.
+                
                 else if (FFUIManager.instance.currentTime == 0)
                 {
                     //you win? I guess

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FFFire : MonoBehaviour
 {
-    public GameObject camera;
+    public GameObject brokenWindow;
     public float spawnTime = 2;
     
 
@@ -31,6 +31,9 @@ public class FFFire : MonoBehaviour
         }
         else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
         {
+            GameObject broken = Instantiate(brokenWindow, gameObject.transform, false);
+            //broken.transform.position = parent.gameObject.transform.position; //ask someone how to instatiate right.
+
             transform.parent.gameObject.SetActive(false);
             //window break animation
             ExtinguishFire(1);
