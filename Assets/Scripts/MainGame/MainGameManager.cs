@@ -38,6 +38,8 @@ public class MainGameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
         //Check if the scene is the hub world
         if (SceneManager.GetActiveScene().name == "HubWorld")
         {

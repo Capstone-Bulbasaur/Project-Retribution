@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,35 +130,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Resume
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FFGameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 100429169856602362, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 906461570160551902, guid: 14539c8bb2d7f1146bb02d6c2f82024e, type: 3}
+    - target: {fileID: 23107833711417252, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: m_Name
       value: FFGameManager
       objectReference: {fileID: 0}
@@ -215,17 +187,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 825684528}
     - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
-      propertyPath: maxSpawnTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: youLosePanel
       value: 
       objectReference: {fileID: 1502348390}
-    - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
-      propertyPath: spawnPoints.Array.size
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
