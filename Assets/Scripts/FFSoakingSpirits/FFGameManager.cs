@@ -55,7 +55,7 @@ public class FFGameManager : MonoBehaviour
 
             if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
             {
-                maxSpawnTime -= 0.5f;
+                maxSpawnTime -= maxSpawnTime / 2.0f;
                 isHalfTime = true;
             }
             WaitforInstructions -= Time.deltaTime;
@@ -75,7 +75,7 @@ public class FFGameManager : MonoBehaviour
                     StartCoroutine(TryAgain());
                     return;
                 }
-                //also throwing NULL references, learn how to instance.
+                
                 else if (FFUIManager.instance.currentTime <= 0.5f)
                 {
                     //Recruited Gaehl
