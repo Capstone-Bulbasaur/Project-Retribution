@@ -38,4 +38,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FireFighter.unity
     guid: b5ab27b2e1e817543ab8cec34dec858c
+  - enabled: 1
+    path: Assets/Scenes/FireFighter-YouWin.unity
+    guid: 1021988f5fad45b4396907e864a9103f
+  - enabled: 1
+    path: Assets/Scenes/GraeyHome.unity
+    guid: 6278dcd1a48cb254cb9215e0e035f6e2
   m_configObjects: {}

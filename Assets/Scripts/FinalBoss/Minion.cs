@@ -29,7 +29,7 @@ public class Minion : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.CheckGameOver())
+        if (gameManager.isGameOver)
         {
             transform.parent.gameObject.SetActive(false);
         }

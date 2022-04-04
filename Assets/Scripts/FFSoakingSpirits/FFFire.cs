@@ -7,7 +7,7 @@ public class FFFire : MonoBehaviour
 {
     public GameObject brokenWindow;
     public float spawnTime = 2;
-    
+
 
     private int fireLevel = 0;
     private float upTimer;
@@ -21,6 +21,10 @@ public class FFFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if(FFGameManager.instance.gameOver)
+        //{
+        //    ExtinguishFire();
+        //}
 
         upTimer += Time.deltaTime;
 
@@ -31,7 +35,7 @@ public class FFFire : MonoBehaviour
         }
         else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
         {
-            
+
 
             transform.parent.gameObject.SetActive(false);
             //window break animation
@@ -40,9 +44,9 @@ public class FFFire : MonoBehaviour
             upTimer = 0;
             //counter for broken windows logic now
             FFGameManager.instance.brokenWindows++;
-                    
+
         }
-        
+
     }
 
     public void ExtinguishFire(int sumthin = 0)//don't touch sumthin.
@@ -51,7 +55,7 @@ public class FFFire : MonoBehaviour
         //Sploosh?
 
         Destroy(gameObject);
-        
+
         if (sumthin == 0)
         {
             FFGameManager.instance.RemoveFlame();
@@ -61,14 +65,14 @@ public class FFFire : MonoBehaviour
             GameObject broken = Instantiate(brokenWindow);
             broken.transform.position = new Vector3(gameObject.transform.position.x + 0.05f, gameObject.transform.position.y - 2.2f, gameObject.transform.position.z);
         }
-        
-        
+
+
     }
 
     public void LevelUpFire() //TODO after LevelUp: more user feedback for fire levels, maybe color change?
     {
         //can debate Sound Effect for level up if we think another differt Fywooosh would be needed.
-        
+
         if(fireLevel <= 2)
         {
             fireLevel++; // up to Level2 which maxLevel could be a variable maybe?
@@ -81,7 +85,7 @@ public class FFFire : MonoBehaviour
         }
     }
 
-    public void WaterDownFire() 
+    public void WaterDownFire()
     {
         //check for fire level
         if(fireLevel == 0)

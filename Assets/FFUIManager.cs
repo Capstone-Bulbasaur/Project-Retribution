@@ -44,9 +44,9 @@ public class FFUIManager : MonoBehaviour
             WaitforInstructions -= Time.deltaTime;
             if (WaitforInstructions < 0)
             {
-                if (currentTime <= 0)
+                if (currentTime < 0)
                 {
-                    isGameOver = true;
+                    //isGameOver = true;
                     return;
                 }
                 else

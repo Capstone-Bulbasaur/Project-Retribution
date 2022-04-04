@@ -31,6 +31,7 @@ public class Enemy_Isarr : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody rigidbody;
+    private FBGameManager gameManager;
     [SerializeField] private Color hitColor;
 
 
@@ -44,10 +45,17 @@ public class Enemy_Isarr : MonoBehaviour
         projectilePoller = ProjectilePooler.Instance;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        gameManager = FBGameManager.instance;
     }
 
     void Update()
     {
+        if (gameManager.isGameOver)
+        {
+            return;
+        }
+
         if (currentHealth > 0)
         {
             // Isarr movements

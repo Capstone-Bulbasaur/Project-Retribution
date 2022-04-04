@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
-{ 
+{
     //I imagine I could make a fire instance in the manager and summon all the functions here to replace this boilerplate spawning method.
     //Definitely ready for that team collaboration now.
     public GameObject flame;
@@ -16,16 +17,16 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
-
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
 
     public int brokenWindows = 0;
 
+    public GameObject youLosePanel;
+    public bool gameOver = false;
 
     public static FFGameManager instance;
 
-    private bool gameOver = false;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
@@ -42,6 +43,8 @@ public class FFGameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
     // Update is called once per frame
@@ -49,7 +52,7 @@ public class FFGameManager : MonoBehaviour
     {
         if (!gameOver)
         {
-           
+
             if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
             {
                 maxSpawnTime -= 0.5f;
@@ -68,16 +71,18 @@ public class FFGameManager : MonoBehaviour
                 }
                 if (brokenWindows == 5)
                 {
-                    gameOver = true;
                     //restart game
-                    //try again screen
+                    StartCoroutine(TryAgain());
+                    return;
                 }
-                
-                else if (FFUIManager.instance.currentTime == 0)
+                //also throwing NULL references, learn how to instance.
+                else if (FFUIManager.instance.currentTime <= 0.5f)
                 {
-                    //you win? I guess
-                    //recruit ghaeli
-                    //load back to hubworld
+                    //Recruited Gaehl
+                    PlayerPrefs.SetInt("RecruitedGaehl", 1);
+
+                    // Loads the FF You Win scene with the message, and then, loads the Hub World
+                    LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRITYOUWIN);
                 }
             }
         }
@@ -136,6 +141,15 @@ public class FFGameManager : MonoBehaviour
     }
 
 
+    IEnumerator TryAgain()
+    {
+        // got part of the Lose panel solution on this tutorial: https://www.youtube.com/watch?v=e0feEWLRSYI
+        youLosePanel.gameObject.SetActive(true); // make the youLosePanel visible if is the 5th fail
+        yield return new WaitForSeconds(2.0f); // wait for 2s
+        youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
+
+    }
 
     public void Resume()
     {
@@ -159,5 +173,6 @@ public class FFGameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "MainMenu");
         Time.timeScale = 1f;
+
     }
 }

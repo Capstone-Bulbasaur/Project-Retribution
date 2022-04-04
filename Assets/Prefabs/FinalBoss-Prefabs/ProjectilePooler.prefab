@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5696140923215644901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5696140923215644899}
+  - component: {fileID: 5696140923215644898}
+  m_Layer: 0
+  m_Name: ProjectilePooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5696140923215644899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696140923215644901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5696140923215644898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696140923215644901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f87328a49ff2a840b5ff147a1a9b490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLoaded: 0
+  pools:
+  - tag: Dagger
+    prefab: {fileID: 579705405351406218, guid: 9174fd816c682a44badb9a564b9928fa, type: 3}
+    size: 10
+    willGrow: 0
+  - tag: Fire
+    prefab: {fileID: 1279493781771962836, guid: 6add6c00a43989a4c8df42de7c6f6e66, type: 3}
+    size: 100
+    willGrow: 0
+  - tag: Water
+    prefab: {fileID: 1133517048311611727, guid: d2aa69a42f5ec47419af1c835a59388d, type: 3}
+    size: 50
+    willGrow: 0
+  - tag: Electric
+    prefab: {fileID: 4707236430682584867, guid: 68641390220eaca4aa253b714f00a841, type: 3}
+    size: 10
+    willGrow: 0
+  - tag: Isarr
+    prefab: {fileID: 8220006212120081471, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
+    size: 25
+    willGrow: 0
+  - tag: Minions
+    prefab: {fileID: 479019704568373613, guid: c52a91bfc217f344682284c84bef52a1, type: 3}
+    size: 45
+    willGrow: 0
