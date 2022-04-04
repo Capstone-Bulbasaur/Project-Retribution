@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerDeath : MonoBehaviour
 {
 
-    public Animator animator;
+    public Animator animatorRed;
+    public Animator animatorDied;
     public static PlayerDeath instance;
+    public GameObject playerDiedPanel;
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class PlayerDeath : MonoBehaviour
             return;
         }
 
-        //gameObject.SetActive(true);
+        playerDiedPanel.SetActive(false);
     }
 
     private void Start()
@@ -29,11 +31,17 @@ public class PlayerDeath : MonoBehaviour
 
     public void FadeToRestart()
     {
-        animator.SetTrigger("FadeOut");
+        animatorRed.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene((int)Constants.gameScenes.FINALBOSSGAME);
+        playerDiedPanel.gameObject.SetActive(true);
+        AudioManager.instance.StopPlaying("Boss_Music");
+        
+        animatorDied.SetTrigger("FadeTextIn");
+        AudioManager.instance.Play("Boss_PlayerDeath");
     }
+
+
 }

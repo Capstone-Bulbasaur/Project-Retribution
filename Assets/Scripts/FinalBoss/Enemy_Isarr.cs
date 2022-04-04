@@ -31,6 +31,7 @@ public class Enemy_Isarr : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody rigidbody;
+    private FBGameManager gameManager;
     [SerializeField] private Color hitColor;
 
 
@@ -44,11 +45,13 @@ public class Enemy_Isarr : MonoBehaviour
         projectilePoller = ProjectilePooler.Instance;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        gameManager = FBGameManager.instance;
     }
 
     void Update()
     {
-        if (FBGameManager.instance.CheckGameOver())
+        if (gameManager.isGameOver)
         {
             return;
         }

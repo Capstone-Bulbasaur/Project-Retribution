@@ -17,12 +17,13 @@ public class FBGameManager : MonoBehaviour
     public int minionsPerSpawn;
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
+    public bool isGameOver = true;
 
     private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
-    private bool isGameOver = true;
+    
     
     private Enemy_Isarr isarr;
 
@@ -41,11 +42,6 @@ public class FBGameManager : MonoBehaviour
     private void PauseMenu()
     {
         //functionality to enter pause menu will go here
-    }
-
-    public bool CheckGameOver()
-    {
-        return isGameOver;
     }
 
     // Start is called before the first frame update
@@ -140,6 +136,16 @@ public class FBGameManager : MonoBehaviour
     void StartGame()
     {
         isGameOver = false;
+    }
+
+    public void RestartGame()
+    {
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSGAME);
+    }
+
+    public void GoToMainMenu()
+    {
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
     }
 
     public void RemoveEnemy()
