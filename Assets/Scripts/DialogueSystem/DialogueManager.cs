@@ -63,7 +63,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartConversation(Conversation convo, ConvoFinishedCallback callb)
     {
-        DisableMovement();
+        if(SceneManager.GetActiveScene().name == "HubWorld")
+            DisableMovement();
         animator.SetBool("isOpen", true);
         currentIndex = 0;
         currentConvo = convo;
@@ -104,7 +105,9 @@ public class DialogueManager : MonoBehaviour
                 LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.CELEBRATION);
             }
 
-            EnableMovement();
+            if(SceneManager.GetActiveScene().name == "HubWorld")
+                EnableMovement();
+            
             return;
         }
 
