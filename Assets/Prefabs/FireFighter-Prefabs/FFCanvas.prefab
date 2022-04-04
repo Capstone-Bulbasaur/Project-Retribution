@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
+  m_sharedMaterial: {fileID: -8404971581771497421, guid: 5da6911b28c00374eb9992dbe1a52eea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -421,7 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87eb9c725f19041478dfc143b35ca9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWindow: {fileID: 0}
   spawnTime: 2
+  particleObject: {fileID: 0}
+  particleParent: {fileID: 0}
 --- !u!1 &8109843401346357946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8109843401346357947}
     m_Modifications:
+    - target: {fileID: 8715823308634142436, guid: 41f4128852dd2c849a25e87d42049c77, type: 3}
+      propertyPath: particleParent
+      value: 
+      objectReference: {fileID: 8109843402076245135}
     - target: {fileID: 8715823308634142442, guid: 41f4128852dd2c849a25e87d42049c77, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

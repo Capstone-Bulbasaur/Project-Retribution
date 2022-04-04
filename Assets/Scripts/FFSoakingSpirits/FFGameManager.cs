@@ -43,7 +43,7 @@ public class FFGameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        AudioManager.instance.Play("Fire_Music");
         //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
@@ -82,6 +82,8 @@ public class FFGameManager : MonoBehaviour
                     PlayerPrefs.SetInt("RecruitedGaehl", 1);
 
                     // Loads the FF You Win scene with the message, and then, loads the Hub World
+                    AudioManager.instance.StopPlaying("Fire_Music");
+                    AudioManager.instance.Play("Fire_Win");
                     LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRITYOUWIN);
                 }
             }
@@ -98,7 +100,6 @@ public class FFGameManager : MonoBehaviour
                 Pause();
             }
         }
-
     }
 
     public void SpawnFire()
