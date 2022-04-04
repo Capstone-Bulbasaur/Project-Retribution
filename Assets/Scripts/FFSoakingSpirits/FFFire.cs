@@ -7,6 +7,8 @@ public class FFFire : MonoBehaviour
 {
     public GameObject brokenWindow;
     public float spawnTime = 2;
+    public GameObject particleObject;
+    public GameObject particleParent;
 
 
     private int fireLevel = 0;
@@ -16,7 +18,7 @@ public class FFFire : MonoBehaviour
 
     void Start()
     {
-
+        particleParent = GameObject.FindGameObjectWithTag("PuzzleButton");
     }
     // Update is called once per frame
     void Update()
@@ -53,20 +55,23 @@ public class FFFire : MonoBehaviour
     {
         //Sound Effect?
         //Sploosh?
-
+        
         Destroy(gameObject);
 
+        //If sumthin = 0 then the fire was put out by the player, otherwise it reached max level and broke a window
         if (sumthin == 0)
         {
             FFGameManager.instance.RemoveFlame();
+            AudioManager.instance.Play("Fire_Splash");
         }
         else
         {
             GameObject broken = Instantiate(brokenWindow);
-            broken.transform.position = new Vector3(gameObject.transform.position.x + 0.05f, gameObject.transform.position.y - 2.2f, gameObject.transform.position.z);
+            var position = gameObject.transform.position;
+            broken.transform.position = new Vector3(position.x + 0.05f, position.y - 2.2f, position.z);
+
+            AudioManager.instance.Play("Fire_Break");
         }
-
-
     }
 
     public void LevelUpFire() //TODO after LevelUp: more user feedback for fire levels, maybe color change?
@@ -76,32 +81,45 @@ public class FFFire : MonoBehaviour
         if(fireLevel <= 2)
         {
             fireLevel++; // up to Level2 which maxLevel could be a variable maybe?
-            //scales the fire up on x&y
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 0.8f,
-                gameObject.transform.localScale.y + 0.8f, 1);
-            //Should adjust the ypos to compensate for the scaling
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.2f, gameObject.transform.position.z);
 
+            //To scale up pass in 1, to scale down pass in -1
+            ScaleFires();
         }
     }
 
     public void WaterDownFire()
     {
+        //Play particle effect 
+        GameObject particles = Instantiate(particleObject, particleParent.transform);
+        particles.transform.position = gameObject.transform.position;
+
         //check for fire level
         if(fireLevel == 0)
         {
             ExtinguishFire();
+            //AudioManager.instance.Play("Fire_PutOut");
         }
         else
         {
             fireLevel--;
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.8f,
-                gameObject.transform.localScale.y - 0.8f, 1);
-            //Should adjust the ypos to compensate for the scaling
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f, gameObject.transform.position.z);
+
+            //To scale up pass in 1, to scale down pass in -1
+            ScaleFires(-1);
         }
         //Sound Effect?
         //SizzleDizzle?
+    }
 
+    void ScaleFires(short direction = 1)
+    {
+        //scales the fire up on x&y
+        var localScale = gameObject.transform.localScale;
+        localScale = new Vector3(localScale.x + (0.8f * direction), localScale.y + (0.8f * direction), 1);
+        gameObject.transform.localScale = localScale;
+
+        //Should adjust the ypos to compensate for the scaling
+        var position = gameObject.transform.position;
+        position = new Vector3(position.x, position.y + (1.2f * direction), position.z);
+        gameObject.transform.position = position;
     }
 }

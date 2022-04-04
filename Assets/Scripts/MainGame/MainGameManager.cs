@@ -159,7 +159,7 @@ public class MainGameManager : MonoBehaviour
 
     public void RetrunMainMenu()
     {
-        SceneManager.LoadScene(sceneName: "MainMenu");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
     }
 }

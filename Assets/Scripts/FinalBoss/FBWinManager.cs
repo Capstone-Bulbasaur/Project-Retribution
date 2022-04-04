@@ -15,10 +15,4 @@ public class FBWinManager : MonoBehaviour
         var f = FindObjectOfType<DialogueManager>();
         f.ReadNext();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

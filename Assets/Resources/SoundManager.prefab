@@ -170,3 +170,39 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Fire_Music
+    clip: {fileID: 8300000, guid: 630950a611cc62d45995bffb52b2e37c, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fire_SingleFire
+    clip: {fileID: 8300000, guid: bb9762b5afe15c2448858a1107c00b73, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire_PutOut
+    clip: {fileID: 8300000, guid: a66cbda6071815c4286d10d6e464e514, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire_Splash
+    clip: {fileID: 8300000, guid: d7e0149cf37cd0c46bc8f566a12307ef, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire_Win
+    clip: {fileID: 8300000, guid: 4347f031ee15a954c849f4a1f8a798aa, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire_Break
+    clip: {fileID: 8300000, guid: f5d4467870c192340a88600c6d127fbb, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
