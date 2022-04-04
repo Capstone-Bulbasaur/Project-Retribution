@@ -1021,13 +1021,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7108c4da5ccad58428e46972f1dc0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupTimer: {fileID: 0}
+  image: {fileID: 0}
   dagger: {fileID: 4818915209230170560}
-  waterPowerTimeLimit: 15
+  daggerSprite: {fileID: 536710027209380630, guid: 19cfa3f795a8a514eb896a6b1c02c512, type: 3}
+  waterPowerTimeLimit: 10
   water: {fileID: 8514248908779790982}
+  waterSprite: {fileID: 4836624559283641418, guid: f81bf86c381235942ab8b4b69ed8a2df, type: 3}
   firePowerTimeLimit: 5
   fire: {fileID: 6896264091461250175}
+  fireSprite: {fileID: 543615046233805698, guid: be731f11e11f5e340a1e0fc1bca72b6a, type: 3}
   electricPowerTimeLimit: 15
   electric: {fileID: 6693346552026588277}
+  electricSprite: {fileID: -210083647637766721, guid: 89625ffa96b14ce4f9fd9d0e6403ed93, type: 3}
 --- !u!114 &1736511717
 MonoBehaviour:
   m_ObjectHideFlags: 0
