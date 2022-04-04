@@ -18,12 +18,14 @@ public class FBGameManager : MonoBehaviour
     public int minionsPerSpawn;
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
+    public bool isGameOver = true;
 
     private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
-    private bool isGameOver;
+    
+    
     private Enemy_Isarr isarr;
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
@@ -45,11 +47,6 @@ public class FBGameManager : MonoBehaviour
         //functionality to enter pause menu will go here
     }
 
-    public bool CheckGameOver()
-    {
-        return isGameOver;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +54,9 @@ public class FBGameManager : MonoBehaviour
         projectilePoller = ProjectilePooler.Instance;
 
         isarr = FindObjectOfType<Enemy_Isarr>();
+
+        Invoke("StartGame", 2.0f);
+
     }
 
     // Update is called once per frame
@@ -147,6 +147,21 @@ public class FBGameManager : MonoBehaviour
         }
     }
 
+    void StartGame()
+    {
+        isGameOver = false;
+    }
+
+    public void RestartGame()
+    {
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSGAME);
+    }
+
+    public void GoToMainMenu()
+    {
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
+    }
+
     public void RemoveEnemy()
     {
         minionsOnScreen -= 1;
@@ -156,8 +171,6 @@ public class FBGameManager : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     public void Pause()
@@ -165,8 +178,6 @@ public class FBGameManager : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-
     }
 
     public void RetrunMainMenu()

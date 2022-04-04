@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 503157012}
   - component: {fileID: 503157013}
   - component: {fileID: 1314290390}
-  - component: {fileID: 879577703}
   m_Layer: 9
   m_Name: Isarr1
   m_TagString: Isarr
@@ -159,6 +158,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+  hitColor: {r: 0.6366632, g: 0.33174616, b: 0.6698113, a: 1}
 --- !u!58 &503157013
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -194,20 +194,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &879577703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503157007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84a62e727e5930643a3bcfe1e7e35592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentNPCConvo: {fileID: 11400000, guid: bbe0fd5457fe0d64bb97ffcb41061c51, type: 2}
-  dialoguePlayed: 0
 --- !u!1 &6717609807322852987
 GameObject:
   m_ObjectHideFlags: 0

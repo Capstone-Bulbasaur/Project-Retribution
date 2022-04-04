@@ -1,26 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerSwitcher : MonoBehaviour
 {
     public static string activeWeaponType;
+    public HealthBar pickupTimer;
+    private float timer;
+    private float currentTime;
+    public GameObject image;
+    private Image pickupTimerImage;
 
     public GameObject dagger;
+    public Sprite daggerSprite;
+
 
     [Header("Water Power")] 
     public float waterPowerTimeLimit = 15f;
     public GameObject water;
+    public Sprite waterSprite;
     [Space]
 
     [Header("Fire Power")]
     public float firePowerTimeLimit = 15f;
     public GameObject fire;
+    public Sprite fireSprite;
     [Space]
 
-    [Header("Water Power")]
+    [Header("Electric Power")]
     public float electricPowerTimeLimit = 15f;
     public GameObject electric;
+    public Sprite electricSprite;
+
 
     private GameObject activePower;
     private AudioManager audioManager;
@@ -31,10 +44,31 @@ public class PowerSwitcher : MonoBehaviour
         activePower = dagger;
 
         audioManager = AudioManager.instance;
+
+        pickupTimerImage = image.GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        
+        //currentTime -= damages;
+        if (timer <= 0)
+        {
+            pickupTimerImage.sprite = daggerSprite;
+            pickupTimer.SetHealth(100);
+        }
+        else
+        {
+            pickupTimer.SetHealth(timer);
+        }
+        
     }
 
     IEnumerator LoadWeapons(GameObject weapon, float timeLimit)
     {
+        timer = timeLimit;
+        pickupTimer.SetMaxHealth((int)timer);
         dagger.SetActive(false);
         water.SetActive(false);
         fire.SetActive(false);
@@ -86,12 +120,15 @@ public class PowerSwitcher : MonoBehaviour
         switch (pickupType)
         {
             case Constants.PickUpWater:
+                pickupTimerImage.sprite = waterSprite;
                 PickupWaterPower();
                 break;
             case Constants.PickUpFire:
+                pickupTimerImage.sprite = fireSprite;
                 PickupFirePower();
                 break;
             case Constants.PickUpElect:
+                pickupTimerImage.sprite = electricSprite;
                 PickupElectricPower();
                 break;
             default:

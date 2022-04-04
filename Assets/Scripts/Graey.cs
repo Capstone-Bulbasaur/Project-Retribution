@@ -41,6 +41,12 @@ public class Graey : MonoBehaviour
         StartCoroutine(ChangeSpriteColor());
 
         CamShake();
+
+        if (currentHealth <= 0)
+        {
+            PlayerDeath.instance.FadeToRestart();
+            FBGameManager.instance.isGameOver = true;
+        }
     }
 
     IEnumerator ChangeSpriteColor()

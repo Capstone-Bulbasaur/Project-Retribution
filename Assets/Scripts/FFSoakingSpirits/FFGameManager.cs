@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,6 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
-
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
 

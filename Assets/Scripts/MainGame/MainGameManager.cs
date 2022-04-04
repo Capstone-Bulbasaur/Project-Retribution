@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class MainGameManager : MonoBehaviour
 {
     public static MainGameManager instance;
@@ -105,7 +104,7 @@ public class MainGameManager : MonoBehaviour
     public void StartScene()
     {
         PlayerPrefs.DeleteAll();
-        ContinueScene();
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.STARTINGSCENE);
     }
 
     public void ContinueScene()
@@ -142,15 +141,11 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-
-
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     public void Pause()
@@ -158,8 +153,6 @@ public class MainGameManager : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-
     }
 
     public void RetrunMainMenu()
