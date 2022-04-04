@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,6 +381,18 @@ PrefabInstance:
     - target: {fileID: 565316705, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565316708, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565316708, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 565316708, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 918763303, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: Timer

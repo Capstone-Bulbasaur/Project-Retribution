@@ -148,7 +148,6 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f); // wait for 2s
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
-
     }
 
     public void Resume()
@@ -156,8 +155,6 @@ public class FFGameManager : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     public void Pause()
@@ -165,14 +162,11 @@ public class FFGameManager : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-
     }
 
     public void RetrunMainMenu()
     {
-        SceneManager.LoadScene(sceneName: "MainMenu");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
-
     }
 }

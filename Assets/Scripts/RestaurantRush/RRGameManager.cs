@@ -372,8 +372,6 @@ public class RRGameManager : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-
     }
 
     public void Pause()
@@ -381,13 +379,11 @@ public class RRGameManager : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-
     }
 
     public void RetrunMainMenu()
     {
-        SceneManager.LoadScene(sceneName: "MainMenu");
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
     }
 }
