@@ -110,9 +110,17 @@ public class MainGameManager : MonoBehaviour
     }
 
     public void ContinueScene()
-    { 
-       AudioManager.instance.StopPlaying("Menu_Music");
-       LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+    {
+        AudioManager.instance.StopPlaying("Menu_Music");
+        //Set players position to the saved player preference location
+        if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
+        {
+            LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
+        }
+        else
+        {
+            LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.STARTINGSCENE);
+        }
     }
 
     public void LoadCredits()
