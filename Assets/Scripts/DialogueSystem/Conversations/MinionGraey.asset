@@ -21,5 +21,15 @@ MonoBehaviour:
     dialogue: 'Please dont hurt me! '
   - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
     dialogue: 'Give me passage to Isarr''s airship and everything will be just fine. '
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: Wait!
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: Take a piece of our powers with you.
+  - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
+    dialogue: Use them to defeat Isarr!
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: Take my firing pot too!
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: And these sharp knives from my kitchen!
   - speaker: {fileID: 11400000, guid: 9dd2b40531b50ee44a5ebfa321c7b9c4, type: 2}
-    dialogue: 'Okay! You got it! Get ready to fly. '
+    dialogue: 'Okay! Enough of this! Get ready to fly. '
