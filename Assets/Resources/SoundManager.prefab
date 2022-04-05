@@ -128,6 +128,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Boss_IsarrHit
+    clip: {fileID: 8300000, guid: 9e8c383645c33f14690d8743894ae6cb, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Boss_MinionDeath
     clip: {fileID: 8300000, guid: 1d449bdc00a64184c9f440827c58189f, type: 3}
     volume: 0.4

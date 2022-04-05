@@ -106,6 +106,7 @@ public class Enemy_Isarr : MonoBehaviour
     {
         currentHealth -= damages; 
         healthBar.SetHealth(currentHealth);
+        AudioManager.instance.Play("Boss_IsarrHit");
 
         spriteRenderer.color = hitColor;
         StartCoroutine(ChangeSpriteColor());
