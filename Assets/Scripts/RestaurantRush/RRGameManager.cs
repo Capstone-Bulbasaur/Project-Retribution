@@ -56,8 +56,6 @@ public class RRGameManager : MonoBehaviour
     bool incorrectKey = false;
     int count = 0;
     Dictionary<int, string> Buttons = new Dictionary<int, string>();
-    public static bool GameIsPaused = false;
-    public GameObject PauseMenuUI;
 
     void Awake()
     {
@@ -124,18 +122,6 @@ public class RRGameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-
         if (!isGameOver)
         {
             // Solution for the issue we had before when the 1st button was always wrong
@@ -365,25 +351,5 @@ public class RRGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f); // wait for 2s
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
         Restart();
-    }
-
-    public void Resume()
-    {
-        PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
-
-    public void Pause()
-    {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-    }
-
-    public void RetrunMainMenu()
-    {
-        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
-        Time.timeScale = 1f;
     }
 }

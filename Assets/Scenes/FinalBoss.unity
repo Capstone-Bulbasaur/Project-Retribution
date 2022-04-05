@@ -180,6 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd79a52d68daf5429576399bf31a06a, type: 3}
+--- !u!1 &73262426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4491116326120455723, guid: 3ebb8e0a9cebb804da412f9d6c97bd13, type: 3}
+  m_PrefabInstance: {fileID: 3659108169782424464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &109544685 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2952963684368244987, guid: 0f828afb0334c6242b15dc23af3766e7, type: 3}
@@ -1426,6 +1431,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2132580043, guid: 3ebb8e0a9cebb804da412f9d6c97bd13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298890448204156756, guid: 3ebb8e0a9cebb804da412f9d6c97bd13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1850,7 +1859,7 @@ PrefabInstance:
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
       propertyPath: PauseMenuUI
       value: 
-      objectReference: {fileID: 1372688136}
+      objectReference: {fileID: 73262426}
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
       propertyPath: minionSpeed
       value: 
