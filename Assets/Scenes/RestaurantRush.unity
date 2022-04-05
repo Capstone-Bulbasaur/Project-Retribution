@@ -968,6 +968,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 7.4955
       objectReference: {fileID: 0}
+    - target: {fileID: 754642228451475045, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_text
+      value: Charged Burger Restaurant Rush
+      objectReference: {fileID: 0}
+    - target: {fileID: 754642228451475046, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 308
+      objectReference: {fileID: 0}
     - target: {fileID: 2020440198170685415, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_RootOrder
       value: 5
