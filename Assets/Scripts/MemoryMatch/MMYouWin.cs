@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Got part of the tutorial from: https://www.youtube.com/watch?v=CE9VOZivb3I
 
@@ -16,6 +17,8 @@ public class MMYouWin : MonoBehaviour
 
     IEnumerator LoadLevel()
     {
+        if(SceneManager.GetActiveScene().name == "RR-Midscene-YouWin")
+            AudioManager.instance.Play("Rush_Win");
         yield return new WaitForSeconds(3.0f);
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.HUBWORLD);
     }

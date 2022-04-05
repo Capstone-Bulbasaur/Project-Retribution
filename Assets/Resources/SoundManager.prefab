@@ -164,6 +164,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Rush_Win
+    clip: {fileID: 8300000, guid: 9a1de75ebb894484c941111df9ef584d, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Menu_Music
     clip: {fileID: 8300000, guid: fcadfbe1c64c96546895c18e46e8f4b4, type: 3}
     volume: 0.7
@@ -196,7 +202,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Fire_Splash
     clip: {fileID: 8300000, guid: d7e0149cf37cd0c46bc8f566a12307ef, type: 3}
-    volume: 0.7
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
