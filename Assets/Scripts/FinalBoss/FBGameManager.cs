@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,8 +11,7 @@ public class FBGameManager : MonoBehaviour
 {
     public static FBGameManager instance;
 
-    public GameObject player;
-    public GameObject minion;
+    public Graey player;
     public GameObject[] spawnPoints;
     public int maxMinionsOnScreen;
     public int totalMinions;
@@ -19,17 +19,15 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
+    public static bool GameIsPaused = false;
+    public GameObject PauseMenuUI;
 
     private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
-    
-    
     private Enemy_Isarr isarr;
-    public static bool GameIsPaused = false;
-    public GameObject PauseMenuUI;
-
+    
 
     private void Awake()
     {
@@ -42,11 +40,6 @@ public class FBGameManager : MonoBehaviour
         }
     }
 
-    private void PauseMenu()
-    {
-        //functionality to enter pause menu will go here
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +49,6 @@ public class FBGameManager : MonoBehaviour
         isarr = FindObjectOfType<Enemy_Isarr>();
 
         Invoke("StartGame", 2.0f);
-
     }
 
     // Update is called once per frame
@@ -87,7 +79,7 @@ public class FBGameManager : MonoBehaviour
 
                 LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FINALBOSSWIN);
             }
-            else if (isarr.GetHealth() <= 50)
+            else if (isarr.GetHealth() < 50 && isarr.GetHealth() > 25)
             {
                 maxSpawnTime = 1.5f;
                 minSpawnTime = 0.5f;
