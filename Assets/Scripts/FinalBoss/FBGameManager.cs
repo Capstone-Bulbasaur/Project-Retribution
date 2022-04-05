@@ -19,8 +19,6 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
-    public static bool GameIsPaused = false;
-    public GameObject PauseMenuUI;
 
     private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
@@ -54,17 +52,6 @@ public class FBGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
         if (player == null)
         {
             return;
@@ -157,19 +144,6 @@ public class FBGameManager : MonoBehaviour
     public void RemoveEnemy()
     {
         minionsOnScreen -= 1;
-    }
-    public void Resume()
-    {
-        PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
-
-    public void Pause()
-    {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
     }
 
     public void RetrunMainMenu()
