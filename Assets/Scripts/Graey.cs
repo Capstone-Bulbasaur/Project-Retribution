@@ -59,4 +59,9 @@ public class Graey : MonoBehaviour
     {
         camAnim.SetTrigger("shake");
     }
+
+    public int GetHealth()
+    {
+        return currentHealth;
+    }
 }

@@ -523,11 +523,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &905634476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8768290809847582352, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+--- !u!114 &905634481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4714856847967032910, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
   m_PrefabInstance: {fileID: 4347978571013999487}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7928407dbe6cc74a95484262e8ce205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &949070148 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6435607612505632095, guid: 8fd79a52d68daf5429576399bf31a06a, type: 3}
@@ -1761,6 +1767,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1723902985}
@@ -1830,11 +1840,19 @@ PrefabInstance:
       value: FinalBoss GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
+      propertyPath: minion
+      value: 
+      objectReference: {fileID: 479019704568373613, guid: c52a91bfc217f344682284c84bef52a1, type: 3}
+    - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 905634476}
+      objectReference: {fileID: 905634481}
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
       propertyPath: PauseMenuUI
+      value: 
+      objectReference: {fileID: 1372688136}
+    - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
+      propertyPath: minionSpeed
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
