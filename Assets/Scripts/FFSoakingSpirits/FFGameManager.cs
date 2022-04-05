@@ -17,8 +17,6 @@ public class FFGameManager : MonoBehaviour
     public float minSpawnTime;
     public float maxSpawnTime;
     public int flamesOnScreen = 0;
-    public static bool GameIsPaused = false;
-    public GameObject PauseMenuUI;
 
     public int brokenWindows = 0;
 
@@ -93,18 +91,6 @@ public class FFGameManager : MonoBehaviour
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
     }
 
     public void SpawnFire()
@@ -154,20 +140,6 @@ public class FFGameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f); // wait for 2s
         youLosePanel.gameObject.SetActive(false); // make the youLosePanel invisible again before the Restart Game
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
-    }
-
-    public void Resume()
-    {
-        PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
-
-    public void Pause()
-    {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
     }
 
     public void RetrunMainMenu()
