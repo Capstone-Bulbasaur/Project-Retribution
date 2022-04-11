@@ -628,6 +628,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 435909050, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
+      propertyPath: Gaehl
+      value: 
+      objectReference: {fileID: 1328704506}
+    - target: {fileID: 435909050, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
       propertyPath: Graey
       value: 
       objectReference: {fileID: 824587994}
@@ -701,6 +705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
+--- !u!1 &1328704506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5087361463164889966, guid: 8a9fd6d80cce4bc498fad67fee538a83, type: 3}
+  m_PrefabInstance: {fileID: 4343642507167573983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363174275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2742882697300062104, guid: bd5b36975b286ad45932531afc021f96, type: 3}

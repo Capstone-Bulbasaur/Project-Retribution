@@ -24,6 +24,9 @@ public class MainGameManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
 
+    public GameObject Gaehl;
+    public Conversation[] NewGaehl;
+
     private void Awake()
     {
         if (instance == null)
@@ -73,11 +76,13 @@ public class MainGameManager : MonoBehaviour
             {
                 RoadblockFire.SetActive(false);
                 CityFires.SetActive(false);
+                Gaehl.GetComponent<NPCInteract>().currentNPCConvo = NewGaehl[0];
             }
 
             if(recruitedOrry == true)
             {
                 RoadblockPots.SetActive(false);
+                Gaehl.GetComponent<NPCInteract>().currentNPCConvo = NewGaehl[1];
             }
 
             if(recruitedEmbre == true)
