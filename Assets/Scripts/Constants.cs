@@ -35,6 +35,15 @@ public class Constants
         STARTINGSCENE
     }
 
+    public enum minimapTowns
+    {
+        LIMECOAST = 0,
+        BAYGATE,
+        DRAGONGULF,
+        SILKCROSS,
+        MINION
+    }
+
     public static readonly int[] AllPickupsTypes = new int[4]
     {
         PickUpWater,

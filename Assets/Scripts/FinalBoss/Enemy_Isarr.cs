@@ -92,13 +92,6 @@ public class Enemy_Isarr : MonoBehaviour
             //Move Isarr to the middle of the field
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(1, -5), speed * Time.deltaTime);
         }
-       
-
-        // Health bar tester
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
     }
 
     // Health bar 

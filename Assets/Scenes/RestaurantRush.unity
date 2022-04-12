@@ -193,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelChanger
       objectReference: {fileID: 0}
+    - target: {fileID: 854626731405340343, guid: 6764f7754e926834882739f2eaa38554, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6764f7754e926834882739f2eaa38554, type: 3}
 --- !u!1 &1010778815 stripped
@@ -888,6 +892,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 143421439, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149865308, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 234653835, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -900,10 +912,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3754930996989725775}
+    - target: {fileID: 1058621865, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135562165, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460575198, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466874161, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1728053850, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3754930996989725775}
+    - target: {fileID: 1731195202, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942566086, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047427448, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139446658, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 282489596477105718, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_fontSize
       value: 70
@@ -952,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3207547
       objectReference: {fileID: 0}
+    - target: {fileID: 282489596561957477, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 282489596561957478, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 377.8806
@@ -968,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 7.4955
       objectReference: {fileID: 0}
+    - target: {fileID: 754642227318707451, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 754642228451475045, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_text
       value: Charged Burger Restaurant Rush
@@ -975,6 +1027,10 @@ PrefabInstance:
     - target: {fileID: 754642228451475046, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 308
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829583898890902695, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2020440198170685415, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_RootOrder
@@ -1018,6 +1074,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020440198170685415, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517568646188588326, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035951117922658614, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250349521011449861, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577192438744728970, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6239183892206027246, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830632847963799717, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102693408224589086, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8959430750365605846, guid: dc811bd41cb269c43886f63965eb8b4a, type: 3}
@@ -1211,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2100025116, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1806269393556816589, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1258,6 +1346,18 @@ PrefabInstance:
     - target: {fileID: 7525989544017719044, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
       propertyPath: m_Name
       value: RRBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919541974846529, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919541974846529, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919541974846529, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 640
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68550e04af8e914a9fab9a28535980b, type: 3}
