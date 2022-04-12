@@ -56,6 +56,12 @@ MonoBehaviour:
   RoadBlockMinion: {fileID: 0}
   PauseMenuUI: {fileID: 0}
   Gaehl: {fileID: 0}
-  NewGaehl:
-  - {fileID: 11400000, guid: 5414738733af0a344a3abe8b977d437b, type: 2}
-  - {fileID: 11400000, guid: a8b0a87590736874abb6584ee19dfe19, type: 2}
+  BGNPC2: {fileID: 0}
+  newGaehl: {fileID: 11400000, guid: 5414738733af0a344a3abe8b977d437b, type: 2}
+  newBGNPC2: {fileID: 11400000, guid: ea11140e675cbb04d92188e821af0f22, type: 2}
+  Orry: {fileID: 0}
+  DGNPC4: {fileID: 0}
+  newOrry: {fileID: 11400000, guid: eb1aaea70eaa2764cabb0432c47cb4ec, type: 2}
+  newDGNPC4: {fileID: 11400000, guid: d986bd9599a358a4ab9130ccf8e5045e, type: 2}
+  Embre: {fileID: 0}
+  newEmbre: {fileID: 11400000, guid: 75247409820757e4a92e6d000bda0ebd, type: 2}

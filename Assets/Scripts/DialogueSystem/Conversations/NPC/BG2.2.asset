@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c911c71ecddc6047a65b52bc923e96d, type: 3}
-  m_Name: Graey
+  m_Script: {fileID: 11500000, guid: 8d0b4e9a1fb535f4bad3a07264efe04c, type: 3}
+  m_Name: BG2.2
   m_EditorClassIdentifier: 
-  speakerName: Graey
-  speakerSprite: {fileID: 21300000, guid: 7a1fd6819c2cf974a8d1c5bd9a59c545, type: 3}
+  allLines:
+  - speaker: {fileID: 11400000, guid: ff4dd16555980044d9473432fe13b065, type: 2}
+    dialogue: Thanks for helping Gaehl with the fires!

@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0b4e9a1fb535f4bad3a07264efe04c, type: 3}
-  m_Name: GaehlGraey3
+  m_Name: DG4.2
   m_EditorClassIdentifier: 
   allLines:
-  - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
-    dialogue: Hey, you're back!
-  - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
-    dialogue: Need some help?
-  - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
-    dialogue: Yes, everything is on fire again, let's go!
+  - speaker: {fileID: 11400000, guid: 287059645afc14940b9b2d4f0c19cd39, type: 2}
+    dialogue: I love my new flower pot
+  - speaker: {fileID: 11400000, guid: 287059645afc14940b9b2d4f0c19cd39, type: 2}
+    dialogue: Orry is a true artist

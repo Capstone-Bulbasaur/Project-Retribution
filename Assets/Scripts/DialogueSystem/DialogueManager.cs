@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     public delegate void ConvoFinishedCallback();
     public GameObject letsGo = null;
+    public Button yesButton;
+    public Button noButton;
 
     private int currentIndex;
     private Conversation currentConvo;
@@ -27,9 +29,14 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typing;
     private ConvoFinishedCallback callback;
 
+    bool dialogueFinished;
+
     private void Awake()
     {
-        if(instance == null)
+        DisableYesNoButtons();
+        dialogueFinished = false;
+
+        if (instance == null)
         {
             instance = this;
             animator = GetComponent<Animator>();
@@ -48,7 +55,7 @@ public class DialogueManager : MonoBehaviour
         if (currentConvo != null)
         {
             //If user presses action key, click the button
-            if(Input.GetKeyDown(actionKey))
+            if(Input.GetKeyDown(actionKey) && Graey.GetComponent<CharacterController>().canInteract == true)
             {
                 button.onClick.Invoke();
             }
@@ -70,6 +77,7 @@ public class DialogueManager : MonoBehaviour
         currentConvo = convo;
         speakerName.text = "";
         dialogue.text = "";
+        dialogueFinished = false;
         callback = callb;
 
         AudioManager.instance.Play("Hub_DialoguePop");
@@ -77,6 +85,20 @@ public class DialogueManager : MonoBehaviour
 
     public void ReadNext()
     {
+        // Closes the dialogue box if the player presses NO (No risk of accidentally going into the minigames)
+        if(dialogueFinished == true)
+        {
+            animator.SetBool("isOpen", false);
+            button.GetComponent<Image>().sprite = nextDialogueSprite;
+            callback();
+            if (SceneManager.GetActiveScene().name == "HubWorld")
+            {
+                EnableMovement();
+            }
+
+            return;
+        }
+
         // Closes the dialogue box if it reaches the end of the conversation
         if(currentIndex > currentConvo.GetLength())
         {
@@ -113,8 +135,15 @@ public class DialogueManager : MonoBehaviour
 
         speakerName.text = currentConvo.GetLineByIndex(currentIndex).speaker.GetName();
 
+        // Yes/no option to repeat mini games
+        if (currentConvo.GetLineByIndex(currentIndex).dialogue == "Sure! Would you like to stay and help?")
+        {
+            Graey.GetComponent<CharacterController>().canInteract = false;
+            EnableYesNoButtons();
+        }
+
         // Checks if dialogue line is being typed and overwrites it with the next dialogue line if the player presses [next]. Avoids the end of one character's line going into the next character's dialogue
-        if(typing == null)
+        if (typing == null)
         {
             typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
         }
@@ -186,6 +215,32 @@ public class DialogueManager : MonoBehaviour
         AudioManager.instance.StopPlaying("Hub_Music");
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.FFSOAKINSPIRIT);
     }
+
+    public void YesButton()
+    {
+        DisableYesNoButtons();
+        Graey.GetComponent<CharacterController>().canInteract = true;
+    }
+
+    public void NoButton()
+    {
+        dialogueFinished = true;
+        Graey.GetComponent<CharacterController>().canInteract = true;
+        DisableYesNoButtons();
+    }
+
+    void EnableYesNoButtons()
+    {
+        yesButton.gameObject.SetActive(true);
+        noButton.gameObject.SetActive(true);
+    }
+
+    void DisableYesNoButtons()
+    {
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
+    }
+
     // Types out the dialogue lines
     private IEnumerator TypeText(string text)
     {
