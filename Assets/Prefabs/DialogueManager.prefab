@@ -928,7 +928,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 273.6, y: -46.687805}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &925550227
 CanvasRenderer:
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa06355d57d27eb46917b9b9a8f3a898, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 125feaf803aad6946b58e19a7e37b310, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1059,7 +1059,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 199.6, y: 0.0022583008}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 89, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1011989932
 CanvasRenderer:
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f886a6ab2d05a842b6ad0276c33536a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b23b671d09833b04e9b7ac4c4102bdf8, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 2
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &1193834102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,8 +1197,8 @@ MonoBehaviour:
   dialogue: {fileID: 285170473}
   speakerSprite: {fileID: 1011989931}
   button: {fileID: 925550225}
-  nextDialogueSprite: {fileID: 21300000, guid: aa06355d57d27eb46917b9b9a8f3a898, type: 3}
-  closeDialogueSprite: {fileID: 21300000, guid: 68ee8d6db86dec84e8bb21505d6effb7, type: 3}
+  nextDialogueSprite: {fileID: 21300000, guid: 125feaf803aad6946b58e19a7e37b310, type: 3}
+  closeDialogueSprite: {fileID: 21300000, guid: b5dca5517a1bb324181b986243ebeaf1, type: 3}
   Graey: {fileID: 0}
   actionKey: 101
   letsGoAnimator: {fileID: 0}

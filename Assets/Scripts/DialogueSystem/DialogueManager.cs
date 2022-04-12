@@ -55,7 +55,11 @@ public class DialogueManager : MonoBehaviour
         if (currentConvo != null)
         {
             //If user presses action key, click the button
-            if(Input.GetKeyDown(actionKey) && Graey.GetComponent<CharacterController>().canInteract == true)
+            if(Input.GetKeyDown(actionKey) && SceneManager.GetActiveScene().name == "FinalBossWinDialogue")
+            {
+                button.onClick.Invoke();
+            }
+            else if(Input.GetKeyDown(actionKey) && Graey.GetComponent<CharacterController>().canInteract == true)
             {
                 button.onClick.Invoke();
             }
