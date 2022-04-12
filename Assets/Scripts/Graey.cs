@@ -35,6 +35,7 @@ public class Graey : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            PlayerDeath.instance.EnableObject();
             PlayerDeath.instance.FadeToRestart();
             FBGameManager.instance.isGameOver = true;
         }
