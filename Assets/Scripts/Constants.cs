@@ -41,7 +41,11 @@ public class Constants
         BAYGATE,
         DRAGONGULF,
         SILKCROSS,
-        MINION
+        MINION,
+        MIDSILK,
+        MOUNTAIN,
+        RICHISLAND,
+        MIDBAYGATE
     }
 
     public static readonly int[] AllPickupsTypes = new int[4]
