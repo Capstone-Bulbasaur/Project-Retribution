@@ -54,12 +54,20 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentConvo != null)
         {
-            //If user presses action key, click the button
+            // Workaround to lock interaction button in Final Battle Win dialogue. This scene doesn't have a character controller and complains because it doesn't exist
             if(Input.GetKeyDown(actionKey) && SceneManager.GetActiveScene().name == "FinalBossWinDialogue")
             {
-                button.onClick.Invoke();
+                if(yesButton.IsActive() && noButton.IsActive())
+                {
+                    return;
+                }
+                else
+                {
+                    button.onClick.Invoke();
+                }
             }
-            else if(Input.GetKeyDown(actionKey) && Graey.GetComponent<CharacterController>().canInteract == true)
+            //If user presses action key, click the button
+            else if (Input.GetKeyDown(actionKey) && Graey.GetComponent<CharacterController>().canInteract == true)
             {
                 button.onClick.Invoke();
             }
@@ -142,7 +150,15 @@ public class DialogueManager : MonoBehaviour
         // Yes/no option to repeat mini games
         if (currentConvo.GetLineByIndex(currentIndex).dialogue == "Sure! Would you like to stay and help?")
         {
+            button.interactable = false;
             Graey.GetComponent<CharacterController>().canInteract = false;
+            EnableYesNoButtons();
+        }
+
+        // Yes/no options for Final Battle dialogue
+        if(currentConvo.GetLineByIndex(currentIndex).dialogue == "Please let me LIVE!")
+        {
+            button.interactable = false;
             EnableYesNoButtons();
         }
 
@@ -222,12 +238,24 @@ public class DialogueManager : MonoBehaviour
 
     public void YesButton()
     {
+        if(SceneManager.GetActiveScene().name == "FinalBossWinDialogue")
+        {
+            PlayerPrefs.SetInt("SavedIsarr", 1);
+            DisableYesNoButtons();
+            return;
+        }
         DisableYesNoButtons();
         Graey.GetComponent<CharacterController>().canInteract = true;
     }
 
     public void NoButton()
     {
+        if (SceneManager.GetActiveScene().name == "FinalBossWinDialogue")
+        {
+            PlayerPrefs.SetInt("SavedIsarr", 0);
+            DisableYesNoButtons();
+            return;
+        }
         dialogueFinished = true;
         Graey.GetComponent<CharacterController>().canInteract = true;
         DisableYesNoButtons();
