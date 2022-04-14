@@ -275,6 +275,7 @@ public class DialogueManager : MonoBehaviour
     {
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        button.interactable = true;
     }
 
     // Types out the dialogue lines

@@ -19,7 +19,6 @@ public class FFUIManager : MonoBehaviour
     public static FFUIManager instance;
 
     private bool isGameOver = false;
-    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
 
     void Awake()
     {
@@ -41,8 +40,7 @@ public class FFUIManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            WaitforInstructions -= Time.deltaTime;
-            if (WaitforInstructions < 0)
+            if (FFGameManager.instance.waitforInstructions == true)
             {
                 if (currentTime < 0)
                 {

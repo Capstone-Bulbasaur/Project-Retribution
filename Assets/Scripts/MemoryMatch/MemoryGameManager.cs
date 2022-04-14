@@ -36,6 +36,7 @@ public class MemoryGameManager : MonoBehaviour
     public float PlayerYpos;
 
     public GameObject youLosePanel;
+    public Animator instructionAnimator;
 
     void Start()
     {
@@ -46,7 +47,8 @@ public class MemoryGameManager : MonoBehaviour
         CountGameGuesses();
 
         youLosePanel.SetActive(false);
-        
+        instructionAnimator.SetBool("closeInstructions", false);
+
         AudioManager.instance.Play("Memory_Music");
     }
 
@@ -254,5 +256,10 @@ public class MemoryGameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "MainMenu");
         Time.timeScale = 1f;
+    }
+
+    public void CloseInstructions()
+    {
+        instructionAnimator.SetBool("closeInstructions", true);
     }
 }

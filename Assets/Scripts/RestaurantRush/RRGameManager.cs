@@ -15,7 +15,8 @@ public class RRGameManager : MonoBehaviour
     private int countCorrectGuesses;
     private int countFails;
     private int RightMatch;
-    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
+    private bool waitforInstructions = false;
+    public Animator instructionAnimator;
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
@@ -82,8 +83,10 @@ public class RRGameManager : MonoBehaviour
             btns[i].interactable = false;
         }
 
-        // Shows the first order after 2 seconds and hides it after 3 seconds
-        Invoke("ShowBubble", 7.0f);
+        //if (waitforInstructions == true)
+        //{
+        //    Invoke("ShowBubble", 1.0f);
+        //}
         AudioManager.instance.Play("Rush_Music");
 
 
@@ -139,9 +142,15 @@ public class RRGameManager : MonoBehaviour
         if (!isGameOver)
         {
             // Solution for the issue we had before when the 1st button was always wrong
-            WaitforInstructions -= Time.deltaTime;
-            if (WaitforInstructions < 0)
+            
+            if (waitforInstructions == true)
             {
+                //Show the first bubble
+                if (CurrentTime == 99)
+                {
+                    Invoke("ShowBubble", 2.0f);
+                }
+
                 if (CurrentTime <= 0)
                 {
                     StartCoroutine(TryAgain());
@@ -385,5 +394,11 @@ public class RRGameManager : MonoBehaviour
     {
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
+    }
+
+    public void CloseInstructions()
+    {
+        instructionAnimator.SetBool("closeInstructions", true);
+        waitforInstructions = true;
     }
 }

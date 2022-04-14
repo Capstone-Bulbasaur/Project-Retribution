@@ -24,10 +24,11 @@ public class FFGameManager : MonoBehaviour
     public bool gameOver = false;
 
     public static FFGameManager instance;
+    public Animator instructionAnimator;
+    public bool waitforInstructions = false; // TODO - fix this hardcoded after Level Up.
 
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
-    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
     [SerializeField] private Transform gameZone;
     private bool isHalfTime = false;
 
@@ -48,6 +49,7 @@ public class FFGameManager : MonoBehaviour
             AudioManager.instance.Play("Fire_Win");
         }
 
+        instructionAnimator.SetBool("closeInstructions", false);
         //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
@@ -62,8 +64,8 @@ public class FFGameManager : MonoBehaviour
                 maxSpawnTime -= maxSpawnTime / 2.0f;
                 isHalfTime = true;
             }
-            WaitforInstructions -= Time.deltaTime;
-            if (WaitforInstructions < 0)
+            
+            if (waitforInstructions == true)
             {
                 currentSpawnTime += Time.deltaTime;
                 if (currentSpawnTime > generatedSpawnTime)
@@ -146,5 +148,11 @@ public class FFGameManager : MonoBehaviour
     {
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
+    }
+
+    public void CloseInstructions()
+    {
+        instructionAnimator.SetBool("closeInstructions", true);
+        waitforInstructions = true;
     }
 }
