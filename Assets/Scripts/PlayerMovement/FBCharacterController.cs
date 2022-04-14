@@ -65,6 +65,7 @@ public class FBCharacterController : MonoBehaviour
             animator.SetFloat("LastVertical", aim.shootDirection.y);
 
             footsteps.mute = false;
+            rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime));
         }
 #else
 
@@ -80,6 +81,7 @@ public class FBCharacterController : MonoBehaviour
            animator.SetFloat("LastVertical", aim.shootDirection.y);
 
            footsteps.mute = false;
+           rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime));
        }
 #endif
 

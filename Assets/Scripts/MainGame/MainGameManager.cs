@@ -24,6 +24,22 @@ public class MainGameManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
 
+    // Baygate conversation switch
+    public GameObject Gaehl;
+    public GameObject BGNPC2;
+    public Conversation newGaehl;
+    public Conversation newBGNPC2;
+
+    // Dragongulf conversation switch
+    public GameObject Orry;
+    public GameObject DGNPC4;
+    public Conversation newOrry;
+    public Conversation newDGNPC4;
+
+    // Silkcross conversation switch
+    public GameObject Embre;
+    public Conversation newEmbre;
+
     private void Awake()
     {
         if (instance == null)
@@ -73,20 +89,24 @@ public class MainGameManager : MonoBehaviour
             {
                 RoadblockFire.SetActive(false);
                 CityFires.SetActive(false);
+                SwitchConvo(Gaehl, newGaehl);
+                SwitchConvo(BGNPC2, newBGNPC2);
             }
 
             if(recruitedOrry == true)
             {
                 RoadblockPots.SetActive(false);
+                SwitchConvo(Orry, newOrry);
+                SwitchConvo(DGNPC4, newDGNPC4);
             }
 
             if(recruitedEmbre == true)
             {
                 RoadBlockMinion.SetActive(false);
+                SwitchConvo(Embre, newEmbre);
             }
         }
     }
-
 
     void Update()
     {
@@ -170,4 +190,10 @@ public class MainGameManager : MonoBehaviour
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
     }
+
+    public void SwitchConvo(GameObject character, Conversation newConvo)
+    {
+        character.GetComponent<NPCInteract>().currentNPCConvo = newConvo;
+    }
+
 }

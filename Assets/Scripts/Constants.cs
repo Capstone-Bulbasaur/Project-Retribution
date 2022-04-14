@@ -35,6 +35,19 @@ public class Constants
         STARTINGSCENE
     }
 
+    public enum minimapTowns
+    {
+        LIMECOAST = 0,
+        BAYGATE,
+        DRAGONGULF,
+        SILKCROSS,
+        MINION,
+        MIDSILK,
+        MOUNTAIN,
+        RICHISLAND,
+        MIDBAYGATE
+    }
+
     public static readonly int[] AllPickupsTypes = new int[4]
     {
         PickUpWater,

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0b4e9a1fb535f4bad3a07264efe04c, type: 3}
+  m_Name: OrryGraey2
+  m_EditorClassIdentifier: 
+  allLines:
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: 'Thank you Graey! '
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: No problem! I'm on my way to deal with Isarr
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: I could really use your powers. Do you want to join me?
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: I would love to put that bully in his place, but I can't just close
+      the shop
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: Don't worry about it, let me know if you change your mind
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: Sure! Would you like to stay and help?
+  - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
+    dialogue: Great! Let's go!

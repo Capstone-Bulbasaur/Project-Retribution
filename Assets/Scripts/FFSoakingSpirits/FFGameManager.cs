@@ -56,8 +56,8 @@ public class FFGameManager : MonoBehaviour
     {
         if (!gameOver)
         {
-
-            if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) //the fires should spawn faster halfway through the game
+            //the fires should spawn faster halfway through the game
+            if (FFUIManager.instance.currentTime <= FFUIManager.instance.startingTime / 2 && isHalfTime == false) 
             {
                 maxSpawnTime -= maxSpawnTime / 2.0f;
                 isHalfTime = true;
