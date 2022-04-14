@@ -21,15 +21,6 @@ public class Graey : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
-    {
-        // Health bar tester
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
-    }
-
     // Health bar tester
     public void TakeDamage(int damage)
     {
@@ -44,6 +35,7 @@ public class Graey : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            PlayerDeath.instance.EnableObject();
             PlayerDeath.instance.FadeToRestart();
             FBGameManager.instance.isGameOver = true;
         }
