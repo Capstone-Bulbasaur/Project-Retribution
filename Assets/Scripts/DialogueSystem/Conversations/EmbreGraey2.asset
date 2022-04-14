@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0b4e9a1fb535f4bad3a07264efe04c, type: 3}
+  m_Name: EmbreGraey2
+  m_EditorClassIdentifier: 
+  allLines:
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: Thanks for helping me with those orders, you're good!
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: Would you like a permanent position?
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: 'No thanks, I have to go deal with Isarr. '
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: I've heard you're great with electricity. Want to join the fight?
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: I'd love nothing more than to zap the cape off his back but I can't
+      leave
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: My powers have caused problems in the past
+  - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
+    dialogue: That's ok, let me know if you change your mind
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: Sure! Would you like to stay and help?
+  - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
+    dialogue: Great! Let's go!

@@ -65,7 +65,7 @@ public class Gun : MonoBehaviour
         if (aim.phoneRightStickInput.magnitude < 0.5)
         {
             isFiring = false;
-            Debug.Log("You are not firing!");
+            //Debug.Log("You are not firing!");
         }
 #else
         if (!aim.controlMethod.useController)

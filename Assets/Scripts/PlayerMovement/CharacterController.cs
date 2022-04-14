@@ -65,13 +65,14 @@ public class CharacterController : MonoBehaviour
             movement.y = 0;
 
         // Set idle position to last known direction
-        if (movement.x != 0 || movement.y != 0)
+        if (canMove && movement.x != 0 || movement.y != 0)
         {
             
             animator.SetFloat("LastHorizontal", joystick.Horizontal);
             animator.SetFloat("LastVertical", joystick.Vertical);
 
             footsteps.mute = false;
+            rigidbody.MovePosition(rigidbody.position + movement.normalized * (speed * Time.fixedDeltaTime));
         }
 #else
 

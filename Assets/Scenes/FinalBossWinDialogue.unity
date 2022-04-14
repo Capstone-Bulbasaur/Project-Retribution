@@ -508,6 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1193834102, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+      propertyPath: Graey
+      value: 
+      objectReference: {fileID: 19887638}
     - target: {fileID: 6525226458090161267, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: m_Name
       value: DialogueManager

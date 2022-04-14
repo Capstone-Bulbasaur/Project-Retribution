@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Graey
   m_EditorClassIdentifier: 
   speakerName: Graey
-  speakerSprite: {fileID: 21300000, guid: 7170ebc631331fa42882e769949f7556, type: 3}
+  speakerSprite: {fileID: 21300000, guid: 7a1fd6819c2cf974a8d1c5bd9a59c545, type: 3}

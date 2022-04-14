@@ -18,5 +18,6 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f1f4772990250fd43956d5bf51798155, type: 2}
     dialogue: 'Yes. You cannot beat the amazing Graey. '
   - speaker: {fileID: 11400000, guid: 7430057ca83c79b47951acdff1eae5c9, type: 2}
-    dialogue: I can't believe I messed up so bad. I can do better! Please let me
-      LIVE!!
+    dialogue: I can't believe I messed up so bad. I can do better!
+  - speaker: {fileID: 11400000, guid: 7430057ca83c79b47951acdff1eae5c9, type: 2}
+    dialogue: Please let me LIVE!
