@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2533064262631520897}
-  - component: {fileID: 7320053753585086820}
+  - component: {fileID: 3754930996989725775}
   m_Layer: 0
   m_Name: RRGameManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7320053753585086820
+--- !u!114 &3754930996989725775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,9 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4991909565319984477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77fcc2cf272577d419bdb372acab4725, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f4905c4af71bac45b1f51f323af50cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructionAnimator: {fileID: 0}
   ingredients:
   - {fileID: 0}
   - {fileID: 0}
@@ -57,7 +58,27 @@ MonoBehaviour:
   ingredientBubble: {fileID: 0}
   rightAnswer: {fileID: 0}
   wrongAnswer: {fileID: 0}
-  StartingTime: 100
+  btns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  youLosePanel: {fileID: 0}
+  MaxFails: 6
+  RightGuesses: {fileID: 0}
+  YouWon: {fileID: 0}
+  RedTimer: {fileID: 0}
+  burgers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EmptyPlate: {fileID: 0}
+  StartingTime: 99
   OrderStartTime: 10
+  WhiteTimer: 3
   maxNumCustomers: 0
   Timer: {fileID: 0}
+  PauseMenuUI: {fileID: 0}
