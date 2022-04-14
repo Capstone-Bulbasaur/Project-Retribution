@@ -13,4 +13,9 @@ public class Credits : MonoBehaviour
             LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         }
     }
+
+    public void CloseCredits()
+    {
+        LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
+    }
 }
