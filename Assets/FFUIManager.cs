@@ -46,7 +46,6 @@ public class FFUIManager : MonoBehaviour
             {
                 if (currentTime < 0)
                 {
-                    //isGameOver = true;
                     return;
                 }
                 else

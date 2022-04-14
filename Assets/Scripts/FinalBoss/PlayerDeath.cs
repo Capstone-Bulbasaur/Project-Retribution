@@ -22,9 +22,10 @@ public class PlayerDeath : MonoBehaviour
         }
 
         playerDiedPanel.SetActive(false);
+        gameObject.SetActive(false);
     }
 
-    private void Start()
+    public void EnableObject()
     {
         this.gameObject.SetActive(true);
     }

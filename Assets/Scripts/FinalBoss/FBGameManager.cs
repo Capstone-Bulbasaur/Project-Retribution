@@ -20,7 +20,7 @@ public class FBGameManager : MonoBehaviour
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
 
-    private int minionsOnScreen = 0;
+    [SerializeField] private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
