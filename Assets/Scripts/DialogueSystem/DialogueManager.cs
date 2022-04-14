@@ -82,8 +82,12 @@ public class DialogueManager : MonoBehaviour
 
     public void StartConversation(Conversation convo, ConvoFinishedCallback callb)
     {
-        if(SceneManager.GetActiveScene().name == "HubWorld" || SceneManager.GetActiveScene().name == "GraeyHome")
+        if (SceneManager.GetActiveScene().name == "HubWorld" || SceneManager.GetActiveScene().name == "GraeyHome")
+        {
             DisableMovement();
+        }
+
+        button.interactable = true;   
         animator.SetBool("isOpen", true);
         currentIndex = 0;
         currentConvo = convo;
