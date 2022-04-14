@@ -1247,6 +1247,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2742882696579346253, guid: bd5b36975b286ad45932531afc021f96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2742882697262721238, guid: bd5b36975b286ad45932531afc021f96, type: 3}
       propertyPath: m_Name
       value: MiniMap
