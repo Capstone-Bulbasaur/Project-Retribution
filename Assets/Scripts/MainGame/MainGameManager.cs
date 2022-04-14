@@ -196,4 +196,9 @@ public class MainGameManager : MonoBehaviour
         character.GetComponent<NPCInteract>().currentNPCConvo = newConvo;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }
