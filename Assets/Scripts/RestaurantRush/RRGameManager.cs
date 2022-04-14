@@ -86,42 +86,16 @@ public class RRGameManager : MonoBehaviour
         Invoke("ShowBubble", 7.0f);
         AudioManager.instance.Play("Rush_Music");
 
-
-        //CurrentTime = StartingTime;
-
-        //AddBurgerstoList();
-
+        
         foreach (GameObject Burger in burgers) // using directly in update
         {
             Burger.SetActive(false);
         }
 
+        // Starting the game setting the youLose panel to inactive.
         youLosePanel.SetActive(false);
     }
-
-    //Add burgers to the list
-    void AddBurgerstoList()
-    {
-        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-
-        // MS - still not sure if this loop is right
-        //for (int i = 0; i < brgr.Length; i++)
-        //{
-        //    burgers.Add(brgr[i].GetComponentInParent<GameObject>());
-        //}
-    }
-
-    // making the burgers on the list appear for every right match
-    void OnTriggerEnter()
-    {
-        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-        foreach (GameObject Burger in burgers) // using directly in update
-        {
-            Burger.SetActive(true);
-        }
-
-    }
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -221,10 +195,9 @@ public class RRGameManager : MonoBehaviour
                 OrderCurrentTime = OrderStartTime;
                 // Incorrect answer visuals
                 wrongAnswer.SetActive(true);
-                // MS
+                // Increasing the fails counts
                 countFails++;
-                //WrongGuesses.text = countFails.ToString();
-
+                
                 Debug.Log("wrong answer, new empty place!");
 
                 //Disable buttons
@@ -381,8 +354,9 @@ public class RRGameManager : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void RetrunMainMenu()
+    public void ReturnMainMenu()
     {
+        //RetrunMainMenu it was before, changed the name
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
     }
