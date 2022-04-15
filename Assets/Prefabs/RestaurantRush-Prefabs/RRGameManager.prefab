@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 0}
   youLosePanel: {fileID: 0}
   MaxFails: 6
+  timerBar: {fileID: 0}
   RightGuesses: {fileID: 0}
   YouWon: {fileID: 0}
   RedTimer: {fileID: 0}
