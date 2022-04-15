@@ -688,6 +688,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
+      propertyPath: instructionAnimator
+      value: 
+      objectReference: {fileID: 2110000223}
+    - target: {fileID: 23107834006228024, guid: 7e9e444227b80ee4587bba134ee62d30, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 18
       objectReference: {fileID: 0}
@@ -772,6 +776,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 565316705, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 918763303, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
       propertyPath: Timer
       value: 
@@ -1137,3 +1145,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2110000223 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4016598887503354945, guid: 89783c53f14f76e429f9dfbf6cd083d6, type: 3}
+  m_PrefabInstance: {fileID: 1185327412}
+  m_PrefabAsset: {fileID: 0}

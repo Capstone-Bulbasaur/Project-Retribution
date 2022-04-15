@@ -15,7 +15,8 @@ public class RRGameManager : MonoBehaviour
     private int countCorrectGuesses;
     private int countFails;
     private int RightMatch;
-    private float WaitforInstructions = 6.0f; // TODO - fix this hardcoded after Level Up.
+    private bool waitforInstructions = false;
+    public Animator instructionAnimator;
 
     public List<GameObject> ingredients = new List<GameObject>();
     public List<Sprite> ingredientSprites = new List<Sprite>();
@@ -84,46 +85,22 @@ public class RRGameManager : MonoBehaviour
             btns[i].interactable = false;
         }
 
-        // Shows the first order after 2 seconds and hides it after 3 seconds
-        Invoke("ShowBubble", 7.0f);
+        //if (waitforInstructions == true)
+        //{
+        //    Invoke("ShowBubble", 1.0f);
+        //}
         AudioManager.instance.Play("Rush_Music");
 
-
-        //CurrentTime = StartingTime;
-
-        //AddBurgerstoList();
-
+        
         foreach (GameObject Burger in burgers) // using directly in update
         {
             Burger.SetActive(false);
         }
 
+        // Starting the game setting the youLose panel to inactive.
         youLosePanel.SetActive(false);
     }
-
-    //Add burgers to the list
-    void AddBurgerstoList()
-    {
-        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-
-        // MS - still not sure if this loop is right
-        //for (int i = 0; i < brgr.Length; i++)
-        //{
-        //    burgers.Add(brgr[i].GetComponentInParent<GameObject>());
-        //}
-    }
-
-    // making the burgers on the list appear for every right match
-    void OnTriggerEnter()
-    {
-        GameObject[] brgr = GameObject.FindGameObjectsWithTag("Burger");
-        foreach (GameObject Burger in burgers) // using directly in update
-        {
-            Burger.SetActive(true);
-        }
-
-    }
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -142,9 +119,15 @@ public class RRGameManager : MonoBehaviour
         {
             timerBar.SetHealth(OrderCurrentTime);
             // Solution for the issue we had before when the 1st button was always wrong
-            WaitforInstructions -= Time.deltaTime;
-            if (WaitforInstructions < 0)
+            
+            if (waitforInstructions == true)
             {
+                //Show the first bubble
+                if (CurrentTime == 99)
+                {
+                    Invoke("ShowBubble", 2.0f);
+                }
+
                 if (CurrentTime <= 0)
                 {
                     StartCoroutine(TryAgain());
@@ -231,10 +214,9 @@ public class RRGameManager : MonoBehaviour
                 OrderCurrentTime = OrderStartTime;
                 // Incorrect answer visuals
                 wrongAnswer.SetActive(true);
-                // MS
+                // Increasing the fails counts
                 countFails++;
-                //WrongGuesses.text = countFails.ToString();
-
+                
                 Debug.Log("wrong answer, new empty place!");
 
                 //Disable buttons
@@ -391,9 +373,16 @@ public class RRGameManager : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void RetrunMainMenu()
+    public void ReturnMainMenu()
     {
+        //RetrunMainMenu it was before, changed the name
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
+    }
+
+    public void CloseInstructions()
+    {
+        instructionAnimator.SetBool("closeInstructions", true);
+        waitforInstructions = true;
     }
 }
