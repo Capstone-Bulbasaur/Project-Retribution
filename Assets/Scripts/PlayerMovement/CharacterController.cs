@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
 {
     public GameObject interactIcon;
     public GameObject interactButton;
+    public Canvas speakMobile;
 
     public float speed = 5f;
     public Rigidbody2D rigidbody;
@@ -32,6 +33,7 @@ public class CharacterController : MonoBehaviour
     {
         interactIcon.SetActive(false);
         interactButton.SetActive(false);
+        speakMobile.enabled = false;
         animator = GetComponent<Animator>();
 
         footsteps = GetComponentInChildren<AudioSource>();
@@ -110,6 +112,7 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_ANDROID
         interactButton.SetActive(true);
+        speakMobile.enabled = true;
 #endif
 
     }
@@ -120,6 +123,7 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_ANDROID
         interactButton.SetActive(false);
+        speakMobile.enabled = false;
 #endif
     }
 

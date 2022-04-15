@@ -20,6 +20,12 @@ public class FBGameManager : MonoBehaviour
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
 
+    public GameObject movePC;
+    public GameObject shootPC;
+    public GameObject moveMobile;
+    public GameObject shootMobile;
+
+
     [SerializeField] private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
@@ -47,6 +53,18 @@ public class FBGameManager : MonoBehaviour
         isarr = FindObjectOfType<Enemy_Isarr>();
 
         Invoke("StartGame", 2.0f);
+#if UNITY_ANDROID
+        movePC.SetActive(false);
+        shootPC.SetActive(false);
+        moveMobile.SetActive(true);
+        shootMobile.SetActive(true);
+
+#else
+        movePC.SetActive(true);
+        shootPC.SetActive(true);
+        moveMobile.SetActive(false);
+        shootMobile.SetActive(false);
+#endif
     }
 
     // Update is called once per frame
