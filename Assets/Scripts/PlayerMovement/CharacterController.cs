@@ -8,6 +8,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public GameObject interactIcon;
+    public Sprite interactIconMobile;
     public GameObject interactButton;
     public Canvas speakMobile;
 
@@ -111,6 +112,7 @@ public class CharacterController : MonoBehaviour
         interactIcon.SetActive(true); // Show exclamation bubble
 
 #if UNITY_ANDROID
+        interactIcon.GetComponentInChildren<SpriteRenderer>().sprite = interactIconMobile;
         interactButton.SetActive(true);
         speakMobile.enabled = true;
 #endif

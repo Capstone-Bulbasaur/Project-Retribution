@@ -645,6 +645,10 @@ PrefabInstance:
       propertyPath: speakMobile
       value: 
       objectReference: {fileID: 1320392100}
+    - target: {fileID: 1392933099, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+      propertyPath: interactIconMobile
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d4b06b17f9f42144b4ae23f99dd4624, type: 3}
     - target: {fileID: 1730015729, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
