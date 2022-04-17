@@ -42,7 +42,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
     - {fileID: 2800000, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
     - {fileID: 2800000, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
-    totalSpriteSurfaceArea: 3244032
+    - {fileID: 2800000, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
+    - {fileID: 2800000, guid: 2b312b2fe7373b14ca2965b311d61903, type: 3}
+    totalSpriteSurfaceArea: 3358720
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -62,6 +64,11 @@ SpriteAtlas:
   - {fileID: -709135411333475275, guid: 2b6dce21477be204ab2cc4e6ece0e90d, type: 3}
   - {fileID: -3714499292501891963, guid: 2b6dce21477be204ab2cc4e6ece0e90d, type: 3}
   - {fileID: 2044326839204775492, guid: 2b6dce21477be204ab2cc4e6ece0e90d, type: 3}
+  - {fileID: -8517862298747086743, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
+  - {fileID: -8694975262562871955, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
+  - {fileID: 8855555817271600897, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
+  - {fileID: 9018090588755759563, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
+  - {fileID: -7949949346400306545, guid: 2649d4312cf59844f844af16432ead2c, type: 3}
   - {fileID: -864508664685734485, guid: 74c630332ef73ba42a6b9dd8bb2e1750, type: 3}
   - {fileID: -5991373104839335218, guid: 74c630332ef73ba42a6b9dd8bb2e1750, type: 3}
   - {fileID: 5776504926003508988, guid: 74c630332ef73ba42a6b9dd8bb2e1750, type: 3}
@@ -246,6 +253,8 @@ SpriteAtlas:
   - {fileID: 880454939759804144, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
   - {fileID: 1727245334208989549, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
   - {fileID: -6244939903675784533, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
+  - {fileID: -8680481486448698737, guid: 2b312b2fe7373b14ca2965b311d61903, type: 3}
+  - {fileID: -8406080641509084199, guid: 2b312b2fe7373b14ca2965b311d61903, type: 3}
   m_PackedSpriteNamesToIndex:
   - AirshipTilesLeftLeft_3
   - AirshipTilesLeftLeft_2
@@ -261,6 +270,11 @@ SpriteAtlas:
   - BaygateExtras3_1
   - BaygateExtras3_0
   - BaygateExtras3_2
+  - BottomRail_3
+  - BottomRail_2
+  - BottomRail_1
+  - BottomRail_0
+  - BottomRail_4
   - AirshipTilesFull_13
   - AirshipTilesFull_12
   - AirshipTilesFull_11
@@ -445,6 +459,8 @@ SpriteAtlas:
   - BayGateTiles_12
   - BayGateTiles_19
   - BayGateTiles_18
+  - BottomRail2_1
+  - BottomRail2_0
   m_RenderDataMap: {}
   m_Tag: TileSpriteAtlas
   m_IsVariant: 0
