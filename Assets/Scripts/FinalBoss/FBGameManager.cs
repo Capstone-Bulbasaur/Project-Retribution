@@ -20,6 +20,11 @@ public class FBGameManager : MonoBehaviour
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
 
+    public GameObject movePC;
+    public GameObject shootPC;
+    public GameObject moveMobile;
+    public GameObject shootMobile;
+
     [SerializeField] private int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
@@ -36,11 +41,24 @@ public class FBGameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        moveMobile.SetActive(false);
+        shootMobile.SetActive(false);
+        movePC.SetActive(false);
+        shootPC.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_ANDROID
+        moveMobile.SetActive(true);
+        shootMobile.SetActive(true);
+#else
+        movePC.SetActive(true);
+        shootPC.SetActive(true);
+#endif
+
         AudioManager.instance.Play("Boss_Music");
         projectilePoller = ProjectilePooler.Instance;
 
