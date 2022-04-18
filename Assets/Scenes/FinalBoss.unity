@@ -2024,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GraeyBattle
       objectReference: {fileID: 0}
+    - target: {fileID: 6504023221865797247, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d70623c556f3940a6c9840874df11f, type: 3}
 --- !u!1001 &5696140921846331814
@@ -2151,10 +2155,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
-      propertyPath: damage
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 503157012, guid: 818a024ba9894b847a898ae69664ff72, type: 3}
       propertyPath: player
       value: 

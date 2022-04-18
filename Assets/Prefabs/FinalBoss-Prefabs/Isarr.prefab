@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1095564873
   m_SortingLayer: 6
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -8419771106048413509, guid: 3112a67cfb3b9b949b1d8c9905ea817f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   retreatDistance: 4
   startTimeBtwShots: 0.5
   projectileSpeed: 10
-  damage: 1
+  damage: 2
   projectile: {fileID: 8961840562195552317, guid: 9cd3ac70251e8444a89062e712bb55b4, type: 3}
   player: {fileID: 0}
   projRange: 5
