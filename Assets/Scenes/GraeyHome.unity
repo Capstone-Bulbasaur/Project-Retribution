@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: letsGoAnimator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1193834102, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+      propertyPath: interactionButton
+      value: 
+      objectReference: {fileID: 1799083759}
     - target: {fileID: 6525226458090161267, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: m_Name
       value: DialogueManager
@@ -3372,6 +3376,17 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1799083759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1730015730, guid: e32ff376e28d71a498c77da176a34e16, type: 3}
+  m_PrefabInstance: {fileID: 968063053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1836094292
 PrefabInstance:
   m_ObjectHideFlags: 0
