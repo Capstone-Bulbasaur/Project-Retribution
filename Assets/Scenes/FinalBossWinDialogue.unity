@@ -205,6 +205,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &626535409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 925550225, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+  m_PrefabInstance: {fileID: 1889269732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &672153122
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +523,10 @@ PrefabInstance:
       propertyPath: Graey
       value: 
       objectReference: {fileID: 19887638}
+    - target: {fileID: 1193834102, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
+      propertyPath: interactionButton
+      value: 
+      objectReference: {fileID: 626535409}
     - target: {fileID: 6525226458090161267, guid: 009562d5b92820c4cb8d195adb8aeacf, type: 3}
       propertyPath: m_Name
       value: DialogueManager
