@@ -27,6 +27,7 @@ public class RRGameManager : MonoBehaviour
     public List<Button> btns = new List<Button>();
     public GameObject youLosePanel;
     public int MaxFails;
+    public HealthBar timerBar;
 
     // MS - getting the example from MM, to apply the textMeshPro for player score and Missed guesses
     public TextMeshProUGUI RightGuesses;
@@ -73,6 +74,7 @@ public class RRGameManager : MonoBehaviour
         CurrentTime = StartingTime;
         OrderCurrentTime = OrderStartTime;
 
+        timerBar.SetMaxHealth((int)OrderStartTime);
     }
     void Start()
     {
@@ -115,6 +117,7 @@ public class RRGameManager : MonoBehaviour
 
         if (!isGameOver)
         {
+            timerBar.SetHealth(OrderCurrentTime);
             // Solution for the issue we had before when the 1st button was always wrong
             
             if (waitforInstructions == true)
@@ -159,11 +162,16 @@ public class RRGameManager : MonoBehaviour
             if (OrderCurrentTime <= 0)
             {
                 incorrectKey = true;
+
+                //Set timer bar to original start time
+                timerBar.SetHealth(OrderStartTime);
             }
 
             // All ingredients correct (count == 4)
             if (count == 4)
             {
+                //Set timer bar to original start time
+                timerBar.SetHealth(OrderStartTime);
                 OrderCurrentTime = OrderStartTime;
                 // Correct answer visuals
                 rightAnswer.SetActive(true);
@@ -200,6 +208,8 @@ public class RRGameManager : MonoBehaviour
 
             if (incorrectKey == true)
             {
+                //Set timer bar to original start time
+                timerBar.SetHealth(OrderStartTime);
                 CurrentTime = CurrentTime - 5;
                 OrderCurrentTime = OrderStartTime;
                 // Incorrect answer visuals
