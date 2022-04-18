@@ -70,8 +70,7 @@ public class Projectile : MonoBehaviour
                 Disable();
         }
         else if (collider.gameObject.CompareTag("NPC") && this.gameObject.name != "IsarrBaseAttack-Sheet_0")
-        { 
-            //collider.transform.parent.gameObject.SetActive(false);
+        {
             collider.GetComponent<Minion>().DisableMinion();
 
             if (!gameObject.CompareTag("Electric"))
@@ -97,9 +96,8 @@ public class Projectile : MonoBehaviour
     {
         StopAllCoroutines();
 
-        //Reset teh position of the prefab
+        //Reset the position of the prefab
         transform.parent.position = Vector3.zero;
         gameObject.transform.position = Vector3.zero;
-       
     }
 }

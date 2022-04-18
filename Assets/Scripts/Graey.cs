@@ -24,7 +24,7 @@ public class Graey : MonoBehaviour
     // Health bar tester
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        //currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         AudioManager.instance.Play("Boss_GraeyHurt");
 

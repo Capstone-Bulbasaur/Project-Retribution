@@ -1701,7 +1701,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5696140923215644898, guid: dea013797c2a56843816a43cc299797e, type: 3}
       propertyPath: pools.Array.data[5].size
-      value: 150
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5696140923215644899, guid: dea013797c2a56843816a43cc299797e, type: 3}
       propertyPath: m_RootOrder

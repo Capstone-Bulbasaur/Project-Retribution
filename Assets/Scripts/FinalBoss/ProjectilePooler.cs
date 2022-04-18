@@ -24,9 +24,8 @@ public class ProjectilePooler : MonoBehaviour
     }
 
     public List<Pool> pools;
+    
     private Dictionary<string, Queue<GameObject>> poolDictionary;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -71,8 +70,15 @@ public class ProjectilePooler : MonoBehaviour
         GameObject objectToSpawn = poolDictionary[type].Dequeue();
 
         objectToSpawn.transform.position = position;
-        
-        objectToSpawn.SetActive(true);
+
+        if (type == "Minions")
+        {
+            objectToSpawn.GetComponentInChildren<Minion>().EnableMinion();
+        }
+        else
+        {
+            objectToSpawn.SetActive(true);
+        }
 
         poolDictionary[type].Enqueue(objectToSpawn);
         

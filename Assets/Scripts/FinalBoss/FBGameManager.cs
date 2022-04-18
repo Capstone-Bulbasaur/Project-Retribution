@@ -19,8 +19,9 @@ public class FBGameManager : MonoBehaviour
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
+    public int testVar;
 
-    [SerializeField] private int minionsOnScreen = 0;
+    [SerializeField] private static int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
@@ -52,6 +53,7 @@ public class FBGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        testVar = minionsOnScreen;
         if (player == null)
         {
             return;
@@ -74,7 +76,7 @@ public class FBGameManager : MonoBehaviour
             else if (isarr.GetHealth() <= 25)
             {
                 maxSpawnTime = 0.5f;
-                minSpawnTime = 0f;
+                minSpawnTime = 0.1f;
             }
 
             //SPAWN MINIONS CODE
