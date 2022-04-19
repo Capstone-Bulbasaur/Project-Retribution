@@ -200,6 +200,7 @@ public class DialogueManager : MonoBehaviour
         {
             letsGo.SetActive(true);
             Graey.GetComponent<CharacterController>().canInteract = false;
+            interactionButton.interactable = false;
         }
 
         Invoke(functionName, 2.5f);
