@@ -44,7 +44,7 @@ public class FFFire : MonoBehaviour
         //this logic might need to move, not sure if it matters - Steve
 
 
-        if (FFUIManager.instance.currentTime >= 10.0f)
+        if (FFUIManager.instance.currentTime >= 5.0f)
         {
             upTimer += Time.deltaTime;
 
@@ -64,7 +64,6 @@ public class FFFire : MonoBehaviour
                 upTimer = 0;
                 //counter for broken windows logic now
                 FFGameManager.instance.brokenWindows++;
-
             }
         }
 
@@ -80,7 +79,6 @@ public class FFFire : MonoBehaviour
         //If sumthin = 0 then the fire was put out by the player, otherwise it reached max level and broke a window
         if (sumthin == 0)
         {
-            FFGameManager.instance.RemoveFlame();
             AudioManager.instance.Play("Fire_Splash");
         }
         else
@@ -91,6 +89,7 @@ public class FFFire : MonoBehaviour
 
             AudioManager.instance.Play("Fire_Break");
         }
+        FFGameManager.instance.RemoveFlame();
     }
 
     public void LevelUpFire() //TODO after LevelUp: more user feedback for fire levels, maybe color change?

@@ -3789,6 +3789,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1405362599387032682, guid: 40b5ae0da1b11114ca13ea9e1edbed13, type: 3}
+      propertyPath: m_Size.x
+      value: 4.2136497
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405362599387032682, guid: 40b5ae0da1b11114ca13ea9e1edbed13, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7885039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405362599387032682, guid: 40b5ae0da1b11114ca13ea9e1edbed13, type: 3}
+      propertyPath: m_Offset.x
+      value: -10.48184
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405362599387032682, guid: 40b5ae0da1b11114ca13ea9e1edbed13, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.008388162
+      objectReference: {fileID: 0}
     - target: {fileID: 1405362600273225192, guid: 40b5ae0da1b11114ca13ea9e1edbed13, type: 3}
       propertyPath: m_Name
       value: MinimapDetectorHub
