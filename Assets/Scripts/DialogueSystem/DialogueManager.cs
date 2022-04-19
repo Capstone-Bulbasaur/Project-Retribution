@@ -30,6 +30,8 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typing;
     private ConvoFinishedCallback callback;
 
+    private bool convoIsDelay = false;
+    private bool convoInProgress = false;
     bool dialogueFinished;
 
     private void Awake()
@@ -53,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (currentConvo != null)
+        if (currentConvo != null && convoInProgress == true)
         {
             // Workaround to lock interaction button in Final Battle Win dialogue. This scene doesn't have a character controller and complains because it doesn't exist
             if(Input.GetKeyDown(actionKey) && SceneManager.GetActiveScene().name == "FinalBossWinDialogue")
@@ -99,15 +101,39 @@ public class DialogueManager : MonoBehaviour
         callback = callb;
 
         AudioManager.instance.Play("Hub_DialoguePop");
+
+        if (convoInProgress == false)
+        {
+            Debug.Log("Yup, stuff happened");
+            ReadNext();
+
+        }
     }
 
+    private IEnumerator ConvoDelay()
+    {
+        convoIsDelay = true;
+        yield return new WaitForSeconds(0.5f);
+        convoIsDelay = false;
+    }
     public void ReadNext()
     {
+        if (currentConvo == null || convoIsDelay == true)
+        {
+            Debug.Log("Yup, different stuff happened");
+            return;
+        }
+
+        StartCoroutine(ConvoDelay());
+
         // Closes the dialogue box if the player presses NO (No risk of accidentally going into the minigames)
         if(dialogueFinished == true)
         {
             animator.SetBool("isOpen", false);
             button.GetComponent<Image>().sprite = nextDialogueSprite;
+            convoInProgress = false;
+            currentConvo = null;
+            Debug.Log("Yup, more stuff happened");
             callback();
             if (SceneManager.GetActiveScene().name == "HubWorld")
             {
@@ -116,12 +142,15 @@ public class DialogueManager : MonoBehaviour
 
             return;
         }
-
+        convoInProgress = true;
+        
         // Closes the dialogue box if it reaches the end of the conversation
         if(currentIndex > currentConvo.GetLength())
         {
             animator.SetBool("isOpen", false);
             button.GetComponent<Image>().sprite = nextDialogueSprite;
+            convoInProgress = false;
+            currentConvo = null;
             callback();
 
             if (speakerName.text == "Orry")
@@ -191,6 +220,16 @@ public class DialogueManager : MonoBehaviour
             button.GetComponent<Image>().sprite = closeDialogueSprite;
         }
     }
+
+    public void ReadNextEditor()
+    {
+        if (convoInProgress == true)
+        {
+            Debug.Log("Yup, stuff happened in editor");
+            ReadNext();
+        }
+    }
+
     void LetsGoAnimationSceneLoad(string functionName)
     {
         PlayerPrefs.SetFloat("PlayerX", Graey.transform.position.x);
