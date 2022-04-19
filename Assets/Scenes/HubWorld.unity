@@ -2315,7 +2315,7 @@ PrefabInstance:
       objectReference: {fileID: 1660202738}
     - target: {fileID: 435909050, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
       propertyPath: recruitedGaehl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 435909050, guid: 7a047b207856ee54ea7ad2635e23b154, type: 3}
       propertyPath: RoadBlockMinion
