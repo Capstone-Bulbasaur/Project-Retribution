@@ -68,7 +68,7 @@ public class FFGameManager : MonoBehaviour
             if (waitforInstructions == true)
             {
                 currentSpawnTime += Time.deltaTime;
-                if (currentSpawnTime > generatedSpawnTime && FFUIManager.instance.currentTime >= 10.0f)
+                if (currentSpawnTime > generatedSpawnTime && FFUIManager.instance.currentTime >= 5.0f)
                 {
                     currentSpawnTime = 0;
                     generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -104,7 +104,7 @@ public class FFGameManager : MonoBehaviour
         {
             while (!spawned)
             {
-                if (spawnLocation.transform.childCount == 0)
+                if (spawnLocation.transform.childCount == 0 && spawnLocation.gameObject.activeInHierarchy)
                 {
                     GameObject fires = Instantiate(flame, spawnLocation.gameObject.transform, false);
                     //Sound Effect?
