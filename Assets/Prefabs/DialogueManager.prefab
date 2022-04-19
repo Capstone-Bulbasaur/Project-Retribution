@@ -1205,6 +1205,7 @@ MonoBehaviour:
   letsGo: {fileID: 0}
   yesButton: {fileID: 1828211286}
   noButton: {fileID: 405980821}
+  interactionButton: {fileID: 0}
 --- !u!95 &1193834103
 Animator:
   serializedVersion: 3
