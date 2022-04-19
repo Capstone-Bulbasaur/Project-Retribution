@@ -137,6 +137,12 @@ MonoBehaviour:
   spawnTime: 2
   particleObject: {fileID: 8165043778895893428, guid: 0138533cedc0adb4abee5302f49fe6f7, type: 3}
   particleParent: {fileID: 8109843402076245135, guid: 639696a22e78eb144b7d56d92930bbc3, type: 3}
+  levelZero: {fileID: 708936549267164950, guid: 572fbc076ed903a449bca6c106fc56a0, type: 3}
+  levelOne: {fileID: 1022863054317598970, guid: 71b7dd08094f3e948b6d7e099a065f33, type: 3}
+  levelTwo: {fileID: -7984172015440253193, guid: 0ef9504710bf5574aa623d966c5fe34c, type: 3}
+  levelZeroAnim: {fileID: 9100000, guid: 539ce994b78658e4d9c1ccf0380996fc, type: 2}
+  levelOneAnim: {fileID: 9100000, guid: 4e1d6dfeb6440b444be51fb62da10d7b, type: 2}
+  levelTwoAnim: {fileID: 9100000, guid: 69a9dc3c92b2cdc42b77fcb3b99404fa, type: 2}
 --- !u!61 &8715823308634142438
 BoxCollider2D:
   m_ObjectHideFlags: 0

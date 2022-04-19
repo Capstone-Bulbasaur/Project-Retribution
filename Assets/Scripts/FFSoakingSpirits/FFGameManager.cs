@@ -68,7 +68,7 @@ public class FFGameManager : MonoBehaviour
             if (waitforInstructions == true)
             {
                 currentSpawnTime += Time.deltaTime;
-                if (currentSpawnTime > generatedSpawnTime)
+                if (currentSpawnTime > generatedSpawnTime && FFUIManager.instance.currentTime >= 10.0f)
                 {
                     currentSpawnTime = 0;
                     generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -81,8 +81,7 @@ public class FFGameManager : MonoBehaviour
                     StartCoroutine(TryAgain());
                     return;
                 }
-                
-                else if (FFUIManager.instance.currentTime <= 0.5f)
+                else if (FFUIManager.instance.currentTime <= 0.5f && flamesOnScreen <= 0)
                 {
                     //Recruited Gaehl
                     PlayerPrefs.SetInt("RecruitedGaehl", 1);

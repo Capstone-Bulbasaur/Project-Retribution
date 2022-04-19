@@ -9,16 +9,30 @@ public class FFFire : MonoBehaviour
     public float spawnTime = 2;
     public GameObject particleObject;
     public GameObject particleParent;
+    
+    public Sprite levelZero;
+    public Sprite levelOne;
+    public Sprite levelTwo;
+
+    public RuntimeAnimatorController levelZeroAnim;
+    public RuntimeAnimatorController levelOneAnim;
+    public RuntimeAnimatorController levelTwoAnim;
 
 
     private int fireLevel = 0;
     private float upTimer;
     private bool isActive = true;
 
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    
+
 
     void Start()
     {
         particleParent = GameObject.FindGameObjectWithTag("PuzzleButton");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -27,26 +41,31 @@ public class FFFire : MonoBehaviour
         //{
         //    ExtinguishFire();
         //}
+        //this logic might need to move, not sure if it matters - Steve
 
-        upTimer += Time.deltaTime;
 
-        if (upTimer >= 3.0f && fireLevel < 2)
+        if (FFUIManager.instance.currentTime >= 10.0f)
         {
-            LevelUpFire();
-            upTimer = 0;
-        }
-        else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
-        {
+            upTimer += Time.deltaTime;
+
+            if (upTimer >= 3.0f && fireLevel < 2)
+            {
+                LevelUpFire();
+                upTimer = 0;
+            }
+            else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
+            {
 
 
-            transform.parent.gameObject.SetActive(false);
-            //window break animation
-            ExtinguishFire(1);
-            isActive = false;
-            upTimer = 0;
-            //counter for broken windows logic now
-            FFGameManager.instance.brokenWindows++;
+                transform.parent.gameObject.SetActive(false);
+                //window break animation
+                ExtinguishFire(1);
+                isActive = false;
+                upTimer = 0;
+                //counter for broken windows logic now
+                FFGameManager.instance.brokenWindows++;
 
+            }
         }
 
     }
@@ -81,6 +100,17 @@ public class FFFire : MonoBehaviour
         if(fireLevel <= 2)
         {
             fireLevel++; // up to Level2 which maxLevel could be a variable maybe?
+            
+            if (fireLevel == 1)
+            {
+                spriteRenderer.sprite = levelOne;
+                animator.runtimeAnimatorController = levelOneAnim;
+            }
+            else if (fireLevel == 2)
+            {
+                spriteRenderer.sprite = levelTwo;
+                animator.runtimeAnimatorController = levelTwoAnim;
+            }
 
             //To scale up pass in 1, to scale down pass in -1
             ScaleFires();
@@ -102,7 +132,17 @@ public class FFFire : MonoBehaviour
         else
         {
             fireLevel--;
-
+            if (fireLevel == 0)
+            {
+                spriteRenderer.sprite = levelZero;
+                animator.runtimeAnimatorController = levelZeroAnim;
+            }
+            else if (fireLevel == 1)
+            {
+                spriteRenderer.sprite = levelOne;
+                animator.runtimeAnimatorController = levelOneAnim;
+            }
+            
             //To scale up pass in 1, to scale down pass in -1
             ScaleFires(-1);
         }

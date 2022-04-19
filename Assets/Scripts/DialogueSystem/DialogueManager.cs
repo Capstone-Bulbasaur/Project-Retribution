@@ -104,7 +104,7 @@ public class DialogueManager : MonoBehaviour
 
         if (convoInProgress == false)
         {
-            Debug.Log("Yup, stuff happened");
+            //Debug.Log("Yup, stuff happened");
             ReadNext();
 
         }
@@ -120,7 +120,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentConvo == null || convoIsDelay == true)
         {
-            Debug.Log("Yup, different stuff happened");
+            //Debug.Log("Yup, different stuff happened");
             return;
         }
 
@@ -133,7 +133,7 @@ public class DialogueManager : MonoBehaviour
             button.GetComponent<Image>().sprite = nextDialogueSprite;
             convoInProgress = false;
             currentConvo = null;
-            Debug.Log("Yup, more stuff happened");
+            //Debug.Log("Yup, more stuff happened");
             callback();
             if (SceneManager.GetActiveScene().name == "HubWorld")
             {
@@ -225,7 +225,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (convoInProgress == true)
         {
-            Debug.Log("Yup, stuff happened in editor");
+            //Debug.Log("Yup, stuff happened in editor");
             ReadNext();
         }
     }
