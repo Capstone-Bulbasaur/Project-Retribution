@@ -100,7 +100,7 @@ public class FFGameManager : MonoBehaviour
         bool spawned = false;
 
         //Check if there's already 18 fires on screen
-        if (flamesOnScreen < spawnPoints.Length)
+        if (flamesOnScreen < spawnPoints.Length - brokenWindows)
         {
             while (!spawned)
             {
