@@ -27,26 +27,28 @@ public class FFFire : MonoBehaviour
         //{
         //    ExtinguishFire();
         //}
-
-        upTimer += Time.deltaTime;
-
-        if (upTimer >= 3.0f && fireLevel < 2)
+        if (FFUIManager.instance.currentTime >= 10.0f)
         {
-            LevelUpFire();
-            upTimer = 0;
-        }
-        else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
-        {
+            upTimer += Time.deltaTime;
+
+            if (upTimer >= 3.0f && fireLevel < 2)
+            {
+                LevelUpFire();
+                upTimer = 0;
+            }
+            else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
+            {
 
 
-            transform.parent.gameObject.SetActive(false);
-            //window break animation
-            ExtinguishFire(1);
-            isActive = false;
-            upTimer = 0;
-            //counter for broken windows logic now
-            FFGameManager.instance.brokenWindows++;
+                transform.parent.gameObject.SetActive(false);
+                //window break animation
+                ExtinguishFire(1);
+                isActive = false;
+                upTimer = 0;
+                //counter for broken windows logic now
+                FFGameManager.instance.brokenWindows++;
 
+            }
         }
 
     }
