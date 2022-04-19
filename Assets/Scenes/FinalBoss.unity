@@ -1907,6 +1907,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
+      propertyPath: minionParent
+      value: 
+      objectReference: {fileID: 686191656}
+    - target: {fileID: 8017562906329999175, guid: 89c65d9189fed7941b4f7744e504a233, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1702783647}

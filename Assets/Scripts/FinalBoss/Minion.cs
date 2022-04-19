@@ -24,7 +24,6 @@ public class Minion : MonoBehaviour
         {
             DisableMinion();
 
-            //Debug.Log("Minion Collided with " + collision.gameObject);
             collision.gameObject.GetComponent<Graey>().TakeDamage(damage);
         }
     }
@@ -47,19 +46,15 @@ public class Minion : MonoBehaviour
         
         if (ProjectilePooler.Instance.isLoaded)
         {
-            //Debug.Log("Before disable " + gameObject.transform.position);
-
             //Reset game object positions
             transform.parent.position = Vector3.zero;
             gameObject.transform.position = Vector3.zero;
 
-            //Debug.Log("After disable " + gameObject.transform.position);
+            ProjectilePooler.Instance.PutInQueue(gameObject.transform.parent.gameObject);
 
             //Disable minion
             transform.parent.gameObject.SetActive(false);
-
-            //Remove enemy from onScreen variable
-            gameManager.RemoveEnemy();
+            
         }
     }
 

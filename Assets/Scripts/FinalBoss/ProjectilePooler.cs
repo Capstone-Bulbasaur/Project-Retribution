@@ -78,10 +78,14 @@ public class ProjectilePooler : MonoBehaviour
         else
         {
             objectToSpawn.SetActive(true);
+            poolDictionary[type].Enqueue(objectToSpawn);
         }
 
-        poolDictionary[type].Enqueue(objectToSpawn);
-        
         return objectToSpawn;
+    }
+
+    public void PutInQueue(GameObject minion)
+    {
+        poolDictionary["Minions"].Enqueue(minion);
     }
 }

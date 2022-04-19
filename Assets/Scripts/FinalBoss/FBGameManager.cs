@@ -13,15 +13,13 @@ public class FBGameManager : MonoBehaviour
 
     public Graey player;
     public GameObject[] spawnPoints;
-    public int maxMinionsOnScreen;
     public int totalMinions;
     public int minionsPerSpawn;
     public float minSpawnTime; //UML has this as a float, anyone care?
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
-    public int testVar;
+    public GameObject minionParent;
 
-    [SerializeField] private static int minionsOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
     private ProjectilePooler projectilePoller;
@@ -53,7 +51,6 @@ public class FBGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testVar = minionsOnScreen;
         if (player == null)
         {
             return;
@@ -87,7 +84,7 @@ public class FBGameManager : MonoBehaviour
                 currentSpawnTime = 0;
                 generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
 
-                if (minionsPerSpawn > 0 && minionsOnScreen < totalMinions)
+                if (minionsPerSpawn > 0)
                 {
                     List<int> previousSpawnLocations = new List<int>();
 
@@ -100,28 +97,28 @@ public class FBGameManager : MonoBehaviour
 
                     for (int i = 0; i < minionsPerSpawn; i++)
                     {
-                        if (minionsOnScreen < maxMinionsOnScreen)
+                        // 1
+                        int spawnPoint = -1;
+                        // 2
+                        while (spawnPoint == -1)
                         {
-                            // 1
-                            int spawnPoint = -1;
-                            // 2
-                            while (spawnPoint == -1)
+                            // 3
+                            int randomNumber = Random.Range(0, spawnPoints.Length);
+                            // 4
+                            if (!previousSpawnLocations.Contains(randomNumber))
                             {
-                                // 3
-                                int randomNumber = Random.Range(0, spawnPoints.Length);
-                                // 4
-                                if (!previousSpawnLocations.Contains(randomNumber))
-                                {
-                                    previousSpawnLocations.Add(randomNumber);
-                                    spawnPoint = randomNumber;
-                                }
+                                previousSpawnLocations.Add(randomNumber);
+                                spawnPoint = randomNumber;
                             }
-                            GameObject spawnLocation = spawnPoints[spawnPoint];
-                            //GameObject newMinion = Instantiate(minion);
-                            //newMinion.transform.position = spawnLocation.transform.position;
-                            projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
-                            minionsOnScreen += 1;
                         }
+                        GameObject spawnLocation = spawnPoints[spawnPoint];
+
+                        if (!CheckMinions())
+                        {
+                            projectilePoller.SpawnFromPool("Minions", spawnLocation.transform.position);
+                        }
+                        //minionsOnScreen += 1;
+                        
                     }
                 }
             }
@@ -143,14 +140,21 @@ public class FBGameManager : MonoBehaviour
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
     }
 
-    public void RemoveEnemy()
-    {
-        minionsOnScreen -= 1;
-    }
-
     public void RetrunMainMenu()
     {
         LevelChanger.instance.FadeToLevel((int)Constants.gameScenes.MAINMENU);
         Time.timeScale = 1f;
+    }
+
+    public bool CheckMinions()
+    {
+        for (int i = 0; i< minionParent.transform.childCount; i++)
+        {
+            if(!minionParent.transform.GetChild(i).gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
