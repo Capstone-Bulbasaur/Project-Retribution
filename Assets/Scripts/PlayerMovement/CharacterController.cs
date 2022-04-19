@@ -8,7 +8,9 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public GameObject interactIcon;
+    public Sprite interactIconMobile;
     public GameObject interactButton;
+    public GameObject speakMobile;
 
     public float speed = 5f;
     public Rigidbody2D rigidbody;
@@ -32,6 +34,7 @@ public class CharacterController : MonoBehaviour
     {
         interactIcon.SetActive(false);
         interactButton.SetActive(false);
+        speakMobile.SetActive(false);
         animator = GetComponent<Animator>();
 
         footsteps = GetComponentInChildren<AudioSource>();
@@ -65,7 +68,7 @@ public class CharacterController : MonoBehaviour
             movement.y = 0;
 
         // Set idle position to last known direction
-        if (canMove && movement.x != 0 || movement.y != 0)
+        if (canMove && movement != Vector2.zero)
         {
             
             animator.SetFloat("LastHorizontal", joystick.Horizontal);
@@ -109,7 +112,9 @@ public class CharacterController : MonoBehaviour
         interactIcon.SetActive(true); // Show exclamation bubble
 
 #if UNITY_ANDROID
+        interactIcon.GetComponentInChildren<SpriteRenderer>().sprite = interactIconMobile;
         interactButton.SetActive(true);
+        speakMobile.SetActive(true);
 #endif
 
     }
@@ -120,6 +125,7 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_ANDROID
         interactButton.SetActive(false);
+        speakMobile.SetActive(false);
 #endif
     }
 

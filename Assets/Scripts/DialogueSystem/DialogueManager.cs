@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject letsGo = null;
     public Button yesButton;
     public Button noButton;
+    public Button interactionButton;
 
     private int currentIndex;
     private Conversation currentConvo;
@@ -87,7 +88,8 @@ public class DialogueManager : MonoBehaviour
             DisableMovement();
         }
 
-        button.interactable = true;   
+        button.interactable = true;
+        interactionButton.interactable = true;
         animator.SetBool("isOpen", true);
         currentIndex = 0;
         currentConvo = convo;
@@ -155,6 +157,7 @@ public class DialogueManager : MonoBehaviour
         if (currentConvo.GetLineByIndex(currentIndex).dialogue == "Sure! Would you like to stay and help?")
         {
             button.interactable = false;
+            interactionButton.interactable = false;
             Graey.GetComponent<CharacterController>().canInteract = false;
             EnableYesNoButtons();
         }
@@ -163,6 +166,7 @@ public class DialogueManager : MonoBehaviour
         if(currentConvo.GetLineByIndex(currentIndex).dialogue == "Please let me LIVE!")
         {
             button.interactable = false;
+            //interactionButton.interactable = false;
             EnableYesNoButtons();
         }
 
@@ -196,6 +200,7 @@ public class DialogueManager : MonoBehaviour
         {
             letsGo.SetActive(true);
             Graey.GetComponent<CharacterController>().canInteract = false;
+            interactionButton.interactable = false;
         }
 
         Invoke(functionName, 2.5f);
@@ -276,6 +281,7 @@ public class DialogueManager : MonoBehaviour
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
         button.interactable = true;
+        interactionButton.interactable = true;
     }
 
     // Types out the dialogue lines

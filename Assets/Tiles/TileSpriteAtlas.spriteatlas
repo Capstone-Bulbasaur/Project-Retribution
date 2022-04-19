@@ -42,7 +42,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 5273c0dedd2f46140957032eee6d240f, type: 3}
     - {fileID: 2800000, guid: 4e22a4f4a195b4d49bceda758287cf2d, type: 3}
     - {fileID: 2800000, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
-    totalSpriteSurfaceArea: 3244032
+    - {fileID: 2800000, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
+    - {fileID: 2800000, guid: afa21c27bbf9c37489f263190eab7433, type: 3}
+    totalSpriteSurfaceArea: 3358720
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -201,7 +203,14 @@ SpriteAtlas:
   - {fileID: -5859062981038800176, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
   - {fileID: 6387597899476477766, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
   - {fileID: 6661297474386515685, guid: 0d88d1f501e61714dbddf4c73bc5be71, type: 3}
+  - {fileID: -8680481486448698737, guid: afa21c27bbf9c37489f263190eab7433, type: 3}
+  - {fileID: -8406080641509084199, guid: afa21c27bbf9c37489f263190eab7433, type: 3}
   - {fileID: 21300000, guid: 167bc74a7d506ac4e939b9554e22ce52, type: 3}
+  - {fileID: -8517862298747086743, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
+  - {fileID: -8694975262562871955, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
+  - {fileID: 8855555817271600897, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
+  - {fileID: 9018090588755759563, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
+  - {fileID: -7949949346400306545, guid: b2cf491dab963144fa486f79489a4c78, type: 3}
   - {fileID: -90106310760498918, guid: 3a8f550e63c37b548a640e3e61a03c27, type: 3}
   - {fileID: -2199445476584147104, guid: 3a8f550e63c37b548a640e3e61a03c27, type: 3}
   - {fileID: 21300000, guid: ad98286e284ac5a4388e45cc61743ce3, type: 3}
@@ -400,7 +409,14 @@ SpriteAtlas:
   - GraeyHouse_12
   - GraeyHouse_11
   - GraeyHouse_10
+  - BottomRail2_1
+  - BottomRail2_0
   - AirshipTileLeftCorr
+  - BottomRail_3
+  - BottomRail_2
+  - BottomRail_1
+  - BottomRail_0
+  - BottomRail_4
   - AirshipTilesLeft2_0
   - AirshipTilesLeft2_1
   - AirshipTileLeftFill
