@@ -113,7 +113,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator ConvoDelay()
     {
         convoIsDelay = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.01f);
         convoIsDelay = false;
     }
     public void ReadNext()
