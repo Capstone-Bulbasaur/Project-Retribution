@@ -48,12 +48,12 @@ public class FFFire : MonoBehaviour
         {
             upTimer += Time.deltaTime;
 
-            if (upTimer >= 3.0f && fireLevel < 2)
+            if (upTimer >= 2.0f && fireLevel < 2)
             {
                 LevelUpFire();
                 upTimer = 0;
             }
-            else if (fireLevel == 2 && upTimer >= 5.0f && isActive == true)
+            else if (fireLevel == 2 && upTimer >= 4.0f && isActive == true)
             {
 
 
