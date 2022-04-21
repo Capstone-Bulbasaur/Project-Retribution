@@ -24,7 +24,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 9872430d7ec7d964192ae66ad9cfa7d9, type: 2}
     dialogue: Wait!
   - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
-    dialogue: Take a piece of our powers with you.
+    dialogue: Take our powers with you.
   - speaker: {fileID: 11400000, guid: 5a52dbbc547149342a43faa2e508ddf4, type: 2}
     dialogue: Use them to defeat Isarr!
   - speaker: {fileID: 11400000, guid: bc6ca2e0837f803418cc5f988ad594ce, type: 2}
