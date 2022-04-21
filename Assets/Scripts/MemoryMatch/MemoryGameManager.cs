@@ -210,7 +210,7 @@ public class MemoryGameManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.3f);
 
         //Reset Selected Pots
         firstGuess = secondGuess = false;
