@@ -4,13 +4,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
     public GameObject interactIcon;
     public Sprite interactIconMobile;
     public GameObject interactButton;
-    public GameObject speakMobile;
+    public Image speakMobile;
+    public Image speakMobileBox;
 
     public float speed = 5f;
     public Rigidbody2D rigidbody;
@@ -34,7 +36,8 @@ public class CharacterController : MonoBehaviour
     {
         interactIcon.SetActive(false);
         interactButton.SetActive(false);
-        speakMobile.SetActive(false);
+        speakMobile.enabled = false;
+        speakMobileBox.enabled = false;
         animator = GetComponent<Animator>();
 
         footsteps = GetComponentInChildren<AudioSource>();
@@ -114,7 +117,8 @@ public class CharacterController : MonoBehaviour
 #if UNITY_ANDROID
         interactIcon.GetComponentInChildren<SpriteRenderer>().sprite = interactIconMobile;
         interactButton.SetActive(true);
-        speakMobile.SetActive(true);
+        speakMobile.enabled = true;
+        speakMobileBox.enabled = true;
 #endif
 
     }
@@ -125,7 +129,8 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_ANDROID
         interactButton.SetActive(false);
-        speakMobile.SetActive(false);
+        speakMobile.enabled = false;
+        speakMobileBox.enabled = false;
 #endif
     }
 

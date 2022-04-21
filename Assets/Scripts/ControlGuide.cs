@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class ControlGuide : MonoBehaviour
 {
-    public GameObject movePC;
-    public GameObject moveMobile;
-    public GameObject speakMobile;
+    public Canvas pcControls;
+    public Canvas mobileControls;
 
     void Awake()
     {
-        movePC.SetActive(false);
-        moveMobile.SetActive(false);
+        pcControls.enabled = false;
+        mobileControls.enabled = false;
     }
     void Start()
     {
 #if UNITY_ANDROID
-        moveMobile.SetActive(true);
+        mobileControls.enabled = true;
 #else
-        movePC.SetActive(true);
+        pcControls.enabled = true;
 #endif
     }
 }
