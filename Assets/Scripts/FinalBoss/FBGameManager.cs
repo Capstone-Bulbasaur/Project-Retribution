@@ -19,6 +19,8 @@ public class FBGameManager : MonoBehaviour
     public float maxSpawnTime; //UML also says float
     public bool isGameOver = true;
     public GameObject minionParent;
+    public GameObject pcControls;
+    public GameObject mobileControls;
 
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
@@ -28,6 +30,9 @@ public class FBGameManager : MonoBehaviour
 
     private void Awake()
     {
+        pcControls.SetActive(false);
+        mobileControls.SetActive(false);
+
         if (instance == null)
             instance = this;
         else
@@ -40,6 +45,12 @@ public class FBGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_ANDROID
+        mobileControls.SetActive(true);
+#else
+        //EnablePCControlGuide();
+        pcControls.SetActive(true);
+#endif
         AudioManager.instance.Play("Boss_Music");
         projectilePoller = ProjectilePooler.Instance;
 
