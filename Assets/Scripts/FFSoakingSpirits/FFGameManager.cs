@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class FFGameManager : MonoBehaviour
 {
-    //I imagine I could make a fire instance in the manager and summon all the functions here to replace this boilerplate spawning method.
     //Definitely ready for that team collaboration now.
     public GameObject flame;
     public GameObject[] spawnPoints;
@@ -25,7 +24,7 @@ public class FFGameManager : MonoBehaviour
 
     public static FFGameManager instance;
     public Animator instructionAnimator;
-    public bool waitforInstructions = false; // TODO - fix this hardcoded after Level Up.
+    public bool waitforInstructions = false;
 
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;

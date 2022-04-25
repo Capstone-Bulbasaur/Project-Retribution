@@ -37,12 +37,6 @@ public class FFFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(FFGameManager.instance.gameOver)
-        //{
-        //    ExtinguishFire();
-        //}
-        //this logic might need to move, not sure if it matters - Steve
-
 
         if (FFUIManager.instance.currentTime >= 5.0f)
         {
@@ -92,13 +86,12 @@ public class FFFire : MonoBehaviour
         FFGameManager.instance.RemoveFlame();
     }
 
-    public void LevelUpFire() //TODO after LevelUp: more user feedback for fire levels, maybe color change?
+    public void LevelUpFire() 
     {
-        //can debate Sound Effect for level up if we think another differt Fywooosh would be needed.
 
         if(fireLevel <= 2)
         {
-            fireLevel++; // up to Level2 which maxLevel could be a variable maybe?
+            fireLevel++;
             
             if (fireLevel == 1)
             {
@@ -145,8 +138,7 @@ public class FFFire : MonoBehaviour
             //To scale up pass in 1, to scale down pass in -1
             ScaleFires(-1);
         }
-        //Sound Effect?
-        //SizzleDizzle?
+        
     }
 
     void ScaleFires(short direction = 1)
