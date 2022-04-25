@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  minion: {fileID: 5685816773068605298, guid: dd0839f59f6a93a40b952bff1c79892a, type: 3}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
-  maxMinionsOnScreen: 40
   totalMinions: 60
   minionsPerSpawn: 2
   minSpawnTime: 1
   maxSpawnTime: 2
   isGameOver: 1
+  minionParent: {fileID: 0}
+  pcControls: {fileID: 0}
+  mobileControls: {fileID: 0}
