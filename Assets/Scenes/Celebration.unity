@@ -25161,6 +25161,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4809750716620241805, guid: 9c21702c3cb23e04985da15e0c0f05a2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -193.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7948179609661199672, guid: 9c21702c3cb23e04985da15e0c0f05a2, type: 3}
       propertyPath: m_Name
       value: Credits

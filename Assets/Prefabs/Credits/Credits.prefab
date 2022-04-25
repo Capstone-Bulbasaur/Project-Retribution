@@ -4907,19 +4907,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4959,11 +4959,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -480
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 299
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011174171426, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5007,7 +5007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011257042413, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -163
+      value: -142
       objectReference: {fileID: 0}
     - target: {fileID: 3238706011257042415, guid: c50c469f38647964ca24555fddb813a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
