@@ -16,4 +16,9 @@ public class MinimapMinion : MonoBehaviour
     {
        minimap.ChangePlayerLocation((int)Constants.minimapTowns.MINION);
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        minimap.ChangePlayerLocation((int)Constants.minimapTowns.MINION);
+    }
 }

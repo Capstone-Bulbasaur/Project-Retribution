@@ -16,4 +16,9 @@ public class MinimapBaygate : MonoBehaviour
     {
        minimap.ChangePlayerLocation((int)Constants.minimapTowns.BAYGATE);
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        minimap.ChangePlayerLocation((int)Constants.minimapTowns.BAYGATE);
+    }
 }
