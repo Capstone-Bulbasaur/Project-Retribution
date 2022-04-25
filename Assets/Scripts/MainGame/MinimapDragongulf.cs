@@ -16,4 +16,9 @@ public class MinimapDragongulf : MonoBehaviour
     {
        minimap.ChangePlayerLocation((int)Constants.minimapTowns.DRAGONGULF);
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        minimap.ChangePlayerLocation((int)Constants.minimapTowns.DRAGONGULF);
+    }
 }

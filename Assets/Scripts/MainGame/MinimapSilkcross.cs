@@ -16,4 +16,9 @@ public class MinimapSilkcross : MonoBehaviour
     {
        minimap.ChangePlayerLocation((int)Constants.minimapTowns.SILKCROSS);
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        minimap.ChangePlayerLocation((int)Constants.minimapTowns.SILKCROSS);
+    }
 }
