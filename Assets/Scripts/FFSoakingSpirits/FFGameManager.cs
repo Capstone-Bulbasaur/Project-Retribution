@@ -49,6 +49,12 @@ public class FFGameManager : MonoBehaviour
         }
 
         instructionAnimator.SetBool("closeInstructions", false);
+
+#if UNITY_ANDROID
+maxSpawnTime = 1.2f;
+#else
+        maxSpawnTime = 1.5f;
+#endif
         //youLosePanel.gameObject.SetActive(false); It was throwing an error that the YouLose panel was not assigned. After commenting out this line, and disabling the panel manually (unity), works fine
     }
 
