@@ -679,7 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   projectileSpeed: 15
-  range: 0.1
+  range: 0.18
   damage: 1
   aim: {fileID: 0}
   shootPosition: {fileID: 3940681939738488536}
