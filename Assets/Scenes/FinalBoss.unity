@@ -1573,6 +1573,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 2331791466280208972, guid: 8db8a897af4767242ad6d1bb30a28565, type: 3}
+      propertyPath: m_text
+      value: Try again
+      objectReference: {fileID: 0}
     - target: {fileID: 2894442355358075301, guid: 8db8a897af4767242ad6d1bb30a28565, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
       value: 2
